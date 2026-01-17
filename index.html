@@ -46,8 +46,8 @@
         linear-gradient(180deg, #050008 0%, #18020f 35%, #070008 75%, #020005 100%);
       color: var(--text-main);
       position: relative;
-      /* Katana sword cursor hosted on GitHub (raw URL) */
-      cursor: url("https://raw.githubusercontent.com/kanishqreddy/kansum.github.io/main/cyberpunk-2077-thermal-katana-custom-cursor.png") 16 16, auto;
+      /* INLINE NEON KATANA SVG CURSOR */
+      cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjE0IiB5MT0iNiIgeDI9IjIwIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMDgyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmMTc0NCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE2IDMyKSI+CiAgICA8cmVjdCB4PSIxNCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMjYiIHJ4PSIxIiBmaWxsPSIjZmY0YjRiIi8+CiAgICA8cmVjdCB4PSIxNCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMjYiIHJ4PSIxIiBmaWxsPSJ1cmwoI2cpIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzAiIHdpZHRoPSI4IiBoZWlnaHQ9IjQiIHJ4PSIxIiBmaWxsPSIjMTExMTExIi8+CiAgICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjMyIiByPSIxIiBmaWxsPSIjZmZkNTRmIi8+CiAgPC9nPgo8L3N2Zz4=") 10 10, auto;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -358,7 +358,6 @@
       box-shadow: 0 0 12px rgba(34,197,94,1);
     }
 
-    /* red alert state for status dot */
     .status-dot--alert {
       background: #ef4444;
       box-shadow: 0 0 12px rgba(239,68,68,1);
@@ -414,7 +413,6 @@
       align-items: flex-start;
     }
 
-    /* TICKER: NEON BLACK & GREEN (JS-powered scroll) */
     .ticker {
       position: relative;
       overflow: hidden;
@@ -869,14 +867,12 @@
         <a class="nav-link" href="#hero">
           <span class="nav-chip"></span><span>overview</span>
         </a>
-        <!-- keep contact always glowing like overview -->
         <a class="nav-link nav-link--static-active" href="#contact">
           <span class="nav-chip"></span><span>contact</span>
         </a>
       </div>
     </nav>
 
-    <!-- SYSTEM STATUS BAR -->
     <div class="status-bar">
       <div class="status-label">system</div>
       <div class="status-dot"></div>
@@ -885,11 +881,9 @@
   </header>
 
   <main>
-    <!-- HERO / OVERVIEW -->
     <section class="hero-wrapper" id="hero">
       <div class="hero">
         <div>
-          <!-- TICKER -->
           <div class="ticker" aria-label="Night City welcome message">
             <div class="ticker-inner">
               WELCOME TO NIGHT CITY !
@@ -908,13 +902,11 @@
       </div>
     </section>
 
-    <!-- LIVE APPS -->
     <section id="apps">
       <h2 class="section-heading">apps</h2>
       <p class="section-sub">live builds you can actually click.</p>
 
       <div style="max-width: 1080px; margin: auto;">
-        <!-- APP 1 -->
         <h3 class="section-sub" style="margin-top:0; letter-spacing:0.22em;">[01] analytics dashboard</h3>
         <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:10px;">
           Real-time style dashboard experiment built with Python and Streamlit.
@@ -932,7 +924,6 @@
           </iframe>
         </div>
 
-        <!-- APP 2 -->
         <h3 class="section-sub" style="margin-top:10px; letter-spacing:0.22em;">[02] web app · login + dashboard + payments</h3>
         <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:10px;">
           Full-stack style sandbox with user portal, admin portal, auth and mock payment flows.
@@ -950,7 +941,6 @@
           </iframe>
         </div>
 
-        <!-- APP 3 -->
         <h3 class="section-sub" style="margin-top:10px; letter-spacing:0.22em;">[03] chatbot</h3>
         <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:10px;">
           Chat interface tuned to answer questions around this site and related projects.
@@ -970,7 +960,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <h2 class="section-heading">contact</h2>
       <p class="section-sub">for feedback, bugs or collabs.</p>
@@ -1022,24 +1011,21 @@
       });
     }
 
-    // Close menu on link click (mobile)
     if (navLinksWrap) {
       navLinksWrap.querySelectorAll("a").forEach((a) => {
         a.addEventListener("click", () => setMenu(false));
       });
     }
 
-    // Close on Escape
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setMenu(false);
     });
 
-    // Close when clicking outside
     document.addEventListener("click", (e) => {
       if (!header.contains(e.target)) setMenu(false);
     });
 
-    // Active nav link based on scroll (doesn't touch nav-link--static-active)
+    // Active nav link based on scroll
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section[id]");
 
@@ -1061,7 +1047,6 @@
 
     sections.forEach((sec) => observer.observe(sec));
 
-    // Initial active state
     window.addEventListener("load", () => {
       const heroLink = document.querySelector('.nav-link[href="#hero"]');
       if (heroLink) heroLink.classList.add("nav-link--active");
@@ -1082,7 +1067,7 @@
       });
     });
 
-    // System status bar cycling messages + dot color
+    // Status bar cycling
     const statusEl = document.getElementById("status-text");
     const statusDot = document.querySelector(".status-dot");
 
@@ -1100,7 +1085,6 @@
         const msg = messages[idx];
         statusEl.textContent = msg;
 
-        // turn dot red only for warning
         if (msg.includes("WARNING: CYBERPYSCHOSIS")) {
           statusDot.classList.add("status-dot--alert");
         } else {
@@ -1114,19 +1098,19 @@
       setInterval(cycleStatus, 3800);
     }
 
-    // JS-powered ticker scroll
+    // Ticker scroll
     const ticker = document.querySelector('.ticker');
     const tickerInner = document.querySelector('.ticker-inner');
 
     if (ticker && tickerInner) {
-      let pos = ticker.offsetWidth; // start off to the right
+      let pos = ticker.offsetWidth;
 
       function step() {
-        pos -= 1.2; // speed in px/frame
+        pos -= 1.2;
         const w = tickerInner.offsetWidth;
 
         if (pos < -w) {
-          pos = ticker.offsetWidth; // reset to right once fully out of view
+          pos = ticker.offsetWidth;
         }
 
         tickerInner.style.transform = `translateX(${pos}px)`;
@@ -1136,7 +1120,7 @@
       requestAnimationFrame(step);
     }
 
-    // ========= CUSTOM DARK PURPLE NEON CURSOR GLOW =========
+    // ========= DARK PURPLE NEON CURSOR GLOW =========
     if (window.matchMedia("(pointer:fine)").matches) {
       const glow = document.createElement("div");
       glow.className = "cursor-glow";
