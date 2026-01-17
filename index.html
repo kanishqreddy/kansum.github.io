@@ -46,6 +46,8 @@
         linear-gradient(180deg, #050008 0%, #18020f 35%, #070008 75%, #020005 100%);
       color: var(--text-main);
       position: relative;
+      /* cyberpunk sword cursor (provide sword-cursor.png in same folder) */
+      cursor: url("sword-cursor.png") 6 2, crosshair;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -784,6 +786,63 @@
         font-size: 10px;
       }
     }
+
+    /* ========= CYBERPUNK CURSOR GLOW ========= */
+
+    /* Make interactive elements reuse the sword cursor */
+    a,
+    button,
+    iframe {
+      cursor: inherit;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle, rgba(0,255,150,0.7), transparent 60%);
+      box-shadow:
+        0 0 16px rgba(0,255,150,0.9),
+        0 0 40px rgba(0,255,150,0.7),
+        0 0 70px rgba(0,255,150,0.5);
+      transition:
+        opacity 0.15s ease-out,
+        transform 0.06s linear,
+        box-shadow 0.12s ease-out,
+        width 0.12s ease-out,
+        height 0.12s ease-out;
+    }
+
+    .cursor-glow--active {
+      transform: translate(-50%, -50%) scale(0.85);
+      box-shadow:
+        0 0 24px rgba(255,179,0,1),
+        0 0 60px rgba(255,0,76,0.9);
+    }
+
+    .cursor-glow--hot {
+      width: 50px;
+      height: 50px;
+    }
+
+    /* Disable fancy cursor on mobile / coarse pointers */
+    @media (max-width: 768px), (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+      .cursor-glow {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1078,6 +1137,43 @@
       }
 
       requestAnimationFrame(step);
+    }
+
+    // === CYBERPUNK CURSOR GLOW FOLLOWER ===
+    if (window.matchMedia("(pointer: fine)").matches) {
+      const glow = document.createElement("div");
+      glow.className = "cursor-glow";
+      document.body.appendChild(glow);
+
+      window.addEventListener("pointermove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        glow.style.left = `${x}px`;
+        glow.style.top = `${y}px`;
+        glow.style.opacity = 1;
+      });
+
+      // Pulse on click
+      window.addEventListener("pointerdown", () => {
+        glow.classList.add("cursor-glow--active");
+        setTimeout(() => glow.classList.remove("cursor-glow--active"), 120);
+      });
+
+      // Slightly stronger glow when hovering links/buttons
+      const hotSelectors = "a, button, .btn-primary, .btn-ghost";
+      document.querySelectorAll(hotSelectors).forEach((el) => {
+        el.addEventListener("pointerenter", () => {
+          glow.classList.add("cursor-glow--hot");
+        });
+        el.addEventListener("pointerleave", () => {
+          glow.classList.remove("cursor-glow--hot");
+        });
+      });
+
+      // Fade out when leaving the window
+      window.addEventListener("pointerout", (e) => {
+        if (!e.relatedTarget) glow.style.opacity = 0;
+      });
     }
   </script>
 </body>
