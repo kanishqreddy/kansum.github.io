@@ -397,18 +397,47 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr); /* single-column now */
+      grid-template-columns: minmax(0, 1.4fr); /* single-column */
       gap: 32px;
       align-items: flex-start;
     }
 
-    .hero-kicker {
+    /* TICKER: "WELCOME TO NIGHT CITY !" */
+    .ticker {
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+      border: 1px solid rgba(255,179,0,0.6);
+      padding: 6px 0;
+      margin-bottom: 18px;
+      background: radial-gradient(circle at top, rgba(255,140,0,0.35), rgba(20,0,20,0.98));
+      box-shadow:
+        0 0 14px rgba(255,140,0,0.7),
+        0 12px 28px rgba(0,0,0,0.9);
+    }
+
+    .ticker-inner {
+      position: relative;
+      white-space: nowrap;
+      will-change: transform;
+      animation: tickerMove 14s linear infinite;
       font-family: "Share Tech Mono", monospace;
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.26em;
-      color: var(--accent-alt);
-      margin-bottom: 10px;
+      letter-spacing: 0.3em;
+      color: #ffe9b3;
+      text-shadow:
+        0 0 8px rgba(255,191,0,0.9),
+        0 0 18px rgba(0,0,0,1);
+    }
+
+    .ticker-inner span {
+      padding-right: 3rem;
+    }
+
+    @keyframes tickerMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .hero-title {
@@ -475,7 +504,7 @@
       color: var(--text-muted);
       max-width: 560px;
       line-height: 1.9;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .hero-subtitle strong {
@@ -823,7 +852,16 @@
     <section class="hero-wrapper" id="hero">
       <div class="hero">
         <div>
-          <div class="hero-kicker">automation · data · dashboards · web</div>
+          <!-- TICKER -->
+          <div class="ticker" aria-label="Night City welcome message">
+            <div class="ticker-inner">
+              <span>WELCOME TO NIGHT CITY !</span>
+              <span>WELCOME TO NIGHT CITY !</span>
+              <span>WELCOME TO NIGHT CITY !</span>
+              <span>WELCOME TO NIGHT CITY !</span>
+            </div>
+          </div>
+
           <h1 class="hero-title">
             <span class="glitch" data-text="kansum">kansum</span>
           </h1>
