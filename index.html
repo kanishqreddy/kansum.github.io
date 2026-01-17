@@ -402,7 +402,7 @@
       align-items: flex-start;
     }
 
-    /* TICKER: "WELCOME TO NIGHT CITY !" - NEON BLACK & GREEN */
+    /* TICKER: NEON BLACK & GREEN, single message scrolling */
     .ticker {
       position: relative;
       overflow: hidden;
@@ -421,7 +421,6 @@
       white-space: nowrap;
       will-change: transform;
       display: inline-block;
-      animation: tickerMove 10s linear infinite;
       font-family: "Share Tech Mono", monospace;
       font-size: 11px;
       text-transform: uppercase;
@@ -430,14 +429,11 @@
       text-shadow:
         0 0 8px rgba(0,255,150,1),
         0 0 20px rgba(0,0,0,1);
-    }
-
-    .ticker-inner span {
-      padding-right: 3rem;
+      animation: tickerMove 10s linear infinite;
     }
 
     @keyframes tickerMove {
-      0%   { transform: translateX(0); }
+      0%   { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
 
@@ -854,9 +850,10 @@
       <div class="hero">
         <div>
           <!-- TICKER -->
-          <div class="scrolling-text-container">
-            <div class="ticker" aria-label="Night City welcome message">
-            <span class="scrolling-text-item">WELCOME TO NIGHT CITY ! | </span>
+          <div class="ticker" aria-label="Night City welcome message">
+            <div class="ticker-inner">
+              WELCOME TO NIGHT CITY !
+            </div>
           </div>
 
           <h1 class="hero-title">
