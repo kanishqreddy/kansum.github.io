@@ -413,7 +413,7 @@
       border-radius: 999px;
       border: 1px solid rgba(0, 255, 150, 0.7);
       padding: 6px 0;
-      margin-bottom: 28px;  /* more gap above KANSUM */
+      margin-bottom: 28px;
       background: radial-gradient(circle at top, rgba(0,255,150,0.22), #020308);
       box-shadow:
         0 0 18px rgba(0,255,150,0.9),
@@ -503,13 +503,6 @@
     .hero-subtitle strong {
       color: var(--accent);
       font-weight: 600;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
     }
 
     .btn-primary,
@@ -772,10 +765,6 @@
 
       .hero-wrapper { margin-top: 40px; }
       .hero-title { font-size: 32px; }
-      .hero-buttons {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
 
       .btn-primary,
       .btn-ghost {
@@ -818,9 +807,6 @@
         <a class="nav-link" href="#hero">
           <span class="nav-chip"></span><span>overview</span>
         </a>
-        <a class="nav-link" href="#apps">
-          <span class="nav-chip"></span><span>apps</span>
-        </a>
         <!-- keep contact always glowing like overview -->
         <a class="nav-link nav-link--static-active" href="#contact">
           <span class="nav-chip"></span><span>contact</span>
@@ -855,10 +841,6 @@
             A small <strong>cyberpunk project lab</strong> on the web – built to park
             automation scripts, data dashboards, and experimental apps.
             No résumé, no story, just <strong>things that actually run</strong>.
-          </div>
-
-          <div class="hero-buttons">
-            <a class="btn-ghost" href="#apps">open apps</a>
           </div>
         </div>
       </div>
