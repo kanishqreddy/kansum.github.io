@@ -46,8 +46,8 @@
         linear-gradient(180deg, #050008 0%, #18020f 35%, #070008 75%, #020005 100%);
       color: var(--text-main);
       position: relative;
-      /* cyberpunk sword cursor (provide sword-cursor.png in same folder) */
-      cursor: url("sword-cursor.png") 6 2, crosshair;
+      /* Anime sword cursor – put cyberpunk-2077-thermal-katana-custom-cursor.png next to this HTML */
+      cursor: url("cyberpunk-2077-thermal-katana-custom-cursor.png") 6 6, auto;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -787,9 +787,8 @@
       }
     }
 
-    /* ========= CYBERPUNK CURSOR GLOW ========= */
+    /* ========= CYBERPUNK CURSOR GLOW (NEON PURPLE) ========= */
 
-    /* Make interactive elements reuse the sword cursor */
     a,
     button,
     iframe {
@@ -798,9 +797,9 @@
 
     .cursor-glow {
       position: fixed;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
       pointer-events: none;
       z-index: 9999;
       left: 0;
@@ -809,11 +808,11 @@
       opacity: 0;
       mix-blend-mode: screen;
       background:
-        radial-gradient(circle, rgba(0,255,150,0.7), transparent 60%);
+        radial-gradient(circle, rgba(216,180,254,0.95), transparent 60%);
       box-shadow:
-        0 0 16px rgba(0,255,150,0.9),
-        0 0 40px rgba(0,255,150,0.7),
-        0 0 70px rgba(0,255,150,0.5);
+        0 0 18px rgba(192,132,252,1),
+        0 0 40px rgba(147,51,234,0.9),
+        0 0 80px rgba(147,51,234,0.8);
       transition:
         opacity 0.15s ease-out,
         transform 0.06s linear,
@@ -823,18 +822,18 @@
     }
 
     .cursor-glow--active {
-      transform: translate(-50%, -50%) scale(0.85);
+      transform: translate(-50%, -50%) scale(0.9);
       box-shadow:
-        0 0 24px rgba(255,179,0,1),
-        0 0 60px rgba(255,0,76,0.9);
+        0 0 22px rgba(244,114,182,1),
+        0 0 60px rgba(192,132,252,1),
+        0 0 110px rgba(147,51,234,1);
     }
 
     .cursor-glow--hot {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
     }
 
-    /* Disable fancy cursor on mobile / coarse pointers */
     @media (max-width: 768px), (pointer: coarse) {
       body {
         cursor: auto;
@@ -1139,7 +1138,7 @@
       requestAnimationFrame(step);
     }
 
-    // === CYBERPUNK CURSOR GLOW FOLLOWER ===
+    // === CYBERPUNK NEON PURPLE CURSOR GLOW ===
     if (window.matchMedia("(pointer: fine)").matches) {
       const glow = document.createElement("div");
       glow.className = "cursor-glow";
@@ -1153,13 +1152,11 @@
         glow.style.opacity = 1;
       });
 
-      // Pulse on click
       window.addEventListener("pointerdown", () => {
         glow.classList.add("cursor-glow--active");
-        setTimeout(() => glow.classList.remove("cursor-glow--active"), 120);
+        setTimeout(() => glow.classList.remove("cursor-glow--active"), 130);
       });
 
-      // Slightly stronger glow when hovering links/buttons
       const hotSelectors = "a, button, .btn-primary, .btn-ghost";
       document.querySelectorAll(hotSelectors).forEach((el) => {
         el.addEventListener("pointerenter", () => {
@@ -1170,7 +1167,6 @@
         });
       });
 
-      // Fade out when leaving the window
       window.addEventListener("pointerout", (e) => {
         if (!e.relatedTarget) glow.style.opacity = 0;
       });
