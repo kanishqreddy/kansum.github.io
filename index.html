@@ -306,7 +306,6 @@
         0 0 24px rgba(255,69,0,0.9);
     }
 
-    /* flicker only on active nav label */
     @keyframes navFlicker {
       0%, 90%, 100% {
         opacity: 1;
@@ -397,12 +396,12 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr); /* single-column */
+      grid-template-columns: minmax(0, 1.4fr);
       gap: 32px;
       align-items: flex-start;
     }
 
-    /* TICKER: NEON BLACK & GREEN, single message scrolling */
+    /* TICKER: NEON BLACK & GREEN + marquee scroll */
     .ticker {
       position: relative;
       overflow: hidden;
@@ -417,10 +416,8 @@
     }
 
     .ticker-inner {
-      position: relative;
-      white-space: nowrap;
-      will-change: transform;
       display: inline-block;
+      white-space: nowrap;
       font-family: "Share Tech Mono", monospace;
       font-size: 11px;
       text-transform: uppercase;
@@ -429,11 +426,12 @@
       text-shadow:
         0 0 8px rgba(0,255,150,1),
         0 0 20px rgba(0,0,0,1);
-      animation: tickerMove 10s linear infinite;
+      padding-left: 100%;               /* start off-screen to the right */
+      animation: tickerScroll 12s linear infinite;
     }
 
-    @keyframes tickerMove {
-      0%   { transform: translateX(100%); }
+    @keyframes tickerScroll {
+      0%   { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
@@ -452,7 +450,6 @@
         0 0 40px rgba(0,0,0,0.9);
     }
 
-    /* LOOPING LEFT–RIGHT ANIMATION FOR "KANSUM" */
     @keyframes slideLoop {
       0%   { transform: translateX(-14px); }
       50%  { transform: translateX(14px); }
@@ -568,7 +565,6 @@
       transform: translateY(0px) scale(0.98);
     }
 
-    /* ========= CARDS (CONTACT, ETC.) ========= */
     .card {
       --mx: 50%;
       --my: 50%;
@@ -617,7 +613,6 @@
       opacity: 1;
     }
 
-    /* ========= APPS / IFRAMES ========= */
     .iframe-wrap {
       border-radius: 22px;
       overflow: hidden;
@@ -695,7 +690,6 @@
       }
     }
 
-    /* ========= CONTACT ========= */
     .contact-row {
       display: flex;
       justify-content: space-between;
@@ -719,7 +713,6 @@
       font-size: 14px;
     }
 
-    /* ========= FOOTER ========= */
     footer {
       border-top: 1px solid rgba(148,163,184,0.7);
       padding: 18px;
@@ -731,7 +724,6 @@
       letter-spacing: 0.24em;
     }
 
-    /* ========= RESPONSIVE ========= */
     #hero { margin-top: 90px; }
 
     @media (max-width: 860px) {
