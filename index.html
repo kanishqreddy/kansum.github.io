@@ -56,9 +56,7 @@
       outline-offset: 3px;
     }
 
-    /* NOTE: keeping other animations; not disabling them globally anymore */
     @media (prefers-reduced-motion: reduce) {
-      /* only disable smooth scroll, leave neon stuff alone */
       html { scroll-behavior: auto !important; }
     }
 
@@ -293,14 +291,18 @@
       transition: opacity 0.18s ease, transform 0.18s ease;
     }
 
-    .nav-link--active {
+    /* active + permanently-highlighted links (overview + contact) */
+    .nav-link--active,
+    .nav-link--static-active {
       color: var(--accent);
     }
-    .nav-link--active::after {
+    .nav-link--active::after,
+    .nav-link--static-active::after {
       opacity: 1;
       transform: scaleX(1);
     }
-    .nav-link--active .nav-chip {
+    .nav-link--active .nav-chip,
+    .nav-link--static-active .nav-chip {
       border-color: var(--accent);
       background: radial-gradient(circle, var(--accent), transparent 70%);
       box-shadow:
@@ -319,7 +321,8 @@
       95% { opacity: 0.3; }
       97% { opacity: 1; }
     }
-    .nav-link--active span:last-child {
+    .nav-link--active span:last-child,
+    .nav-link--static-active span:last-child {
       animation: navFlicker 2.7s infinite;
     }
 
@@ -394,7 +397,7 @@
     }
 
     /* ========= HERO ========= */
-    .hero-wrapper { position: relative; margin-top: 70px; margin-bottom: 40px; }
+    .hero-wrapper { position: relative; margin-top: 50px; margin-bottom: 40px; }
 
     .hero {
       display: grid;
@@ -410,7 +413,7 @@
       border-radius: 999px;
       border: 1px solid rgba(0, 255, 150, 0.7);
       padding: 6px 0;
-      margin-bottom: 18px;
+      margin-bottom: 28px;  /* more gap above KANSUM */
       background: radial-gradient(circle at top, rgba(0,255,150,0.22), #020308);
       box-shadow:
         0 0 18px rgba(0,255,150,0.9),
@@ -815,7 +818,11 @@
         <a class="nav-link" href="#hero">
           <span class="nav-chip"></span><span>overview</span>
         </a>
-        <a class="nav-link" href="#contact">
+        <a class="nav-link" href="#apps">
+          <span class="nav-chip"></span><span>apps</span>
+        </a>
+        <!-- keep contact always glowing like overview -->
+        <a class="nav-link nav-link--static-active" href="#contact">
           <span class="nav-chip"></span><span>contact</span>
         </a>
       </div>
@@ -848,6 +855,10 @@
             A small <strong>cyberpunk project lab</strong> on the web – built to park
             automation scripts, data dashboards, and experimental apps.
             No résumé, no story, just <strong>things that actually run</strong>.
+          </div>
+
+          <div class="hero-buttons">
+            <a class="btn-ghost" href="#apps">open apps</a>
           </div>
         </div>
       </div>
@@ -984,7 +995,7 @@
       if (!header.contains(e.target)) setMenu(false);
     });
 
-    // Active nav link based on scroll
+    // Active nav link based on scroll (doesn't touch nav-link--static-active)
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section[id]");
 
@@ -1065,7 +1076,6 @@
         requestAnimationFrame(step);
       }
 
-      // start animation
       requestAnimationFrame(step);
     }
   </script>
