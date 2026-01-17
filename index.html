@@ -56,8 +56,10 @@
       outline-offset: 3px;
     }
 
+    /* NOTE: keeping other animations; not disabling them globally anymore */
     @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      /* only disable smooth scroll, leave neon stuff alone */
+      html { scroll-behavior: auto !important; }
     }
 
     /* ========= BACKGROUND FX ========= */
@@ -401,7 +403,7 @@
       align-items: flex-start;
     }
 
-    /* TICKER: NEON BLACK & GREEN + marquee scroll */
+    /* TICKER: NEON BLACK & GREEN (JS-powered scroll) */
     .ticker {
       position: relative;
       overflow: hidden;
@@ -426,13 +428,7 @@
       text-shadow:
         0 0 8px rgba(0,255,150,1),
         0 0 20px rgba(0,0,0,1);
-      transform: translateX(100%);
-      animation: tickerScroll 12s linear infinite;
-    }
-
-    @keyframes tickerScroll {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+      will-change: transform;
     }
 
     .hero-title {
@@ -1055,6 +1051,29 @@
       }
       cycleStatus();
       setInterval(cycleStatus, 3800);
+    }
+
+    // JS-powered ticker scroll
+    const ticker = document.querySelector('.ticker');
+    const tickerInner = document.querySelector('.ticker-inner');
+
+    if (ticker && tickerInner) {
+      let pos = ticker.offsetWidth; // start off to the right
+
+      function step() {
+        pos -= 1.2; // speed in px/frame
+        const w = tickerInner.offsetWidth;
+
+        if (pos < -w) {
+          pos = ticker.offsetWidth; // reset to right once fully out of view
+        }
+
+        tickerInner.style.transform = `translateX(${pos}px)`;
+        requestAnimationFrame(step);
+      }
+
+      // start animation
+      requestAnimationFrame(step);
     }
   </script>
 </body>
