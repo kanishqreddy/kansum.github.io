@@ -81,9 +81,17 @@
         linear-gradient(rgba(255,111,0,0.12) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,111,0,0.12) 1px, transparent 1px);
       background-size: 120px 120px;
+      background-position: 0 0, 0 0;
       opacity: 0.18;
       mix-blend-mode: screen;
       z-index: -2;
+      /* slow drifting grid for extra cyberpunk */
+      animation: gridDrift 36s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 80px 120px, 120px 80px; }
     }
 
     .glow-orb {
@@ -116,6 +124,194 @@
     @keyframes driftRight {
       0% { transform: translate3d(0,0,0); }
       100% { transform: translate3d(-40px, -30px, 0); }
+    }
+
+    /* ========= INTRO / BOOT SEQUENCE ========= */
+    body.intro-lock {
+      overflow: hidden;
+    }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, #12001a 0%, #050008 45%, #000000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+      overflow: hidden;
+      transition: opacity 0.7s ease-out, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 255, 0.14) 45%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      mix-blend-mode: screen;
+      opacity: 0.3;
+      animation: introScan 5s linear infinite;
+      pointer-events: none;
+    }
+
+    .intro-inner {
+      width: min(520px, 100%);
+      padding: 20px 22px 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,179,0,0.75);
+      background:
+        radial-gradient(circle at top, rgba(255,179,0,0.22), rgba(12,0,24,0.96)),
+        #050008;
+      box-shadow:
+        0 26px 70px rgba(0,0,0,1),
+        0 0 40px rgba(255,0,76,0.75);
+      position: relative;
+    }
+
+    .intro-inner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255,0,76,0.5);
+      mix-blend-mode: screen;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .intro-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .intro-logo {
+      box-shadow:
+        0 0 26px rgba(255,179,0,1),
+        0 0 40px rgba(255,0,76,0.9);
+    }
+
+    .intro-name {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow:
+        0 0 12px rgba(255,179,0,0.9),
+        0 0 24px rgba(255,69,0,0.8);
+    }
+
+    .intro-tagline {
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.23em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .intro-terminal {
+      font-family: "Share Tech Mono", monospace;
+      font-size: 12px;
+      color: #e5e7eb;
+      background: rgba(0,0,0,0.8);
+      border-radius: 12px;
+      padding: 12px 10px 10px;
+      border: 1px solid rgba(148,163,184,0.8);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-terminal p {
+      margin: 0;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: introLineIn 0.7s ease forwards;
+    }
+    .intro-terminal p:nth-child(1) { animation-delay: 0.4s; }
+    .intro-terminal p:nth-child(2) { animation-delay: 0.9s; }
+    .intro-terminal p:nth-child(3) { animation-delay: 1.4s; }
+
+    .intro-terminal strong {
+      color: var(--accent);
+    }
+
+    .intro-terminal::after {
+      content: "";
+      position: absolute;
+      left: -40%;
+      right: -40%;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(255,0,76,0),
+        rgba(255,179,0,0.9),
+        rgba(0,255,150,0)
+      );
+      opacity: 0;
+      mix-blend-mode: screen;
+      animation: introSweep 2.2s ease-in-out 0.6s forwards;
+    }
+
+    .intro-progress {
+      margin-top: 14px;
+      padding: 2px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      background: radial-gradient(circle at top, rgba(10,10,30,1), rgba(3,0,10,1));
+      overflow: hidden;
+    }
+
+    .intro-progress-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-alt), var(--accent), #00f39a);
+      width: 0%;
+      box-shadow:
+        0 0 16px rgba(255,0,76,0.9),
+        0 0 26px rgba(255,179,0,0.9);
+      animation: progressFill 2.4s cubic-bezier(0.22, 0.8, 0.3, 1) forwards 0.5s;
+    }
+
+    .intro--out {
+      opacity: 0;
+      transform: scale(1.04);
+      pointer-events: none;
+    }
+
+    @keyframes introScan {
+      0% { transform: translateY(-40%); }
+      100% { transform: translateY(40%); }
+    }
+
+    @keyframes introLineIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes progressFill {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    @keyframes introSweep {
+      0% { opacity: 0; transform: translateX(-40%); }
+      10% { opacity: 1; }
+      100% { opacity: 0; transform: translateX(40%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .intro { display: none !important; }
+      .intro::before { animation: none !important; }
     }
 
     /* ========= NAVBAR ========= */
@@ -511,6 +707,24 @@
       font-weight: 600;
     }
 
+    /* booted fade-in for hero + status */
+    body:not(.page-booted) .ticker,
+    body:not(.page-booted) .hero-title,
+    body:not(.page-booted) .hero-subtitle,
+    body:not(.page-booted) .status-bar {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    body.page-booted .ticker,
+    body.page-booted .hero-title,
+    body.page-booted .hero-subtitle,
+    body.page-booted .status-bar {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
     .btn-primary,
     .btn-ghost {
       padding: 10px 22px;
@@ -669,9 +883,7 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.2em;
-
-      /* 👇 new bits */
-      margin-left: auto;     /* pushes it to the right in the flex row */
+      margin-left: auto;
       text-align: right;
     }
 
@@ -850,6 +1062,29 @@
   <div class="glow-orb glow-orb--left"></div>
   <div class="glow-orb glow-orb--right"></div>
 
+  <!-- INTRO / BOOT SEQUENCE OVERLAY -->
+  <div id="intro" class="intro">
+    <div class="intro-inner">
+      <div class="intro-logo-row">
+        <div class="nav-logo intro-logo">K</div>
+        <div>
+          <div class="intro-name">kansum system</div>
+          <div class="intro-tagline">boot sequence · night city</div>
+        </div>
+      </div>
+
+      <div class="intro-terminal">
+        <p><span>&gt; initializing neon matrix...</span></p>
+        <p><span>&gt; linking data shards...</span></p>
+        <p><span>&gt; status: <strong>online</strong>_</span></p>
+      </div>
+
+      <div class="intro-progress">
+        <div class="intro-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <header id="site-header">
     <nav class="nav" aria-label="Primary navigation">
@@ -987,6 +1222,36 @@
   </footer>
 
   <script>
+    // ========= INTRO / BOOT SEQUENCE LOGIC =========
+    const intro = document.getElementById("intro");
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (intro && !prefersReducedMotion && !sessionStorage.getItem("kansumIntroSeen")) {
+      document.body.classList.add("intro-lock");
+
+      window.addEventListener("load", () => {
+        // mark main UI as ready to animate in
+        document.body.classList.add("page-booted");
+
+        // let the fake progress bar run, then fade overlay
+        setTimeout(() => {
+          intro.classList.add("intro--out");
+          document.body.classList.remove("intro-lock");
+          sessionStorage.setItem("kansumIntroSeen", "1");
+
+          setTimeout(() => {
+            intro.remove();
+          }, 900);
+        }, 2600);
+      });
+    } else {
+      // if intro is skipped, still allow hero/status to animate in on load
+      window.addEventListener("load", () => {
+        document.body.classList.add("page-booted");
+      });
+    }
+
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
