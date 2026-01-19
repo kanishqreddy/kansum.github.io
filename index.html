@@ -240,7 +240,8 @@
       align-items: center;
       gap: 8px;
       color: #ffb4c7;
-      animation: pressPulse 1.4s ease-in-out infinite;
+      /* still animated, but only opacity / glow now */
+      animation: pressPulse 1.2s ease-in-out infinite;
     }
 
     .intro-key {
@@ -288,9 +289,18 @@
       97% { transform: skewX(-10deg) translate(-1px,-1px); }
     }
 
+    /* no more letter-spacing changes */
     @keyframes pressPulse {
-      0%,100% { opacity: 1; letter-spacing: 0.18em; }
-      50%     { opacity: 0.3; letter-spacing: 0.28em; }
+      0%, 100% {
+        opacity: 0.35;
+        text-shadow: none;
+      }
+      50% {
+        opacity: 1;
+        text-shadow:
+          0 0 8px rgba(0,255,255,0.9),
+          0 0 16px rgba(255,0,80,0.9);
+      }
     }
 
     /* ========= BACKGROUND FX ========= */
