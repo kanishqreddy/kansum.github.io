@@ -85,12 +85,11 @@
       opacity: 0.18;
       mix-blend-mode: screen;
       z-index: -2;
-      /* slow drifting grid for extra cyberpunk */
       animation: gridDrift 36s linear infinite;
     }
 
     @keyframes gridDrift {
-      0% { background-position: 0 0, 0 0; }
+      0%   { background-position: 0 0, 0 0; }
       100% { background-position: 80px 120px, 120px 80px; }
     }
 
@@ -236,30 +235,12 @@
       transform: translateY(8px);
       animation: introLineIn 0.7s ease forwards;
     }
-    .intro-terminal p:nth-child(1) { animation-delay: 0.4s; }
-    .intro-terminal p:nth-child(2) { animation-delay: 0.9s; }
-    .intro-terminal p:nth-child(3) { animation-delay: 1.4s; }
+    .intro-terminal p:nth-child(1) { animation-delay: 0.2s; }
+    .intro-terminal p:nth-child(2) { animation-delay: 0.7s; }
+    .intro-terminal p:nth-child(3) { animation-delay: 1.2s; }
 
     .intro-terminal strong {
       color: var(--accent);
-    }
-
-    .intro-terminal::after {
-      content: "";
-      position: absolute;
-      left: -40%;
-      right: -40%;
-      top: 0;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(255,0,76,0),
-        rgba(255,179,0,0.9),
-        rgba(0,255,150,0)
-      );
-      opacity: 0;
-      mix-blend-mode: screen;
-      animation: introSweep 2.2s ease-in-out 0.6s forwards;
     }
 
     .intro-progress {
@@ -279,7 +260,7 @@
       box-shadow:
         0 0 16px rgba(255,0,76,0.9),
         0 0 26px rgba(255,179,0,0.9);
-      animation: progressFill 2.4s cubic-bezier(0.22, 0.8, 0.3, 1) forwards 0.5s;
+      animation: progressFill 2.4s cubic-bezier(0.22, 0.8, 0.3, 1) forwards 0.3s;
     }
 
     .intro--out {
@@ -295,18 +276,12 @@
 
     @keyframes introLineIn {
       from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes progressFill {
       from { width: 0%; }
-      to { width: 100%; }
-    }
-
-    @keyframes introSweep {
-      0% { opacity: 0; transform: translateX(-40%); }
-      10% { opacity: 1; }
-      100% { opacity: 0; transform: translateX(40%); }
+      to   { width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -489,7 +464,6 @@
       transition: opacity 0.18s ease, transform 0.18s ease;
     }
 
-    /* active + permanently-highlighted links (overview + contact) */
     .nav-link--active,
     .nav-link--static-active {
       color: var(--accent);
@@ -707,7 +681,7 @@
       font-weight: 600;
     }
 
-    /* booted fade-in for hero + status */
+    /* hero + status fade-in after boot */
     body:not(.page-booted) .ticker,
     body:not(.page-booted) .hero-title,
     body:not(.page-booted) .hero-subtitle,
@@ -1057,12 +1031,7 @@
   </style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="bg-grid"></div>
-  <div class="glow-orb glow-orb--left"></div>
-  <div class="glow-orb glow-orb--right"></div>
-
-  <!-- INTRO / BOOT SEQUENCE OVERLAY -->
+  <!-- BOOT INTRO OVERLAY -->
   <div id="intro" class="intro">
     <div class="intro-inner">
       <div class="intro-logo-row">
@@ -1084,6 +1053,11 @@
       </div>
     </div>
   </div>
+
+  <div class="scanlines"></div>
+  <div class="bg-grid"></div>
+  <div class="glow-orb glow-orb--left"></div>
+  <div class="glow-orb glow-orb--right"></div>
 
   <!-- NAVBAR -->
   <header id="site-header">
@@ -1222,31 +1196,26 @@
   </footer>
 
   <script>
-    // ========= INTRO / BOOT SEQUENCE LOGIC =========
+    // ========= INTRO / BOOT SEQUENCE (always shows, respects reduced motion) =========
     const intro = document.getElementById("intro");
     const prefersReducedMotion =
       window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (intro && !prefersReducedMotion && !sessionStorage.getItem("kansumIntroSeen")) {
+    if (intro && !prefersReducedMotion) {
       document.body.classList.add("intro-lock");
 
       window.addEventListener("load", () => {
-        // mark main UI as ready to animate in
-        document.body.classList.add("page-booted");
-
-        // let the fake progress bar run, then fade overlay
         setTimeout(() => {
           intro.classList.add("intro--out");
           document.body.classList.remove("intro-lock");
-          sessionStorage.setItem("kansumIntroSeen", "1");
+          document.body.classList.add("page-booted");
 
           setTimeout(() => {
             intro.remove();
           }, 900);
-        }, 2600);
+        }, 2600); // intro duration
       });
     } else {
-      // if intro is skipped, still allow hero/status to animate in on load
       window.addEventListener("load", () => {
         document.body.classList.add("page-booted");
       });
