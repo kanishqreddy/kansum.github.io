@@ -13,14 +13,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <style>
-    /* ========= RED / ORANGE / BLACK NEON THEME ========= */
     :root {
       --bg: #050008;
       --bg-soft: #12010f;
       --bg-card: #09000c;
-      --accent: #ffb300;      /* hot amber */
-      --accent-alt: #ff4136;  /* neon red */
-      --accent-pink: #ff1744; /* deep neon pink */
+      --accent: #ffb300;
+      --accent-alt: #ff4136;
+      --accent-pink: #ff1744;
       --accent-orange: #ff9f1c;
       --text-main: #fdfcff;
       --text-muted: #a19ad0;
@@ -46,7 +45,6 @@
         linear-gradient(180deg, #050008 0%, #18020f 35%, #070008 75%, #020005 100%);
       color: var(--text-main);
       position: relative;
-      /* INLINE NEON KATANA SVG CURSOR */
       cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjE0IiB5MT0iNiIgeDI9IjIwIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMDgyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmMTc0NCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE2IDMyKSI+CiAgICA8cmVjdCB4PSIxNCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMjYiIHJ4PSIxIiBmaWxsPSIjZmY0YjRiIi8+CiAgICA8cmVjdCB4PSIxNCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMjYiIHJ4PSIxIiBmaWxsPSJ1cmwoI2cpIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzAiIHdpZHRoPSI4IiBoZWlnaHQ9IjQiIHJ4PSIxIiBmaWxsPSIjMTExMTExIi8+CiAgICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjMyIiByPSIxIiBmaWxsPSIjZmZkNTRmIi8+CiAgPC9nPgo8L3N2Zz4=") 10 10, auto;
     }
 
@@ -62,7 +60,7 @@
       html { scroll-behavior: auto !important; }
     }
 
-    /* ========= BACKGROUND FX ========= */
+    /* BACKGROUND FX */
     .scanlines {
       pointer-events: none;
       position: fixed;
@@ -125,7 +123,7 @@
       100% { transform: translate3d(-40px, -30px, 0); }
     }
 
-    /* ========= INTRO / BOOT SEQUENCE ========= */
+    /* INTRO / BOOT SEQUENCE */
     body.intro-lock {
       overflow: hidden;
     }
@@ -284,12 +282,7 @@
       to   { width: 100%; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .intro { display: none !important; }
-      .intro::before { animation: none !important; }
-    }
-
-    /* ========= NAVBAR ========= */
+    /* NAVBAR */
     header {
       position: sticky;
       top: 0;
@@ -498,7 +491,7 @@
       animation: navFlicker 2.7s infinite;
     }
 
-    /* ========= STATUS BAR ========= */
+    /* STATUS BAR */
     .status-bar {
       max-width: 1120px;
       margin: 0 auto 6px;
@@ -543,7 +536,7 @@
       text-overflow: ellipsis;
     }
 
-    /* ========= LAYOUT ========= */
+    /* LAYOUT + HERO */
     main {
       max-width: 1120px;
       margin: 0 auto;
@@ -573,7 +566,6 @@
       margin-bottom: 20px;
     }
 
-    /* ========= HERO ========= */
     .hero-wrapper { position: relative; margin-top: 50px; margin-bottom: 40px; }
 
     .hero {
@@ -681,7 +673,7 @@
       font-weight: 600;
     }
 
-    /* hero + status fade-in after boot */
+    /* fade-in after boot */
     body:not(.page-booted) .ticker,
     body:not(.page-booted) .hero-title,
     body:not(.page-booted) .hero-subtitle,
@@ -975,8 +967,7 @@
       }
     }
 
-    /* ========= CYBERPUNK CURSOR GLOW (DARK PURPLE NEON) ========= */
-
+    /* CYBERPUNK CURSOR GLOW */
     a,
     button,
     iframe {
@@ -1196,12 +1187,10 @@
   </footer>
 
   <script>
-    // ========= INTRO / BOOT SEQUENCE (always shows, respects reduced motion) =========
+    // BOOT INTRO (forced)
     const intro = document.getElementById("intro");
-    const prefersReducedMotion =
-      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (intro && !prefersReducedMotion) {
+    if (intro) {
       document.body.classList.add("intro-lock");
 
       window.addEventListener("load", () => {
@@ -1211,9 +1200,9 @@
           document.body.classList.add("page-booted");
 
           setTimeout(() => {
-            intro.remove();
+            if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
           }, 900);
-        }, 2600); // intro duration
+        }, 2600);
       });
     } else {
       window.addEventListener("load", () => {
@@ -1358,7 +1347,7 @@
       requestAnimationFrame(step);
     }
 
-    // ========= DARK PURPLE NEON CURSOR GLOW =========
+    // Cursor glow
     if (window.matchMedia("(pointer:fine)").matches) {
       const glow = document.createElement("div");
       glow.className = "cursor-glow";
