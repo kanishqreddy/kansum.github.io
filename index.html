@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1107,7 +1106,8 @@
       animation-name: introRain;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-      will-change: transform, opacity;
+      will-change: transform;
+      /* keep neon feel but lighter than full-screen blend */
       mix-blend-mode: screen;
     }
 
@@ -1115,6 +1115,32 @@
       0%   { transform: translate3d(0, -120px, 0); opacity: 0; }
       10%  { opacity: 1; }
       100% { transform: translate3d(0, 110vh, 0); opacity: 0; }
+    }
+
+    /* ========= THUNDER FLASH LAYER ========= */
+    .intro-thunder {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0; /* same as rain; intro-inner is z=1 */
+      opacity: 0;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,255,255,0.45), transparent 55%),
+        radial-gradient(circle at 85% 100%, rgba(0,255,255,0.25), transparent 60%),
+        rgba(255,255,255,0.06);
+      mix-blend-mode: screen;
+    }
+
+    .intro-thunder--flash {
+      animation: thunderFlash 0.45s ease-out;
+    }
+
+    @keyframes thunderFlash {
+      0%   { opacity: 0; }
+      8%   { opacity: 1; }
+      25%  { opacity: 0.25; }
+      40%  { opacity: 0.8; }
+      100% { opacity: 0; }
     }
   </style>
 </head>
@@ -1289,24 +1315,25 @@
   </footer>
 
   <script>
-    // ===== RAIN SPAWNER (STORM, BUT LIGHTER ON MOBILE) =====
+    // ===== RAIN SPAWNER (STORM, BUT SMOOTHER ON BOTH) =====
     function createIntroRain() {
       const layer = document.querySelector("#intro .intro-rain");
       if (!layer) return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const dropCount = isMobile ? 55 : 140; // fewer on phone, more on desktop
+      // Less DOM, smoother animation
+      const dropCount = isMobile ? 28 : 75;
 
       for (let i = 0; i < dropCount; i++) {
         const d = document.createElement("div");
         d.className = "intro-rain-drop";
 
         const x = Math.random() * 100;             // 0–100vw
-        const scale = 0.7 + Math.random() * 0.9;   // vary length
-        const delay = Math.random() * -2.2;        // some already mid-fall
+        const scale = 0.8 + Math.random() * 0.7;   // vary length slightly
+        const delay = Math.random() * -3.5;        // some already mid-fall
         const dur = isMobile
-          ? 0.7 + Math.random() * 0.5   // 0.7–1.2s on mobile
-          : 0.5 + Math.random() * 0.6;  // 0.5–1.1s on desktop
+          ? 1.1 + Math.random() * 0.7   // 1.1–1.8s on mobile
+          : 0.9 + Math.random() * 0.6;  // 0.9–1.5s on desktop
 
         d.style.left = x + "vw";
         d.style.transform = "scaleY(" + scale + ")";
@@ -1315,6 +1342,36 @@
 
         layer.appendChild(d);
       }
+    }
+
+    // ===== THUNDER FLASH (RANDOM LIGHTNING) =====
+    function setupThunder() {
+      const intro = document.getElementById("intro");
+      if (!intro) return;
+
+      const layer = document.createElement("div");
+      layer.className = "intro-thunder";
+      intro.appendChild(layer);
+
+      function flashOnce() {
+        if (!intro || intro.classList.contains("intro--out")) return;
+        layer.classList.remove("intro-thunder--flash");
+        // force reflow so animation can restart
+        void layer.offsetWidth;
+        layer.classList.add("intro-thunder--flash");
+      }
+
+      function scheduleNext() {
+        const min = 2200; // 2.2s
+        const max = 6500; // 6.5s
+        const delay = min + Math.random() * (max - min);
+        setTimeout(() => {
+          flashOnce();
+          scheduleNext();
+        }, delay);
+      }
+
+      scheduleNext();
     }
 
     // ===== CYBERPUNK START SCREEN CONTROL =====
@@ -1332,8 +1389,9 @@
     if (intro) {
       document.body.classList.add("intro-lock");
 
-      // create rain once DOM is ready
+      // create rain + thunder once DOM is ready
       createIntroRain();
+      setupThunder();
 
       // safety timeout so nobody gets stuck
       window.addEventListener("load", () => {
