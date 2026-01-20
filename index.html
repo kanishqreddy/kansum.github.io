@@ -104,7 +104,6 @@
         );
       filter: blur(1px);
       transform: skewY(-10deg);
-      mix-blend-mode: screen;
       opacity: 0.9;
       animation: introBars 9s linear infinite;
     }
@@ -118,7 +117,6 @@
         repeating-linear-gradient(120deg, rgba(255,255,255,0.16) 0, rgba(255,255,255,0.16) 1px, transparent 1px, transparent 5px),
         repeating-linear-gradient(-60deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 7px);
       opacity: 0.18;
-      mix-blend-mode: screen;
       pointer-events: none;
       animation: introNoise 5s linear infinite;
     }
@@ -147,7 +145,6 @@
       inset: 0;
       border-radius: inherit;
       border: 1px solid rgba(255,0,80,0.35);
-      mix-blend-mode: screen;
       opacity: 0.6;
       pointer-events: none;
     }
@@ -182,7 +179,6 @@
       position: absolute;
       left: 0;
       top: 0;
-      mix-blend-mode: screen;
       opacity: 0.9;
       pointer-events: none;
     }
@@ -713,7 +709,6 @@
       position: absolute;
       left: 0;
       top: 0;
-      mix-blend-mode: screen;
       opacity: 0.9;
       pointer-events: none;
     }
@@ -835,7 +830,6 @@
         transparent 70%
       );
       opacity: 0;
-      mix-blend-mode: screen;
       pointer-events: none;
       transition: opacity 0.18s ease;
     }
@@ -1082,38 +1076,45 @@
       }
     }
 
-    /* ========= NATURAL RAIN OVER INTRO (DESKTOP + MOBILE STORM) ========= */
-
+    /* ========= NATURAL RAIN OVER INTRO (MOBILE-SAFE STORM) ========= */
     .intro-rain {
       position: absolute;
       inset: 0;
       pointer-events: none;
       overflow: hidden;
-      z-index: 0; /* behind card (z=1) but above background */
+      z-index: 0; /* behind intro-inner (z=1) */
     }
 
     .intro-rain-drop {
       position: absolute;
       top: -20%;
-      width: 1.5px;
-      height: 70px;
+      width: 2px;
+      height: 80px;
       background: linear-gradient(
         to bottom,
         rgba(0,0,0,0),
-        rgba(0,255,255,0.8)
+        rgba(0,255,255,0.9)
       );
-      opacity: 0.8;
+      opacity: 0.85;
       animation-name: introRain;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-      will-change: transform, opacity;
-      mix-blend-mode: screen;
+      transform-origin: top;
+      will-change: transform;
     }
 
     @keyframes introRain {
       0%   { transform: translate3d(0, -120px, 0); opacity: 0; }
       10%  { opacity: 1; }
       100% { transform: translate3d(0, 110vh, 0); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .intro-rain-drop {
+        width: 2.5px;
+        height: 70px;
+        opacity: 0.9;
+      }
     }
   </style>
 </head>
@@ -1294,18 +1295,18 @@
       if (!layer) return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const dropCount = isMobile ? 55 : 140; // fewer on phone, more on desktop
+      const dropCount = isMobile ? 24 : 120; // fewer on phone, more on desktop
 
       for (let i = 0; i < dropCount; i++) {
         const d = document.createElement("div");
         d.className = "intro-rain-drop";
 
         const x = Math.random() * 100;             // 0–100vw
-        const scale = 0.7 + Math.random() * 0.9;   // vary length
-        const delay = Math.random() * -2.2;        // some already mid-fall
+        const scale = 0.7 + Math.random() * 1.1;   // vary length
+        const delay = Math.random() * -2.5;        // some already mid-fall
         const dur = isMobile
-          ? 0.7 + Math.random() * 0.5   // 0.7–1.2s on mobile
-          : 0.5 + Math.random() * 0.6;  // 0.5–1.1s on desktop
+          ? 0.9 + Math.random() * 0.7   // 0.9–1.6s on mobile
+          : 0.6 + Math.random() * 0.6;  // 0.6–1.2s on desktop
 
         d.style.left = x + "vw";
         d.style.transform = "scaleY(" + scale + ")";
