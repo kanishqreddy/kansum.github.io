@@ -10,6 +10,7 @@
   <!-- CYBERPUNK-Y FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- added Black Ops One -->
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Black+Ops+One&display=swap" rel="stylesheet">
 
   <style>
@@ -46,6 +47,7 @@
         linear-gradient(180deg, #050008 0%, #18020f 35%, #070008 75%, #020005 100%);
       color: var(--text-main);
       position: relative;
+      /* INLINE NEON KATANA SVG CURSOR */
       cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjE0IiB5MT0iNiIgeDI9IjIwIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMDgyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmMTc0NCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE2IDMyKSI+CiAgICA8cmVjdCB4PSIxNCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMjYiIHJ4PSIxIiBmaWxsPSIjZmY0YjRiIi8+CiAgICA8cmVjdCB4PSIxNCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMjYiIHJ4PSIxIiBmaWxsPSJ1cmwoI2cpIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzAiIHdpZHRoPSI4IiBoZWlnaHQ9IjQiIHJ4PSIxIiBmaWxsPSIjMTExMTExIi8+CiAgICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjMyIiByPSIxIiBmaWxsPSIjZmZkNTRmIi8+CiAgPC9nPgo8L3N2Zz4=") 10 10, auto;
     }
 
@@ -61,7 +63,7 @@
       html { scroll-behavior: auto !important; }
     }
 
-    /* ========= CYBERPUNK 2077-STYLE START SCREEN ========= */
+    /* ========= CYBERPUNK 2077-STYLE START SCREEN (OVERLAY) ========= */
 
     body.intro-lock {
       overflow: hidden;
@@ -83,6 +85,7 @@
       transition: opacity 0.6s ease-out, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
+    /* teal / magenta neon bands */
     .intro::before {
       content: "";
       position: absolute;
@@ -104,8 +107,10 @@
       mix-blend-mode: screen;
       opacity: 0.9;
       animation: introBars 9s linear infinite;
+      z-index: 0;
     }
 
+    /* scratches / noise */
     .intro::after {
       content: "";
       position: absolute;
@@ -117,11 +122,12 @@
       mix-blend-mode: screen;
       pointer-events: none;
       animation: introNoise 5s linear infinite;
+      z-index: 0;
     }
 
     .intro-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: min(780px, 100%);
       border-radius: 28px;
       border: 1px solid rgba(0,255,255,0.4);
@@ -171,6 +177,7 @@
       animation: introGlitch 3.2s infinite;
     }
 
+    /* cyan/magenta split glitch */
     .intro-logo-word::before,
     .intro-logo-word::after {
       content: "kansum";
@@ -235,6 +242,7 @@
       align-items: center;
       gap: 8px;
       color: #ffb4c7;
+      /* still animated, but only opacity / glow now */
       animation: pressPulse 1.2s ease-in-out infinite;
     }
 
@@ -283,6 +291,7 @@
       97% { transform: skewX(-10deg) translate(-1px,-1px); }
     }
 
+    /* no more letter-spacing changes */
     @keyframes pressPulse {
       0%, 100% {
         opacity: 0.35;
@@ -296,7 +305,52 @@
       }
     }
 
-    /* ========= BACKGROUND FX / CRT / CODE RAIN ========= */
+    /* ========= RAIN LAYER FOR FULL INTRO SCREEN ========= */
+    .intro-rain {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1; /* above bands/noise, below intro-inner */
+    }
+
+    .intro-rain-drop {
+      position: absolute;
+      top: -20%;
+      width: 1.2px;
+      height: 60px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 255, 255, 0.9)
+      );
+      opacity: 0.7;
+      transform: translate3d(0, 0, 0);
+      animation-name: introRain;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: var(--dur, 3.5s);
+      animation-delay: var(--delay, 0s);
+      left: var(--x, 50vw);
+      filter: blur(0.3px);
+      mix-blend-mode: screen;
+    }
+
+    @keyframes introRain {
+      0% {
+        transform: translate3d(0, -120px, 0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate3d(0, 120vh, 0);
+        opacity: 0;
+      }
+    }
+
+    /* ========= BACKGROUND FX ========= */
     .scanlines {
       pointer-events: none;
       position: fixed;
@@ -318,8 +372,6 @@
       opacity: 0.18;
       mix-blend-mode: screen;
       z-index: -2;
-      background-position: 0 0, 0 0;
-      transition: background-position 0.1s linear;
     }
 
     .glow-orb {
@@ -331,90 +383,27 @@
       opacity: 0.9;
       pointer-events: none;
       z-index: -3;
-      transform: translate3d(0,0,0);
-      transition: transform 0.12s linear;
     }
     .glow-orb--left {
       left: -150px;
       top: -140px;
       background: radial-gradient(circle, rgba(255,140,0,1), transparent 70%);
+      animation: driftLeft 18s ease-in-out infinite alternate;
     }
     .glow-orb--right {
       right: -190px;
       bottom: -160px;
       background: radial-gradient(circle, rgba(255,0,76,1), transparent 70%);
+      animation: driftRight 20s ease-in-out infinite alternate;
     }
 
-    .code-rain {
-      position: fixed;
-      top: -200px;
-      bottom: -200px;
-      width: 80px;
-      pointer-events: none;
-      opacity: 0.25;
-      mix-blend-mode: screen;
-      z-index: -1;
-      background-size: 100% 120px;
-      animation: codeRain 9s linear infinite;
-      filter: blur(0.3px);
+    @keyframes driftLeft {
+      0% { transform: translate3d(0,0,0); }
+      100% { transform: translate3d(40px, 40px, 0); }
     }
-    .code-rain--left {
-      left: 6px;
-      background-image: linear-gradient(
-        to bottom,
-        rgba(0,255,180,0.5) 0px,
-        transparent 40px,
-        rgba(255,0,120,0.4) 80px,
-        transparent 120px
-      );
-    }
-    .code-rain--right {
-      right: 6px;
-      background-image: linear-gradient(
-        to bottom,
-        rgba(255,191,0,0.6) 0px,
-        transparent 60px,
-        rgba(0,255,255,0.5) 100px,
-        transparent 140px
-      );
-      animation-duration: 11s;
-    }
-
-    @keyframes codeRain {
-      0% { background-position-y: 0; }
-      100% { background-position-y: 240px; }
-    }
-
-    /* SIDE HUD STRIP */
-    .side-hud {
-      position: fixed;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 10px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(255,191,0,0.6);
-      opacity: 0.7;
-      mix-blend-mode: screen;
-      pointer-events: none;
-      z-index: 10;
-      text-shadow:
-        0 0 8px rgba(255,191,0,0.9),
-        0 0 18px rgba(0,0,0,1);
-    }
-
-    .side-hud::before {
-      content: "";
-      display: block;
-      width: 1px;
-      height: 90px;
-      margin: 0 auto 10px;
-      background: linear-gradient(to bottom, transparent, rgba(255,191,0,0.9), transparent);
-      box-shadow: 0 0 10px rgba(255,191,0,0.9);
+    @keyframes driftRight {
+      0% { transform: translate3d(0,0,0); }
+      100% { transform: translate3d(-40px, -30px, 0); }
     }
 
     /* ========= NAVBAR ========= */
@@ -422,7 +411,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(20px) saturate(140%);
+      backdrop-filter: blur(20px);
       background: linear-gradient(90deg, rgba(3,0,15,0.98), rgba(12,0,20,0.98));
       border-bottom: 1px solid rgba(255,111,0,0.7);
       box-shadow: 0 14px 40px rgba(0,0,0,1);
@@ -474,14 +463,6 @@
       box-shadow:
         0 0 22px rgba(255,179,0,1),
         0 0 40px rgba(255,69,0,0.7);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .nav-logo:hover {
-      transform: rotate(-4deg) scale(1.05);
-      box-shadow:
-        0 0 30px rgba(255,179,0,1),
-        0 0 60px rgba(255,69,0,0.9);
     }
 
     .nav-name {
@@ -529,7 +510,7 @@
       height: 2px;
       border-radius: 99px;
       background: rgba(248,250,252,0.95);
-      transition: transform 200ms ease, top 200ms ease, opacity 200ms ease;
+      transition: transform 200ms ease, top 200ms ease, opacity 200ms.ease;
     }
     .hamburger span:nth-child(1) { top: 0; }
     .hamburger span:nth-child(2) { top: 6px; }
@@ -600,6 +581,7 @@
       transition: opacity 0.18s ease, transform 0.18s ease;
     }
 
+    /* active + permanently-highlighted links (overview + contact) */
     .nav-link--active,
     .nav-link--static-active {
       color: var(--accent);
@@ -709,70 +691,14 @@
       margin-bottom: 20px;
     }
 
-    /* ========= HERO + HUD ========= */
-    .hero-wrapper {
-      position: relative;
-      margin-top: 50px;
-      margin-bottom: 40px;
-      padding: 18px 14px 10px;
-    }
-
-    .hero-wrapper::before,
-    .hero-wrapper::after {
-      content: "";
-      position: absolute;
-      width: 40px;
-      height: 28px;
-      border: 1px solid rgba(0,255,255,0.7);
-      border-bottom: none;
-      border-right: none;
-      opacity: 0.8;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-    .hero-wrapper::before {
-      top: 0;
-      left: 0;
-      border-radius: 12px 0 0 0;
-    }
-    .hero-wrapper::after {
-      top: 0;
-      right: 0;
-      border-radius: 0 12px 0 0;
-      transform: scaleX(-1);
-    }
-
-    .hero-wrapper .hero::before,
-    .hero-wrapper .hero::after {
-      content: "";
-      position: absolute;
-      width: 40px;
-      height: 28px;
-      border: 1px solid rgba(255,0,128,0.7);
-      border-top: none;
-      border-left: none;
-      opacity: 0.8;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-    .hero-wrapper .hero::before {
-      bottom: -10px;
-      left: 0;
-      border-radius: 0 0 0 12px;
-    }
-    .hero-wrapper .hero::after {
-      bottom: -10px;
-      right: 0;
-      border-radius: 0 0 12px 0;
-      transform: scaleX(-1);
-    }
+    /* ========= HERO ========= */
+    .hero-wrapper { position: relative; margin-top: 50px; margin-bottom: 40px; }
 
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr);
       gap: 32px;
       align-items: flex-start;
-      position: relative;
     }
 
     .ticker {
@@ -815,47 +741,6 @@
         0 0 10px rgba(255,191,0,0.9),
         0 0 26px rgba(255,69,0,0.9),
         0 0 40px rgba(0,0,0,0.9);
-      overflow: hidden;
-    }
-
-    .hero-title::after {
-      content: "";
-      position: absolute;
-      left: -20%;
-      right: -20%;
-      top: 52%;
-      height: 140%;
-      background: linear-gradient(
-        to right,
-        transparent 0,
-        rgba(255,191,0,0.0) 30%,
-        rgba(255,191,0,0.45) 50%,
-        rgba(255,191,0,0.0) 70%,
-        transparent 100%
-      );
-      opacity: 0;
-      transform: translateX(-120%);
-      pointer-events: none;
-      mix-blend-mode: screen;
-      animation: titleScan 4.2s ease-in-out infinite;
-    }
-
-    @keyframes titleScan {
-      0%, 65% {
-        opacity: 0;
-        transform: translateX(-120%);
-      }
-      70% {
-        opacity: 1;
-      }
-      85% {
-        opacity: 1;
-        transform: translateX(120%);
-      }
-      100% {
-        opacity: 0;
-        transform: translateX(120%);
-      }
     }
 
     @keyframes slideLoop {
@@ -878,7 +763,6 @@
       mix-blend-mode: screen;
       opacity: 0.9;
       pointer-events: none;
-      animation: glitchSmall 2.1s infinite;
     }
     .hero-title span.glitch::before {
       transform: translate(2px, -1px);
@@ -896,6 +780,10 @@
       97% { transform: translate(-1px, 1px); }
       98% { transform: translate(1px, -1px); }
       99% { transform: translate(-1px, -1px); }
+    }
+    .hero-title span.glitch::before,
+    .hero-title span.glitch::after {
+      animation: glitchSmall 2.1s infinite;
     }
 
     .hero-subtitle {
@@ -925,7 +813,7 @@
       justify-content: center;
       gap: 8px;
       transition: transform 0.16s ease, box-shadow 0.16s ease,
-                  background 0.16s ease, border-color 0.16s ease,
+                  background 0.16s ease, border-color 0.16s.ease,
                   color 0.16s ease;
     }
 
@@ -981,8 +869,6 @@
                   border-color 0.16s ease, background-position 0.16s ease;
       background-size: 150% 150%;
       background-position: 50% 0%;
-      transform-style: preserve-3d;
-      animation: panelPulse 9s ease-in-out infinite;
     }
 
     .card::before {
@@ -1002,7 +888,7 @@
     }
 
     .card:hover {
-      transform: translateY(-3px) rotateX(2deg) rotateY(-2deg);
+      transform: translateY(-3px);
       border-color: rgba(255,179,0,0.7);
       box-shadow:
         0 26px 60px rgba(0,0,0,1),
@@ -1011,15 +897,6 @@
     }
     .card:hover::before {
       opacity: 1;
-    }
-
-    @keyframes panelPulse {
-      0%, 100% { box-shadow: var(--shadow-soft); }
-      50% {
-        box-shadow:
-          0 26px 60px rgba(0,0,0,1),
-          0 0 26px rgba(255,69,0,0.5);
-      }
     }
 
     .iframe-wrap {
@@ -1032,7 +909,6 @@
         0 0 32px rgba(255,69,0,0.45);
       position: relative;
       margin-bottom: 40px;
-      animation: panelPulse 10s ease-in-out infinite;
     }
 
     .iframe-wrap::before {
@@ -1044,27 +920,6 @@
         linear-gradient(90deg, rgba(255,140,0,0.38), transparent 40%, rgba(255,0,76,0.34));
       mix-blend-mode: soft-light;
       opacity: 0.45;
-    }
-
-    .iframe-wrap::after {
-      content: "DATA LINK · ACTIVE";
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      color: rgba(148, 235, 255, 0);
-      text-transform: uppercase;
-      pointer-events: none;
-      transition: color 0.18s ease, text-shadow 0.18s ease;
-    }
-
-    .iframe-wrap:hover::after {
-      color: rgba(148, 235, 255, 0.98);
-      text-shadow:
-        0 0 6px rgba(0,255,255,1),
-        0 0 14px rgba(0,0,0,1);
     }
 
     .iframe-header {
@@ -1157,31 +1012,12 @@
       letter-spacing: 0.24em;
     }
 
-    footer span {
-      animation: footerGlitch 3.5s infinite;
-    }
-
-    @keyframes footerGlitch {
-      0%, 95%, 100% { text-shadow: none; }
-      96% {
-        text-shadow:
-          1px 0 rgba(255,0,76,0.8),
-          -1px 0 rgba(0,255,255,0.8);
-      }
-      98% {
-        text-shadow:
-          -1px 0 rgba(255,0,76,0.8),
-          1px 0 rgba(0,255,255,0.8);
-      }
-    }
-
     #hero { margin-top: 90px; }
 
     @media (max-width: 860px) {
       .hero {
         grid-template-columns: 1fr;
       }
-      .side-hud { display: none; }
     }
 
     @media (max-width: 640px) {
@@ -1239,7 +1075,8 @@
       }
     }
 
-    /* ========= CYBERPUNK CURSOR GLOW ========= */
+    /* ========= CYBERPUNK CURSOR GLOW (DARK PURPLE NEON) ========= */
+
     a,
     button,
     iframe {
@@ -1266,8 +1103,8 @@
       transition:
         opacity 0.12s ease-out,
         transform 0.08s linear,
-        width 0.12s ease-out,
-        height 0.12s ease-out;
+        width 0.12s.ease-out,
+        height 0.12s.ease-out;
     }
 
     .cursor-glow--active {
@@ -1291,28 +1128,14 @@
         display: none;
       }
     }
-
-    /* ========= SCROLL REVEAL ========= */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px) scale(0.98);
-      filter: blur(10px);
-      transition:
-        opacity 0.6s ease-out,
-        transform 0.6s ease-out,
-        filter 0.6s ease-out;
-    }
-
-    .reveal--visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
-    }
   </style>
 </head>
 <body>
   <!-- CYBERPUNK 2077-STYLE START SCREEN -->
   <div id="intro" class="intro">
+    <!-- FULL-SCREEN RAIN LAYER -->
+    <div class="intro-rain"></div>
+
     <div class="intro-inner">
       <div class="intro-logo-row">
         <div class="intro-logo-word">kansum</div>
@@ -1340,9 +1163,6 @@
   <div class="bg-grid"></div>
   <div class="glow-orb glow-orb--left"></div>
   <div class="glow-orb glow-orb--right"></div>
-  <div class="code-rain code-rain--left"></div>
-  <div class="code-rain code-rain--right"></div>
-  <div class="side-hud">NC-2077 // GRID: 11·11 // KANSUM LAB</div>
 
   <!-- NAVBAR -->
   <header id="site-header">
@@ -1379,7 +1199,7 @@
   </header>
 
   <main>
-    <section class="hero-wrapper reveal" id="hero">
+    <section class="hero-wrapper" id="hero">
       <div class="hero">
         <div>
           <div class="ticker" aria-label="Night City welcome message">
@@ -1400,7 +1220,7 @@
       </div>
     </section>
 
-    <section id="apps" class="reveal">
+    <section id="apps">
       <h2 class="section-heading">apps</h2>
       <p class="section-sub">live builds you can actually click.</p>
 
@@ -1409,7 +1229,7 @@
         <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:10px;">
           Real-time style dashboard experiment built with Python and Streamlit.
         </p>
-        <div class="iframe-wrap reveal">
+        <div class="iframe-wrap">
           <div class="iframe-header">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
             <span class="iframe-title">kansum · dashboard experiment</span>
@@ -1426,7 +1246,7 @@
         <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:10px;">
           Full-stack style sandbox with user portal, admin portal, auth and mock payment flows.
         </p>
-        <div class="iframe-wrap reveal">
+        <div class="iframe-wrap">
           <div class="iframe-header">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
             <span class="iframe-title">kansum · app shell playground</span>
@@ -1443,7 +1263,7 @@
         <p style="font-size:13px; color:var(--text-muted); margin-top:-6px; margin-bottom:10px;">
           Chat interface tuned to answer questions around this site and related projects.
         </p>
-        <div class="iframe-wrap reveal" style="margin-bottom:0;">
+        <div class="iframe-wrap" style="margin-bottom:0;">
           <div class="iframe-header">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
             <span class="iframe-title">kansum · chat agent</span>
@@ -1458,11 +1278,11 @@
       </div>
     </section>
 
-    <section id="contact" class="reveal">
+    <section id="contact">
       <h2 class="section-heading">contact</h2>
       <p class="section-sub">for feedback, bugs or collabs.</p>
 
-      <div class="card reveal">
+      <div class="card">
         <div class="contact-row">
           <div>
             <div class="contact-label">email</div>
@@ -1481,8 +1301,30 @@
   </footer>
 
   <script>
-    // ===== CYBERPUNK START SCREEN CONTROL =====
+    // ===== CYBERPUNK START SCREEN CONTROL + RAIN =====
     const intro = document.getElementById("intro");
+
+    function createIntroRain() {
+      if (!intro) return;
+      const layer = intro.querySelector(".intro-rain");
+      if (!layer) return;
+
+      const dropCount = 140;
+      for (let i = 0; i < dropCount; i++) {
+        const drop = document.createElement("div");
+        drop.className = "intro-rain-drop";
+
+        const x = Math.random() * 100;           // 0–100 vw
+        const delay = Math.random() * -5;        // negative so some are mid-fall on load
+        const dur = 3 + Math.random() * 2;       // 3–5s duration
+
+        drop.style.setProperty("--x", x + "vw");
+        drop.style.setProperty("--delay", delay + "s");
+        drop.style.setProperty("--dur", dur + "s");
+
+        layer.appendChild(drop);
+      }
+    }
 
     function finishIntro() {
       if (!intro || intro.classList.contains("intro--out")) return;
@@ -1495,15 +1337,19 @@
 
     if (intro) {
       document.body.classList.add("intro-lock");
+      createIntroRain();
 
+      // safety timeout so nobody gets stuck
       window.addEventListener("load", () => {
         setTimeout(finishIntro, 6500);
       });
 
+      // press Enter or Space
       window.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") finishIntro();
       });
 
+      // or click anywhere
       window.addEventListener("click", () => {
         finishIntro();
       });
@@ -1555,7 +1401,7 @@
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section[id]");
 
-    const observerNav = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -1571,7 +1417,7 @@
       { threshold: 0.4 }
     );
 
-    sections.forEach((sec) => observerNav.observe(sec));
+    sections.forEach((sec) => observer.observe(sec));
 
     window.addEventListener("load", () => {
       const heroLink = document.querySelector('.nav-link[href="#hero"]');
@@ -1593,7 +1439,7 @@
       });
     });
 
-    // Status bar: typewriter for first message, then cycle
+    // Status bar cycling
     const statusEl = document.getElementById("status-text");
     const statusDot = document.querySelector(".status-dot");
 
@@ -1605,38 +1451,23 @@
         "WARNING: CYBERPYSCHOSIS ",
         "CITY: NIGHT · NET: LIVE"
       ];
+      let idx = 0;
 
-      function setStatusDot(msg) {
+      function cycleStatus() {
+        const msg = messages[idx];
+        statusEl.textContent = msg;
+
         if (msg.includes("WARNING: CYBERPYSCHOSIS")) {
           statusDot.classList.add("status-dot--alert");
         } else {
           statusDot.classList.remove("status-dot--alert");
         }
+
+        idx = (idx + 1) % messages.length;
       }
 
-      function typeStatus(msg, cb) {
-        statusEl.textContent = "";
-        setStatusDot(msg);
-        let i = 0;
-        const interval = setInterval(() => {
-          statusEl.textContent += msg[i++];
-          if (i >= msg.length) {
-            clearInterval(interval);
-            if (cb) cb();
-          }
-        }, 35);
-      }
-
-      let idx = 0;
-
-      typeStatus(messages[idx], () => {
-        setInterval(() => {
-          idx = (idx + 1) % messages.length;
-          const next = messages[idx];
-          statusEl.textContent = next;
-          setStatusDot(next);
-        }, 3800);
-      });
+      cycleStatus();
+      setInterval(cycleStatus, 3800);
     }
 
     // Ticker scroll
@@ -1649,7 +1480,11 @@
       function step() {
         pos -= 1.2;
         const w = tickerInner.offsetWidth;
-        if (pos < -w) pos = ticker.offsetWidth;
+
+        if (pos < -w) {
+          pos = ticker.offsetWidth;
+        }
+
         tickerInner.style.transform = `translateX(${pos}px)`;
         requestAnimationFrame(step);
       }
@@ -1657,7 +1492,7 @@
       requestAnimationFrame(step);
     }
 
-    // Neon cursor glow
+    // ========= DARK PURPLE NEON CURSOR GLOW =========
     if (window.matchMedia("(pointer:fine)").matches) {
       const glow = document.createElement("div");
       glow.className = "cursor-glow";
@@ -1684,40 +1519,6 @@
         if (!e.relatedTarget) glow.style.opacity = 0;
       });
     }
-
-    // Parallax grid + orbs
-    (function () {
-      const leftOrb = document.querySelector(".glow-orb--left");
-      const rightOrb = document.querySelector(".glow-orb--right");
-      const grid = document.querySelector(".bg-grid");
-      if (!leftOrb || !rightOrb || !grid) return;
-
-      window.addEventListener("pointermove", (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 2;
-        const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-        leftOrb.style.transform = `translate3d(${x * 20}px, ${y * 10}px, 0)`;
-        rightOrb.style.transform = `translate3d(${x * -20}px, ${y * -10}px, 0)`;
-        grid.style.backgroundPosition =
-          `${x * 20}px ${y * 20}px, ${x * -10}px ${y * -10}px`;
-      });
-    })();
-
-    // Scroll reveal
-    const revealEls = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("reveal--visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    revealEls.forEach((el) => revealObserver.observe(el));
   </script>
 </body>
 </html>
