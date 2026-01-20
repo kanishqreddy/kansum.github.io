@@ -1106,8 +1106,7 @@
       animation-name: introRain;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-      will-change: transform;
-      /* keep neon feel but lighter than full-screen blend */
+      will-change: transform, opacity;
       mix-blend-mode: screen;
     }
 
@@ -1117,36 +1116,217 @@
       100% { transform: translate3d(0, 110vh, 0); opacity: 0; }
     }
 
-    /* ========= THUNDER FLASH LAYER ========= */
-    .intro-thunder {
+    /* ========= HERO CIRCUIT BACKGROUND ========= */
+    .hero-circuits {
       position: absolute;
+      inset: -40px -10px 20px;
+      pointer-events: none;
+      opacity: 0.3;
+      mix-blend-mode: screen;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(0,255,255,0.32) 0, transparent 52%),
+        radial-gradient(circle at 80% 30%, rgba(255,0,80,0.32) 0, transparent 55%),
+        linear-gradient(90deg, rgba(0,255,255,0.18) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,255,255,0.1) 1px, transparent 1px);
+      background-size: 220px 220px, 260px 260px, 140px 140px, 140px 140px;
+      z-index: -1;
+    }
+
+    .hero-circuits::after {
+      content: "";
+      position: absolute;
+      top: 18%;
+      left: 8%;
+      right: 22%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(0,255,255,0), rgba(0,255,255,0.95), rgba(255,0,80,0));
+      animation: circuitSweep 4.2s linear infinite;
+    }
+
+    @keyframes circuitSweep {
+      0%   { transform: translateX(-10%); opacity: 0; }
+      10%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translateX(110%); opacity: 0; }
+    }
+
+    /* ========= CARD SCAN SWEEP ========= */
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      bottom: -20%;
+      left: -10%;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0),
+        rgba(0,255,255,0.9),
+        rgba(255,179,0,0.9),
+        rgba(0,0,0,0)
+      );
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .card:hover::after {
+      animation: cardScan 0.9s linear;
+    }
+
+    @keyframes cardScan {
+      0%   { transform: translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    /* ========= FLOATING NEON DUST ========= */
+    .dust-layer {
+      position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0; /* same as rain; intro-inner is z=1 */
-      opacity: 0;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(255,255,255,0.45), transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(0,255,255,0.25), transparent 60%),
-        rgba(255,255,255,0.06);
+      z-index: 0;
       mix-blend-mode: screen;
     }
 
-    .intro-thunder--flash {
-      animation: thunderFlash 0.45s ease-out;
+    .dust-particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(0,255,255,0.85);
+      opacity: 0.0;
+      animation-name: dustDrift;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
     }
 
-    @keyframes thunderFlash {
+    .dust-particle--warm {
+      background: rgba(255,179,0,0.9);
+    }
+
+    @keyframes dustDrift {
+      0%   { transform: translate3d(0,0,0); opacity: 0; }
+      15%  { opacity: 0.4; }
+      60%  { opacity: 0.35; }
+      100% { transform: translate3d(40px,-30px,0); opacity: 0; }
+    }
+
+    /* ========= SCROLL GLITCH OVERLAY ========= */
+    .scroll-glitch-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0;
+      background-image:
+        linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.18) 50%, rgba(0,0,0,0) 100%),
+        repeating-linear-gradient(0deg, rgba(255,0,80,0.25) 0, rgba(255,0,80,0.25) 2px, transparent 2px, transparent 4px);
+      mix-blend-mode: screen;
+      transform: translate3d(0,0,0);
+    }
+
+    .scroll-glitch-overlay--active {
+      animation: scrollGlitch 0.16s ease-out forwards;
+    }
+
+    @keyframes scrollGlitch {
+      0%   { opacity: 0.9; transform: translate3d(-8px,0,0); }
+      50%  { opacity: 0.5; transform: translate3d(8px,0,0); }
+      100% { opacity: 0; transform: translate3d(0,0,0); }
+    }
+
+    /* ========= LIGHTNING FLASH ========= */
+    .intro-flash {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(0,255,255,0.45), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(255,0,80,0.5), transparent 60%),
+        #ffffff;
+      mix-blend-mode: screen;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .intro-flash--active {
+      animation: introFlash 0.22s ease-out;
+    }
+
+    @keyframes introFlash {
       0%   { opacity: 0; }
-      8%   { opacity: 1; }
-      25%  { opacity: 0.25; }
-      40%  { opacity: 0.8; }
+      20%  { opacity: 0.95; }
+      60%  { opacity: 0.4; }
       100% { opacity: 0; }
+    }
+
+    /* ========= QUICKHACK RADIAL MENU ========= */
+    .quickhack-menu {
+      position: fixed;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.95), rgba(10,0,20,0.98));
+      border: 1px solid rgba(0,255,255,0.7);
+      box-shadow:
+        0 0 26px rgba(0,0,0,1),
+        0 0 30px rgba(0,255,255,0.8);
+      transform: translate(-50%, -50%) scale(0.7);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9997;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      transition: opacity 0.12s ease-out, transform 0.12s ease-out;
+      backdrop-filter: blur(14px);
+    }
+
+    .quickhack-menu--open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .quickhack-menu-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .quickhack-menu button {
+      position: absolute;
+      border: 1px solid rgba(148,163,184,0.9);
+      background: radial-gradient(circle at top, rgba(0,255,255,0.3), rgba(15,0,25,0.96));
+      color: #e5e7eb;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.95);
+      transform: translate(-50%, -50%);
+    }
+
+    .quickhack-menu button:hover {
+      border-color: var(--accent-alt);
+      color: var(--accent-alt);
+      box-shadow:
+        0 10px 30px rgba(0,0,0,1),
+        0 0 16px rgba(255,0,80,0.9);
     }
   </style>
 </head>
 <body>
   <!-- CYBERPUNK 2077-STYLE START SCREEN -->
   <div id="intro" class="intro">
+    <div class="intro-flash"></div>
     <!-- rain layer -->
     <div class="intro-rain"></div>
 
@@ -1177,6 +1357,8 @@
   <div class="bg-grid"></div>
   <div class="glow-orb glow-orb--left"></div>
   <div class="glow-orb glow-orb--right"></div>
+  <div class="dust-layer" aria-hidden="true"></div>
+  <div class="scroll-glitch-overlay" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
   <header id="site-header">
@@ -1214,6 +1396,7 @@
 
   <main>
     <section class="hero-wrapper" id="hero">
+      <div class="hero-circuits" aria-hidden="true"></div>
       <div class="hero">
         <div>
           <div class="ticker" aria-label="Night City welcome message">
@@ -1314,26 +1497,35 @@
     kansum · cyber projects · <span id="year"></span>
   </footer>
 
+  <!-- QUICKHACK RADIAL MENU -->
+  <div id="quickhack-menu" class="quickhack-menu" aria-hidden="true">
+    <div class="quickhack-menu-inner">
+      <button data-action="scan" style="top: 10%; left: 50%;">SCAN</button>
+      <button data-action="overclock" style="top: 50%; left: 90%;">OVERCLOCK</button>
+      <button data-action="apps" style="top: 90%; left: 50%;">OPEN APPS</button>
+      <button data-action="contact" style="top: 50%; left: 10%;">PING CONTACT</button>
+    </div>
+  </div>
+
   <script>
-    // ===== RAIN SPAWNER (STORM, BUT SMOOTHER ON BOTH) =====
+    // ===== RAIN SPAWNER (STORM, BUT LIGHTER ON MOBILE) =====
     function createIntroRain() {
       const layer = document.querySelector("#intro .intro-rain");
       if (!layer) return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      // Less DOM, smoother animation
-      const dropCount = isMobile ? 28 : 75;
+      const dropCount = isMobile ? 40 : 80; // fewer overall = smoother across devices
 
       for (let i = 0; i < dropCount; i++) {
         const d = document.createElement("div");
         d.className = "intro-rain-drop";
 
         const x = Math.random() * 100;             // 0–100vw
-        const scale = 0.8 + Math.random() * 0.7;   // vary length slightly
-        const delay = Math.random() * -3.5;        // some already mid-fall
+        const scale = 0.8 + Math.random() * 0.8;   // vary length
+        const delay = Math.random() * -3;          // some already mid-fall
         const dur = isMobile
-          ? 1.1 + Math.random() * 0.7   // 1.1–1.8s on mobile
-          : 0.9 + Math.random() * 0.6;  // 0.9–1.5s on desktop
+          ? 1.0 + Math.random() * 0.6   // 1.0–1.6s on mobile
+          : 0.8 + Math.random() * 0.7;  // 0.8–1.5s on desktop
 
         d.style.left = x + "vw";
         d.style.transform = "scaleY(" + scale + ")";
@@ -1344,34 +1536,27 @@
       }
     }
 
-    // ===== THUNDER FLASH (RANDOM LIGHTNING) =====
-    function setupThunder() {
-      const intro = document.getElementById("intro");
-      if (!intro) return;
-
-      const layer = document.createElement("div");
-      layer.className = "intro-thunder";
-      intro.appendChild(layer);
+    // ===== LIGHTNING FLASHES OVER INTRO =====
+    function setupLightning() {
+      const flashEl = document.querySelector(".intro-flash");
+      if (!flashEl) return;
 
       function flashOnce() {
         if (!intro || intro.classList.contains("intro--out")) return;
-        layer.classList.remove("intro-thunder--flash");
-        // force reflow so animation can restart
-        void layer.offsetWidth;
-        layer.classList.add("intro-thunder--flash");
+        flashEl.classList.add("intro-flash--active");
+        setTimeout(() => flashEl.classList.remove("intro-flash--active"), 220);
       }
 
-      function scheduleNext() {
-        const min = 2200; // 2.2s
-        const max = 6500; // 6.5s
-        const delay = min + Math.random() * (max - min);
+      function loop() {
+        if (!intro || intro.classList.contains("intro--out")) return;
+        const delay = 2600 + Math.random() * 4200; // 2.6–6.8s between flashes
         setTimeout(() => {
           flashOnce();
-          scheduleNext();
+          loop();
         }, delay);
       }
 
-      scheduleNext();
+      loop();
     }
 
     // ===== CYBERPUNK START SCREEN CONTROL =====
@@ -1389,9 +1574,9 @@
     if (intro) {
       document.body.classList.add("intro-lock");
 
-      // create rain + thunder once DOM is ready
+      // create rain and lightning once DOM is ready
       createIntroRain();
-      setupThunder();
+      setupLightning();
 
       // safety timeout so nobody gets stuck
       window.addEventListener("load", () => {
@@ -1544,6 +1729,90 @@
       }
 
       requestAnimationFrame(step);
+    }
+
+    // ===== FLOATING NEON DUST PARTICLES =====
+    function createDust() {
+      const layer = document.querySelector(".dust-layer");
+      if (!layer) return;
+
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const count = isMobile ? 24 : 42;
+
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement("div");
+        p.className = "dust-particle";
+        if (Math.random() > 0.6) p.classList.add("dust-particle--warm");
+
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const dur = 16 + Math.random() * 10;
+        const delay = Math.random() * -dur;
+
+        p.style.left = x + "vw";
+        p.style.top = y + "vh";
+        p.style.animationDuration = dur + "s";
+        p.style.animationDelay = delay + "s";
+
+        layer.appendChild(p);
+      }
+    }
+
+    window.addEventListener("load", createDust);
+
+    // ===== SCROLL GLITCH BURST =====
+    const scrollGlitchOverlay = document.querySelector(".scroll-glitch-overlay");
+    let scrollGlitchTimeout = null;
+
+    if (scrollGlitchOverlay) {
+      window.addEventListener("scroll", () => {
+        if (scrollGlitchOverlay.classList.contains("scroll-glitch-overlay--active")) return;
+        scrollGlitchOverlay.classList.add("scroll-glitch-overlay--active");
+
+        clearTimeout(scrollGlitchTimeout);
+        scrollGlitchTimeout = setTimeout(() => {
+          scrollGlitchOverlay.classList.remove("scroll-glitch-overlay--active");
+        }, 180);
+      }, { passive: true });
+    }
+
+    // ===== QUICKHACK RADIAL CONTEXT MENU =====
+    const quickhackMenu = document.getElementById("quickhack-menu");
+    let quickhackHideTimeout;
+
+    if (quickhackMenu) {
+      document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+
+        const x = e.clientX;
+        const y = e.clientY;
+
+        quickhackMenu.style.left = x + "px";
+        quickhackMenu.style.top = y + "px";
+        quickhackMenu.classList.add("quickhack-menu--open");
+        quickhackMenu.setAttribute("aria-hidden", "false");
+
+        clearTimeout(quickhackHideTimeout);
+        quickhackHideTimeout = setTimeout(() => {
+          quickhackMenu.classList.remove("quickhack-menu--open");
+          quickhackMenu.setAttribute("aria-hidden", "true");
+        }, 2600);
+      });
+
+      document.addEventListener("click", () => {
+        quickhackMenu.classList.remove("quickhack-menu--open");
+        quickhackMenu.setAttribute("aria-hidden", "true");
+      });
+
+      quickhackMenu.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+        const action = btn.dataset.action;
+
+        if (statusEl) {
+          statusEl.textContent = `QUICKHACK: ${action.toUpperCase()} EXECUTED`;
+        }
+      });
     }
 
     // ========= DARK PURPLE NEON CURSOR GLOW =========
