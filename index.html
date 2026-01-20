@@ -240,7 +240,6 @@
       align-items: center;
       gap: 8px;
       color: #ffb4c7;
-      /* still animated, but only opacity / glow now */
       animation: pressPulse 1.2s ease-in-out infinite;
     }
 
@@ -289,7 +288,6 @@
       97% { transform: skewX(-10deg) translate(-1px,-1px); }
     }
 
-    /* no more letter-spacing changes */
     @keyframes pressPulse {
       0%, 100% {
         opacity: 0.35;
@@ -534,7 +532,6 @@
       transition: opacity 0.18s ease, transform 0.18s ease;
     }
 
-    /* active + permanently-highlighted links (overview + contact) */
     .nav-link--active,
     .nav-link--static-active {
       color: var(--accent);
@@ -646,6 +643,35 @@
 
     /* ========= HERO ========= */
     .hero-wrapper { position: relative; margin-top: 50px; margin-bottom: 40px; }
+
+    /* HUD labels */
+    .hero-hud {
+      position: absolute;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(154, 246, 255, 0.95);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,255,255,0.6);
+      background: radial-gradient(circle at top, rgba(0,0,0,0.9), rgba(5,0,20,0.96));
+      box-shadow: 0 0 12px rgba(0,255,255,0.65);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+    .hero-hud--tl {
+      top: -18px;
+      left: 4px;
+    }
+    .hero-hud--br {
+      bottom: -18px;
+      right: 4px;
+      color: rgba(255,179,0,0.95);
+      border-color: rgba(255,179,0,0.7);
+      box-shadow: 0 0 12px rgba(255,179,0,0.8);
+    }
 
     .hero {
       display: grid;
@@ -840,6 +866,24 @@
       transition: opacity 0.18s ease;
     }
 
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      bottom: -20%;
+      left: -10%;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0),
+        rgba(0,255,255,0.9),
+        rgba(255,179,0,0.9),
+        rgba(0,0,0,0)
+      );
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .card:hover {
       transform: translateY(-3px);
       border-color: rgba(255,179,0,0.7);
@@ -850,6 +894,16 @@
     }
     .card:hover::before {
       opacity: 1;
+    }
+    .card:hover::after {
+      animation: cardScan 0.9s linear;
+    }
+
+    @keyframes cardScan {
+      0%   { transform: translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(120%); opacity: 0; }
     }
 
     .iframe-wrap {
@@ -971,6 +1025,8 @@
       .hero {
         grid-template-columns: 1fr;
       }
+      .hero-hud--tl { top: -14px; }
+      .hero-hud--br { bottom: -14px; }
     }
 
     @media (max-width: 640px) {
@@ -1089,7 +1145,7 @@
       inset: 0;
       pointer-events: none;
       overflow: hidden;
-      z-index: 0; /* behind card (z=1) but above background */
+      z-index: 0;
     }
 
     .intro-rain-drop {
@@ -1150,37 +1206,7 @@
       100% { transform: translateX(110%); opacity: 0; }
     }
 
-    /* ========= CARD SCAN SWEEP ========= */
-    .card::after {
-      content: "";
-      position: absolute;
-      top: -20%;
-      bottom: -20%;
-      left: -10%;
-      width: 2px;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0),
-        rgba(0,255,255,0.9),
-        rgba(255,179,0,0.9),
-        rgba(0,0,0,0)
-      );
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .card:hover::after {
-      animation: cardScan 0.9s linear;
-    }
-
-    @keyframes cardScan {
-      0%   { transform: translateX(0); opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { transform: translateX(120%); opacity: 0; }
-    }
-
-    /* ========= FLOATING NEON DUST ========= */
+    /* ========= FLOATING NEON DUST (MORE MOTION) ========= */
     .dust-layer {
       position: fixed;
       inset: 0;
@@ -1194,47 +1220,34 @@
       width: 2px;
       height: 2px;
       border-radius: 999px;
-      background: rgba(0,255,255,0.85);
-      opacity: 0.0;
-      animation-name: dustDrift;
+      background: rgba(0,255,255,0.9);
+      opacity: 0;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
+      animation-name: dustDriftA;
       will-change: transform, opacity;
     }
 
     .dust-particle--warm {
-      background: rgba(255,179,0,0.9);
+      background: rgba(255,179,0,0.95);
     }
 
-    @keyframes dustDrift {
+    .dust-particle--alt {
+      animation-name: dustDriftB;
+    }
+
+    @keyframes dustDriftA {
       0%   { transform: translate3d(0,0,0); opacity: 0; }
-      15%  { opacity: 0.4; }
-      60%  { opacity: 0.35; }
-      100% { transform: translate3d(40px,-30px,0); opacity: 0; }
+      10%  { opacity: 0.7; }
+      60%  { opacity: 0.55; }
+      100% { transform: translate3d(80px,-60px,0); opacity: 0; }
     }
 
-    /* ========= SCROLL GLITCH OVERLAY ========= */
-    .scroll-glitch-overlay {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9998;
-      opacity: 0;
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.18) 50%, rgba(0,0,0,0) 100%),
-        repeating-linear-gradient(0deg, rgba(255,0,80,0.25) 0, rgba(255,0,80,0.25) 2px, transparent 2px, transparent 4px);
-      mix-blend-mode: screen;
-      transform: translate3d(0,0,0);
-    }
-
-    .scroll-glitch-overlay--active {
-      animation: scrollGlitch 0.16s ease-out forwards;
-    }
-
-    @keyframes scrollGlitch {
-      0%   { opacity: 0.9; transform: translate3d(-8px,0,0); }
-      50%  { opacity: 0.5; transform: translate3d(8px,0,0); }
-      100% { opacity: 0; transform: translate3d(0,0,0); }
+    @keyframes dustDriftB {
+      0%   { transform: translate3d(0,0,0); opacity: 0; }
+      10%  { opacity: 0.7; }
+      60%  { opacity: 0.55; }
+      100% { transform: translate3d(-80px,-40px,0); opacity: 0; }
     }
 
     /* ========= LIGHTNING FLASH ========= */
@@ -1358,7 +1371,6 @@
   <div class="glow-orb glow-orb--left"></div>
   <div class="glow-orb glow-orb--right"></div>
   <div class="dust-layer" aria-hidden="true"></div>
-  <div class="scroll-glitch-overlay" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
   <header id="site-header">
@@ -1396,6 +1408,8 @@
 
   <main>
     <section class="hero-wrapper" id="hero">
+      <div class="hero-hud hero-hud--tl">SYS: /ROOT/INDEX</div>
+      <div class="hero-hud hero-hud--br">SECURITY: ███░ 62%</div>
       <div class="hero-circuits" aria-hidden="true"></div>
       <div class="hero">
         <div>
@@ -1514,7 +1528,7 @@
       if (!layer) return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const dropCount = isMobile ? 40 : 80; // fewer overall = smoother across devices
+      const dropCount = isMobile ? 40 : 80; // fewer overall = smoother
 
       for (let i = 0; i < dropCount; i++) {
         const d = document.createElement("div");
@@ -1549,7 +1563,7 @@
 
       function loop() {
         if (!intro || intro.classList.contains("intro--out")) return;
-        const delay = 2600 + Math.random() * 4200; // 2.6–6.8s between flashes
+        const delay = 2600 + Math.random() * 4200; // 2.6–6.8s
         setTimeout(() => {
           flashOnce();
           loop();
@@ -1574,21 +1588,17 @@
     if (intro) {
       document.body.classList.add("intro-lock");
 
-      // create rain and lightning once DOM is ready
       createIntroRain();
       setupLightning();
 
-      // safety timeout so nobody gets stuck
       window.addEventListener("load", () => {
         setTimeout(finishIntro, 6500);
       });
 
-      // press Enter or Space
       window.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") finishIntro();
       });
 
-      // or click anywhere
       window.addEventListener("click", () => {
         finishIntro();
       });
@@ -1731,7 +1741,7 @@
       requestAnimationFrame(step);
     }
 
-    // ===== FLOATING NEON DUST PARTICLES =====
+    // ===== FLOATING NEON DUST PARTICLES (MOVING) =====
     function createDust() {
       const layer = document.querySelector(".dust-layer");
       if (!layer) return;
@@ -1742,11 +1752,13 @@
       for (let i = 0; i < count; i++) {
         const p = document.createElement("div");
         p.className = "dust-particle";
+
         if (Math.random() > 0.6) p.classList.add("dust-particle--warm");
+        if (Math.random() > 0.5) p.classList.add("dust-particle--alt");
 
         const x = Math.random() * 100;
         const y = Math.random() * 100;
-        const dur = 16 + Math.random() * 10;
+        const dur = 10 + Math.random() * 8;  // 10–18s
         const delay = Math.random() * -dur;
 
         p.style.left = x + "vw";
@@ -1759,22 +1771,6 @@
     }
 
     window.addEventListener("load", createDust);
-
-    // ===== SCROLL GLITCH BURST =====
-    const scrollGlitchOverlay = document.querySelector(".scroll-glitch-overlay");
-    let scrollGlitchTimeout = null;
-
-    if (scrollGlitchOverlay) {
-      window.addEventListener("scroll", () => {
-        if (scrollGlitchOverlay.classList.contains("scroll-glitch-overlay--active")) return;
-        scrollGlitchOverlay.classList.add("scroll-glitch-overlay--active");
-
-        clearTimeout(scrollGlitchTimeout);
-        scrollGlitchTimeout = setTimeout(() => {
-          scrollGlitchOverlay.classList.remove("scroll-glitch-overlay--active");
-        }, 180);
-      }, { passive: true });
-    }
 
     // ===== QUICKHACK RADIAL CONTEXT MENU =====
     const quickhackMenu = document.getElementById("quickhack-menu");
@@ -1811,6 +1807,15 @@
 
         if (statusEl) {
           statusEl.textContent = `QUICKHACK: ${action.toUpperCase()} EXECUTED`;
+        }
+
+        if (action === "apps") {
+          const apps = document.getElementById("apps");
+          if (apps) apps.scrollIntoView({ behavior: "smooth" });
+        }
+        if (action === "contact") {
+          const contact = document.getElementById("contact");
+          if (contact) contact.scrollIntoView({ behavior: "smooth" });
         }
       });
     }
