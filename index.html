@@ -1198,7 +1198,7 @@
       transition: opacity 0.45s ease-out;
     }
 
-    /* ========= THUNDER FLASH ========= */
+    /* ========= THUNDER FLASH (INTRO ONLY) ========= */
 
     .thunder-flash {
       position: fixed;
@@ -1301,26 +1301,6 @@
       50%  { opacity: 0.9; }
       80%  { opacity: 0.5; }
       100% { transform: translate3d(20px, -30px, 0); opacity: 0.1; }
-    }
-
-    /* ========= OPTICAL CAMO SECTION REVEAL ========= */
-
-    .section-ghost {
-      opacity: 0;
-      transform: translateY(12px);
-      filter: blur(6px);
-      clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
-      transition:
-        opacity 0.5s ease-out,
-        transform 0.5s ease-out,
-        filter 0.6s ease-out,
-        clip-path 0.7s ease-out;
-    }
-    .section-ghost--visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-      clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
     }
 
     /* ========= HOLOMAP PANEL ========= */
@@ -1743,7 +1723,7 @@
     </div>
   </div>
 
-  <!-- THUNDER FLASH -->
+  <!-- THUNDER FLASH (INTRO ONLY) -->
   <div class="thunder-flash" id="thunder"></div>
 
   <!-- MOVING NEON DUST -->
@@ -1828,7 +1808,7 @@
   </header>
 
   <main>
-    <section class="hero-wrapper section-ghost" id="hero">
+    <section class="hero-wrapper" id="hero">
       <div class="blackwall"></div>
       <div class="hero">
         <div>
@@ -1850,7 +1830,7 @@
       </div>
     </section>
 
-    <section id="apps" class="section-ghost">
+    <section id="apps">
       <h2 class="section-heading">apps</h2>
       <p class="section-sub">live builds you can actually click.</p>
 
@@ -1908,7 +1888,7 @@
       </div>
     </section>
 
-    <section id="map" class="section-ghost">
+    <section id="map">
       <h2 class="section-heading">net map</h2>
       <p class="section-sub">holomap · jump to districts.</p>
 
@@ -1928,7 +1908,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section-ghost">
+    <section id="contact">
       <h2 class="section-heading">contact</h2>
       <p class="section-sub">for feedback, bugs or collabs.</p>
 
@@ -2058,6 +2038,17 @@
       }
     }
 
+    // ===== THUNDER FLASH (INTRO ONLY) =====
+    const thunderEl = document.getElementById("thunder");
+    let thunderInterval = null;
+
+    function triggerThunder() {
+      if (!thunderEl) return;
+      thunderEl.classList.remove("thunder-flash--active");
+      void thunderEl.offsetWidth;
+      thunderEl.classList.add("thunder-flash--active");
+    }
+
     // ===== INTRO CONTROL =====
     const intro = document.getElementById("intro");
 
@@ -2065,6 +2056,17 @@
       if (!intro || intro.classList.contains("intro--out")) return;
       intro.classList.add("intro--out");
       document.body.classList.remove("intro-lock");
+
+      // stop thunder flashes once intro is done
+      if (thunderInterval) {
+        clearInterval(thunderInterval);
+        thunderInterval = null;
+      }
+      // remove thunder overlay so no flashes later
+      if (thunderEl && thunderEl.parentNode) {
+        thunderEl.parentNode.removeChild(thunderEl);
+      }
+
       setTimeout(() => {
         if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
       }, 700);
@@ -2076,6 +2078,11 @@
       createIntroRain();
       createNeonDust();
       runBootLog();
+
+      // Thunder only while intro is visible
+      thunderInterval = setInterval(() => {
+        if (Math.random() < 0.6) triggerThunder();
+      }, 5000);
 
       window.addEventListener("load", () => {
         setTimeout(finishIntro, 7500);
@@ -2260,21 +2267,6 @@
       });
     }
 
-    // Optical camo reveals
-    const ghostSections = document.querySelectorAll(".section-ghost");
-    const revealObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("section-ghost--visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-    ghostSections.forEach(sec => revealObserver.observe(sec));
-
     // HUD jitter
     const hudHR = document.getElementById("hud-hr");
     const hudTemp = document.getElementById("hud-temp");
@@ -2429,19 +2421,6 @@
         audioBtn.textContent = audioOn ? "on" : "off";
       });
     }
-
-    // Thunder flash
-    const thunderEl = document.getElementById("thunder");
-    function triggerThunder() {
-      if (!thunderEl) return;
-      thunderEl.classList.remove("thunder-flash--active");
-      void thunderEl.offsetWidth;
-      thunderEl.classList.add("thunder-flash--active");
-    }
-
-    setInterval(() => {
-      if (Math.random() < 0.4) triggerThunder();
-    }, 7000);
   </script>
 </body>
 </html>
