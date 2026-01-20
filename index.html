@@ -107,7 +107,6 @@
       mix-blend-mode: screen;
       opacity: 0.9;
       animation: introBars 9s linear infinite;
-      z-index: 0;
     }
 
     /* scratches / noise */
@@ -122,12 +121,11 @@
       mix-blend-mode: screen;
       pointer-events: none;
       animation: introNoise 5s linear infinite;
-      z-index: 0;
     }
 
     .intro-inner {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       width: min(780px, 100%);
       border-radius: 28px;
       border: 1px solid rgba(0,255,255,0.4);
@@ -305,51 +303,6 @@
       }
     }
 
-    /* ========= RAIN LAYER FOR FULL INTRO SCREEN ========= */
-    .intro-rain {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 1; /* above bands/noise, below intro-inner */
-    }
-
-    .intro-rain-drop {
-      position: absolute;
-      top: -20%;
-      width: 1.2px;
-      height: 60px;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 255, 255, 0.9)
-      );
-      opacity: 0.7;
-      transform: translate3d(0, 0, 0);
-      animation-name: introRain;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      animation-duration: var(--dur, 3.5s);
-      animation-delay: var(--delay, 0s);
-      left: var(--x, 50vw);
-      filter: blur(0.3px);
-      mix-blend-mode: screen;
-    }
-
-    @keyframes introRain {
-      0% {
-        transform: translate3d(0, -120px, 0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.9;
-      }
-      100% {
-        transform: translate3d(0, 120vh, 0);
-        opacity: 0;
-      }
-    }
-
     /* ========= BACKGROUND FX ========= */
     .scanlines {
       pointer-events: none;
@@ -510,7 +463,7 @@
       height: 2px;
       border-radius: 99px;
       background: rgba(248,250,252,0.95);
-      transition: transform 200ms ease, top 200ms ease, opacity 200ms.ease;
+      transition: transform 200ms ease, top 200ms ease, opacity 200ms ease;
     }
     .hamburger span:nth-child(1) { top: 0; }
     .hamburger span:nth-child(2) { top: 6px; }
@@ -813,7 +766,7 @@
       justify-content: center;
       gap: 8px;
       transition: transform 0.16s ease, box-shadow 0.16s ease,
-                  background 0.16s ease, border-color 0.16s.ease,
+                  background 0.16s ease, border-color 0.16s ease,
                   color 0.16s ease;
     }
 
@@ -1103,8 +1056,8 @@
       transition:
         opacity 0.12s ease-out,
         transform 0.08s linear,
-        width 0.12s.ease-out,
-        height 0.12s.ease-out;
+        width 0.12s ease-out,
+        height 0.12s ease-out;
     }
 
     .cursor-glow--active {
@@ -1128,12 +1081,52 @@
         display: none;
       }
     }
+
+    /* ========= NATURAL RAIN OVER INTRO ========= */
+    .intro-rain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 2; /* in front of logo card / bands */
+    }
+
+    .intro-rain-drop {
+      position: absolute;
+      top: -12%;
+      width: 2px;
+      height: 50px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(190,220,255,0.95)
+      );
+      opacity: 0.65;
+      filter: blur(0.6px);
+      animation-name: introRain;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes introRain {
+      0% {
+        transform: translate3d(0,-120px,0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(0,110vh,0);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- CYBERPUNK 2077-STYLE START SCREEN -->
   <div id="intro" class="intro">
-    <!-- FULL-SCREEN RAIN LAYER -->
+    <!-- rain layer -->
     <div class="intro-rain"></div>
 
     <div class="intro-inner">
@@ -1301,30 +1294,37 @@
   </footer>
 
   <script>
-    // ===== CYBERPUNK START SCREEN CONTROL + RAIN =====
-    const intro = document.getElementById("intro");
-
+    // create natural rain over intro
     function createIntroRain() {
-      if (!intro) return;
-      const layer = intro.querySelector(".intro-rain");
+      const layer = document.querySelector("#intro .intro-rain");
       if (!layer) return;
 
-      const dropCount = 140;
-      for (let i = 0; i < dropCount; i++) {
-        const drop = document.createElement("div");
-        drop.className = "intro-rain-drop";
+      const drops = 140; // density
 
-        const x = Math.random() * 100;           // 0–100 vw
-        const delay = Math.random() * -5;        // negative so some are mid-fall on load
-        const dur = 3 + Math.random() * 2;       // 3–5s duration
+      for (let i = 0; i < drops; i++) {
+        const d = document.createElement("div");
+        d.className = "intro-rain-drop";
 
-        drop.style.setProperty("--x", x + "vw");
-        drop.style.setProperty("--delay", delay + "s");
-        drop.style.setProperty("--dur", dur + "s");
+        // random horizontal position
+        d.style.left = Math.random() * 100 + "vw";
 
-        layer.appendChild(drop);
+        // random length & thickness for more natural feel
+        const h = 40 + Math.random() * 40;
+        d.style.height = h + "px";
+        d.style.width = (1 + Math.random()) + "px";
+
+        // random timing
+        const delay = Math.random() * -3;      // some already mid-fall
+        const dur = 1.1 + Math.random() * 0.9; // 1.1–2.0s
+        d.style.animationDelay = delay + "s";
+        d.style.animationDuration = dur + "s";
+
+        layer.appendChild(d);
       }
     }
+
+    // ===== CYBERPUNK START SCREEN CONTROL =====
+    const intro = document.getElementById("intro");
 
     function finishIntro() {
       if (!intro || intro.classList.contains("intro--out")) return;
