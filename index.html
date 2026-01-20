@@ -235,12 +235,15 @@
       gap: 10px;
     }
 
+    .intro-hint {
+      opacity: 0.8;
+    }
+
     .intro-press {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       color: #ffb4c7;
-      /* still animated, but only opacity / glow now */
       animation: pressPulse 1.2s ease-in-out infinite;
     }
 
@@ -289,7 +292,6 @@
       97% { transform: skewX(-10deg) translate(-1px,-1px); }
     }
 
-    /* no more letter-spacing changes */
     @keyframes pressPulse {
       0%, 100% {
         opacity: 0.35;
@@ -341,22 +343,11 @@
       left: -150px;
       top: -140px;
       background: radial-gradient(circle, rgba(255,140,0,1), transparent 70%);
-      animation: driftLeft 18s ease-in-out infinite alternate;
     }
     .glow-orb--right {
       right: -190px;
       bottom: -160px;
       background: radial-gradient(circle, rgba(255,0,76,1), transparent 70%);
-      animation: driftRight 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes driftLeft {
-      0% { transform: translate3d(0,0,0); }
-      100% { transform: translate3d(40px, 40px, 0); }
-    }
-    @keyframes driftRight {
-      0% { transform: translate3d(0,0,0); }
-      100% { transform: translate3d(-40px, -30px, 0); }
     }
 
     /* ========= NAVBAR ========= */
@@ -645,13 +636,19 @@
     }
 
     /* ========= HERO ========= */
-    .hero-wrapper { position: relative; margin-top: 50px; margin-bottom: 40px; }
+    .hero-wrapper {
+      position: relative;
+      margin-top: 50px;
+      margin-bottom: 40px;
+      padding: 22px 18px 18px;
+    }
 
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr);
       gap: 32px;
       align-items: flex-start;
+      position: relative;
     }
 
     .ticker {
@@ -694,6 +691,48 @@
         0 0 10px rgba(255,191,0,0.9),
         0 0 26px rgba(255,69,0,0.9),
         0 0 40px rgba(0,0,0,0.9);
+      overflow: hidden;
+    }
+
+    /* neon scan line across title */
+    .hero-title::after {
+      content: "";
+      position: absolute;
+      left: -20%;
+      right: -20%;
+      top: 52%;
+      height: 140%;
+      background: linear-gradient(
+        to right,
+        transparent 0,
+        rgba(0,255,255,0.0) 30%,
+        rgba(0,255,255,0.4) 50%,
+        rgba(0,255,255,0.0) 70%,
+        transparent 100%
+      );
+      opacity: 0.0;
+      transform: translateX(-100%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: titleScan 4.2s ease-in-out infinite;
+    }
+
+    @keyframes titleScan {
+      0%, 65% {
+        opacity: 0;
+        transform: translateX(-120%);
+      }
+      70% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+        transform: translateX(120%);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(120%);
+      }
     }
 
     @keyframes slideLoop {
@@ -750,6 +789,61 @@
     .hero-subtitle strong {
       color: var(--accent);
       font-weight: 600;
+    }
+
+    /* HUD-style corner brackets around hero */
+    .hero-wrapper::before,
+    .hero-wrapper::after {
+      content: "";
+      position: absolute;
+      width: 36px;
+      height: 26px;
+      border: 1px solid rgba(0,255,255,0.7);
+      border-bottom: none;
+      border-right: none;
+      opacity: 0.8;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-wrapper::before {
+      top: 0;
+      left: 0;
+      border-radius: 10px 0 0 0;
+    }
+
+    .hero-wrapper::after {
+      top: 0;
+      right: 0;
+      border-radius: 0 10px 0 0;
+      transform: scaleX(-1);
+    }
+
+    .hero-wrapper .hero::before,
+    .hero-wrapper .hero::after {
+      content: "";
+      position: absolute;
+      width: 36px;
+      height: 26px;
+      border: 1px solid rgba(255,0,128,0.7);
+      border-top: none;
+      border-left: none;
+      opacity: 0.8;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-wrapper .hero::before {
+      bottom: -6px;
+      left: 0;
+      border-radius: 0 0 0 10px;
+    }
+
+    .hero-wrapper .hero::after {
+      bottom: -6px;
+      right: 0;
+      border-radius: 0 0 10px 0;
+      transform: scaleX(-1);
     }
 
     .btn-primary,
@@ -873,6 +967,28 @@
         linear-gradient(90deg, rgba(255,140,0,0.38), transparent 40%, rgba(255,0,76,0.34));
       mix-blend-mode: soft-light;
       opacity: 0.45;
+    }
+
+    /* HUD label on hover */
+    .iframe-wrap::after {
+      content: "DATA LINK · ACTIVE";
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: rgba(148, 235, 255, 0.0);
+      text-transform: uppercase;
+      pointer-events: none;
+      transition: color 0.18s ease, text-shadow 0.18s ease;
+    }
+
+    .iframe-wrap:hover::after {
+      color: rgba(148, 235, 255, 0.95);
+      text-shadow:
+        0 0 6px rgba(0,255,255,1),
+        0 0 14px rgba(0,0,0,1);
     }
 
     .iframe-header {
@@ -1366,7 +1482,7 @@
       });
     });
 
-    // Status bar cycling
+    // Status bar cycling with boot-style typewriter
     const statusEl = document.getElementById("status-text");
     const statusDot = document.querySelector(".status-dot");
 
@@ -1378,23 +1494,39 @@
         "WARNING: CYBERPYSCHOSIS ",
         "CITY: NIGHT · NET: LIVE"
       ];
-      let idx = 0;
 
-      function cycleStatus() {
-        const msg = messages[idx];
-        statusEl.textContent = msg;
-
-        if (msg.includes("WARNING: CYBERPYSCHOSIS")) {
+      function setStatusDot(msg) {
+        if (msg.includes("WARNING")) {
           statusDot.classList.add("status-dot--alert");
         } else {
           statusDot.classList.remove("status-dot--alert");
         }
-
-        idx = (idx + 1) % messages.length;
       }
 
-      cycleStatus();
-      setInterval(cycleStatus, 3800);
+      function typeStatus(msg, cb) {
+        statusEl.textContent = "";
+        setStatusDot(msg);
+        let i = 0;
+        const interval = setInterval(() => {
+          statusEl.textContent += msg[i++];
+          if (i >= msg.length) {
+            clearInterval(interval);
+            if (cb) cb();
+          }
+        }, 35);
+      }
+
+      let idx = 0;
+
+      // first message typed like a boot log
+      typeStatus(messages[idx], () => {
+        setInterval(() => {
+          idx = (idx + 1) % messages.length;
+          const next = messages[idx];
+          statusEl.textContent = next;
+          setStatusDot(next);
+        }, 3800);
+      });
     }
 
     // Ticker scroll
@@ -1418,6 +1550,24 @@
 
       requestAnimationFrame(step);
     }
+
+    // Parallax on glow orbs + grid
+    (function () {
+      const leftOrb = document.querySelector(".glow-orb--left");
+      const rightOrb = document.querySelector(".glow-orb--right");
+      const grid = document.querySelector(".bg-grid");
+      if (!leftOrb || !rightOrb || !grid) return;
+
+      window.addEventListener("pointermove", (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        leftOrb.style.transform = `translate3d(${x * 20}px, ${y * 10}px, 0)`;
+        rightOrb.style.transform = `translate3d(${x * -20}px, ${y * -10}px, 0)`;
+        grid.style.backgroundPosition =
+          `${x * 20}px ${y * 20}px, ${x * -10}px ${y * -10}px`;
+      });
+    })();
 
     // ========= DARK PURPLE NEON CURSOR GLOW =========
     if (window.matchMedia("(pointer:fine)").matches) {
