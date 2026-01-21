@@ -1688,268 +1688,251 @@
     }
 
     /* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE) ========= */
+/* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE) ========= */
 
-    .nc-holo {
-      position: fixed;
-      right: 24px;
-      bottom: 0;
-      width: 220px;
-      height: 520px;
-      pointer-events: none;
-      z-index: 11; /* below HUD (12), above content */
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+.nc-holo {
+  position: fixed;
+  right: 24px;
+  bottom: 0;
+  width: 260px;
+  height: 540px;
+  pointer-events: none;
+  z-index: 11; /* below HUD (12), above content */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
 
-    /* Pink beam / billboard frame */
-    .nc-holo-beam {
-      position: absolute;
-      inset: 2% 8% 0 12%;
-      border-radius: 50% 50% 45% 45%;
-      background:
-        radial-gradient(circle at 50% 5%, rgba(255,255,255,0.7), transparent 55%),
-        radial-gradient(circle at 15% 0%, rgba(255,120,230,0.7), transparent 55%),
-        radial-gradient(circle at 85% 8%, rgba(255,40,160,0.8), transparent 60%),
-        linear-gradient(
-          180deg,
-          rgba(255,40,180,0.95),
-          rgba(255,110,230,0.7),
-          rgba(255,0,120,0.2)
-        );
-      box-shadow:
-        0 0 40px rgba(255,0,180,1),
-        0 0 90px rgba(255,0,180,0.8);
-      mix-blend-mode: screen;
-      filter: blur(0.6px);
-    }
+/* Neon billboard / beam */
+.nc-holo-beam {
+  position: absolute;
+  inset: 2% 10% 0 16%;
+  border-radius: 50% 50% 44% 44%;
+  background:
+    radial-gradient(circle at 50% 3%, rgba(255,255,255,0.9), transparent 55%),
+    radial-gradient(circle at 20% 0%, rgba(255,140,255,0.8), transparent 60%),
+    radial-gradient(circle at 80% 8%, rgba(255,0,180,0.9), transparent 60%),
+    linear-gradient(
+      180deg,
+      rgba(255,40,200,0.95),
+      rgba(255,120,230,0.7),
+      rgba(255,0,130,0.18)
+    );
+  box-shadow:
+    0 0 45px rgba(255,0,190,1),
+    0 0 120px rgba(255,0,190,0.85);
+  mix-blend-mode: screen;
+  filter: blur(0.7px);
+}
 
-    /* Scanlines on the beam */
-    .nc-holo-beam::after {
-      content: "";
-      position: absolute;
-      inset: 7% 16% 10% 16%;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.65) 0,
-        rgba(255,255,255,0.65) 1px,
-        transparent 2px,
-        transparent 4px
-      );
-      opacity: 0.55;
-      mix-blend-mode: screen;
-    }
+/* Scanlines inside the beam */
+.nc-holo-beam::after {
+  content: "";
+  position: absolute;
+  inset: 7% 18% 10% 18%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.55) 0,
+    rgba(255,255,255,0.55) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
 
-    /* Body container (actual girl) */
-    .nc-holo-body {
-      position: relative;
-      width: 90px;
-      height: 330px;
-      transform-origin: bottom center;
-      animation: ncHoloIdle 3.6s ease-in-out infinite;
-    }
+/* Container for the figure */
+.nc-holo-body {
+  position: relative;
+  width: 120px;
+  height: 360px;
+  transform-origin: bottom center;
+  animation: ncHoloIdle 3.6s ease-in-out infinite;
+}
 
-    /* Head */
-    .nc-holo-head {
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      width: 64px;
-      height: 64px;
-      transform: translateX(-50%);
-      border-radius: 70% 70% 55% 55%;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(255,255,255,0.95), rgba(255,210,240,0.3) 55%, transparent 60%),
-        radial-gradient(circle at 50% 100%, rgba(255,110,220,0.7), transparent 60%);
-      box-shadow:
-        0 0 26px rgba(255,210,255,1),
-        0 0 60px rgba(255,0,200,0.9);
-      mix-blend-mode: screen;
-    }
+/* Full body silhouette – side-view, BR-style */
+.nc-holo-figure {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 96px;
+  height: 330px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at 20% 22%, rgba(255,255,255,0.95), rgba(255,190,240,0.4) 40%, transparent 65%),  /* face glow */
+    radial-gradient(circle at 65% 28%, rgba(0,255,255,0.9), transparent 55%), /* shoulder edge */
+    linear-gradient(
+      180deg,
+      rgba(255,210,255,0.95),
+      rgba(255,140,235,0.8),
+      rgba(255,60,190,0.45),
+      rgba(255,140,235,0.18)
+    );
+  /* side-profile clip (hip, knee, etc.) */
+  clip-path: polygon(
+    18% 100%,  /* back ankle  */
+    16% 76%,   /* back calf   */
+    20% 60%,   /* back knee   */
+    18% 48%,   /* back thigh  */
+    16% 36%,   /* lower back  */
+    18% 26%,   /* mid back    */
+    22% 18%,   /* upper back  */
+    30% 13%,   /* neck back   */
+    42% 8%,    /* back of head*/
+    56% 4%,    /* top of head */
+    70% 10%,   /* forehead    */
+    78% 18%,   /* chin/front  */
+    78% 23%,   /* neck front  */
+    82% 30%,   /* chest       */
+    88% 40%,   /* bust        */
+    86% 50%,   /* front waist */
+    80% 60%,   /* front hip   */
+    78% 68%,   /* thigh front */
+    84% 82%,   /* front knee  */
+    80% 96%,   /* front ankle */
+    68% 100%,  /* front foot  */
+    56% 96%,   /* under arch  */
+    44% 90%,   /* inner calf  */
+    38% 80%,   /* inner knee  */
+    34% 64%,   /* inner thigh */
+    32% 52%,   /* hip curve   */
+    30% 38%,   /* waist curve */
+    28% 26%,   /* upper back repeat */
+    24% 22%,   /* neck join   */
+    20% 26%,   /* start back again */
+    18% 36%, 18% 48%, 18% 60%, 18% 76%
+  );
+  box-shadow:
+    0 0 40px rgba(255,180,245,1),
+    0 0 85px rgba(255,0,200,0.9),
+    0 0 120px rgba(255,0,160,0.9);
+  mix-blend-mode: screen;
+}
 
-    /* Hair halo */
-    .nc-holo-hair {
-      position: absolute;
-      top: -42px;
-      left: 50%;
-      width: 80px;
-      height: 70px;
-      transform: translateX(-50%);
-      border-radius: 75% 75% 40% 40%;
-      background: linear-gradient(90deg, rgba(160,70,255,0.95), rgba(255,0,200,0.95));
-      filter: blur(1px);
-      opacity: 0.9;
-      mix-blend-mode: screen;
-    }
+/* Hair halo, short-bob style on the side */
+.nc-holo-figure::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 82px;
+  height: 72px;
+  border-radius: 75% 80% 40% 45%;
+  background:
+    linear-gradient(100deg, rgba(80,220,255,0.3), rgba(255,0,200,0.9));
+  filter: blur(1.1px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
 
-    /* Torso / dress – side profile with a bit of curve */
-    .nc-holo-torso {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      width: 80px;
-      height: 160px;
-      transform: translateX(-50%);
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,180,240,0.95),
-          rgba(255,60,190,0.6),
-          rgba(255,140,220,0.1)
-        );
-      clip-path: polygon(
-        50% 0%,  /* neck */
-        90% 14%, /* front chest */
-        96% 30%, /* front hip */
-        78% 65%, /* front knee */
-        60% 100%,/* front ankle  */
-        40% 100%,
-        25% 70%, /* back knee */
-        15% 36%, /* back hip */
-        15% 18%, /* back shoulder */
-        30% 4%   /* back neck */
-      );
-      box-shadow:
-        0 0 30px rgba(255,160,240,0.9),
-        0 0 60px rgba(255,0,180,0.85);
-      mix-blend-mode: screen;
-    }
+/* Arm sweeping forward (bent, like ad pose) */
+.nc-holo-arm {
+  position: absolute;
+  top: 34%;
+  right: -4px;
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,210,255,0.9),
+      rgba(255,120,225,0.5)
+    );
+  transform-origin: 15% 70%;
+  transform: rotate(-35deg);
+  box-shadow:
+    0 0 22px rgba(255,190,240,0.9),
+    0 0 40px rgba(255,0,200,0.8);
+  mix-blend-mode: screen;
+  filter: blur(0.4px);
+}
 
-    /* Legs */
-    .nc-holo-leg {
-      position: absolute;
-      bottom: 0;
-      width: 26px;
-      height: 120px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,160,240,0.85),
-          rgba(255,40,170,0.4),
-          rgba(255,180,240,0.1)
-        );
-      border-radius: 50px;
-      mix-blend-mode: screen;
-      filter: blur(0.2px);
-    }
+/* Subtle back arm silhouette */
+.nc-holo-arm--back {
+  right: auto;
+  left: -10px;
+  top: 42%;
+  transform-origin: 78% 70%;
+  transform: rotate(-140deg);
+  opacity: 0.4;
+}
 
-    .nc-holo-leg--front {
-      right: 16px;
-      transform: rotate(6deg);
-      box-shadow: 0 0 24px rgba(255,120,220,0.9);
-    }
+/* Moving scan band over the figure */
+.nc-holo-scan {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  top: 0;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.9),
+    transparent
+  );
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  filter: blur(4px);
+  animation: ncHoloScan 3.8s linear infinite;
+}
 
-    .nc-holo-leg--back {
-      right: 40px;
-      transform: rotate(2deg);
-      opacity: 0.55;
-      box-shadow: 0 0 18px rgba(255,120,220,0.7);
-    }
+/* Glitch halo bursts */
+.nc-holo-glitch {
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,255,0.6), rgba(255,0,200,0.7));
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: ncHoloGlitch 2.7s infinite;
+}
 
-    /* Arms */
-    .nc-holo-arm {
-      position: absolute;
-      width: 52px;
-      height: 70px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,210,250,0.9),
-          rgba(255,100,210,0.4)
-        );
-      border-radius: 50px;
-      mix-blend-mode: screen;
-      filter: blur(0.4px);
-    }
+/* Idle float */
+@keyframes ncHoloIdle {
+  0%, 100% {
+    transform: translateY(0px) scaleX(1);
+  }
+  50% {
+    transform: translateY(-8px) scaleX(1.02);
+  }
+}
 
-    .nc-holo-arm--front {
-      top: 40px;
-      right: -6px;
-      transform-origin: 10% 70%;
-      transform: rotate(-12deg);
-      box-shadow: 0 0 20px rgba(255,180,240,0.9);
-    }
+/* Scan band */
+@keyframes ncHoloScan {
+  0%   { transform: translateY(-20%); opacity: 0.1; }
+  20%  { opacity: 0.5; }
+  50%  { transform: translateY(120%); opacity: 0.85; }
+  80%  { opacity: 0.4; }
+  100% { transform: translateY(-20%); opacity: 0.1; }
+}
 
-    .nc-holo-arm--back {
-      top: 54px;
-      left: 2px;
-      transform-origin: 90% 70%;
-      transform: rotate(-35deg);
-      opacity: 0.5;
-    }
+/* Glitch pulses */
+@keyframes ncHoloGlitch {
+  0%, 92%, 100% {
+    opacity: 0;
+    transform: translate(0,0);
+  }
+  93% {
+    opacity: 0.5;
+    transform: translate(-3px,1px);
+  }
+  95% {
+    opacity: 0.3;
+    transform: translate(4px,-2px);
+  }
+  97% {
+    opacity: 0.4;
+    transform: translate(-2px,-3px);
+  }
+}
 
-    /* Moving scan band over the body */
-    .nc-holo-scan {
-      position: absolute;
-      left: -20%;
-      right: -20%;
-      top: 0;
-      height: 40px;
-      background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(255,255,255,0.9),
-        transparent
-      );
-      opacity: 0.45;
-      mix-blend-mode: screen;
-      filter: blur(3px);
-      animation: ncHoloScan 3.8s linear infinite;
-    }
+/* Hide holo girl on small screens so layout stays clean */
+@media (max-width: 1024px) {
+  .nc-holo { display: none; }
+}
 
-    /* Glitch flashes */
-    .nc-holo-glitch {
-      position: absolute;
-      inset: -4%;
-      border-radius: 50%;
-      background: linear-gradient(90deg, rgba(0,255,255,0.5), rgba(255,0,200,0.6));
-      mix-blend-mode: screen;
-      opacity: 0;
-      animation: ncHoloGlitch 2.7s infinite;
-    }
-
-    /* Idle float */
-    @keyframes ncHoloIdle {
-      0%, 100% {
-        transform: translateY(0px) scaleX(1);
-      }
-      50% {
-        transform: translateY(-6px) scaleX(1.015);
-      }
-    }
-
-    /* Scan band */
-    @keyframes ncHoloScan {
-      0%   { transform: translateY(-20%); opacity: 0.1; }
-      20%  { opacity: 0.5; }
-      50%  { transform: translateY(120%); opacity: 0.8; }
-      80%  { opacity: 0.4; }
-      100% { transform: translateY(-20%); opacity: 0.1; }
-    }
-
-    /* Glitch pulses */
-    @keyframes ncHoloGlitch {
-      0%, 92%, 100% {
-        opacity: 0;
-        transform: translate(0,0);
-      }
-      93% {
-        opacity: 0.45;
-        transform: translate(-2px,1px);
-      }
-      95% {
-        opacity: 0.25;
-        transform: translate(3px,-1px);
-      }
-      97% {
-        opacity: 0.35;
-        transform: translate(-1px,-2px);
-      }
-    }
-
-    /* Hide holo girl on small screens so it doesn't crush layout */
-    @media (max-width: 1024px) {
-      .nc-holo { display: none; }
+    .nc-holo { display: none; }
     }
   </style>
 </head>
@@ -2021,24 +2004,20 @@
   </div>
 
   <!-- HOLOGRAM GIRL -->
-  <div class="nc-holo" aria-hidden="true">
-    <div class="nc-holo-beam"></div>
+<div class="nc-holo" aria-hidden="true">
+  <div class="nc-holo-beam"></div>
 
-    <div class="nc-holo-body">
-      <div class="nc-holo-head"></div>
-      <div class="nc-holo-hair"></div>
+  <div class="nc-holo-body">
+    <div class="nc-holo-figure"></div>
 
-      <div class="nc-holo-torso"></div>
-      <div class="nc-holo-leg nc-holo-leg--front"></div>
-      <div class="nc-holo-leg nc-holo-leg--back"></div>
+    <div class="nc-holo-arm"></div>
+    <div class="nc-holo-arm nc-holo-arm--back"></div>
 
-      <div class="nc-holo-arm nc-holo-arm--front"></div>
-      <div class="nc-holo-arm nc-holo-arm--back"></div>
-
-      <div class="nc-holo-scan"></div>
-      <div class="nc-holo-glitch"></div>
-    </div>
+    <div class="nc-holo-scan"></div>
+    <div class="nc-holo-glitch"></div>
   </div>
+</div>
+
 
   <!-- QUICKHACK RADIAL -->
   <div class="quickhack-menu" id="quickhack">
