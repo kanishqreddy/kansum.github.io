@@ -1426,7 +1426,7 @@
       letter-spacing: 0.16em;
       color: #e5e7eb;
       box-shadow: 0 18px 40px rgba(0,0,0,0.9);
-      z-index: 12;
+      z-index: 22;
     }
 
     .hud-row {
@@ -1691,11 +1691,13 @@
 
     .nc-holo {
       position: fixed;
-      right: 40px;
-      bottom: 0;
+      right: 0;
+      top: 14%;
       width: 420px;
+      height: 70vh;
+      padding-right: 32px;
       pointer-events: none;
-      z-index: 18; /* under HUD, above content */
+      z-index: 21; /* below HUD, above content */
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -1703,41 +1705,45 @@
 
     .nc-holo-beam {
       position: absolute;
-      inset: -5% 0 0 0;
+      inset: 4% 12% 0 18%;
       border-radius: 80% 80% 40% 40%;
       background:
-        radial-gradient(circle at 50% 5%, rgba(255,255,255,0.75), transparent 65%),
-        radial-gradient(circle at 10% 0%, rgba(255,160,255,0.7), transparent 70%),
-        radial-gradient(circle at 90% 10%, rgba(255,0,160,0.8), transparent 70%);
-      opacity: 0.35;
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.7), transparent 55%),
+        radial-gradient(circle at 5% 10%, rgba(255,160,255,0.8), transparent 70%),
+        radial-gradient(circle at 95% 20%, rgba(255,0,190,0.9), transparent 70%);
+      opacity: 0.32;
+      filter: blur(6px);
       mix-blend-mode: screen;
-      filter: blur(4px);
     }
 
     .nc-holo-img-wrap {
       position: relative;
       width: 100%;
-      animation: holoFloat 4s ease-in-out infinite;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
       filter:
-        drop-shadow(0 0 25px rgba(255,200,255,1))
-        drop-shadow(0 0 70px rgba(255,0,200,0.9));
-      mix-blend-mode: screen;
+        drop-shadow(0 0 24px rgba(255,200,255,0.95))
+        drop-shadow(0 0 60px rgba(255,0,190,0.9));
+      mix-blend-mode: normal;
+      animation: holoFloat 4s ease-in-out infinite;
     }
 
     .nc-holo-img {
-      width: 100%;
-      height: auto;
+      max-height: 100%;
+      width: auto;
       object-fit: contain;
-      opacity: 1;
+      opacity: 0.95;
       display: block;
     }
 
     .nc-holo-scan {
       position: absolute;
-      left: -30%;
-      right: -30%;
-      top: 0;
+      left: -20%;
+      right: -20%;
       height: 40px;
+      top: 0;
       background: linear-gradient(
         to bottom,
         transparent,
@@ -1745,15 +1751,15 @@
         transparent
       );
       mix-blend-mode: screen;
-      filter: blur(6px);
+      filter: blur(7px);
       animation: holoScan 3.6s linear infinite;
     }
 
     .nc-holo-glitch {
       position: absolute;
-      inset: -4%;
+      inset: 0;
       border-radius: 40%;
-      background: radial-gradient(circle, rgba(0,255,255,0.45), rgba(255,0,200,0.7));
+      background: radial-gradient(circle, rgba(0,255,255,0.5), rgba(255,0,200,0.7));
       opacity: 0;
       mix-blend-mode: screen;
       animation: holoGlitch 2.8s infinite;
@@ -1761,52 +1767,63 @@
 
     .nc-holo-speech {
       position: absolute;
-      bottom: 80%;
-      right: 105%;
+      bottom: 58%;
+      left: -8%;
+      transform: translateX(-100%) translateY(10px) scale(0.96);
+      width: 260px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,255,255,0.85);
       background: rgba(5,0,20,0.96);
-      border: 1px solid rgba(0,255,255,0.8);
       color: #ffffff;
       font-family: "Share Tech Mono", monospace;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      padding: 10px 14px;
-      border-radius: 8px;
-      width: 260px;
+      text-align: left;
       opacity: 0;
-      transform: translateY(10px) scale(0.96);
-      transition: all 0.45s ease-out;
       box-shadow:
         0 0 20px rgba(0,255,255,0.9),
         0 0 35px rgba(255,0,190,0.9);
-      text-align: left;
+      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
     }
 
     .nc-holo-speech--visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateX(-100%) translateY(0) scale(1);
     }
 
     @keyframes holoFloat {
-      0%,100% { transform: translateY(0px); }
-      50%     { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
     }
 
     @keyframes holoScan {
-      0% { transform: translateY(-20%); opacity: 0; }
-      30% { opacity: 0.6; }
-      60% { transform: translateY(110%); opacity: 0.8; }
+      0%   { transform: translateY(-20%); opacity: 0; }
+      25%  { opacity: 0.7; }
+      60%  { transform: translateY(110%); opacity: 0.9; }
       100% { opacity: 0; }
     }
 
     @keyframes holoGlitch {
       0%,95%,100% { opacity: 0; }
-      96% { opacity: 0.5; transform: translate(2px,-1px); }
-      98% { opacity: 0.2; transform: translate(-3px,2px); }
+      96%         { opacity: 0.45; transform: translate(2px,-1px); }
+      98%         { opacity: 0.2;  transform: translate(-3px,2px); }
+    }
+
+    @media (max-width: 1200px) {
+      .nc-holo {
+        width: 320px;
+        height: 60vh;
+        top: 18%;
+        padding-right: 20px;
+      }
     }
 
     @media (max-width: 1024px) {
-      .nc-holo { display: none; }
+      .nc-holo {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -1885,11 +1902,11 @@
       <img src="holo-girl.webp" alt="" class="nc-holo-img" />
       <div class="nc-holo-scan"></div>
       <div class="nc-holo-glitch"></div>
-    </div>
 
-    <div class="nc-holo-speech" id="holo-speech">
-      WAKE UP SAMURAI!<br />
-      WELCOME TO NIGHT CITY!
+      <div class="nc-holo-speech" id="holo-speech">
+        WAKE UP SAMURAI!<br />
+        WELCOME TO NIGHT CITY!
+      </div>
     </div>
   </div>
 
@@ -2177,6 +2194,19 @@
       }
     }
 
+    // ===== HOLO SPEECH CONTROL =====
+    const holoSpeech = document.getElementById("holo-speech");
+    let holoSpeechShown = false;
+
+    function showHoloSpeech() {
+      if (!holoSpeech || holoSpeechShown) return;
+      holoSpeechShown = true;
+      holoSpeech.classList.add("nc-holo-speech--visible");
+      setTimeout(() => {
+        holoSpeech.classList.remove("nc-holo-speech--visible");
+      }, 7000);
+    }
+
     // ===== THUNDER FLASH (INTRO ONLY) =====
     const thunderEl = document.getElementById("thunder");
     let thunderInterval = null;
@@ -2188,20 +2218,6 @@
       thunderEl.classList.add("thunder-flash--active");
     }
 
-    // ===== HOLO SPEECH CONTROL =====
-    const holoSpeech = document.getElementById("holo-speech");
-    let holoSpeechShown = false;
-
-    function showHoloSpeech() {
-      if (!holoSpeech || holoSpeechShown) return;
-      holoSpeechShown = true;
-      holoSpeech.classList.add("nc-holo-speech--visible");
-      // Auto-hide after a few seconds so it doesn't stay forever
-      setTimeout(() => {
-        holoSpeech.classList.remove("nc-holo-speech--visible");
-      }, 7000);
-    }
-
     // ===== INTRO CONTROL =====
     const intro = document.getElementById("intro");
 
@@ -2210,12 +2226,10 @@
       intro.classList.add("intro--out");
       document.body.classList.remove("intro-lock");
 
-      // stop thunder flashes once intro is done
       if (thunderInterval) {
         clearInterval(thunderInterval);
         thunderInterval = null;
       }
-      // remove thunder overlay so no flashes later
       if (thunderEl && thunderEl.parentNode) {
         thunderEl.parentNode.removeChild(thunderEl);
       }
@@ -2224,7 +2238,6 @@
         if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
       }, 700);
 
-      // bring holo girl speech in shortly after intro fades out
       setTimeout(showHoloSpeech, 900);
     }
 
@@ -2235,7 +2248,6 @@
       createNeonDust();
       runBootLog();
 
-      // Thunder only while intro is visible
       thunderInterval = setInterval(() => {
         if (Math.random() < 0.6) triggerThunder();
       }, 5000);
@@ -2461,7 +2473,7 @@
       "ALERT: CONTAINMENT FIELD STRESS SPIKE"
     ];
 
-    function triggerSystemBanner() {
+    function triggerSystemEventBanner() {
       if (!systemEvent) return;
       const msg = eventMessages[Math.floor(Math.random() * eventMessages.length)];
       systemEvent.textContent = msg;
@@ -2472,7 +2484,7 @@
     }
 
     setInterval(() => {
-      if (Math.random() < 0.45) triggerSystemBanner();
+      if (Math.random() < 0.45) triggerSystemEventBanner();
     }, 9000);
 
     // Quickhack radial
@@ -2544,7 +2556,6 @@
       const h = center(hero);
       const c = center(contact);
 
-      // horizontal line: APPS → OVERVIEW x-position
       const hLeft  = Math.min(a.x, h.x);
       const hRight = Math.max(a.x, h.x);
 
@@ -2553,7 +2564,6 @@
       path1.style.width  = (hRight - hLeft) + "px";
       path1.style.height = "2px";
 
-      // vertical line: OVERVIEW ↕ CONTACT
       const vTop    = Math.min(h.y, c.y);
       const vBottom = Math.max(h.y, c.y);
 
