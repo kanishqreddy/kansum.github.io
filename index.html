@@ -1688,251 +1688,245 @@
     }
 
     /* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE) ========= */
-/* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE) ========= */
 
-.nc-holo {
-  position: fixed;
-  right: 24px;
-  bottom: 0;
-  width: 260px;
-  height: 540px;
-  pointer-events: none;
-  z-index: 11; /* below HUD (12), above content */
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
+    .nc-holo {
+      position: fixed;
+      right: 24px;
+      bottom: 0;
+      width: 260px;
+      height: 540px;
+      pointer-events: none;
+      z-index: 10; /* under HUD overlay */
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
 
-/* Neon billboard / beam */
-.nc-holo-beam {
-  position: absolute;
-  inset: 2% 10% 0 16%;
-  border-radius: 50% 50% 44% 44%;
-  background:
-    radial-gradient(circle at 50% 3%, rgba(255,255,255,0.9), transparent 55%),
-    radial-gradient(circle at 20% 0%, rgba(255,140,255,0.8), transparent 60%),
-    radial-gradient(circle at 80% 8%, rgba(255,0,180,0.9), transparent 60%),
-    linear-gradient(
-      180deg,
-      rgba(255,40,200,0.95),
-      rgba(255,120,230,0.7),
-      rgba(255,0,130,0.18)
-    );
-  box-shadow:
-    0 0 45px rgba(255,0,190,1),
-    0 0 120px rgba(255,0,190,0.85);
-  mix-blend-mode: screen;
-  filter: blur(0.7px);
-}
+    /* Neon billboard / beam */
+    .nc-holo-beam {
+      position: absolute;
+      inset: 2% 10% 0 16%;
+      border-radius: 50% 50% 44% 44%;
+      background:
+        radial-gradient(circle at 50% 3%, rgba(255,255,255,0.9), transparent 55%),
+        radial-gradient(circle at 20% 0%, rgba(255,140,255,0.8), transparent 60%),
+        radial-gradient(circle at 80% 8%, rgba(255,0,180,0.9), transparent 60%),
+        linear-gradient(
+          180deg,
+          rgba(255,40,200,0.95),
+          rgba(255,120,230,0.7),
+          rgba(255,0,130,0.18)
+        );
+      box-shadow:
+        0 0 45px rgba(255,0,190,1),
+        0 0 120px rgba(255,0,190,0.85);
+      mix-blend-mode: screen;
+      filter: blur(0.7px);
+    }
 
-/* Scanlines inside the beam */
-.nc-holo-beam::after {
-  content: "";
-  position: absolute;
-  inset: 7% 18% 10% 18%;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.55) 0,
-    rgba(255,255,255,0.55) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  opacity: 0.55;
-  mix-blend-mode: screen;
-}
+    /* Scanlines inside the beam */
+    .nc-holo-beam::after {
+      content: "";
+      position: absolute;
+      inset: 7% 18% 10% 18%;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.55) 0,
+        rgba(255,255,255,0.55) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
 
-/* Container for the figure */
-.nc-holo-body {
-  position: relative;
-  width: 120px;
-  height: 360px;
-  transform-origin: bottom center;
-  animation: ncHoloIdle 3.6s ease-in-out infinite;
-}
+    /* Container for the figure */
+    .nc-holo-body {
+      position: relative;
+      width: 120px;
+      height: 360px;
+      transform-origin: bottom center;
+      animation: ncHoloIdle 3.6s ease-in-out infinite;
+    }
 
-/* Full body silhouette – side-view, BR-style */
-.nc-holo-figure {
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  width: 96px;
-  height: 330px;
-  transform: translateX(-50%);
-  background:
-    radial-gradient(circle at 20% 22%, rgba(255,255,255,0.95), rgba(255,190,240,0.4) 40%, transparent 65%),  /* face glow */
-    radial-gradient(circle at 65% 28%, rgba(0,255,255,0.9), transparent 55%), /* shoulder edge */
-    linear-gradient(
-      180deg,
-      rgba(255,210,255,0.95),
-      rgba(255,140,235,0.8),
-      rgba(255,60,190,0.45),
-      rgba(255,140,235,0.18)
-    );
-  /* side-profile clip (hip, knee, etc.) */
-  clip-path: polygon(
-    18% 100%,  /* back ankle  */
-    16% 76%,   /* back calf   */
-    20% 60%,   /* back knee   */
-    18% 48%,   /* back thigh  */
-    16% 36%,   /* lower back  */
-    18% 26%,   /* mid back    */
-    22% 18%,   /* upper back  */
-    30% 13%,   /* neck back   */
-    42% 8%,    /* back of head*/
-    56% 4%,    /* top of head */
-    70% 10%,   /* forehead    */
-    78% 18%,   /* chin/front  */
-    78% 23%,   /* neck front  */
-    82% 30%,   /* chest       */
-    88% 40%,   /* bust        */
-    86% 50%,   /* front waist */
-    80% 60%,   /* front hip   */
-    78% 68%,   /* thigh front */
-    84% 82%,   /* front knee  */
-    80% 96%,   /* front ankle */
-    68% 100%,  /* front foot  */
-    56% 96%,   /* under arch  */
-    44% 90%,   /* inner calf  */
-    38% 80%,   /* inner knee  */
-    34% 64%,   /* inner thigh */
-    32% 52%,   /* hip curve   */
-    30% 38%,   /* waist curve */
-    28% 26%,   /* upper back repeat */
-    24% 22%,   /* neck join   */
-    20% 26%,   /* start back again */
-    18% 36%, 18% 48%, 18% 60%, 18% 76%
-  );
-  box-shadow:
-    0 0 40px rgba(255,180,245,1),
-    0 0 85px rgba(255,0,200,0.9),
-    0 0 120px rgba(255,0,160,0.9);
-  mix-blend-mode: screen;
-}
+    /* Full body silhouette – side-view */
+    .nc-holo-figure {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 96px;
+      height: 330px;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(circle at 20% 22%, rgba(255,255,255,0.95), rgba(255,190,240,0.4) 40%, transparent 65%),
+        radial-gradient(circle at 65% 28%, rgba(0,255,255,0.9), transparent 55%),
+        linear-gradient(
+          180deg,
+          rgba(255,210,255,0.95),
+          rgba(255,140,235,0.8),
+          rgba(255,60,190,0.45),
+          rgba(255,140,235,0.18)
+        );
+      clip-path: polygon(
+        18% 100%,
+        16% 76%,
+        20% 60%,
+        18% 48%,
+        16% 36%,
+        18% 26%,
+        22% 18%,
+        30% 13%,
+        42% 8%,
+        56% 4%,
+        70% 10%,
+        78% 18%,
+        78% 23%,
+        82% 30%,
+        88% 40%,
+        86% 50%,
+        80% 60%,
+        78% 68%,
+        84% 82%,
+        80% 96%,
+        68% 100%,
+        56% 96%,
+        44% 90%,
+        38% 80%,
+        34% 64%,
+        32% 52%,
+        30% 38%,
+        28% 26%,
+        24% 22%,
+        20% 26%,
+        18% 36%,
+        18% 48%,
+        18% 60%,
+        18% 76%
+      );
+      box-shadow:
+        0 0 40px rgba(255,180,245,1),
+        0 0 85px rgba(255,0,200,0.9),
+        0 0 120px rgba(255,0,160,0.9);
+      mix-blend-mode: screen;
+    }
 
-/* Hair halo, short-bob style on the side */
-.nc-holo-figure::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 35%;
-  width: 82px;
-  height: 72px;
-  border-radius: 75% 80% 40% 45%;
-  background:
-    linear-gradient(100deg, rgba(80,220,255,0.3), rgba(255,0,200,0.9));
-  filter: blur(1.1px);
-  opacity: 0.9;
-  mix-blend-mode: screen;
-}
+    /* Hair halo */
+    .nc-holo-figure::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 35%;
+      width: 82px;
+      height: 72px;
+      border-radius: 75% 80% 40% 45%;
+      background:
+        linear-gradient(100deg, rgba(80,220,255,0.3), rgba(255,0,200,0.9));
+      filter: blur(1.1px);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+    }
 
-/* Arm sweeping forward (bent, like ad pose) */
-.nc-holo-arm {
-  position: absolute;
-  top: 34%;
-  right: -4px;
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,210,255,0.9),
-      rgba(255,120,225,0.5)
-    );
-  transform-origin: 15% 70%;
-  transform: rotate(-35deg);
-  box-shadow:
-    0 0 22px rgba(255,190,240,0.9),
-    0 0 40px rgba(255,0,200,0.8);
-  mix-blend-mode: screen;
-  filter: blur(0.4px);
-}
+    /* Front arm */
+    .nc-holo-arm {
+      position: absolute;
+      top: 34%;
+      right: -4px;
+      width: 70px;
+      height: 70px;
+      border-radius: 40px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,210,255,0.9),
+          rgba(255,120,225,0.5)
+        );
+      transform-origin: 15% 70%;
+      transform: rotate(-35deg);
+      box-shadow:
+        0 0 22px rgba(255,190,240,0.9),
+        0 0 40px rgba(255,0,200,0.8);
+      mix-blend-mode: screen;
+      filter: blur(0.4px);
+    }
 
-/* Subtle back arm silhouette */
-.nc-holo-arm--back {
-  right: auto;
-  left: -10px;
-  top: 42%;
-  transform-origin: 78% 70%;
-  transform: rotate(-140deg);
-  opacity: 0.4;
-}
+    /* Back arm */
+    .nc-holo-arm--back {
+      right: auto;
+      left: -10px;
+      top: 42%;
+      transform-origin: 78% 70%;
+      transform: rotate(-140deg);
+      opacity: 0.4;
+    }
 
-/* Moving scan band over the figure */
-.nc-holo-scan {
-  position: absolute;
-  left: -25%;
-  right: -25%;
-  top: 0;
-  height: 40px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255,255,255,0.9),
-    transparent
-  );
-  opacity: 0.45;
-  mix-blend-mode: screen;
-  filter: blur(4px);
-  animation: ncHoloScan 3.8s linear infinite;
-}
+    /* Moving scan band */
+    .nc-holo-scan {
+      position: absolute;
+      left: -25%;
+      right: -25%;
+      top: 0;
+      height: 40px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,255,255,0.9),
+        transparent
+      );
+      opacity: 0.45;
+      mix-blend-mode: screen;
+      filter: blur(4px);
+      animation: ncHoloScan 3.8s linear infinite;
+    }
 
-/* Glitch halo bursts */
-.nc-holo-glitch {
-  position: absolute;
-  inset: -6%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,255,255,0.6), rgba(255,0,200,0.7));
-  mix-blend-mode: screen;
-  opacity: 0;
-  animation: ncHoloGlitch 2.7s infinite;
-}
+    /* Glitch halo bursts */
+    .nc-holo-glitch {
+      position: absolute;
+      inset: -6%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.6), rgba(255,0,200,0.7));
+      mix-blend-mode: screen;
+      opacity: 0;
+      animation: ncHoloGlitch 2.7s infinite;
+    }
 
-/* Idle float */
-@keyframes ncHoloIdle {
-  0%, 100% {
-    transform: translateY(0px) scaleX(1);
-  }
-  50% {
-    transform: translateY(-8px) scaleX(1.02);
-  }
-}
+    @keyframes ncHoloIdle {
+      0%, 100% {
+        transform: translateY(0px) scaleX(1);
+      }
+      50% {
+        transform: translateY(-8px) scaleX(1.02);
+      }
+    }
 
-/* Scan band */
-@keyframes ncHoloScan {
-  0%   { transform: translateY(-20%); opacity: 0.1; }
-  20%  { opacity: 0.5; }
-  50%  { transform: translateY(120%); opacity: 0.85; }
-  80%  { opacity: 0.4; }
-  100% { transform: translateY(-20%); opacity: 0.1; }
-}
+    @keyframes ncHoloScan {
+      0%   { transform: translateY(-20%); opacity: 0.1; }
+      20%  { opacity: 0.5; }
+      50%  { transform: translateY(120%); opacity: 0.85; }
+      80%  { opacity: 0.4; }
+      100% { transform: translateY(-20%); opacity: 0.1; }
+    }
 
-/* Glitch pulses */
-@keyframes ncHoloGlitch {
-  0%, 92%, 100% {
-    opacity: 0;
-    transform: translate(0,0);
-  }
-  93% {
-    opacity: 0.5;
-    transform: translate(-3px,1px);
-  }
-  95% {
-    opacity: 0.3;
-    transform: translate(4px,-2px);
-  }
-  97% {
-    opacity: 0.4;
-    transform: translate(-2px,-3px);
-  }
-}
+    @keyframes ncHoloGlitch {
+      0%, 92%, 100% {
+        opacity: 0;
+        transform: translate(0,0);
+      }
+      93% {
+        opacity: 0.5;
+        transform: translate(-3px,1px);
+      }
+      95% {
+        opacity: 0.3;
+        transform: translate(4px,-2px);
+      }
+      97% {
+        opacity: 0.4;
+        transform: translate(-2px,-3px);
+      }
+    }
 
-/* Hide holo girl on small screens so layout stays clean */
-@media (max-width: 1024px) {
-  .nc-holo { display: none; }
-}
-
-    .nc-holo { display: none; }
+    @media (max-width: 1024px) {
+      .nc-holo { display: none; }
     }
   </style>
 </head>
@@ -2004,20 +1998,19 @@
   </div>
 
   <!-- HOLOGRAM GIRL -->
-<div class="nc-holo" aria-hidden="true">
-  <div class="nc-holo-beam"></div>
+  <div class="nc-holo" aria-hidden="true">
+    <div class="nc-holo-beam"></div>
 
-  <div class="nc-holo-body">
-    <div class="nc-holo-figure"></div>
+    <div class="nc-holo-body">
+      <div class="nc-holo-figure"></div>
 
-    <div class="nc-holo-arm"></div>
-    <div class="nc-holo-arm nc-holo-arm--back"></div>
+      <div class="nc-holo-arm"></div>
+      <div class="nc-holo-arm nc-holo-arm--back"></div>
 
-    <div class="nc-holo-scan"></div>
-    <div class="nc-holo-glitch"></div>
+      <div class="nc-holo-scan"></div>
+      <div class="nc-holo-glitch"></div>
+    </div>
   </div>
-</div>
-
 
   <!-- QUICKHACK RADIAL -->
   <div class="quickhack-menu" id="quickhack">
@@ -2253,7 +2246,7 @@
       nextLine();
     }
 
-    // ===== RAIN SPAWNER (SMOOTH, STORMY) =====
+    // ===== RAIN SPAWNER =====
     function createIntroRain() {
       const layer = document.querySelector("#intro .intro-rain");
       if (!layer) return;
@@ -2291,7 +2284,6 @@
         dot.className = "dust-dot" + (Math.random() < 0.4 ? " dust-dot--warm" : "");
         const x = Math.random() * 100;
         const y = Math.random() * 100;
-        // faster: 4–11s instead of 8–18s
         const dur = 4 + Math.random() * 7;
         const delay = Math.random() * -dur;
 
@@ -2323,12 +2315,10 @@
       intro.classList.add("intro--out");
       document.body.classList.remove("intro-lock");
 
-      // stop thunder flashes once intro is done
       if (thunderInterval) {
         clearInterval(thunderInterval);
         thunderInterval = null;
       }
-      // remove thunder overlay so no flashes later
       if (thunderEl && thunderEl.parentNode) {
         thunderEl.parentNode.removeChild(thunderEl);
       }
@@ -2345,7 +2335,6 @@
       createNeonDust();
       runBootLog();
 
-      // Thunder only while intro is visible
       thunderInterval = setInterval(() => {
         if (Math.random() < 0.6) triggerThunder();
       }, 5000);
@@ -2627,7 +2616,7 @@
       });
     }
 
-    // ===== HOLOMAP AUTO-CONNECTION (LINES FOLLOW DOTS) =====
+    // ===== HOLOMAP AUTO-CONNECTION =====
     function connectHolomapPaths() {
       const grid = document.querySelector(".holomap-grid");
       if (!grid) return;
@@ -2635,8 +2624,8 @@
       const apps    = grid.querySelector(".holomap-node--apps");
       const hero    = grid.querySelector(".holomap-node--hero");
       const contact = grid.querySelector(".holomap-node--contact");
-      const path1   = grid.querySelector(".holomap-path--1"); // horizontal
-      const path2   = grid.querySelector(".holomap-path--2"); // vertical
+      const path1   = grid.querySelector(".holomap-path--1");
+      const path2   = grid.querySelector(".holomap-path--2");
 
       if (!apps || !hero || !contact || !path1 || !path2) return;
 
@@ -2654,7 +2643,6 @@
       const h = center(hero);
       const c = center(contact);
 
-      // horizontal line: APPS → OVERVIEW x-position
       const hLeft  = Math.min(a.x, h.x);
       const hRight = Math.max(a.x, h.x);
 
@@ -2663,7 +2651,6 @@
       path1.style.width  = (hRight - hLeft) + "px";
       path1.style.height = "2px";
 
-      // vertical line: OVERVIEW ↕ CONTACT
       const vTop    = Math.min(h.y, c.y);
       const vBottom = Math.max(h.y, c.y);
 
