@@ -1386,7 +1386,6 @@
       opacity: 0.5;
     }
 
-    /* neutral; JS sets exact positions/sizes */
     .holomap-path--1 {
       left: 0;
       top: 0;
@@ -1426,7 +1425,7 @@
       letter-spacing: 0.16em;
       color: #e5e7eb;
       box-shadow: 0 18px 40px rgba(0,0,0,0.9);
-      z-index: 22;
+      z-index: 12;
     }
 
     .hud-row {
@@ -1687,110 +1686,49 @@
       color: var(--accent-alt);
     }
 
-    /* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE) ========= */
+    /* ========= NEW: FIXED HOLO GIRL PANEL ON THE RIGHT ========= */
 
-    .nc-holo {
+    .holo-panel {
       position: fixed;
       right: 0;
-      top: 14%;
-      width: 420px;
-      height: 70vh;
-      padding-right: 32px;
+      top: 110px;      /* below navbar and HUD */
+      bottom: 0;
+      width: 24vw;
+      min-width: 260px;
       pointer-events: none;
-      z-index: 21; /* below HUD, above content */
+      z-index: 6;      /* below HUD (12), above background */
       display: flex;
       align-items: flex-end;
       justify-content: center;
+      overflow: visible;
     }
 
-    .nc-holo-beam {
+    .holo-panel::before {
+      content: "";
       position: absolute;
-      inset: 4% 12% 0 18%;
-      border-radius: 80% 80% 40% 40%;
+      inset: 5% 20%;
+      border-radius: 50% 50% 40% 40%;
       background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.7), transparent 55%),
-        radial-gradient(circle at 5% 10%, rgba(255,160,255,0.8), transparent 70%),
-        radial-gradient(circle at 95% 20%, rgba(255,0,190,0.9), transparent 70%);
-      opacity: 0.32;
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.75), transparent 55%),
+        radial-gradient(circle at 0% 30%, rgba(255,140,255,0.85), transparent 65%),
+        radial-gradient(circle at 100% 40%, rgba(255,0,180,0.9), transparent 70%);
+      opacity: 0.8;
       filter: blur(6px);
       mix-blend-mode: screen;
     }
 
-    .nc-holo-img-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      filter:
-        drop-shadow(0 0 24px rgba(255,200,255,0.95))
-        drop-shadow(0 0 60px rgba(255,0,190,0.9));
-      mix-blend-mode: normal;
-      animation: holoFloat 4s ease-in-out infinite;
-    }
-
-    .nc-holo-img {
-      max-height: 100%;
-      width: auto;
-      object-fit: contain;
-      opacity: 0.95;
-      display: block;
-    }
-
-    .nc-holo-scan {
-      position: absolute;
-      left: -20%;
-      right: -20%;
-      height: 40px;
-      top: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(255,255,255,0.9),
-        transparent
-      );
-      mix-blend-mode: screen;
-      filter: blur(7px);
-      animation: holoScan 3.6s linear infinite;
-    }
-
-    .nc-holo-glitch {
+    .holo-image {
       position: absolute;
       inset: 0;
-      border-radius: 40%;
-      background: radial-gradient(circle, rgba(0,255,255,0.5), rgba(255,0,200,0.7));
-      opacity: 0;
+      background-image: url("https://raw.githubusercontent.com/kanishqreddy/kansum.github.io/main/holo-girl.webp");
+      background-size: cover;
+      background-position: center bottom;
+      opacity: 0.95;
       mix-blend-mode: screen;
-      animation: holoGlitch 2.8s infinite;
-    }
-
-    .nc-holo-speech {
-      position: absolute;
-      bottom: 58%;
-      left: -8%;
-      transform: translateX(-100%) translateY(10px) scale(0.96);
-      width: 260px;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(0,255,255,0.85);
-      background: rgba(5,0,20,0.96);
-      color: #ffffff;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      text-align: left;
-      opacity: 0;
-      box-shadow:
-        0 0 20px rgba(0,255,255,0.9),
-        0 0 35px rgba(255,0,190,0.9);
-      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
-    }
-
-    .nc-holo-speech--visible {
-      opacity: 1;
-      transform: translateX(-100%) translateY(0) scale(1);
+      filter:
+        drop-shadow(0 0 25px rgba(255,0,200,0.95))
+        drop-shadow(0 0 70px rgba(255,120,255,0.95));
+      animation: holoFloat 4s ease-in-out infinite;
     }
 
     @keyframes holoFloat {
@@ -1798,31 +1736,44 @@
       50%      { transform: translateY(-10px); }
     }
 
-    @keyframes holoScan {
-      0%   { transform: translateY(-20%); opacity: 0; }
-      25%  { opacity: 0.7; }
-      60%  { transform: translateY(110%); opacity: 0.9; }
-      100% { opacity: 0; }
+    .holo-speech {
+      position: absolute;
+      left: -260px; /* bubble floats in toward hero panel */
+      bottom: 50%;
+      transform: translateY(10px);
+      width: 240px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,255,255,0.9);
+      background: rgba(5,0,20,0.96);
+      color: #ffffff;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-align: left;
+      box-shadow:
+        0 0 18px rgba(0,255,255,0.9),
+        0 0 30px rgba(255,0,200,0.9);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      z-index: 7;
     }
 
-    @keyframes holoGlitch {
-      0%,95%,100% { opacity: 0; }
-      96%         { opacity: 0.45; transform: translate(2px,-1px); }
-      98%         { opacity: 0.2;  transform: translate(-3px,2px); }
+    .holo-speech--visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    @media (max-width: 1200px) {
-      .nc-holo {
-        width: 320px;
-        height: 60vh;
-        top: 18%;
-        padding-right: 20px;
+    @media (max-width: 900px) {
+      .holo-panel {
+        opacity: 0.5;
+        width: 50vw;
+        min-width: 0;
       }
-    }
-
-    @media (max-width: 1024px) {
-      .nc-holo {
-        display: none;
+      .holo-speech {
+        display: none; /* avoid overlapping small screens */
       }
     }
   </style>
@@ -1894,19 +1845,12 @@
     </div>
   </div>
 
-  <!-- HOLOGRAM GIRL -->
-  <div class="nc-holo" aria-hidden="true">
-    <div class="nc-holo-beam"></div>
-
-    <div class="nc-holo-img-wrap">
-      <img src="holo-girl.webp" alt="" class="nc-holo-img" />
-      <div class="nc-holo-scan"></div>
-      <div class="nc-holo-glitch"></div>
-
-      <div class="nc-holo-speech" id="holo-speech">
-        WAKE UP SAMURAI!<br />
-        WELCOME TO NIGHT CITY!
-      </div>
+  <!-- HOLO GIRL PANEL -->
+  <div class="holo-panel">
+    <div class="holo-image"></div>
+    <div class="holo-speech" id="holo-speech">
+      WAKE UP SAMURAI!<br />
+      WELCOME TO NIGHT CITY!
     </div>
   </div>
 
@@ -2194,19 +2138,6 @@
       }
     }
 
-    // ===== HOLO SPEECH CONTROL =====
-    const holoSpeech = document.getElementById("holo-speech");
-    let holoSpeechShown = false;
-
-    function showHoloSpeech() {
-      if (!holoSpeech || holoSpeechShown) return;
-      holoSpeechShown = true;
-      holoSpeech.classList.add("nc-holo-speech--visible");
-      setTimeout(() => {
-        holoSpeech.classList.remove("nc-holo-speech--visible");
-      }, 7000);
-    }
-
     // ===== THUNDER FLASH (INTRO ONLY) =====
     const thunderEl = document.getElementById("thunder");
     let thunderInterval = null;
@@ -2218,6 +2149,19 @@
       thunderEl.classList.add("thunder-flash--active");
     }
 
+    // ===== HOLO SPEECH CONTROL =====
+    const holoSpeechEl = document.getElementById("holo-speech");
+    let holoSpeechShown = false;
+
+    function showHoloSpeech() {
+      if (!holoSpeechEl || holoSpeechShown) return;
+      holoSpeechShown = true;
+      holoSpeechEl.classList.add("holo-speech--visible");
+      setTimeout(() => {
+        holoSpeechEl.classList.remove("holo-speech--visible");
+      }, 7000);
+    }
+
     // ===== INTRO CONTROL =====
     const intro = document.getElementById("intro");
 
@@ -2226,19 +2170,22 @@
       intro.classList.add("intro--out");
       document.body.classList.remove("intro-lock");
 
+      // stop thunder flashes once intro is done
       if (thunderInterval) {
         clearInterval(thunderInterval);
         thunderInterval = null;
       }
+      // remove thunder overlay so no flashes later
       if (thunderEl && thunderEl.parentNode) {
         thunderEl.parentNode.removeChild(thunderEl);
       }
 
+      // show holo girl speech once intro completes
+      showHoloSpeech();
+
       setTimeout(() => {
         if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
       }, 700);
-
-      setTimeout(showHoloSpeech, 900);
     }
 
     if (intro) {
@@ -2248,6 +2195,7 @@
       createNeonDust();
       runBootLog();
 
+      // Thunder only while intro is visible
       thunderInterval = setInterval(() => {
         if (Math.random() < 0.6) triggerThunder();
       }, 5000);
@@ -2473,7 +2421,7 @@
       "ALERT: CONTAINMENT FIELD STRESS SPIKE"
     ];
 
-    function triggerSystemEventBanner() {
+    function triggerSystemEvent() {
       if (!systemEvent) return;
       const msg = eventMessages[Math.floor(Math.random() * eventMessages.length)];
       systemEvent.textContent = msg;
@@ -2484,7 +2432,7 @@
     }
 
     setInterval(() => {
-      if (Math.random() < 0.45) triggerSystemEventBanner();
+      if (Math.random() < 0.45) triggerSystemEvent();
     }, 9000);
 
     // Quickhack radial
