@@ -1691,14 +1691,68 @@
     .nc-holo {
       position: fixed;
       right: 20px;
-      bottom: 4px;
-      width: 300px;
-      height: 620px;
+      top: 170px;     /* sits just under the HUD */
+      bottom: auto;
+      width: 260px;
+      height: 420px;
       pointer-events: none;
       z-index: 10;
       display: flex;
       align-items: flex-end;
       justify-content: center;
+    }
+
+    /* Neon billboard screen behind the hologram */
+    .nc-holo-screen {
+      position: absolute;
+      bottom: 16%;
+      left: -25%;
+      right: -25%;
+      height: 52%;
+      border-radius: 14px;
+      background:
+        linear-gradient(90deg, #ff3af7, #ff4fd0, #ff7ad5, #ff3af7);
+      box-shadow:
+        0 0 40px rgba(255, 0, 180, 0.9),
+        0 0 120px rgba(255, 0, 180, 0.8);
+      overflow: hidden;
+      mix-blend-mode: screen;
+    }
+
+    .nc-holo-screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.25) 0px,
+        rgba(255, 255, 255, 0.25) 1px,
+        transparent 3px,
+        transparent 6px
+      );
+      opacity: 0.5;
+      mix-blend-mode: screen;
+    }
+
+    .nc-holo-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.7) 40%,
+        transparent 80%
+      );
+      opacity: 0.4;
+      transform: translateX(-100%);
+      animation: ncScreenSweep 4.5s linear infinite;
+    }
+
+    @keyframes ncScreenSweep {
+      0%   { transform: translateX(-100%); }
+      50%  { transform: translateX(0); }
+      100% { transform: translateX(100%); }
     }
 
     /* Neon pillar behind the hologram */
@@ -1906,6 +1960,7 @@
 
   <!-- HOLOGRAM GIRL -->
   <div class="nc-holo" aria-hidden="true">
+    <div class="nc-holo-screen"></div>  <!-- billboard -->
     <div class="nc-holo-beam"></div>
 
     <div class="nc-holo-img-wrap">
