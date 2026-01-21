@@ -336,11 +336,10 @@
       background: radial-gradient(circle, rgba(255,140,0,1), transparent 70%);
       animation: driftLeft 18s ease-in-out infinite alternate;
     }
+
+    /* HIDE old right pink orb – hologram replaces it */
     .glow-orb--right {
-      right: -190px;
-      bottom: -160px;
-      background: radial-gradient(circle, rgba(255,0,76,1), transparent 70%);
-      animation: driftRight 20s ease-in-out infinite alternate;
+      display: none;
     }
 
     @keyframes driftLeft {
@@ -1686,73 +1685,19 @@
       color: var(--accent-alt);
     }
 
-    /* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE) ========= */
+    /* ========= NIGHT CITY HOLO GIRL (RIGHT SIDE, BELOW VITALS) ========= */
 
     .nc-holo {
       position: fixed;
       right: 20px;
-      top: 170px;     /* sits just under the HUD */
-      bottom: auto;
+      top: 150px;           /* just under the HUD overlay */
       width: 260px;
-      height: 420px;
+      height: 480px;
       pointer-events: none;
       z-index: 10;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-    }
-
-    /* Neon billboard screen behind the hologram */
-    .nc-holo-screen {
-      position: absolute;
-      bottom: 16%;
-      left: -25%;
-      right: -25%;
-      height: 52%;
-      border-radius: 14px;
-      background:
-        linear-gradient(90deg, #ff3af7, #ff4fd0, #ff7ad5, #ff3af7);
-      box-shadow:
-        0 0 40px rgba(255, 0, 180, 0.9),
-        0 0 120px rgba(255, 0, 180, 0.8);
-      overflow: hidden;
-      mix-blend-mode: screen;
-    }
-
-    .nc-holo-screen::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.25) 0px,
-        rgba(255, 255, 255, 0.25) 1px,
-        transparent 3px,
-        transparent 6px
-      );
-      opacity: 0.5;
-      mix-blend-mode: screen;
-    }
-
-    .nc-holo-screen::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.7) 40%,
-        transparent 80%
-      );
-      opacity: 0.4;
-      transform: translateX(-100%);
-      animation: ncScreenSweep 4.5s linear infinite;
-    }
-
-    @keyframes ncScreenSweep {
-      0%   { transform: translateX(-100%); }
-      50%  { transform: translateX(0); }
-      100% { transform: translateX(100%); }
     }
 
     /* Neon pillar behind the hologram */
@@ -1844,7 +1789,7 @@
     /* Speech bubble above the holo */
     .nc-holo-speech {
       position: absolute;
-      bottom: 70%;
+      bottom: 68%;
       right: 72%;
       background: rgba(5,0,20,0.88);
       border: 1px solid rgba(0,255,255,0.8);
@@ -1936,7 +1881,6 @@
   <div class="scanlines"></div>
   <div class="bg-grid"></div>
   <div class="glow-orb glow-orb--left"></div>
-  <div class="glow-orb glow-orb--right"></div>
 
   <!-- SYSTEM EVENT BANNER -->
   <div class="system-event" id="system-event"></div>
@@ -1958,12 +1902,12 @@
     </div>
   </div>
 
-  <!-- HOLOGRAM GIRL -->
+  <!-- HOLOGRAM GIRL (fixed below vitals) -->
   <div class="nc-holo" aria-hidden="true">
-    <div class="nc-holo-screen"></div>  <!-- billboard -->
     <div class="nc-holo-beam"></div>
 
     <div class="nc-holo-img-wrap">
+      <!-- use your hologram art here -->
       <img src="holo-girl.webp" alt="" class="nc-holo-img" />
       <div class="nc-holo-scan"></div>
       <div class="nc-holo-glitch"></div>
@@ -2209,7 +2153,7 @@
       nextLine();
     }
 
-    // ===== RAIN SPAWNER (SMOOTH, STORMY) =====
+    // ===== RAIN SPAWNER =====
     function createIntroRain() {
       const layer = document.querySelector("#intro .intro-rain");
       if (!layer) return;
@@ -2592,7 +2536,7 @@
       });
     }
 
-    // ===== HOLOMAP AUTO-CONNECTION (LINES FOLLOW DOTS) =====
+    // ===== HOLOMAP AUTO-CONNECTION =====
     function connectHolomapPaths() {
       const grid = document.querySelector(".holomap-grid");
       if (!grid) return;
