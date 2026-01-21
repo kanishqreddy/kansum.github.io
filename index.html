@@ -1386,7 +1386,6 @@
       opacity: 0.5;
     }
 
-    /* neutral; JS sets exact positions/sizes */
     .holomap-path--1 {
       left: 0;
       top: 0;
@@ -1691,179 +1690,79 @@
 
     .nc-holo {
       position: fixed;
-      right: 24px;
-      bottom: 0;
-      width: 260px;
-      height: 540px;
+      right: 20px;
+      bottom: 4px;
+      width: 300px;
+      height: 620px;
       pointer-events: none;
-      z-index: 10; /* under HUD overlay */
+      z-index: 10;
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
 
-    /* Neon billboard / beam */
+    /* Neon pillar behind the hologram */
     .nc-holo-beam {
       position: absolute;
-      inset: 2% 10% 0 16%;
+      inset: 0 4% 0 8%;
       border-radius: 50% 50% 44% 44%;
       background:
-        radial-gradient(circle at 50% 3%, rgba(255,255,255,0.9), transparent 55%),
-        radial-gradient(circle at 20% 0%, rgba(255,140,255,0.8), transparent 60%),
-        radial-gradient(circle at 80% 8%, rgba(255,0,180,0.9), transparent 60%),
+        radial-gradient(circle at 50% 8%, rgba(255,255,255,0.85), transparent 60%),
+        radial-gradient(circle at 15% 6%, rgba(255,150,255,0.8), transparent 65%),
+        radial-gradient(circle at 85% 10%, rgba(255,0,180,0.9), transparent 65%),
         linear-gradient(
           180deg,
-          rgba(255,40,200,0.95),
-          rgba(255,120,230,0.7),
-          rgba(255,0,130,0.18)
+          rgba(255,40,200,0.96),
+          rgba(255,120,230,0.72),
+          rgba(255,0,150,0.25)
         );
       box-shadow:
-        0 0 45px rgba(255,0,190,1),
-        0 0 120px rgba(255,0,190,0.85);
+        0 0 50px rgba(255,0,190,1),
+        0 0 160px rgba(255,0,190,0.85);
       mix-blend-mode: screen;
-      filter: blur(0.7px);
+      filter: blur(1px);
     }
 
-    /* Scanlines inside the beam */
+    /* Scanlines inside the pillar */
     .nc-holo-beam::after {
       content: "";
       position: absolute;
-      inset: 7% 18% 10% 18%;
+      inset: 10% 18% 14% 18%;
       background-image: repeating-linear-gradient(
         to bottom,
-        rgba(255,255,255,0.55) 0,
-        rgba(255,255,255,0.55) 1px,
-        transparent 2px,
-        transparent 4px
+        rgba(255,255,255,0.45) 0px,
+        rgba(255,255,255,0.45) 1px,
+        transparent 3px,
+        transparent 6px
       );
       opacity: 0.55;
       mix-blend-mode: screen;
     }
 
-    /* Container for the figure */
-    .nc-holo-body {
+    /* Image wrapper (glowing, floating) */
+    .nc-holo-img-wrap {
       position: relative;
-      width: 120px;
-      height: 360px;
-      transform-origin: bottom center;
-      animation: ncHoloIdle 3.6s ease-in-out infinite;
-    }
-
-    /* Full body silhouette – side-view */
-    .nc-holo-figure {
-      position: absolute;
-      bottom: 4px;
-      left: 50%;
-      width: 96px;
-      height: 330px;
-      transform: translateX(-50%);
-      background:
-        radial-gradient(circle at 20% 22%, rgba(255,255,255,0.95), rgba(255,190,240,0.4) 40%, transparent 65%),
-        radial-gradient(circle at 65% 28%, rgba(0,255,255,0.9), transparent 55%),
-        linear-gradient(
-          180deg,
-          rgba(255,210,255,0.95),
-          rgba(255,140,235,0.8),
-          rgba(255,60,190,0.45),
-          rgba(255,140,235,0.18)
-        );
-      clip-path: polygon(
-        18% 100%,
-        16% 76%,
-        20% 60%,
-        18% 48%,
-        16% 36%,
-        18% 26%,
-        22% 18%,
-        30% 13%,
-        42% 8%,
-        56% 4%,
-        70% 10%,
-        78% 18%,
-        78% 23%,
-        82% 30%,
-        88% 40%,
-        86% 50%,
-        80% 60%,
-        78% 68%,
-        84% 82%,
-        80% 96%,
-        68% 100%,
-        56% 96%,
-        44% 90%,
-        38% 80%,
-        34% 64%,
-        32% 52%,
-        30% 38%,
-        28% 26%,
-        24% 22%,
-        20% 26%,
-        18% 36%,
-        18% 48%,
-        18% 60%,
-        18% 76%
-      );
-      box-shadow:
-        0 0 40px rgba(255,180,245,1),
-        0 0 85px rgba(255,0,200,0.9),
-        0 0 120px rgba(255,0,160,0.9);
+      width: 78%;
+      animation: holoFloat 3.8s ease-in-out infinite;
+      filter:
+        drop-shadow(0 0 20px rgba(255,200,255,0.9))
+        drop-shadow(0 0 60px rgba(255,0,190,0.8))
+        drop-shadow(0 0 110px rgba(255,0,190,0.7));
       mix-blend-mode: screen;
     }
 
-    /* Hair halo */
-    .nc-holo-figure::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 35%;
-      width: 82px;
-      height: 72px;
-      border-radius: 75% 80% 40% 45%;
-      background:
-        linear-gradient(100deg, rgba(80,220,255,0.3), rgba(255,0,200,0.9));
-      filter: blur(1.1px);
-      opacity: 0.9;
-      mix-blend-mode: screen;
+    .nc-holo-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.96;
     }
 
-    /* Front arm */
-    .nc-holo-arm {
-      position: absolute;
-      top: 34%;
-      right: -4px;
-      width: 70px;
-      height: 70px;
-      border-radius: 40px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,210,255,0.9),
-          rgba(255,120,225,0.5)
-        );
-      transform-origin: 15% 70%;
-      transform: rotate(-35deg);
-      box-shadow:
-        0 0 22px rgba(255,190,240,0.9),
-        0 0 40px rgba(255,0,200,0.8);
-      mix-blend-mode: screen;
-      filter: blur(0.4px);
-    }
-
-    /* Back arm */
-    .nc-holo-arm--back {
-      right: auto;
-      left: -10px;
-      top: 42%;
-      transform-origin: 78% 70%;
-      transform: rotate(-140deg);
-      opacity: 0.4;
-    }
-
-    /* Moving scan band */
+    /* Moving horizontal scan light */
     .nc-holo-scan {
       position: absolute;
-      left: -25%;
-      right: -25%;
+      left: -28%;
+      right: -28%;
       top: 0;
       height: 40px;
       background: linear-gradient(
@@ -1872,62 +1771,70 @@
         rgba(255,255,255,0.9),
         transparent
       );
-      opacity: 0.45;
       mix-blend-mode: screen;
-      filter: blur(4px);
-      animation: ncHoloScan 3.8s linear infinite;
+      filter: blur(5px);
+      animation: holoScan 3.6s linear infinite;
     }
 
-    /* Glitch halo bursts */
+    /* Occasional glitch halo */
     .nc-holo-glitch {
       position: absolute;
       inset: -6%;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,255,255,0.6), rgba(255,0,200,0.7));
-      mix-blend-mode: screen;
+      background: radial-gradient(circle, rgba(0,255,255,0.55), rgba(255,0,200,0.7));
       opacity: 0;
-      animation: ncHoloGlitch 2.7s infinite;
+      animation: holoGlitch 2.8s infinite;
+      mix-blend-mode: screen;
     }
 
-    @keyframes ncHoloIdle {
-      0%, 100% {
-        transform: translateY(0px) scaleX(1);
-      }
-      50% {
-        transform: translateY(-8px) scaleX(1.02);
-      }
+    /* Speech bubble above the holo */
+    .nc-holo-speech {
+      position: absolute;
+      bottom: 70%;
+      right: 72%;
+      background: rgba(5,0,20,0.88);
+      border: 1px solid rgba(0,255,255,0.8);
+      color: #fff;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 10px 14px;
+      border-radius: 8px;
+      width: 230px;
+      opacity: 0;
+      transform: translateY(10px) scale(0.96);
+      transition: all 0.45s ease-out;
+      box-shadow: 0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(255,0,190,0.8);
     }
 
-    @keyframes ncHoloScan {
-      0%   { transform: translateY(-20%); opacity: 0.1; }
-      20%  { opacity: 0.5; }
-      50%  { transform: translateY(120%); opacity: 0.85; }
-      80%  { opacity: 0.4; }
-      100% { transform: translateY(-20%); opacity: 0.1; }
+    .nc-holo-speech--visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
-    @keyframes ncHoloGlitch {
-      0%, 92%, 100% {
-        opacity: 0;
-        transform: translate(0,0);
-      }
-      93% {
-        opacity: 0.5;
-        transform: translate(-3px,1px);
-      }
-      95% {
-        opacity: 0.3;
-        transform: translate(4px,-2px);
-      }
-      97% {
-        opacity: 0.4;
-        transform: translate(-2px,-3px);
-      }
+    @keyframes holoFloat {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes holoScan {
+      0% { transform: translateY(-20%); opacity: 0; }
+      30% { opacity: 0.6; }
+      60% { transform: translateY(110%); opacity: 0.8; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes holoGlitch {
+      0%,95%,100% { opacity: 0; }
+      96% { opacity: 0.45; transform: translate(2px,-1px); }
+      98% { opacity: 0.2; transform: translate(-3px,2px); }
     }
 
     @media (max-width: 1024px) {
       .nc-holo { display: none; }
     }
+
   </style>
 </head>
 <body>
@@ -2001,14 +1908,15 @@
   <div class="nc-holo" aria-hidden="true">
     <div class="nc-holo-beam"></div>
 
-    <div class="nc-holo-body">
-      <div class="nc-holo-figure"></div>
-
-      <div class="nc-holo-arm"></div>
-      <div class="nc-holo-arm nc-holo-arm--back"></div>
-
+    <div class="nc-holo-img-wrap">
+      <img src="holo-girl.webp" alt="" class="nc-holo-img" />
       <div class="nc-holo-scan"></div>
       <div class="nc-holo-glitch"></div>
+    </div>
+
+    <div class="nc-holo-speech" id="holo-speech">
+      WAKE UP SAMURAI!<br />
+      WELCOME TO NIGHT CITY!
     </div>
   </div>
 
@@ -2246,7 +2154,7 @@
       nextLine();
     }
 
-    // ===== RAIN SPAWNER =====
+    // ===== RAIN SPAWNER (SMOOTH, STORMY) =====
     function createIntroRain() {
       const layer = document.querySelector("#intro .intro-rain");
       if (!layer) return;
@@ -2315,12 +2223,25 @@
       intro.classList.add("intro--out");
       document.body.classList.remove("intro-lock");
 
+      // stop thunder flashes
       if (thunderInterval) {
         clearInterval(thunderInterval);
         thunderInterval = null;
       }
       if (thunderEl && thunderEl.parentNode) {
         thunderEl.parentNode.removeChild(thunderEl);
+      }
+
+      // Show holo girl speech once
+      const speech = document.getElementById("holo-speech");
+      if (speech && !speech.dataset.shown) {
+        speech.dataset.shown = "1";
+        setTimeout(() => {
+          speech.classList.add("nc-holo-speech--visible");
+          setTimeout(() => {
+            speech.classList.remove("nc-holo-speech--visible");
+          }, 5500);
+        }, 500);
       }
 
       setTimeout(() => {
@@ -2616,7 +2537,7 @@
       });
     }
 
-    // ===== HOLOMAP AUTO-CONNECTION =====
+    // ===== HOLOMAP AUTO-CONNECTION (LINES FOLLOW DOTS) =====
     function connectHolomapPaths() {
       const grid = document.querySelector(".holomap-grid");
       if (!grid) return;
@@ -2624,8 +2545,8 @@
       const apps    = grid.querySelector(".holomap-node--apps");
       const hero    = grid.querySelector(".holomap-node--hero");
       const contact = grid.querySelector(".holomap-node--contact");
-      const path1   = grid.querySelector(".holomap-path--1");
-      const path2   = grid.querySelector(".holomap-path--2");
+      const path1   = grid.querySelector(".holomap-path--1"); // horizontal
+      const path2   = grid.querySelector(".holomap-path--2"); // vertical
 
       if (!apps || !hero || !contact || !path1 || !path2) return;
 
@@ -2643,6 +2564,7 @@
       const h = center(hero);
       const c = center(contact);
 
+      // horizontal line: APPS → OVERVIEW x-position
       const hLeft  = Math.min(a.x, h.x);
       const hRight = Math.max(a.x, h.x);
 
@@ -2651,6 +2573,7 @@
       path1.style.width  = (hRight - hLeft) + "px";
       path1.style.height = "2px";
 
+      // vertical line: OVERVIEW ↕ CONTACT
       const vTop    = Math.min(h.y, c.y);
       const vBottom = Math.max(h.y, c.y);
 
