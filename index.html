@@ -1756,44 +1756,6 @@
       100% { transform: translateX(100%); }
     }
 
-    /* Neon pillar behind the hologram */
-    .nc-holo-beam {
-      position: absolute;
-      inset: 0 4% 0 8%;
-      border-radius: 50% 50% 44% 44%;
-      background:
-        radial-gradient(circle at 50% 8%, rgba(255,255,255,0.85), transparent 60%),
-        radial-gradient(circle at 15% 6%, rgba(255,150,255,0.8), transparent 65%),
-        radial-gradient(circle at 85% 10%, rgba(255,0,180,0.9), transparent 65%),
-        linear-gradient(
-          180deg,
-          rgba(255,40,200,0.96),
-          rgba(255,120,230,0.72),
-          rgba(255,0,150,0.25)
-        );
-      box-shadow:
-        0 0 50px rgba(255,0,190,1),
-        0 0 160px rgba(255,0,190,0.85);
-      mix-blend-mode: screen;
-      filter: blur(1px);
-    }
-
-    /* Scanlines inside the pillar */
-    .nc-holo-beam::after {
-      content: "";
-      position: absolute;
-      inset: 10% 18% 14% 18%;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.45) 0px,
-        rgba(255,255,255,0.45) 1px,
-        transparent 3px,
-        transparent 6px
-      );
-      opacity: 0.55;
-      mix-blend-mode: screen;
-    }
-
     /* Image wrapper (glowing, floating) */
     .nc-holo-img-wrap {
       position: relative;
@@ -1946,16 +1908,16 @@
   <div class="hud-overlay">
     <div class="hud-row">
       <span>vitals</span>
-      <span id="hud-hr">HR: 76</span>
+      <span id="hud-hr">HR: 120</span>
     </div>
     <div class="hud-bar"><div class="hud-bar-fill" id="hud-bar-fill"></div></div>
     <div class="hud-row" style="margin-top:4px;">
       <span>deck</span>
-      <span id="hud-temp">CPU: 61°C</span>
+      <span id="hud-temp">CPU: 101°C</span>
     </div>
     <div class="hud-row">
       <span>ram</span>
-      <span id="hud-ram">43%</span>
+      <span id="hud-ram">93%</span>
     </div>
   </div>
 
