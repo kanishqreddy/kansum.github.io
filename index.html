@@ -673,9 +673,15 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.4fr);
       gap: 32px;
       align-items: flex-start;
+    }
+
+    @media (min-width: 1040px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      }
     }
 
     .ticker {
@@ -774,315 +780,6 @@
     .hero-subtitle strong {
       color: var(--accent);
       font-weight: 600;
-    }
-
-    /* ========= HOLOGRAM PANEL / BLADE RUNNER STYLE ========= */
-
-    .holo-panel {
-      position: relative;
-      border-radius: 26px;
-      border: 1px solid rgba(0, 255, 255, 0.45);
-      padding: 14px 14px 12px;
-      background:
-        radial-gradient(circle at top, rgba(0, 255, 255, 0.18), rgba(2, 0, 20, 0.98));
-      box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.8),
-        0 26px 68px rgba(0, 0, 0, 1),
-        0 0 38px rgba(0, 255, 255, 0.55);
-      overflow: hidden;
-    }
-
-    .holo-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .holo-header span {
-      color: #22c55e;
-      text-shadow: 0 0 10px rgba(34, 197, 94, 1);
-    }
-
-    .holo-shell {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 12px;
-    }
-
-    .holo-viewport {
-      border-radius: 20px;
-      border: 1px solid rgba(0, 255, 255, 0.65);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(111, 226, 255, 0.75), transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(255, 0, 122, 0.85), transparent 60%),
-        linear-gradient(180deg, #020313 0%, #050013 38%, #02000c 100%);
-      overflow: hidden;
-      position: relative;
-      padding: 18px 10px 16px;
-      box-shadow:
-        0 22px 60px rgba(0, 0, 0, 1),
-        0 0 40px rgba(0, 255, 255, 0.55);
-    }
-
-    .holo-viewport::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(
-        rgba(255, 255, 255, 0.08) 1px,
-        transparent 1px
-      );
-      background-size: 100% 3px;
-      opacity: 0.28;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    .holo-orb {
-      --holo-main: #7ef9ff;
-      --holo-accent: #ffb3ff;
-      --holo-rim: rgba(0, 255, 255, 0.85);
-
-      position: relative;
-      width: 74%;
-      max-width: 260px;
-      aspect-ratio: 3 / 2.4;
-      margin: 26px auto 14px;
-      border-radius: 50% 50% 48% 48%;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.95), transparent 55%),
-        radial-gradient(circle at 50% 100%, var(--holo-accent), transparent 72%),
-        radial-gradient(circle at 50% 55%, rgba(0, 0, 0, 0.65), transparent 70%);
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.8),
-        0 0 32px var(--holo-rim),
-        0 0 72px rgba(0, 0, 0, 1);
-      transform-origin: center bottom;
-      animation: holoFloat 6s ease-in-out infinite;
-      overflow: hidden;
-    }
-
-    .holo-orb::before {
-      content: "";
-      position: absolute;
-      left: -20%;
-      right: -20%;
-      top: 48%;
-      height: 18%;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 0, 160, 0.7),
-        rgba(0, 0, 0, 0)
-      );
-      filter: blur(2px);
-      opacity: 0.9;
-      animation: holoScan 3.4s linear infinite;
-      mix-blend-mode: screen;
-    }
-
-    .holo-orb::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.1) 0,
-          transparent 55%
-        );
-      background-size: 2px 22px;
-      animation: holoRain 5.4s linear infinite;
-      opacity: 0.7;
-      mix-blend-mode: screen;
-    }
-
-    .holo-orb-glow {
-      position: absolute;
-      inset: 36% 6% auto;
-      height: 48%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(0, 255, 255, 0.7),
-        rgba(255, 0, 128, 0.5),
-        transparent 70%
-      );
-      filter: blur(16px);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .holo-orb--neutral {
-      --holo-main: #7ef9ff;
-      --holo-accent: #ffb3ff;
-      --holo-rim: rgba(0, 255, 255, 0.85);
-    }
-
-    .holo-orb--happy {
-      --holo-main: #a4ffb5;
-      --holo-accent: #ffe177;
-      --holo-rim: rgba(255, 234, 138, 0.95);
-      animation-duration: 5.2s;
-    }
-
-    .holo-orb--sad {
-      --holo-main: #88c4ff;
-      --holo-accent: #6a8bff;
-      --holo-rim: rgba(118, 178, 255, 0.9);
-      animation-duration: 7.2s;
-    }
-
-    .holo-orb--angry {
-      --holo-main: #ff6b6b;
-      --holo-accent: #ff1744;
-      --holo-rim: rgba(255, 80, 80, 0.95);
-      animation-duration: 4.2s;
-    }
-
-    .holo-status-chip {
-      position: absolute;
-      top: 10px;
-      right: 16px;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #a5b4fc;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .holo-status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 1);
-    }
-
-    .holo-console {
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.75);
-      background: radial-gradient(circle at top, #05021a, #02000b 65%);
-      padding: 10px 10px 8px;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 11px;
-      color: #e5e7eb;
-      box-shadow:
-        0 20px 50px rgba(0, 0, 0, 1),
-        0 0 24px rgba(0, 255, 255, 0.4);
-    }
-
-    .holo-log {
-      max-height: 170px;
-      min-height: 120px;
-      overflow-y: auto;
-      padding: 6px;
-      border-radius: 10px;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      background: rgba(5, 9, 20, 0.95);
-      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 1);
-      margin-bottom: 6px;
-    }
-
-    .holo-line {
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-    .holo-line span {
-      opacity: 0.8;
-    }
-    .holo-line--user span {
-      color: #f97373;
-    }
-    .holo-line--joi span {
-      color: #7dd3fc;
-    }
-
-    .holo-log::-webkit-scrollbar {
-      width: 6px;
-    }
-    .holo-log::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .holo-log::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.7);
-      border-radius: 999px;
-    }
-
-    .holo-input-row {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .holo-input-row input {
-      flex: 1;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      padding: 5px 9px;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 11px;
-      background: rgba(3, 7, 18, 0.96);
-      color: #e5e7eb;
-    }
-    .holo-input-row input::placeholder {
-      color: #6b7280;
-    }
-
-    .holo-input-row button {
-      border-radius: 999px;
-      border: 1px solid rgba(0, 255, 255, 0.8);
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.95), rgba(8, 47, 73, 1));
-      font-family: "Share Tech Mono", monospace;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #020617;
-      padding: 5px 10px;
-      cursor: pointer;
-      box-shadow:
-        0 10px 28px rgba(0, 0, 0, 1),
-        0 0 14px rgba(56, 189, 248, 0.8);
-    }
-    .holo-input-row button:hover {
-      filter: brightness(1.1);
-    }
-    .holo-input-row button:disabled {
-      opacity: 0.5;
-      cursor: default;
-      box-shadow: none;
-    }
-
-    .holo-hint {
-      margin-top: 4px;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #9ca3af;
-    }
-
-    @keyframes holoFloat {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50%      { transform: translateY(-10px) scale(1.02); }
-    }
-    @keyframes holoScan {
-      0%   { transform: translateY(-140%); }
-      100% { transform: translateY(140%); }
-    }
-    @keyframes holoRain {
-      0%   { transform: translateY(0); opacity: 0.3; }
-      40%  { opacity: 0.9; }
-      100% { transform: translateY(60px); opacity: 0.25; }
     }
 
     .btn-primary,
@@ -1994,6 +1691,360 @@
       border-color: var(--accent-alt);
       color: var(--accent-alt);
     }
+
+
+    /* =========================================================
+       HOLO GIRL PANEL  (BLADE-RUNNER STYLE)
+       ========================================================= */
+
+    .holo-panel {
+      border-radius: 26px;
+      border: 1px solid rgba(0,255,255,0.35);
+      background:
+        radial-gradient(circle at top left, rgba(0,255,255,0.2), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(255,0,128,0.22), transparent 60%),
+        rgba(2,6,23,0.98);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.03),
+        0 32px 80px rgba(0,0,0,1),
+        0 0 40px rgba(0,255,255,0.45);
+      padding: 16px 18px 14px;
+    }
+
+    .holo-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+
+    .holo-panel-title {
+      color: #a5f3fc;
+    }
+
+    .holo-panel-status {
+      color: #22c55e;
+      text-shadow: 0 0 10px rgba(34,197,94,1);
+    }
+
+    .holo-panel-body {
+      display: grid;
+      grid-template-rows: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .holo-billboard {
+      position: relative;
+      border-radius: 20px;
+      padding: 10px 10px 8px;
+      background:
+        radial-gradient(circle at top, rgba(0,255,255,0.12), transparent 60%),
+        radial-gradient(circle at bottom, rgba(255,0,128,0.14), transparent 60%),
+        #02010a;
+      border: 1px solid rgba(56,189,248,0.7);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,1),
+        0 0 30px rgba(0,255,255,0.4);
+    }
+
+    .holo-billboard-inner {
+      position: relative;
+      height: 220px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: radial-gradient(circle at 20% 0%,
+                  rgba(0,255,255,0.4),
+                  transparent 60%),
+                  radial-gradient(circle at 80% 100%,
+                  rgba(255,0,140,0.55),
+                  transparent 60%),
+                  #040010;
+      transform: perspective(900px) rotateX(14deg);
+      transform-origin: center bottom;
+      box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.9),
+        0 0 36px rgba(0,255,255,0.6);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .holo-billboard-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,255,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,128,0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.35;
+      mix-blend-mode: screen;
+    }
+
+    .holo-girl {
+      position: absolute;
+      inset: 10% 8% 0 12%;
+      object-fit: contain;
+      filter:
+        grayscale(1)
+        contrast(1.3)
+        brightness(1.6)
+        drop-shadow(0 0 16px rgba(0,255,255,0.85))
+        drop-shadow(0 0 32px rgba(255,0,196,0.9));
+      mix-blend-mode: screen;
+      opacity: 0.92;
+      transform-origin: center bottom;
+      animation: holoFloat 7s ease-in-out infinite;
+    }
+
+    @keyframes holoFloat {
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-6px); }
+    }
+
+    .holo-glow-ring {
+      position: absolute;
+      inset: -10% -5%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 90%,
+          rgba(255,0,128,0.7),
+          transparent 65%),
+        radial-gradient(circle at 40% 5%,
+          rgba(0,255,255,0.85),
+          transparent 55%),
+        radial-gradient(circle at 80% 30%,
+          rgba(255,255,255,0.65),
+          transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      animation: glowBreath 4.6s ease-in-out infinite;
+    }
+
+    @keyframes glowBreath {
+      0%,100% { opacity: 0.55; }
+      40%     { opacity: 0.83; }
+    }
+
+    .holo-scan-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.09) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 2px,
+        transparent 3px
+      );
+      mix-blend-mode: soft-light;
+      opacity: 0.5;
+      animation: holoScan 6s linear infinite;
+    }
+
+    @keyframes holoScan {
+      0%   { transform: translateY(-20%); }
+      100% { transform: translateY(20%); }
+    }
+
+    .holo-glitch {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: screen;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .holo-glitch--1::before,
+    .holo-glitch--2::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        to right,
+        rgba(0,255,255,0.3),
+        rgba(255,0,153,0.6),
+        rgba(0,255,255,0.3)
+      );
+      mix-blend-mode: screen;
+    }
+
+    .holo-glitch--1 {
+      clip-path: polygon(0 10%,100% 5%,100% 25%,0 30%);
+    }
+
+    .holo-glitch--2 {
+      clip-path: polygon(0 65%,100% 60%,100% 80%,0 85%);
+    }
+
+    .holo-billboard-inner.holo-processing .holo-glitch {
+      animation: holoGlitchBlink 0.22s steps(2,end) infinite;
+      opacity: 0.85;
+    }
+
+    @keyframes holoGlitchBlink {
+      0%   { transform: translateX(-2px); }
+      50%  { transform: translateX(2px); }
+      100% { transform: translateX(-2px); }
+    }
+
+    .holo-link-indicator {
+      margin-top: 4px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 6px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #a5f3fc;
+    }
+
+    .holo-link-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,1);
+    }
+
+    /* mood states */
+
+    #holo-mood-wrap.holo-mood-neutral {
+      filter: drop-shadow(0 0 20px rgba(0,255,255,0.55));
+    }
+
+    #holo-mood-wrap.holo-mood-happy {
+      filter:
+        drop-shadow(0 0 28px rgba(255,180,255,0.95))
+        drop-shadow(0 0 40px rgba(0,255,255,0.85));
+      transform: perspective(900px) rotateX(10deg);
+    }
+
+    #holo-mood-wrap.holo-mood-sad {
+      filter:
+        drop-shadow(0 0 26px rgba(96,165,250,0.95))
+        drop-shadow(0 0 32px rgba(45,212,191,0.6));
+    }
+
+    #holo-mood-wrap.holo-mood-angry {
+      filter:
+        drop-shadow(0 0 32px rgba(248,113,113,1))
+        drop-shadow(0 0 46px rgba(244,63,94,0.9));
+      transform: perspective(900px) rotateX(18deg) scale(1.03);
+    }
+
+    #holo-mood-wrap.holo-mood-change {
+      animation: holoGhostTrail 0.32s ease-out;
+    }
+
+    @keyframes holoGhostTrail {
+      0%   { filter: blur(0) brightness(1); }
+      40%  { filter: blur(3px) brightness(1.25); }
+      100% { filter: blur(0) brightness(1); }
+    }
+
+    /* console */
+
+    .holo-console {
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.9);
+      background:
+        radial-gradient(circle at top, rgba(15,23,42,0.96), rgba(3,7,18,0.98));
+      padding: 8px 10px 10px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      color: #e5e7eb;
+      box-shadow:
+        0 18px 40px rgba(0,0,0,1),
+        0 0 28px rgba(148,163,184,0.4);
+    }
+
+    .holo-console-log {
+      height: 130px;
+      overflow-y: auto;
+      padding: 4px 4px 6px;
+      background: radial-gradient(circle at top,
+                  rgba(15,23,42,0.95),
+                  rgba(15,23,42,0.98));
+      border-radius: 10px;
+      border: 1px solid rgba(31,41,55,0.7);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    .holo-line {
+      white-space: pre-wrap;
+      margin-bottom: 2px;
+    }
+
+    .holo-tag {
+      color: #f97316;
+      margin-right: 4px;
+    }
+
+    .holo-line--ai .holo-tag {
+      color: #22c55e;
+    }
+
+    .holo-line--user .holo-tag {
+      color: #60a5fa;
+    }
+
+    .holo-console-input-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .holo-console-input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(75,85,99,0.9);
+      background: rgba(15,23,42,0.98);
+      color: #e5e7eb;
+      padding: 5px 10px;
+      font-family: inherit;
+      font-size: 11px;
+      outline: none;
+    }
+
+    .holo-console-input:focus {
+      border-color: rgba(56,189,248,1);
+      box-shadow: 0 0 12px rgba(56,189,248,0.8);
+    }
+
+    .holo-console-send {
+      border-radius: 999px;
+      border: 1px solid rgba(248,250,252,0.9);
+      padding: 5px 12px;
+      background: radial-gradient(circle at top,
+                  rgba(248,250,252,0.9),
+                  rgba(148,163,184,0.9));
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(0,0,0,1);
+    }
+
+    .holo-console-send:hover {
+      border-color: rgba(251,113,133,1);
+      background: radial-gradient(circle at top,
+                  rgba(251,113,133,1),
+                  rgba(239,68,68,0.9));
+      color: #020617;
+    }
+
+    .holo-console-hint {
+      margin-top: 4px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
   </style>
 </head>
 <body>
@@ -2117,15 +2168,14 @@
   </header>
 
   <main>
-    <!-- HERO WITH HOLOGRAM -->
+    <!-- HERO + HOLO GIRL -->
     <section class="hero-wrapper" id="hero">
       <div class="blackwall"></div>
       <div class="hero">
-        <!-- LEFT SIDE -->
         <div>
           <div class="ticker" aria-label="Night City welcome message">
             <div class="ticker-inner">
-              WAKE UP SAMURAI ! WELCOME TO NIGHT CITY !
+              Wake Up Samurai ! WELCOME TO NIGHT CITY !
             </div>
           </div>
 
@@ -2139,44 +2189,67 @@
           </div>
         </div>
 
-        <!-- RIGHT SIDE: JOI HOLOGRAM CONSOLE -->
-        <aside class="holo-panel" aria-label="Hologram AI console">
-          <div class="holo-header">
-            <span>HOLO · CONSTRUCT</span>
-            <span>ONLINE</span>
+        <!-- HOLO CONSTRUCT PANEL -->
+        <section class="holo-panel" aria-label="Hologram AI interface">
+          <div class="holo-panel-header">
+            <span class="holo-panel-title">HOLO · CONSTRUCT</span>
+            <span class="holo-panel-status">ONLINE</span>
           </div>
 
-          <div class="holo-shell">
-            <div class="holo-viewport">
-              <div class="holo-status-chip">
-                <span class="holo-status-dot"></span>
-                <span>link stable</span>
-              </div>
+          <div class="holo-panel-body">
+            <!-- HOLOGRAM BILLBOARD -->
+            <div class="holo-billboard">
+              <div class="holo-billboard-inner holo-mood-neutral" id="holo-mood-wrap">
+                <div class="holo-billboard-bg"></div>
 
-              <div class="holo-orb-glow"></div>
-              <div id="holo-orb" class="holo-orb holo-orb--neutral"></div>
+                <img
+                  src="holo-girl.png"
+                  alt="Hologram AI avatar"
+                  class="holo-girl"
+                  id="holo-girl"
+                />
+
+                <div class="holo-glow-ring"></div>
+                <div class="holo-glitch holo-glitch--1"></div>
+                <div class="holo-glitch holo-glitch--2"></div>
+                <div class="holo-scan-overlay"></div>
+              </div>
+              <div class="holo-link-indicator">
+                <span class="holo-link-dot"></span>
+                <span class="holo-link-text">LINK STABLE</span>
+              </div>
             </div>
 
+            <!-- CHAT CONSOLE -->
             <div class="holo-console">
-              <div id="holo-log" class="holo-log" aria-live="polite"></div>
+              <div class="holo-console-log" id="holo-log" aria-live="polite">
+                <div class="holo-line holo-line--sys">
+                  <span class="holo-tag">I&gt;</span>
+                  <span>Wake up, Samurai. Welcome to Night City.</span>
+                </div>
+                <div class="holo-line holo-line--ai">
+                  <span class="holo-tag">JOI&gt;</span>
+                  <span>I’m your holo-construct guide. Type anything and I’ll react.</span>
+                </div>
+              </div>
 
-              <form id="holo-form" class="holo-input-row" autocomplete="off">
+              <form class="holo-console-input-row" id="holo-form">
                 <input
                   id="holo-input"
+                  class="holo-console-input"
                   type="text"
-                  name="message"
+                  autocomplete="off"
                   placeholder="type to talk to the holo..."
-                  required
                 />
-                <button type="submit">send</button>
+                <button class="holo-console-send" type="submit">SEND</button>
               </form>
 
-              <div class="holo-hint">
-                hint: feelings shift · happy / sad / angry depending on how you talk.
+              <div class="holo-console-hint">
+                HINT: FEELINGS SHIFT · HAPPY / SAD / ANGRY DEPENDING ON HOW YOU TALK.
               </div>
             </div>
           </div>
-        </aside>
+        </section>
       </div>
     </section>
 
@@ -2819,150 +2892,117 @@
       });
     }
 
-    // ===== HOLOGRAM CHAT + EMOTIONS (OPENROUTER BACKEND) =====
 
-    const holoLog = document.getElementById("holo-log");
-    const holoForm = document.getElementById("holo-form");
-    const holoInput = document.getElementById("holo-input");
-    const holoOrb = document.getElementById("holo-orb");
+    // =========================================================
+    //  HOLO GIRL CHAT LOGIC (JOI) – BACKEND: RENDER
+    // =========================================================
 
-    // your Render backend URL
     const HOLO_BACKEND_URL = "https://holo-bqwr.onrender.com/chat";
 
-    const holoHistory = [];
+    const holoForm = document.getElementById("holo-form");
+    const holoInput = document.getElementById("holo-input");
+    const holoLog = document.getElementById("holo-log");
+    const holoMoodWrap = document.getElementById("holo-mood-wrap");
 
-    function holoEscape(text) {
-      return text.replace(/[&<>]/g, (c) => {
-        switch (c) {
-          case "&": return "&amp;";
-          case "<": return "&lt;";
-          case ">": return "&gt;";
-          default: return c;
+    let holoHistory = [];
+
+    setHoloMood("neutral");
+
+    if (holoForm && holoInput && holoLog) {
+      holoForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const text = holoInput.value.trim();
+        if (!text) return;
+
+        appendHoloLine("YOU", text, "user");
+        holoInput.value = "";
+
+        holoHistory.push({ role: "user", content: text });
+
+        setProcessing(true);
+
+        try {
+          const res = await fetch(HOLO_BACKEND_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              message: text,
+              history: holoHistory
+            })
+          });
+
+          const data = await res.json();
+          const reply = (data && data.reply) || "Signal interference on the grid. Try again.";
+
+          appendHoloLine("JOI", reply, "ai");
+          holoHistory.push({ role: "assistant", content: reply });
+
+          const mood = inferMoodFromText(text + " " + reply);
+          setHoloMood(mood);
+        } catch (err) {
+          appendHoloLine(
+            "JOI",
+            "Something hit the Blackwall. I couldn’t reach the grid just now.",
+            "ai"
+          );
+          console.error("Holo backend error:", err);
+        } finally {
+          setProcessing(false);
         }
       });
     }
 
-    function appendHoloLine(role, text) {
+    function appendHoloLine(tag, text, kind) {
       if (!holoLog) return;
       const line = document.createElement("div");
-      line.className = "holo-line holo-line--" + (role === "user" ? "user" : "joi");
-      const who = role === "user" ? "YOU>" : "JOI>";
-      line.innerHTML = `<span>${who}</span> ${holoEscape(text)}`;
+      line.className = "holo-line " + (kind === "user" ? "holo-line--user" : "holo-line--ai");
+
+      const tagSpan = document.createElement("span");
+      tagSpan.className = "holo-tag";
+      tagSpan.textContent = tag + ">";
+
+      const textSpan = document.createElement("span");
+      textSpan.textContent = " " + text;
+
+      line.appendChild(tagSpan);
+      line.appendChild(textSpan);
       holoLog.appendChild(line);
+
       holoLog.scrollTop = holoLog.scrollHeight;
     }
 
-    function inferMood(userText = "", botText = "") {
-      const txt = (userText + " " + botText).toLowerCase();
+    function inferMoodFromText(text) {
+      const t = text.toLowerCase();
 
-      const happyWords = ["great", "awesome", "nice", "good", "love", "cool", "thanks", "thank you", "perfect"];
-      const sadWords   = ["sad", "lonely", "tired", "bored", "upset", "depress", "anxious", "unhappy", "cry"];
-      const angryWords = ["angry", "pissed", "mad", "hate", "wtf", "stupid", "dumb", "annoyed", "frustrated"];
-
-      const has = (words) => words.some((w) => txt.includes(w));
-
-      if (has(angryWords)) return "angry";
-      if (has(sadWords)) return "sad";
-      if (has(happyWords)) return "happy";
-
-      if (txt.includes("you suck") || txt.includes("useless")) return "angry";
-      if (txt.includes("sorry") || txt.includes("apolog")) return "sad";
+      if (/(angry|mad|pissed|furious|rage|hate)/.test(t)) return "angry";
+      if (/(sad|lonely|tired|depressed|down|bored)/.test(t)) return "sad";
+      if (/(happy|awesome|great|good|love|nice)/.test(t)) return "happy";
 
       return "neutral";
     }
 
     function setHoloMood(mood) {
-      if (!holoOrb) return;
-      const allowed = ["neutral", "happy", "sad", "angry"];
-      if (!allowed.includes(mood)) mood = "neutral";
-      holoOrb.classList.remove(
-        "holo-orb--neutral",
-        "holo-orb--happy",
-        "holo-orb--sad",
-        "holo-orb--angry"
-      );
-      holoOrb.classList.add("holo-orb--" + mood);
+      if (!holoMoodWrap) return;
+      const moods = ["neutral", "happy", "sad", "angry"];
+      if (!moods.includes(mood)) mood = "neutral";
+
+      moods.forEach((m) => holoMoodWrap.classList.remove("holo-mood-" + m));
+
+      holoMoodWrap.classList.add("holo-mood-" + mood);
+
+      holoMoodWrap.classList.remove("holo-mood-change");
+      void holoMoodWrap.offsetWidth;
+      holoMoodWrap.classList.add("holo-mood-change");
     }
 
-    async function holoAskBackend(message) {
-      if (!HOLO_BACKEND_URL) return null;
-
-      try {
-        const resp = await fetch(HOLO_BACKEND_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message,
-            history: holoHistory,
-          }),
-        });
-
-        if (!resp.ok) throw new Error("Bad status: " + resp.status);
-        const data = await resp.json();
-        return data.reply || null;
-      } catch (err) {
-        console.error("holo backend error:", err);
-        return null;
+    function setProcessing(on) {
+      if (!holoMoodWrap) return;
+      if (on) {
+        holoMoodWrap.classList.add("holo-processing");
+      } else {
+        holoMoodWrap.classList.remove("holo-processing");
       }
     }
-
-    async function sendHoloMessage(message) {
-      if (!message.trim()) return;
-      appendHoloLine("user", message);
-      holoHistory.push({ role: "user", content: message });
-
-      if (holoInput) holoInput.value = "";
-      const sendBtn = holoForm ? holoForm.querySelector("button") : null;
-      if (sendBtn) sendBtn.disabled = true;
-
-      let reply = await holoAskBackend(message);
-
-      if (!reply) {
-        reply = "Signal interference on the grid. Say that again, just a little slower.";
-      }
-
-      appendHoloLine("assistant", reply);
-      holoHistory.push({ role: "assistant", content: reply });
-
-      const mood = inferMood(message, reply);
-      setHoloMood(mood);
-
-      if (sendBtn) sendBtn.disabled = false;
-      if (holoInput) holoInput.focus();
-    }
-
-    function holoBootGreeting() {
-      if (!holoLog || holoLog.dataset.booted === "1") return;
-      holoLog.dataset.booted = "1";
-
-      appendHoloLine("assistant", "Wake up, Samurai. Welcome to Night City.");
-      appendHoloLine(
-        "assistant",
-        "I'm your holo-construct guide. Type anything and I'll react."
-      );
-    }
-
-    if (holoForm && holoInput) {
-      holoForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const msg = holoInput.value;
-        sendHoloMessage(msg);
-      });
-    }
-
-    window.addEventListener("keydown", (e) => {
-      if ((e.key === "Enter" || e.key === " ") && document.getElementById("intro")) {
-        setTimeout(holoBootGreeting, 500);
-      }
-    });
-
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        if (!document.getElementById("intro")) {
-          holoBootGreeting();
-        }
-      }, 8500);
-    });
   </script>
 </body>
 </html>
