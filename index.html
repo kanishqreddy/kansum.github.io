@@ -673,7 +673,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr);
       gap: 32px;
       align-items: flex-start;
     }
@@ -774,6 +774,315 @@
     .hero-subtitle strong {
       color: var(--accent);
       font-weight: 600;
+    }
+
+    /* ========= HOLOGRAM PANEL / BLADE RUNNER STYLE ========= */
+
+    .holo-panel {
+      position: relative;
+      border-radius: 26px;
+      border: 1px solid rgba(0, 255, 255, 0.45);
+      padding: 14px 14px 12px;
+      background:
+        radial-gradient(circle at top, rgba(0, 255, 255, 0.18), rgba(2, 0, 20, 0.98));
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.8),
+        0 26px 68px rgba(0, 0, 0, 1),
+        0 0 38px rgba(0, 255, 255, 0.55);
+      overflow: hidden;
+    }
+
+    .holo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .holo-header span {
+      color: #22c55e;
+      text-shadow: 0 0 10px rgba(34, 197, 94, 1);
+    }
+
+    .holo-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .holo-viewport {
+      border-radius: 20px;
+      border: 1px solid rgba(0, 255, 255, 0.65);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(111, 226, 255, 0.75), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(255, 0, 122, 0.85), transparent 60%),
+        linear-gradient(180deg, #020313 0%, #050013 38%, #02000c 100%);
+      overflow: hidden;
+      position: relative;
+      padding: 18px 10px 16px;
+      box-shadow:
+        0 22px 60px rgba(0, 0, 0, 1),
+        0 0 40px rgba(0, 255, 255, 0.55);
+    }
+
+    .holo-viewport::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 1px
+      );
+      background-size: 100% 3px;
+      opacity: 0.28;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .holo-orb {
+      --holo-main: #7ef9ff;
+      --holo-accent: #ffb3ff;
+      --holo-rim: rgba(0, 255, 255, 0.85);
+
+      position: relative;
+      width: 74%;
+      max-width: 260px;
+      aspect-ratio: 3 / 2.4;
+      margin: 26px auto 14px;
+      border-radius: 50% 50% 48% 48%;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.95), transparent 55%),
+        radial-gradient(circle at 50% 100%, var(--holo-accent), transparent 72%),
+        radial-gradient(circle at 50% 55%, rgba(0, 0, 0, 0.65), transparent 70%);
+      box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.8),
+        0 0 32px var(--holo-rim),
+        0 0 72px rgba(0, 0, 0, 1);
+      transform-origin: center bottom;
+      animation: holoFloat 6s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .holo-orb::before {
+      content: "";
+      position: absolute;
+      left: -20%;
+      right: -20%;
+      top: 48%;
+      height: 18%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 0, 160, 0.7),
+        rgba(0, 0, 0, 0)
+      );
+      filter: blur(2px);
+      opacity: 0.9;
+      animation: holoScan 3.4s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    .holo-orb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.1) 0,
+          transparent 55%
+        );
+      background-size: 2px 22px;
+      animation: holoRain 5.4s linear infinite;
+      opacity: 0.7;
+      mix-blend-mode: screen;
+    }
+
+    .holo-orb-glow {
+      position: absolute;
+      inset: 36% 6% auto;
+      height: 48%;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 255, 255, 0.7),
+        rgba(255, 0, 128, 0.5),
+        transparent 70%
+      );
+      filter: blur(16px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .holo-orb--neutral {
+      --holo-main: #7ef9ff;
+      --holo-accent: #ffb3ff;
+      --holo-rim: rgba(0, 255, 255, 0.85);
+    }
+
+    .holo-orb--happy {
+      --holo-main: #a4ffb5;
+      --holo-accent: #ffe177;
+      --holo-rim: rgba(255, 234, 138, 0.95);
+      animation-duration: 5.2s;
+    }
+
+    .holo-orb--sad {
+      --holo-main: #88c4ff;
+      --holo-accent: #6a8bff;
+      --holo-rim: rgba(118, 178, 255, 0.9);
+      animation-duration: 7.2s;
+    }
+
+    .holo-orb--angry {
+      --holo-main: #ff6b6b;
+      --holo-accent: #ff1744;
+      --holo-rim: rgba(255, 80, 80, 0.95);
+      animation-duration: 4.2s;
+    }
+
+    .holo-status-chip {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #a5b4fc;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .holo-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 1);
+    }
+
+    .holo-console {
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: radial-gradient(circle at top, #05021a, #02000b 65%);
+      padding: 10px 10px 8px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      color: #e5e7eb;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 1),
+        0 0 24px rgba(0, 255, 255, 0.4);
+    }
+
+    .holo-log {
+      max-height: 170px;
+      min-height: 120px;
+      overflow-y: auto;
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(5, 9, 20, 0.95);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 1);
+      margin-bottom: 6px;
+    }
+
+    .holo-line {
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    .holo-line span {
+      opacity: 0.8;
+    }
+    .holo-line--user span {
+      color: #f97373;
+    }
+    .holo-line--joi span {
+      color: #7dd3fc;
+    }
+
+    .holo-log::-webkit-scrollbar {
+      width: 6px;
+    }
+    .holo-log::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .holo-log::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.7);
+      border-radius: 999px;
+    }
+
+    .holo-input-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .holo-input-row input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      padding: 5px 9px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 11px;
+      background: rgba(3, 7, 18, 0.96);
+      color: #e5e7eb;
+    }
+    .holo-input-row input::placeholder {
+      color: #6b7280;
+    }
+
+    .holo-input-row button {
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.8);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.95), rgba(8, 47, 73, 1));
+      font-family: "Share Tech Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #020617;
+      padding: 5px 10px;
+      cursor: pointer;
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 1),
+        0 0 14px rgba(56, 189, 248, 0.8);
+    }
+    .holo-input-row button:hover {
+      filter: brightness(1.1);
+    }
+    .holo-input-row button:disabled {
+      opacity: 0.5;
+      cursor: default;
+      box-shadow: none;
+    }
+
+    .holo-hint {
+      margin-top: 4px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+    }
+
+    @keyframes holoFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50%      { transform: translateY(-10px) scale(1.02); }
+    }
+    @keyframes holoScan {
+      0%   { transform: translateY(-140%); }
+      100% { transform: translateY(140%); }
+    }
+    @keyframes holoRain {
+      0%   { transform: translateY(0); opacity: 0.3; }
+      40%  { opacity: 0.9; }
+      100% { transform: translateY(60px); opacity: 0.25; }
     }
 
     .btn-primary,
@@ -1069,10 +1378,6 @@
         padding-inline: 16px;
         font-size: 10px;
       }
-
-      .holo-panel {
-        margin-top: 16px;
-      }
     }
 
     /* ========= CYBERPUNK CURSOR GLOW ========= */
@@ -1307,137 +1612,6 @@
       100% { transform: translate3d(20px, -30px, 0); opacity: 0.1; }
     }
 
-    /* ========= HOLO AI PANEL ========= */
-
-    .holo-panel {
-      position: relative;
-      border-radius: 22px;
-      border: 1px solid rgba(0,255,255,0.45);
-      padding: 14px 14px 12px;
-      background:
-        radial-gradient(circle at top, rgba(0,255,255,0.16), rgba(3,0,20,0.98));
-      box-shadow:
-        0 24px 60px rgba(0,0,0,1),
-        0 0 32px rgba(0,255,255,0.45);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .holo-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9ca3af;
-    }
-
-    .holo-title {
-      color: #9af6ff;
-    }
-
-    .holo-status {
-      color: #22c55e;
-      text-shadow: 0 0 8px rgba(34,197,94,1);
-    }
-
-    .holo-viewport {
-      position: relative;
-      width: 100%;
-      height: 260px;
-      border-radius: 18px;
-      border: 1px solid rgba(0,255,255,0.5);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(0,255,255,0.25), transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(255,0,80,0.25), transparent 60%),
-        #02010b;
-      overflow: hidden;
-      box-shadow:
-        0 0 32px rgba(0,255,255,0.45),
-        0 0 60px rgba(0,0,0,1);
-    }
-
-    #holo-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .holo-viewport::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(
-        rgba(255,255,255,0.08) 1px,
-        transparent 1px
-      );
-      background-size: 100% 2px;
-      mix-blend-mode: screen;
-      opacity: 0.2;
-      pointer-events: none;
-    }
-
-    .holo-console {
-      margin-top: 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,255,255,0.35);
-      background: radial-gradient(circle at top,
-            rgba(0,255,255,0.1), rgba(2,0,12,0.98));
-      font-family: "Share Tech Mono", monospace;
-      font-size: 11px;
-      color: #e5e7eb;
-      display: flex;
-      flex-direction: column;
-      height: 190px;
-      overflow: hidden;
-    }
-
-    .holo-log {
-      flex: 1;
-      padding: 8px 10px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-
-    .holo-form {
-      border-top: 1px solid rgba(0,255,255,0.25);
-      padding: 6px 8px;
-    }
-
-    .holo-input {
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      border-radius: 8px;
-      border: 1px solid rgba(0,255,255,0.4);
-      padding: 6px 8px;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 11px;
-      color: #e5e7eb;
-    }
-
-    .holo-input::placeholder {
-      color: rgba(148,163,184,0.8);
-    }
-
-    .holo-input:focus-visible {
-      outline: 0;
-      border-color: #ffb300;
-      box-shadow: 0 0 10px rgba(0,255,255,0.9);
-    }
-
-    .holo-log .you  { color:#ffb300; }
-    .holo-log .joi  { color:#9af6ff; }
-    .holo-log .sys  { color:#f97373; }
-
-    .holo-viewport.holo-happy   { box-shadow: 0 0 28px rgba(34,197,94,0.9); }
-    .holo-viewport.holo-sad     { box-shadow: 0 0 28px rgba(56,189,248,0.9); }
-    .holo-viewport.holo-angry   { box-shadow: 0 0 32px rgba(248,113,113,1); }
-    .holo-viewport.holo-neutral { box-shadow: 0 0 24px rgba(156,163,175,0.9); }
-
     /* ========= HOLOMAP PANEL ========= */
 
     .holomap {
@@ -1521,7 +1695,6 @@
       opacity: 0.5;
     }
 
-    /* neutral; JS sets exact positions/sizes */
     .holomap-path--1 {
       left: 0;
       top: 0;
@@ -1944,13 +2117,15 @@
   </header>
 
   <main>
+    <!-- HERO WITH HOLOGRAM -->
     <section class="hero-wrapper" id="hero">
       <div class="blackwall"></div>
       <div class="hero">
+        <!-- LEFT SIDE -->
         <div>
           <div class="ticker" aria-label="Night City welcome message">
             <div class="ticker-inner">
-              Wake Up Samurai ! WELCOME TO NIGHT CITY !
+              WAKE UP SAMURAI ! WELCOME TO NIGHT CITY !
             </div>
           </div>
 
@@ -1964,26 +2139,44 @@
           </div>
         </div>
 
-        <!-- === HOLO AI PANEL (JOI-LIKE) === -->
-        <div class="holo-panel">
+        <!-- RIGHT SIDE: JOI HOLOGRAM CONSOLE -->
+        <aside class="holo-panel" aria-label="Hologram AI console">
           <div class="holo-header">
-            <span class="holo-title">HOLO · CONSTRUCT</span>
-            <span class="holo-status">ONLINE</span>
+            <span>HOLO · CONSTRUCT</span>
+            <span>ONLINE</span>
           </div>
-          <div class="holo-viewport holo-neutral">
-            <canvas id="holo-canvas"></canvas>
+
+          <div class="holo-shell">
+            <div class="holo-viewport">
+              <div class="holo-status-chip">
+                <span class="holo-status-dot"></span>
+                <span>link stable</span>
+              </div>
+
+              <div class="holo-orb-glow"></div>
+              <div id="holo-orb" class="holo-orb holo-orb--neutral"></div>
+            </div>
+
+            <div class="holo-console">
+              <div id="holo-log" class="holo-log" aria-live="polite"></div>
+
+              <form id="holo-form" class="holo-input-row" autocomplete="off">
+                <input
+                  id="holo-input"
+                  type="text"
+                  name="message"
+                  placeholder="type to talk to the holo..."
+                  required
+                />
+                <button type="submit">send</button>
+              </form>
+
+              <div class="holo-hint">
+                hint: feelings shift · happy / sad / angry depending on how you talk.
+              </div>
+            </div>
           </div>
-          <div class="holo-console">
-            <div id="holo-log" class="holo-log"></div>
-            <form id="holo-form" class="holo-form">
-              <input
-                id="holo-input"
-                class="holo-input"
-                autocomplete="off"
-                placeholder="> type to talk to the holo..." />
-            </form>
-          </div>
-        </div>
+        </aside>
       </div>
     </section>
 
@@ -2110,10 +2303,6 @@
   <audio id="ambience" loop>
     <!-- <source src="your-nightcity-loop.mp3" type="audio/mpeg" /> -->
   </audio>
-
-  <!-- Three.js for hologram -->
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
 
   <script>
     // ===== BOOT TERMINAL LOG =====
@@ -2630,234 +2819,150 @@
       });
     }
 
-    // ==================== 3D HOLOGRAM ====================
-    (function initHologram() {
-      const container = document.querySelector(".holo-viewport");
-      const canvas    = document.getElementById("holo-canvas");
-      if (!container || !canvas || !window.THREE) return;
+    // ===== HOLOGRAM CHAT + EMOTIONS (OPENROUTER BACKEND) =====
 
-      const scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x020109, 0.018);
+    const holoLog = document.getElementById("holo-log");
+    const holoForm = document.getElementById("holo-form");
+    const holoInput = document.getElementById("holo-input");
+    const holoOrb = document.getElementById("holo-orb");
 
-      const camera = new THREE.PerspectiveCamera(
-        32,
-        container.clientWidth / container.clientHeight,
-        0.1,
-        100
+    // your Render backend URL
+    const HOLO_BACKEND_URL = "https://holo-bqwr.onrender.com/chat";
+
+    const holoHistory = [];
+
+    function holoEscape(text) {
+      return text.replace(/[&<>]/g, (c) => {
+        switch (c) {
+          case "&": return "&amp;";
+          case "<": return "&lt;";
+          case ">": return "&gt;";
+          default: return c;
+        }
+      });
+    }
+
+    function appendHoloLine(role, text) {
+      if (!holoLog) return;
+      const line = document.createElement("div");
+      line.className = "holo-line holo-line--" + (role === "user" ? "user" : "joi");
+      const who = role === "user" ? "YOU>" : "JOI>";
+      line.innerHTML = `<span>${who}</span> ${holoEscape(text)}`;
+      holoLog.appendChild(line);
+      holoLog.scrollTop = holoLog.scrollHeight;
+    }
+
+    function inferMood(userText = "", botText = "") {
+      const txt = (userText + " " + botText).toLowerCase();
+
+      const happyWords = ["great", "awesome", "nice", "good", "love", "cool", "thanks", "thank you", "perfect"];
+      const sadWords   = ["sad", "lonely", "tired", "bored", "upset", "depress", "anxious", "unhappy", "cry"];
+      const angryWords = ["angry", "pissed", "mad", "hate", "wtf", "stupid", "dumb", "annoyed", "frustrated"];
+
+      const has = (words) => words.some((w) => txt.includes(w));
+
+      if (has(angryWords)) return "angry";
+      if (has(sadWords)) return "sad";
+      if (has(happyWords)) return "happy";
+
+      if (txt.includes("you suck") || txt.includes("useless")) return "angry";
+      if (txt.includes("sorry") || txt.includes("apolog")) return "sad";
+
+      return "neutral";
+    }
+
+    function setHoloMood(mood) {
+      if (!holoOrb) return;
+      const allowed = ["neutral", "happy", "sad", "angry"];
+      if (!allowed.includes(mood)) mood = "neutral";
+      holoOrb.classList.remove(
+        "holo-orb--neutral",
+        "holo-orb--happy",
+        "holo-orb--sad",
+        "holo-orb--angry"
       );
-      camera.position.set(0, 1.4, 4);
+      holoOrb.classList.add("holo-orb--" + mood);
+    }
 
-      const renderer = new THREE.WebGLRenderer({
-        canvas,
-        antialias: true,
-        alpha: true,
-      });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setClearColor(0x000000, 0);
+    async function holoAskBackend(message) {
+      if (!HOLO_BACKEND_URL) return null;
 
-      // Lights
-      const hemi = new THREE.HemisphereLight(0x55ddff, 0x080010, 1.2);
-      scene.add(hemi);
-
-      const point = new THREE.PointLight(0xff33aa, 1.8, 10);
-      point.position.set(0, 2, 2);
-      scene.add(point);
-
-      // Ground-ish glowing plane
-      const gridGeo = new THREE.PlaneGeometry(10, 10, 1, 1);
-      const gridMat = new THREE.MeshBasicMaterial({
-        color: 0x00ffff,
-        opacity: 0.07,
-        transparent: true
-      });
-      const grid = new THREE.Mesh(gridGeo, gridMat);
-      grid.rotation.x = -Math.PI / 2;
-      grid.position.y = -1.1;
-      scene.add(grid);
-
-      // HOLO AVATAR (TEMP: cylinder body)
-      let avatar, avatarMaterial, holoGlow;
-
-      const bodyGeo = new THREE.CylinderGeometry(0.55, 0.35, 2.3, 32, 32, true);
-      avatarMaterial = new THREE.MeshBasicMaterial({
-        color: 0x00ffff,
-        transparent: true,
-        opacity: 0.4,
-        wireframe: true,
-        side: THREE.DoubleSide,
-        blending: THREE.AdditiveBlending
-      });
-      avatar = new THREE.Mesh(bodyGeo, avatarMaterial);
-      avatar.position.y = 0.2;
-      scene.add(avatar);
-
-      const glowGeo = new THREE.SphereGeometry(1.2, 32, 32);
-      const glowMat = new THREE.MeshBasicMaterial({
-        color: 0xff40c0,
-        transparent: true,
-        opacity: 0.16,
-        blending: THREE.AdditiveBlending
-      });
-      holoGlow = new THREE.Mesh(glowGeo, glowMat);
-      holoGlow.position.copy(avatar.position);
-      scene.add(holoGlow);
-
-      const stripesGeo = new THREE.PlaneGeometry(3, 3);
-      const stripesMat = new THREE.MeshBasicMaterial({
-        color: 0x00ffff,
-        transparent: true,
-        opacity: 0.09,
-        blending: THREE.AdditiveBlending
-      });
-      const stripes = new THREE.Mesh(stripesGeo, stripesMat);
-      stripes.position.set(0, 0.7, 0.01);
-      scene.add(stripes);
-
-      const emotionStyles = {
-        neutral: { color: 0x00ffff, glow: 0xff40c0, opacity: 0.40 },
-        happy:   { color: 0x7cf9ff, glow: 0xffb3ff, opacity: 0.55 },
-        sad:     { color: 0x60a5fa, glow: 0x38bdf8, opacity: 0.28 },
-        angry:   { color: 0xff4b5c, glow: 0xff1f4a, opacity: 0.65 }
-      };
-
-      let currentEmotion = "neutral";
-      let emotionIntensity = 0;
-
-      function setHoloEmotion(e) {
-        const emotion = emotionStyles[e] ? e : "neutral";
-        currentEmotion = emotion;
-        emotionIntensity = (emotion === "angry") ? 1 : 0;
-
-        const style = emotionStyles[emotion];
-        avatarMaterial.color.setHex(style.color);
-        avatarMaterial.opacity = style.opacity;
-        holoGlow.material.color.setHex(style.glow);
-
-        container.classList.remove(
-          "holo-neutral", "holo-happy", "holo-sad", "holo-angry"
-        );
-        container.classList.add("holo-" + emotion);
-      }
-
-      // expose globally
-      window.setHoloEmotion = setHoloEmotion;
-
-      let t = 0;
-      function animate() {
-        requestAnimationFrame(animate);
-        t += 0.016;
-
-        avatar.rotation.y = Math.sin(t * 0.35) * 0.25 + 0.3;
-        avatar.position.y = 0.2 + Math.sin(t * 1.1) * 0.05;
-        holoGlow.position.copy(avatar.position);
-        stripes.position.y = 0.4 + Math.sin(t * 1.7) * 0.3;
-
-        if (emotionIntensity > 0) {
-          const jitter = 0.02;
-          avatar.position.x = Math.sin(t * 40) * jitter;
-          camera.position.x = Math.sin(t * 30) * jitter;
-        } else {
-          avatar.position.x *= 0.9;
-          camera.position.x *= 0.9;
-        }
-
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      window.addEventListener("resize", () => {
-        const w = container.clientWidth;
-        const h = container.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-      });
-
-      setHoloEmotion("neutral");
-    })();
-
-    // ==================== HOLO AI CHAT ====================
-
-    (function initHoloChat() {
-      const logEl   = document.getElementById("holo-log");
-      const formEl  = document.getElementById("holo-form");
-      const inputEl = document.getElementById("holo-input");
-      const viewport = document.querySelector(".holo-viewport");
-
-      if (!logEl || !formEl || !inputEl || !viewport) return;
-
-      const HOLO_BACKEND_URL = "https://YOUR-RENDER-APP.onrender.com/chat"; // change later
-      const USE_DUMMY = true; // set to false once backend is live
-
-      function appendLine(text, role) {
-        const div = document.createElement("div");
-        div.className = role;
-        div.textContent =
-          (role === "you" ? "YOU> " :
-           role === "joi" ? "JOI> " :
-           "SYS> ") + text;
-        logEl.appendChild(div);
-        logEl.scrollTop = logEl.scrollHeight;
-      }
-
-      // first greeting after intro finishes
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          appendLine("Wake up, Samurai. Welcome to Night City.", "joi");
-          if (window.setHoloEmotion) setHoloEmotion("happy");
-        }, 8200);
-      });
-
-      async function sendToBackend(message) {
-        if (USE_DUMMY) {
-          let emotion = "neutral";
-          if (/thank|cool|nice|love|great|good/i.test(message)) emotion = "happy";
-          if (/sad|tired|alone|depress|unhappy|cry/i.test(message)) emotion = "sad";
-          if (/angry|mad|hate|fuck|stupid|idiot/i.test(message)) emotion = "angry";
-
-          return {
-            text: "Signal received. Keep talking, I'm syncing to your frequency.",
-            emotion
-          };
-        }
-
+      try {
         const resp = await fetch(HOLO_BACKEND_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message })
+          body: JSON.stringify({
+            message,
+            history: holoHistory,
+          }),
         });
 
-        if (!resp.ok) {
-          throw new Error("Backend error " + resp.status);
-        }
-        return await resp.json(); // { text, emotion }
+        if (!resp.ok) throw new Error("Bad status: " + resp.status);
+        const data = await resp.json();
+        return data.reply || null;
+      } catch (err) {
+        console.error("holo backend error:", err);
+        return null;
+      }
+    }
+
+    async function sendHoloMessage(message) {
+      if (!message.trim()) return;
+      appendHoloLine("user", message);
+      holoHistory.push({ role: "user", content: message });
+
+      if (holoInput) holoInput.value = "";
+      const sendBtn = holoForm ? holoForm.querySelector("button") : null;
+      if (sendBtn) sendBtn.disabled = true;
+
+      let reply = await holoAskBackend(message);
+
+      if (!reply) {
+        reply = "Signal interference on the grid. Say that again, just a little slower.";
       }
 
-      formEl.addEventListener("submit", async (e) => {
+      appendHoloLine("assistant", reply);
+      holoHistory.push({ role: "assistant", content: reply });
+
+      const mood = inferMood(message, reply);
+      setHoloMood(mood);
+
+      if (sendBtn) sendBtn.disabled = false;
+      if (holoInput) holoInput.focus();
+    }
+
+    function holoBootGreeting() {
+      if (!holoLog || holoLog.dataset.booted === "1") return;
+      holoLog.dataset.booted = "1";
+
+      appendHoloLine("assistant", "Wake up, Samurai. Welcome to Night City.");
+      appendHoloLine(
+        "assistant",
+        "I'm your holo-construct guide. Type anything and I'll react."
+      );
+    }
+
+    if (holoForm && holoInput) {
+      holoForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const msg = inputEl.value.trim();
-        if (!msg) return;
-        inputEl.value = "";
-
-        appendLine(msg, "you");
-        appendLine("…thinking…", "sys");
-
-        try {
-          const data = await sendToBackend(msg);
-          logEl.lastChild.remove();
-
-          if (window.setHoloEmotion && data.emotion) {
-            setHoloEmotion(data.emotion);
-          }
-          appendLine(data.text, "joi");
-        } catch (err) {
-          logEl.lastChild.remove();
-          appendLine("Link to holo-core failed. Try again.", "sys");
-          if (window.setHoloEmotion) setHoloEmotion("sad");
-        }
+        const msg = holoInput.value;
+        sendHoloMessage(msg);
       });
-    })();
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if ((e.key === "Enter" || e.key === " ") && document.getElementById("intro")) {
+        setTimeout(holoBootGreeting, 500);
+      }
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        if (!document.getElementById("intro")) {
+          holoBootGreeting();
+        }
+      }, 8500);
+    });
   </script>
 </body>
 </html>
