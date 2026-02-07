@@ -4,53 +4,31 @@
   <meta charset="UTF-8">
   <title>Peddi® — Archive No.01</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- SILENCE INTRO -->
-<section class="silence">
-  <span>Peddi</span>
+<div id="overlay">
+  <h1>Peddi</h1>
+  <span>Archive No.01</span>
+</div>
+
+<canvas id="webgl"></canvas>
+
+<section class="copy">
+  <h2>Cut by Seam</h2>
+  <p>Crafted with discipline. Shaped by restraint.</p>
 </section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-copy">
-    <h1>Cut<br>by<br>Seam</h1>
-    <p>Archive No.01</p>
-  </div>
-
-  <div class="hero-image">
-    <img src="images/hero-model.jpg">
-    <svg class="seam-svg" viewBox="0 0 300 900">
-      <path id="seamPath"
-        d="M150 0 C210 240 90 620 150 900"
-        fill="none"
-        stroke="#0b0b0d"
-        stroke-width="3"
-        stroke-dasharray="6 12"/>
-    </svg>
-  </div>
+<section class="copy">
+  <h2>The seam carries tension.</h2>
 </section>
 
-<!-- MEMORY -->
-<section class="memory">
-  <h2>The seam is not decoration.</h2>
+<section class="copy">
+  <h2>Luxury remembers impact.</h2>
 </section>
 
-<section class="memory">
-  <h2>It carries tension.</h2>
-</section>
-
-<section class="memory">
-  <h2>It remembers every impact.</h2>
-</section>
-
-<footer>
-  Peddi® — Archive System
-</footer>
-
-<script src="seam.js"></script>
-<script src="scroll.js"></script>
+<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
