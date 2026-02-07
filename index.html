@@ -1,46 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Peddi — Winter Edition</title>
+  <meta charset="UTF-8" />
+  <title>Peddi® — Crafted by Seam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero full-screen">
-    <div class="hero-content">
-      <h1>Peddi</h1>
-      <p>Modern luxury shaped by form and disciplined design.</p>
-    </div>
-    <div class="hero-image">
-      <img src="images/hero.jpg" alt="Peddi Hero">
-    </div>
-  </section>
+<!-- LOADER -->
+<div class="loader">
+  <span>Peddi</span>
+</div>
 
-  <!-- EDITION SECTIONS -->
-  <section class="edition">
-    <div class="sticky-text">
-      <div class="text active">Crafted for presence, not noise.</div>
-      <div class="text">Built to endure movement.</div>
-      <div class="text">Defined by form and seam.</div>
-      <div class="text">Made for those who lead, not follow.</div>
-    </div>
-    <div class="visuals">
-      <div class="visual active"><img src="images/feature1.jpg"></div>
-      <div class="visual"><img src="images/feature2.jpg"></div>
-      <div class="visual"><img src="images/feature3.jpg"></div>
-      <div class="visual"><img src="images/feature4.jpg"></div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero snap">
+  <div class="hero-left">
+    <span class="eyebrow">Established by Discipline</span>
+    <h1>Peddi</h1>
+    <p>Luxury formed by restraint.</p>
+  </div>
 
-  <!-- FINAL RSVP / CTA -->
-  <section class="cta-section">
-    <h2>Explore The Peddi Collection</h2>
-    <button>Discover Now</button>
-  </section>
+  <div class="hero-right">
+    <img src="images/hero-model.jpg" alt="Peddi Model">
+    <svg class="seam" viewBox="0 0 300 900">
+      <path id="seamPath"
+        d="M150 0 C220 250 80 650 150 900"
+        stroke="#111"
+        stroke-width="3"
+        stroke-dasharray="8 14"
+        fill="none"/>
+    </svg>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- STITCH SECTION -->
+<section class="stitch snap">
+  <div class="stitch-text active">
+    <h2>The line decides everything.</h2>
+  </div>
+  <div class="stitch-text">
+    <h2>Without it, form collapses.</h2>
+  </div>
+  <div class="stitch-text">
+    <h2>With it, balance exists.</h2>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="lookbook snap">
+  <div class="track">
+    <div class="look"><img src="images/look1.jpg"><span>Seam Jacket</span></div>
+    <div class="look"><img src="images/look2.jpg"><span>Match White</span></div>
+    <div class="look"><img src="images/look3.jpg"><span>Core Layer</span></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto snap">
+  <h2>
+    Every Peddi garment is weighted,
+    measured, and finished by hand —
+    <em>like the cricket ball that inspired it.</em>
+  </h2>
+</section>
+
+<footer>
+  Peddi® — Quietly Precise
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
