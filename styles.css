@@ -1,137 +1,78 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: Inter, sans-serif;
-  background: #0b0b0d;
-  color: #f5f5f4;
+  background: #f5f5f4;
+  color: #0b0b0d;
   overflow-x: hidden;
 }
 
-/* LOADER */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: #0b0b0d;
+/* SILENCE */
+.silence {
+  height: 100vh;
   display: grid;
   place-items: center;
-  z-index: 100;
-  animation: fadeOut 1.2s ease forwards 1.8s;
-}
-
-.loader span {
   font-size: 3rem;
-  letter-spacing: 0.4em;
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; pointer-events: none; }
-}
-
-/* SNAP */
-.snap {
-  min-height: 100vh;
-  scroll-snap-align: start;
+  letter-spacing: 0.6em;
 }
 
 /* HERO */
 .hero {
-  background: #f5f5f4;
-  color: #0b0b0d;
+  min-height: 120vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 120px;
+  padding: 140px;
   align-items: center;
 }
 
-.hero-left h1 {
-  font-size: 7vw;
+.hero-copy h1 {
+  font-size: 6vw;
+  line-height: 1;
 }
 
-.hero-right {
+.hero-copy p {
+  margin-top: 20px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.hero-image {
   position: relative;
 }
 
-.hero-right img {
+.hero-image img {
   width: 100%;
-  border-radius: 4px;
+  filter: contrast(1.05);
 }
 
-.seam {
+.seam-svg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-/* STITCH */
-.stitch {
-  background: #0b0b0d;
+/* MEMORY */
+.memory {
+  min-height: 100vh;
   display: grid;
   place-items: center;
-  position: relative;
 }
 
-.stitch-text {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+.memory h2 {
+  font-size: 3.5rem;
+  max-width: 700px;
+  text-align: center;
+  opacity: 0.15;
+  transition: opacity 0.8s ease;
 }
 
-.stitch-text.active {
+.memory.seen h2 {
   opacity: 1;
 }
 
-.stitch-text h2 {
-  font-size: 3.2rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-/* LOOKBOOK */
-.lookbook {
-  background: #f5f5f4;
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  height: 100%;
-}
-
-.look {
-  min-width: 80vw;
-  padding: 80px;
-}
-
-.look img {
-  width: 100%;
-  height: 70vh;
-  object-fit: cover;
-}
-
-.look span {
-  display: block;
-  margin-top: 16px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-
-/* MANIFESTO */
-.manifesto {
-  padding: 160px;
-}
-
-.manifesto h2 {
-  font-size: 3.4rem;
-  font-weight: 400;
-  max-width: 900px;
-}
-
+/* FOOTER */
 footer {
-  padding: 60px;
+  padding: 80px;
   text-align: center;
   font-size: 10px;
   letter-spacing: 0.4em;
