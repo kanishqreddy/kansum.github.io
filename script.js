@@ -1,42 +1,18 @@
-/* STITCHED SEAM */
-const path = document.getElementById("seamPath");
-const length = path.getTotalLength();
-
-path.style.strokeDasharray = length;
-path.style.strokeDashoffset = length;
+const texts = document.querySelectorAll(".sticky-text .text");
+const visuals = document.querySelectorAll(".visuals .visual");
 
 window.addEventListener("scroll", () => {
-  const scroll = window.scrollY;
-  const height = document.body.scrollHeight - window.innerHeight;
-  const progress = scroll / height;
-  path.style.strokeDashoffset = length * (1 - progress);
-});
+  const scrollPos = window.scrollY;
+  const sectionTop = document.querySelector(".edition").offsetTop;
+  const vh = window.innerHeight;
 
-/* STITCH TEXT */
-const texts = document.querySelectorAll(".stitch-text");
+  texts.forEach((text, i) => {
+    if (scrollPos >= sectionTop + i * vh * 0.6) {
+      texts.forEach(t => t.classList.remove("active"));
+      visuals.forEach(v => v.classList.remove("active"));
 
-window.addEventListener("scroll", () => {
-  const stitch = document.querySelector(".stitch");
-  const start = stitch.offsetTop;
-  const h = window.innerHeight;
-
-  texts.forEach((t, i) => {
-    t.classList.toggle(
-      "active",
-      window.scrollY > start + i * h &&
-      window.scrollY < start + (i + 1) * h
-    );
+      text.classList.add("active");
+      visuals[i].classList.add("active");
+    }
   });
-});
-
-/* LOOKBOOK SCROLL */
-const lookbook = document.querySelector(".lookbook");
-const track = document.querySelector(".track");
-
-window.addEventListener("scroll", () => {
-  const r = lookbook.getBoundingClientRect();
-  if (r.top <= 0 && r.bottom >= window.innerHeight) {
-    const p = Math.abs(r.top) / r.height;
-    track.style.transform = `translateX(-${p * 60}vw)`;
-  }
 });
