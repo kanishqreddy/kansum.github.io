@@ -2,87 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Peddi® — Modern Luxury</title>
+  <title>Peddi® — Cut by Seam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0c0c0e;
-      --soft: #16161a;
-      --text: #f4f4f5;
-      --muted: #a1a1aa;
-      --line: rgba(255,255,255,0.12);
-      --accent: #e7e5e4;
+      --bg: #0b0b0d;
+      --panel: #f5f5f4;
+      --ink: #0b0b0d;
+      --muted: #6b7280;
+      --thread: #111827;
+      --line: rgba(0,0,0,0.15);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: "Inter", system-ui, sans-serif;
       background: var(--bg);
-      color: var(--text);
+      color: var(--panel);
       overflow-x: hidden;
     }
 
     /* NAV */
     header {
       position: fixed;
-      top: 0;
       width: 100%;
-      z-index: 20;
-      backdrop-filter: blur(20px);
-      background: linear-gradient(to bottom, rgba(12,12,14,0.75), transparent);
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(to bottom, rgba(11,11,13,0.8), transparent);
+      backdrop-filter: blur(14px);
     }
 
     .nav {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: auto;
-      padding: 22px 28px;
+      padding: 22px 36px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo {
-      font-size: 13px;
       letter-spacing: 0.45em;
-      text-transform: uppercase;
+      font-size: 12px;
     }
 
     .nav a {
-      text-decoration: none;
-      color: var(--muted);
-      margin-left: 34px;
-      font-size: 11px;
+      margin-left: 36px;
+      font-size: 10px;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .nav a:hover {
-      color: var(--text);
+      text-decoration: none;
+      color: #d4d4d8;
     }
 
     /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      max-width: 1400px;
+      grid-template-columns: 1.2fr 0.8fr;
+      max-width: 1500px;
       margin: auto;
-      padding: 140px 40px 80px;
-      gap: 80px;
+      padding: 140px 48px 80px;
+      gap: 90px;
+      align-items: center;
     }
 
+    /* SEAM LINE */
+    .seam {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          var(--thread) 0px,
+          var(--thread) 6px,
+          transparent 6px,
+          transparent 14px
+        );
+      opacity: 0.65;
+      animation: seamFlow 6s linear infinite;
+    }
+
+    @keyframes seamFlow {
+      from { background-position-y: 0; }
+      to { background-position-y: 200px; }
+    }
+
+    /* TEXT SIDE */
     .hero-text {
+      position: relative;
+      z-index: 2;
       animation: fadeLeft 1.2s ease forwards;
     }
 
@@ -91,57 +112,58 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    .hero-eyebrow {
-      font-size: 11px;
+    .eyebrow {
+      font-size: 10px;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #a1a1aa;
       margin-bottom: 20px;
     }
 
-    .hero h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(46px, 6vw, 86px);
+    h1 {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(44px, 6vw, 82px);
       font-weight: 400;
       line-height: 1.05;
+      color: var(--panel);
     }
 
-    .hero h1 em {
+    h1 em {
       font-style: italic;
-      opacity: 0.9;
     }
 
-    .hero p {
+    .hero-text p {
       max-width: 420px;
-      margin-top: 28px;
-      font-size: 15px;
+      margin-top: 26px;
       line-height: 1.9;
-      color: var(--muted);
+      color: #cbd5e1;
+      font-size: 14px;
     }
 
-    .hero-cta {
-      margin-top: 42px;
-      display: inline-block;
-      padding: 14px 36px;
-      border: 1px solid var(--accent);
+    .cta {
+      margin-top: 40px;
+      padding: 14px 38px;
+      border: 1px solid var(--panel);
       border-radius: 999px;
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
       background: transparent;
-      color: var(--text);
+      color: var(--panel);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: all 0.35s ease;
     }
 
-    .hero-cta:hover {
-      background: var(--text);
-      color: var(--bg);
+    .cta:hover {
+      background: var(--panel);
+      color: var(--ink);
     }
 
-    /* HERO IMAGE */
+    /* IMAGE PANEL */
     .hero-image {
       position: relative;
+      background: var(--panel);
+      padding: 28px;
       animation: fadeRight 1.4s ease forwards;
     }
 
@@ -153,67 +175,75 @@
     .hero-image::before {
       content: "";
       position: absolute;
-      inset: -40px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 65%);
-      z-index: -1;
+      inset: 20px;
+      border: 2px dashed var(--thread);
+      opacity: 0.5;
+      pointer-events: none;
     }
 
     .hero-image img {
       width: 100%;
-      max-height: 80vh;
+      height: 78vh;
       object-fit: cover;
-      border-radius: 6px;
-      filter: contrast(1.05) saturate(0.95);
+      display: block;
+      filter: contrast(1.05);
     }
 
-    /* SECTION */
+    /* MANIFESTO */
     section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 140px 40px;
-    }
-
-    .section-title {
-      font-size: 11px;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 40px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 160px 48px;
     }
 
     .manifesto {
-      font-family: "Playfair Display", serif;
+      max-width: 900px;
+      margin: auto;
+      font-family: "Libre Baskerville", serif;
       font-size: clamp(28px, 4vw, 48px);
       line-height: 1.25;
-      max-width: 900px;
+      position: relative;
     }
 
-    .manifesto em {
-      font-style: italic;
-      opacity: 0.9;
+    .manifesto::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          var(--thread) 0px,
+          var(--thread) 6px,
+          transparent 6px,
+          transparent 14px
+        );
     }
 
-    /* FOOTER */
     footer {
-      border-top: 1px solid var(--line);
-      padding: 60px 20px;
+      background: var(--bg);
+      color: #9ca3af;
       text-align: center;
+      padding: 60px 20px;
       font-size: 10px;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--muted);
     }
 
-    /* MOBILE */
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
-        padding: 120px 24px 60px;
+        padding: 120px 24px;
       }
 
-      .hero-image {
-        order: -1;
+      .seam {
+        display: none;
+      }
+
+      .hero-image img {
+        height: auto;
       }
     }
   </style>
@@ -231,36 +261,37 @@
   </div>
 </header>
 
+<div class="seam"></div>
+
 <main class="hero">
   <div class="hero-text">
-    <div class="hero-eyebrow">Modern Luxury</div>
+    <div class="eyebrow">Cut by Seam</div>
     <h1>
-      Clothing<br/>
-      with <em>Presence</em>
+      Precision<br/>
+      in <em>Silence</em>
     </h1>
     <p>
-      Peddi explores form, restraint, and quiet confidence.
-      Designed for those who speak without raising their voice.
+      Inspired by the discipline of the game.
+      Defined by the line that holds everything together.
     </p>
-    <button class="hero-cta">View Collection</button>
+    <button class="cta">View Collection</button>
   </div>
 
   <div class="hero-image">
-    <img src="hero-model.jpg" alt="Peddi model wearing white jacket">
+    <img src="images/hero-model.jpg" alt="Peddi cricket-seam inspired jacket">
   </div>
 </main>
 
 <section>
-  <div class="section-title">Our Philosophy</div>
   <div class="manifesto">
-    We design garments that feel intentional.
-    <br/><br/>
-    Less noise. <em>More meaning.</em>
+    Every Peddi garment is built like a cricket ball —
+    balanced, intentional, and finished with a seam
+    that tells you where the strength lies.
   </div>
 </section>
 
 <footer>
-  Peddi® — Designed for the Future
+  Peddi® — Crafted with Discipline
 </footer>
 
 </body>
