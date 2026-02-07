@@ -2,33 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Peddi® — Archive No.01</title>
+  <title>Peddi — Winter Edition</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div id="overlay">
-  <h1>Peddi</h1>
-  <span>Archive No.01</span>
-</div>
+  <!-- HERO -->
+  <section class="hero full-screen">
+    <div class="hero-content">
+      <h1>Peddi</h1>
+      <p>Modern luxury shaped by form and disciplined design.</p>
+    </div>
+    <div class="hero-image">
+      <img src="images/hero.jpg" alt="Peddi Hero">
+    </div>
+  </section>
 
-<canvas id="webgl"></canvas>
+  <!-- EDITION SECTIONS -->
+  <section class="edition">
+    <div class="sticky-text">
+      <div class="text active">Crafted for presence, not noise.</div>
+      <div class="text">Built to endure movement.</div>
+      <div class="text">Defined by form and seam.</div>
+      <div class="text">Made for those who lead, not follow.</div>
+    </div>
+    <div class="visuals">
+      <div class="visual active"><img src="images/feature1.jpg"></div>
+      <div class="visual"><img src="images/feature2.jpg"></div>
+      <div class="visual"><img src="images/feature3.jpg"></div>
+      <div class="visual"><img src="images/feature4.jpg"></div>
+    </div>
+  </section>
 
-<section class="copy">
-  <h2>Cut by Seam</h2>
-  <p>Crafted with discipline. Shaped by restraint.</p>
-</section>
+  <!-- FINAL RSVP / CTA -->
+  <section class="cta-section">
+    <h2>Explore The Peddi Collection</h2>
+    <button>Discover Now</button>
+  </section>
 
-<section class="copy">
-  <h2>The seam carries tension.</h2>
-</section>
-
-<section class="copy">
-  <h2>Luxury remembers impact.</h2>
-</section>
-
-<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-<script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
