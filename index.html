@@ -20,7 +20,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket Animation Container */
+/* Cricket Container */
 .cricket-container { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; justify-content:center; align-items:flex-end; }
 .ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; }
 .wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:100px; transform-origin:bottom center; }
@@ -53,7 +53,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </header>
 
-<!-- Cricket Container with 3 wickets -->
+<!-- Cricket Container -->
 <div class="cricket-container">
   <div class="ball" id="ball"></div>
   <div class="wicket" id="wicket1" style="left:25%;"></div>
@@ -116,24 +116,22 @@ const collections = [
 const redVideo = document.getElementById("redVideo");
 const hitSound = document.getElementById("hitSound");
 
-collections.forEach(c=>c.style.opacity=0);
+// Hide collections initially
+collections.forEach(c => c.style.opacity = 0);
 redVideo.pause();
 
-// Sequential ScrollTriggers for each wicket
-const positions = [wickets[0].offsetLeft, wickets[1].offsetLeft, wickets[2].offsetLeft];
-
-positions.forEach((xPos, idx)=>{
+// Function for sequential wicket + collection animation
+function setupWicketSequence(idx, xPos, startOffset){
   ScrollTrigger.create({
     trigger: ".cricket-container",
-    start: "top+=" + (window.innerHeight*idx),
-    end: "+=300",
+    start: "top+=" + startOffset,
+    end: "+=400",
     scrub:1,
     pin:true,
     onEnter: ()=>{
-      // Ball animation
       gsap.to(ball, {
-        x: xPos,
-        y: -150,
+        x:xPos,
+        y:-150,
         rotation:360,
         scaleX:1.2,
         scaleY:0.8,
@@ -150,7 +148,13 @@ positions.forEach((xPos, idx)=>{
       });
     }
   });
-});
+}
+
+// Sequential scroll triggers
+setupWicketSequence(0, window.innerWidth*0.25, 0);                // Red
+setupWicketSequence(1, window.innerWidth*0.5, window.innerHeight); // White
+setupWicketSequence(2, window.innerWidth*0.75, window.innerHeight*2); // Black
+
 </script>
 
 </body>
