@@ -20,7 +20,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket animation */
+/* Cricket Container */
 .cricket-container { position:relative; width:100%; height:100vh; display:flex; justify-content:center; align-items:flex-end; overflow:hidden; }
 .ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
 .wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:100px; transform-origin:bottom center; }
@@ -53,48 +53,63 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </header>
 
-<!-- Cricket Container -->
-<div class="cricket-container">
-  <div class="ball" id="ball"></div>
-  <div class="wicket" id="wicket1" style="left:25%;"></div>
-  <div class="wicket" id="wicket2" style="left:50%;"></div>
-  <div class="wicket" id="wicket3" style="left:75%;"></div>
+<!-- Function to generate each cricket + collection block -->
+<div id="content">
+
+  <!-- RED COLLECTION BLOCK -->
+  <div class="cricket-container" id="cricket-red">
+    <div class="ball" id="ball-red"></div>
+    <div class="wicket" style="left:25%;"></div>
+    <div class="wicket" style="left:50%;"></div>
+    <div class="wicket" style="left:75%;"></div>
+  </div>
+  <section class="collection" id="redCollection" style="background:#ffe5e5;">
+    <div class="split">
+      <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
+      <video id="redVideo" muted loop playsinline>
+        <source src="videos/rtsmv.mp4" type="video/mp4">
+      </video>
+    </div>
+    <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
+    <div class="split">
+      <img src="images/rts.jpeg" alt="Red T-shirt">
+      <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
+    </div>
+  </section>
+
+  <!-- WHITE COLLECTION BLOCK -->
+  <div class="cricket-container" id="cricket-white">
+    <div class="ball" id="ball-white"></div>
+    <div class="wicket" style="left:25%;"></div>
+    <div class="wicket" style="left:50%;"></div>
+    <div class="wicket" style="left:75%;"></div>
+  </div>
+  <section class="collection" id="whiteCollection" style="background:#f5f5f5;">
+    <img src="images/wts.jpeg" alt="White T-shirt">
+    <div class="split">
+      <img src="images/wts2.jpeg" alt="White T-shirt Alt">
+      <img src="images/fsws.jpeg" alt="Full Sleeve White">
+      <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
+      <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
+    </div>
+  </section>
+
+  <!-- BLACK COLLECTION BLOCK -->
+  <div class="cricket-container" id="cricket-black">
+    <div class="ball" id="ball-black"></div>
+    <div class="wicket" style="left:25%;"></div>
+    <div class="wicket" style="left:50%;"></div>
+    <div class="wicket" style="left:75%;"></div>
+  </div>
+  <section class="collection" id="blackCollection" style="background:#111; color:#fff;">
+    <div class="split">
+      <img src="images/fsbs.jpeg" alt="Black Sleeve">
+      <img src="images/fsbs2.jpeg" alt="Black Sleeve Alt">
+      <img src="images/fsbs.jpeg" alt="Black Sleeve Duplicate">
+    </div>
+  </section>
+
 </div>
-
-<!-- RED COLLECTION -->
-<section class="collection" id="redCollection" style="background:#ffe5e5;">
-  <div class="split">
-    <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
-    <video id="redVideo" muted loop playsinline>
-      <source src="videos/rtsmv.mp4" type="video/mp4">
-    </video>
-  </div>
-  <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
-  <div class="split">
-    <img src="images/rts.jpeg" alt="Red T-shirt">
-    <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
-  </div>
-</section>
-
-<!-- WHITE COLLECTION -->
-<section class="collection" id="whiteCollection" style="background:#f5f5f5;">
-  <img src="images/wts.jpeg" alt="White T-shirt">
-  <div class="split">
-    <img src="images/wts2.jpeg" alt="White T-shirt Alt">
-    <img src="images/fsws.jpeg" alt="Full Sleeve White">
-    <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
-    <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
-  </div>
-</section>
-
-<!-- BLACK COLLECTION -->
-<section class="collection" id="blackCollection" style="background:#111; color:#fff;">
-  <div class="split">
-    <img src="images/fsbs.jpeg" alt="Black Sleeve">
-    <img src="images/fsbs2.jpeg" alt="Black Sleeve Alt">
-    <img src="images/fsbs.jpeg" alt="Black Sleeve Duplicate">
-  </div>
-</section>
 
 <footer>© 2026 Peddi</footer>
 <audio id="hitSound" src="wicket-hit.mp3"></audio>
@@ -102,64 +117,44 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-const ball = document.getElementById("ball");
-const wickets = [
-  document.getElementById("wicket1"),
-  document.getElementById("wicket2"),
-  document.getElementById("wicket3")
-];
-const collections = [
-  document.getElementById("redCollection"),
-  document.getElementById("whiteCollection"),
-  document.getElementById("blackCollection")
-];
-const redVideo = document.getElementById("redVideo");
-const hitSound = document.getElementById("hitSound");
+// Setup cricket animation per block
+function setupCricket(ballId, collectionId){
+  const container = document.getElementById(ballId).parentElement;
+  const ball = document.getElementById(ballId);
+  const wickets = container.querySelectorAll(".wicket");
+  const collection = document.getElementById(collectionId);
+  const redVideo = ballId==="ball-red"?document.getElementById("redVideo"):null;
+  const hitSound = document.getElementById("hitSound");
 
-// Hide all collections initially
-collections.forEach(c => c.style.opacity = 0);
-redVideo.pause();
+  collection.style.opacity=0;
+  if(redVideo) redVideo.pause();
 
-function animateWicket(idx, xPos, startOffset){
   ScrollTrigger.create({
-    trigger: ".cricket-container",
-    start: "top+=" + startOffset,
+    trigger: container,
+    start: "top top",
     end: "+=400",
     pin:true,
     scrub:1,
     onEnter: ()=>{
-      gsap.to(ball,{
-        x:xPos,
-        y:-150,
-        rotation:360,
-        scaleX:1.3,
-        scaleY:0.7,
-        duration:0.6,
-        ease:"power2.out",
-        onComplete:()=>{
-          gsap.to(ball,{
-            y:0,
-            rotation:720,
-            scaleX:1,
-            scaleY:1,
-            duration:0.5,
-            ease:"bounce.out"
-          });
-          hitSound.currentTime=0;
-          hitSound.play();
-          gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
-          gsap.to(collections[idx], {opacity:1, duration:0.5});
-          if(idx===0) redVideo.play();
+      // Animate ball to first wicket
+      gsap.to(ball, {x:wickets[0].offsetLeft, y:-150, rotation:360, scaleX:1.3, scaleY:0.7, duration:0.6, ease:"power2.out",
+        onComplete: ()=>{
+          gsap.to(ball, {y:0, rotation:720, scaleX:1, scaleY:1, duration:0.5, ease:"bounce.out"});
+          hitSound.currentTime=0; hitSound.play();
+          gsap.to(wickets[0], {rotation:-90, duration:0.5, ease:"power2.inOut"});
+          gsap.to(collection, {opacity:1, duration:0.5});
+          if(redVideo) redVideo.play();
         }
       });
     }
   });
 }
 
-// Sequential offsets for true storytelling
-animateWicket(0, window.innerWidth*0.25, 0);                // Red
-animateWicket(1, window.innerWidth*0.5, window.innerHeight); // White
-animateWicket(2, window.innerWidth*0.75, window.innerHeight*2); // Black
+// Initialize all three blocks
+setupCricket("ball-red","redCollection");
+setupCricket("ball-white","whiteCollection");
+setupCricket("ball-black","blackCollection");
 </script>
+
 </body>
 </html>
