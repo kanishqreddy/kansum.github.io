@@ -13,20 +13,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
-body { margin:0; font-family:Inter,sans-serif; overflow-x:hidden; background:#fefefe; }
+body { margin:0; font-family:Inter,sans-serif; background:#fefefe; overflow-x:hidden; }
 header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); z-index:100; }
 .nav { max-width:1400px; margin:auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; }
 .brand { font-family:"Playfair Display",serif; font-size:18px; letter-spacing:.25em; }
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket Container */
-.cricket-container { position:relative; width:100%; height:100vh; display:flex; justify-content:center; align-items:flex-end; overflow:hidden; }
-.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
+/* Cricket + collection wrapper */
+.collection-wrapper { position:relative; width:100%; min-height:80vh; overflow:hidden; }
+
+.cricket-container { position:absolute; top:0; left:0; width:100%; height:100%; display:flex; justify-content:center; align-items:flex-end; pointer-events:none; }
+.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:10; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
 .wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:100px; transform-origin:bottom center; }
 
-/* Collections */
-.collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; opacity:0; flex-direction:column; gap:20px; padding:40px 20px; }
+/* Collection content */
+.collection { width:100%; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:20px; padding:40px 20px; opacity:0; }
 .split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
 
@@ -53,11 +55,9 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </header>
 
-<!-- Function to generate each cricket + collection block -->
-<div id="content">
-
-  <!-- RED COLLECTION BLOCK -->
-  <div class="cricket-container" id="cricket-red">
+<!-- RED COLLECTION -->
+<div class="collection-wrapper" id="wrapper-red">
+  <div class="cricket-container">
     <div class="ball" id="ball-red"></div>
     <div class="wicket" style="left:25%;"></div>
     <div class="wicket" style="left:50%;"></div>
@@ -76,9 +76,11 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
       <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
     </div>
   </section>
+</div>
 
-  <!-- WHITE COLLECTION BLOCK -->
-  <div class="cricket-container" id="cricket-white">
+<!-- WHITE COLLECTION -->
+<div class="collection-wrapper" id="wrapper-white">
+  <div class="cricket-container">
     <div class="ball" id="ball-white"></div>
     <div class="wicket" style="left:25%;"></div>
     <div class="wicket" style="left:50%;"></div>
@@ -93,9 +95,11 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
       <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
     </div>
   </section>
+</div>
 
-  <!-- BLACK COLLECTION BLOCK -->
-  <div class="cricket-container" id="cricket-black">
+<!-- BLACK COLLECTION -->
+<div class="collection-wrapper" id="wrapper-black">
+  <div class="cricket-container">
     <div class="ball" id="ball-black"></div>
     <div class="wicket" style="left:25%;"></div>
     <div class="wicket" style="left:50%;"></div>
@@ -108,7 +112,6 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
       <img src="images/fsbs.jpeg" alt="Black Sleeve Duplicate">
     </div>
   </section>
-
 </div>
 
 <footer>© 2026 Peddi</footer>
@@ -117,11 +120,10 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Setup cricket animation per block
-function setupCricket(ballId, collectionId){
-  const container = document.getElementById(ballId).parentElement;
+function setupCricket(wrapperId, ballId, collectionId){
+  const wrapper = document.getElementById(wrapperId);
   const ball = document.getElementById(ballId);
-  const wickets = container.querySelectorAll(".wicket");
+  const wickets = wrapper.querySelectorAll(".wicket");
   const collection = document.getElementById(collectionId);
   const redVideo = ballId==="ball-red"?document.getElementById("redVideo"):null;
   const hitSound = document.getElementById("hitSound");
@@ -130,17 +132,30 @@ function setupCricket(ballId, collectionId){
   if(redVideo) redVideo.pause();
 
   ScrollTrigger.create({
-    trigger: container,
+    trigger: wrapper,
     start: "top top",
     end: "+=400",
     pin:true,
-    scrub:1,
     onEnter: ()=>{
-      // Animate ball to first wicket
-      gsap.to(ball, {x:wickets[0].offsetLeft, y:-150, rotation:360, scaleX:1.3, scaleY:0.7, duration:0.6, ease:"power2.out",
+      gsap.to(ball,{
+        x:wickets[0].offsetLeft,
+        y:-150,
+        rotation:360,
+        scaleX:1.3,
+        scaleY:0.7,
+        duration:0.6,
+        ease:"power2.out",
         onComplete: ()=>{
-          gsap.to(ball, {y:0, rotation:720, scaleX:1, scaleY:1, duration:0.5, ease:"bounce.out"});
-          hitSound.currentTime=0; hitSound.play();
+          gsap.to(ball,{
+            y:0,
+            rotation:720,
+            scaleX:1,
+            scaleY:1,
+            duration:0.5,
+            ease:"bounce.out"
+          });
+          hitSound.currentTime=0;
+          hitSound.play();
           gsap.to(wickets[0], {rotation:-90, duration:0.5, ease:"power2.inOut"});
           gsap.to(collection, {opacity:1, duration:0.5});
           if(redVideo) redVideo.play();
@@ -150,10 +165,10 @@ function setupCricket(ballId, collectionId){
   });
 }
 
-// Initialize all three blocks
-setupCricket("ball-red","redCollection");
-setupCricket("ball-white","whiteCollection");
-setupCricket("ball-black","blackCollection");
+// Initialize all three collection wrappers
+setupCricket("wrapper-red","ball-red","redCollection");
+setupCricket("wrapper-white","ball-white","whiteCollection");
+setupCricket("wrapper-black","ball-black","blackCollection");
 </script>
 
 </body>
