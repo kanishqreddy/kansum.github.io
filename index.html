@@ -30,43 +30,44 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a:hover { color:var(--text); }
 
 /* SECTIONS */
-section { padding:140px 24px; opacity:0; transform:translateY(30px); transition:all 1s ease-out; }
+section { padding:100px 24px; opacity:0; transform:translateY(30px); transition:all 1s ease-out; }
 section.visible { opacity:1; transform:translateY(0); }
 
-.full { padding:0; }
+.full { padding:0; position:relative; will-change: transform; }
 .container { max-width:var(--max); margin:auto; }
 
 /* HERO */
-.hero { position: relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; opacity:1; transform:none; }
+.hero { position: relative; min-height:90vh; display:flex; align-items:center; justify-content:center; overflow:hidden; opacity:1; transform:none; margin-bottom:40px; }
 .hero-media { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden; will-change: transform; }
 .hero-media img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
 .hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4)); z-index:2; }
-.hero h1 { position: relative; z-index:3; color:#fff; text-align:center; font-size:clamp(56px,9vw,140px); line-height:1.1; margin:0 20px; opacity:0; animation:fadeIn 2s ease forwards; animation-delay:0.5s; }
+.hero h1 { position: relative; z-index:3; color:#fff; text-align:center; font-size:clamp(48px,8vw,120px); line-height:1.1; margin:0 20px; opacity:0; animation:fadeIn 2s ease forwards; animation-delay:0.5s; }
 
 /* Fade-in animation */
 @keyframes fadeIn { to { opacity:1; } }
 
 /* STATEMENT */
-.statement { font-size:22px; max-width:720px; color:var(--muted); margin:auto; line-height:1.6; }
+.statement { font-size:20px; max-width:720px; color:var(--muted); margin:auto; line-height:1.6; }
 
 /* FULL IMAGE & VIDEO */
-.full { position: relative; will-change: transform; }
 .full img, .full video { width:100%; height:80vh; object-fit:contain; object-position:center; display:block; }
 .video-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1; }
 
 /* SPLIT EDITORIAL */
-.split { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-.split h2 { font-family:"Playfair Display",serif; font-size:48px; line-height:1.1; }
+.split { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-bottom:40px; }
+.split h2 { font-family:"Playfair Display",serif; font-size:42px; line-height:1.1; }
 .split p { font-size:18px; color:var(--muted); line-height:1.6; }
 .split img { width:100%; height:auto; max-height:70vh; object-fit:contain; object-position:center; display:block; }
 
 /* PRODUCT STRIP */
-.strip { display:flex; gap:40px; overflow-x:auto; padding-bottom:20px; }
-.strip img { width:320px; height:auto; object-fit:contain; flex-shrink:0; display:block; border-radius:4px; }
+.strip { display:flex; gap:20px; overflow-x:auto; padding-bottom:20px; margin-bottom:40px; }
+.strip img { width:280px; height:auto; object-fit:contain; flex-shrink:0; display:block; border-radius:4px; transition: transform 0.3s; }
+.strip img:hover { transform:scale(1.05); }
 
 /* LOOKBOOK GRID */
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:50px; }
-.grid img { width:100%; height:auto; max-height:420px; object-fit:contain; object-position:center; display:block; border-radius:4px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-bottom:40px; }
+.grid img { width:100%; height:auto; max-height:420px; object-fit:contain; object-position:center; display:block; border-radius:4px; transition: transform 0.3s; }
+.grid img:hover { transform:scale(1.05); }
 
 /* FOOTER */
 footer { padding:80px 24px; text-align:center; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); border-top:1px solid #eee; }
@@ -76,13 +77,10 @@ footer { padding:80px 24px; text-align:center; font-size:12px; letter-spacing:.2
   .hero h1 { font-size:clamp(36px,8vw,80px); }
   .split { grid-template-columns:1fr; gap:40px; }
   .split img { max-height:50vh; }
-  .hero-media img { object-position:center top; }
-  .strip { gap:20px; }
   .strip img { width:220px; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -96,21 +94,15 @@ footer { padding:80px 24px; text-align:center; font-size:12px; letter-spacing:.2
   </div>
 </header>
 
-<!-- RED COLLECTION -->
+<!-- ================== RED COLLECTION ================== -->
 <section class="hero">
-  <div class="hero-media">
-    <img src="images/rt3.jpeg" alt="Red T-shirt Model">
-    <div class="hero-overlay"></div>
-  </div>
+  <div class="hero-media"><img src="images/rt3.jpeg" alt="Red T-shirt Model"><div class="hero-overlay"></div></div>
   <h1>Red Collection</h1>
 </section>
 
 <section>
   <div class="container">
-    <p class="statement">
-      A study in form, color, and confidence inspired by the cricket ball.  
-      Peddi’s Red Collection features effortless silhouettes for every day.
-    </p>
+    <p class="statement">Inspired by the cricket ball, the Red Collection features confident silhouettes for everyday wear.</p>
   </div>
 </section>
 
@@ -118,21 +110,17 @@ footer { padding:80px 24px; text-align:center; font-size:12px; letter-spacing:.2
   <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
 </section>
 
-<section>
-  <div class="split">
-    <div>
-      <h2>Red Collection Essentials</h2>
-      <p>Clean silhouettes. Considered colors. Pieces designed to exist beyond seasons.</p>
-    </div>
-    <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
+<section class="split">
+  <div>
+    <h2>Red Collection Essentials</h2>
+    <p>Clean silhouettes. Considered colors. Pieces designed to exist beyond seasons.</p>
   </div>
+  <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
 </section>
 
-<section>
-  <div class="strip">
-    <img src="images/rts.jpeg" alt="Red T-shirt Alternate">
-    <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
-  </div>
+<section class="strip">
+  <img src="images/rts.jpeg" alt="Red T-shirt">
+  <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
 </section>
 
 <section class="full">
@@ -142,72 +130,65 @@ footer { padding:80px 24px; text-align:center; font-size:12px; letter-spacing:.2
   <div class="video-overlay"></div>
 </section>
 
-<!-- BLACK COLLECTION -->
+<!-- ================== BLACK COLLECTION ================== -->
 <section class="hero">
-  <div class="hero-media">
-    <img src="images/fsbs.jpeg" alt="Black Full Sleeve">
-    <div class="hero-overlay"></div>
-  </div>
+  <div class="hero-media"><img src="images/fsbs.jpeg" alt="Full Sleeve Black"><div class="hero-overlay"></div></div>
   <h1>Black Collection</h1>
 </section>
 
-<section>
-  <div class="strip">
-    <img src="images/fsbs.jpeg" alt="Full Sleeve Black">
-    <img src="images/fsbs2.jpeg" alt="Black Variation">
+<section class="split">
+  <div>
+    <h2>Black Collection Essentials</h2>
+    <p>Minimalist elegance. Timeless black pieces designed for luxury comfort.</p>
   </div>
+  <img src="images/fsbs2.jpeg" alt="Full Sleeve Black Alt">
 </section>
 
-<!-- WHITE COLLECTION -->
+<section class="strip">
+  <img src="images/fsbs.jpeg" alt="Black Full Sleeve">
+  <img src="images/fsbs2.jpeg" alt="Black Full Sleeve Alt">
+</section>
+
+<!-- ================== WHITE COLLECTION ================== -->
 <section class="hero">
-  <div class="hero-media">
-    <img src="images/wts.jpeg" alt="White T-shirt">
-    <div class="hero-overlay"></div>
-  </div>
+  <div class="hero-media"><img src="images/wts.jpeg" alt="White T-shirt"><div class="hero-overlay"></div></div>
   <h1>White Collection</h1>
 </section>
 
-<section>
-  <div class="split">
-    <div>
-      <h2>White Collection Essentials</h2>
-      <p>Minimalist, crisp, and inspired by the clean elegance of cricket ball design.</p>
-    </div>
-    <img src="images/fsws.jpeg" alt="Full Sleeve White">
+<section class="split">
+  <div>
+    <h2>White Collection Essentials</h2>
+    <p>Minimalist, crisp, inspired by the clean curves of cricket ball design.</p>
   </div>
+  <img src="images/fsws.jpeg" alt="Full Sleeve White">
 </section>
 
-<section>
-  <div class="grid">
-    <img src="images/wts2.jpeg" alt="White T-shirt Alt">
-    <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
-    <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
-  </div>
+<section class="grid">
+  <img src="images/wts2.jpeg" alt="White T-shirt Alt">
+  <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
+  <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
 </section>
 
-<footer>
-  © 2026 Peddi
-</footer>
+<footer>© 2026 Peddi</footer>
 
 <script>
-// Scroll fade-in animations
+// Scroll fade-in
 const sections = document.querySelectorAll('section:not(.hero)');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if(entry.isIntersecting) {
+    if(entry.isIntersecting){
       entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     }
   });
 },{ threshold:0.15 });
-
 sections.forEach(section => observer.observe(section));
 
-// Parallax for hero and full image/video
+// Parallax effect
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
-  document.querySelectorAll('.hero-media').forEach(h => h.style.transform = `translateY(${scrollY * 0.3}px)`);
-  document.querySelectorAll('.full').forEach(f => f.style.transform = `translateY(${scrollY * 0.2}px)`);
+  document.querySelectorAll('.hero-media').forEach(h => h.style.transform = `translateY(${scrollY*0.25}px)`);
+  document.querySelectorAll('.full').forEach(f => f.style.transform = `translateY(${scrollY*0.15}px)`);
 });
 </script>
 
