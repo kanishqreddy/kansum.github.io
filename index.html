@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,10 +20,37 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket container fixed at top */
-.cricket-container { position:fixed; top:80px; left:0; width:100%; height:300px; display:flex; justify-content:center; align-items:flex-end; pointer-events:none; z-index:10; }
-.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:0; left:0; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
-.wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:0; transform-origin:bottom center; }
+/* Cricket container at bottom-center */
+.cricket-container {
+  position:fixed;
+  bottom:50px;
+  left:50%;
+  transform: translateX(-50%);
+  width:300px; /* for 3 wickets */
+  height:120px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  pointer-events:none;
+  z-index:10;
+}
+.wicket {
+  width:20px;
+  height:100px;
+  background:#8b5a2b;
+  transform-origin:bottom center;
+}
+.ball {
+  width:50px;
+  height:50px;
+  background:red;
+  border-radius:50%;
+  position:fixed;
+  bottom:20px;
+  left:20px; /* start bottom-left */
+  filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2));
+  z-index:1000;
+}
 
 /* Collections */
 .collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:20px; padding:40px 20px; opacity:0;
@@ -71,11 +96,12 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 
 <!-- Cricket container -->
 <div class="cricket-container" id="cricketContainer">
-  <div class="ball" id="ball"></div>
-  <div class="wicket" id="wicket1" style="left:25%;"></div>
-  <div class="wicket" id="wicket2" style="left:50%;"></div>
-  <div class="wicket" id="wicket3" style="left:75%;"></div>
+  <div class="wicket" id="wicket1"></div>
+  <div class="wicket" id="wicket2"></div>
+  <div class="wicket" id="wicket3"></div>
 </div>
+
+<div class="ball" id="ball"></div>
 
 <!-- Collections -->
 <section class="collection" id="redCollection" style="background:#ffe5e5;">
@@ -116,7 +142,6 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Ball and wickets
 const ball = document.getElementById("ball");
 const wickets = [
   document.getElementById("wicket1"),
@@ -135,13 +160,9 @@ const hitSound = document.getElementById("hitSound");
 collections.forEach(c => c.style.opacity=0);
 redVideo.pause();
 
-// Ball trail
-const trail = ball.cloneNode(true);
-trail.style.background = "rgba(255,0,0,0.2)";
-trail.style.zIndex = "5";
-ball.parentElement.appendChild(trail);
+// Ball colors for each collection
+const ballColors = ["red","white","black"];
 
-// Animate a single wicket + collection
 function animateStep(idx, scrollStart){
   ScrollTrigger.create({
     trigger: collections[idx],
@@ -149,31 +170,22 @@ function animateStep(idx, scrollStart){
     end: "+=400",
     pin:true,
     onEnter: ()=>{
-      gsap.to(ball,{
-        x:wickets[idx].offsetLeft,
-        y:-180,
-        rotation:360,
-        scaleX:1.3,
-        scaleY:0.7,
-        duration:0.6,
-        ease:"power2.out",
-        onUpdate: ()=>{ trail.style.left = ball.offsetLeft + "px"; trail.style.bottom = ball.style.bottom; },
+      ball.style.background = ballColors[idx];
+
+      const rect = wickets[idx].getBoundingClientRect();
+      const targetX = rect.left - 10; // align ball to wicket
+      const targetY = window.innerHeight - rect.height;
+
+      gsap.fromTo(ball, {x:0, y:window.innerHeight-50, scaleX:1, scaleY:1},
+        {x:targetX, y:targetY, scaleX:1.3, scaleY:0.7, rotation:360, duration:0.6, ease:"power2.out",
         onComplete: ()=>{
-          gsap.to(ball,{
-            y:0,
-            rotation:720,
-            scaleX:1,
-            scaleY:1,
-            duration:0.5,
-            ease:"bounce.out"
-          });
+          gsap.to(ball,{scaleX:1, scaleY:1, rotation:720, duration:0.5, ease:"bounce.out"});
           hitSound.currentTime=0;
           hitSound.play();
           gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
-          gsap.to(collections[idx], {opacity:1, duration:0.5, ease:"power1.inOut"});
+          gsap.to(collections[idx], {opacity:1, duration:0.5});
           if(idx===0) redVideo.play();
-        }
-      });
+        }});
     }
   });
 }
@@ -196,19 +208,6 @@ collections.forEach(collection=>{
         scrub: true
       }
     });
-  });
-});
-
-// Background lighting/shadow fade per collection
-collections.forEach(collection=>{
-  gsap.to(collection.querySelector('::before'),{
-    opacity:0.3,
-    scrollTrigger: {
-      trigger: collection,
-      start: "top bottom",
-      end: "bottom top",
-      scrub:true
-    }
   });
 });
 </script>
