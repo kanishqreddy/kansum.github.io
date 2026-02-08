@@ -9,135 +9,179 @@
 
 <style>
 :root{
-  --dark:#0e0e0e;
-  --light:#f7f7f7;
-  --muted:#777;
+  --ease:cubic-bezier(.6,0,.1,1);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:Inter,sans-serif;
-  background:#fff;
-  color:#111;
+  background:#0a0a0a;
+  color:#fff;
   overflow-x:hidden;
 }
 
+/* ---------------- GLOBAL ---------------- */
+
 section{
-  padding:100px 6vw;
+  position:relative;
+  min-height:100vh;
+  padding:12vh 8vw;
 }
 
-h1,h2{
-  font-family:"Playfair Display",serif;
-  font-weight:600;
+.scene{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  align-items:center;
+}
+
+/* ---------------- TYPOGRAPHY ---------------- */
+
+.scene-label{
+  grid-column:1/5;
+  font-size:12px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  opacity:.6;
 }
 
 .scene-title{
-  font-size:clamp(36px,6vw,72px);
-  line-height:1.05;
-  margin-bottom:16px;
+  grid-column:1/7;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(56px,9vw,120px);
+  line-height:.95;
+  margin:24px 0 60px;
 }
 
-.scene-sub{
-  font-size:15px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:60px;
+/* ---------------- FLOATING MEDIA ---------------- */
+
+.media{
+  position:absolute;
+  transition:transform 1.2s var(--ease);
 }
 
-/* ---------- HERO ---------- */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  align-items:center;
-  gap:60px;
-}
-
-.hero img{
-  width:100%;
-  height:85vh;
-  object-fit:cover;
-}
-
-.hero h1{
-  font-size:clamp(60px,10vw,140px);
-  line-height:1;
-}
-
-/* ---------- SCENE LAYOUT ---------- */
-.scene{
-  position:relative;
-}
-
-.masonry{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:30px;
-}
-
-.masonry img,
-.masonry video{
+.media img,
+.media video{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-.block-a{grid-column:1 / 7;}
-.block-b{grid-column:7 / 13;}
-.block-c{grid-column:1 / 5;}
-.block-d{grid-column:5 / 9;}
-.block-e{grid-column:9 / 13;}
+/* parallax */
+[data-depth="1"]{transform:translateY(0)}
+[data-depth="2"]{transform:translateY(0)}
+[data-depth="3"]{transform:translateY(0)}
 
-.tall{height:70vh;}
-.mid{height:50vh;}
-.short{height:40vh;}
+section:hover [data-depth="1"]{transform:translateY(-20px)}
+section:hover [data-depth="2"]{transform:translateY(-40px)}
+section:hover [data-depth="3"]{transform:translateY(-60px)}
 
-/* ---------- COLOR MOODS ---------- */
-.red{
-  background:linear-gradient(#fff, #ffeaea);
+/* ---------------- HERO ---------------- */
+
+.hero{
+  background:#000;
 }
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(64px,10vw,160px);
+  line-height:1;
+}
+
+.hero img{
+  position:absolute;
+  right:0;
+  top:0;
+  width:55vw;
+  height:100vh;
+  object-fit:cover;
+  opacity:.9;
+}
+
+/* ---------------- RED ---------------- */
+
+.red{background:radial-gradient(circle at 30% 20%, #3a0000, #000)}
+
+.red .m1{
+  width:38vw;height:60vh;
+  right:8vw;top:18vh;
+}
+.red .m2{
+  width:28vw;height:38vh;
+  left:6vw;bottom:14vh;
+}
+.red .m3{
+  width:22vw;height:30vh;
+  right:32vw;bottom:8vh;
+}
+.red video{
+  width:100%;height:100%;
+}
+
+/* ---------------- WHITE ---------------- */
 
 .white{
-  background:#f6f6f6;
+  background:radial-gradient(circle at 70% 30%, #ffffff, #e8e8e8);
+  color:#111;
 }
+
+.white .m1{
+  width:40vw;height:60vh;
+  left:10vw;top:20vh;
+}
+.white .m2{
+  width:24vw;height:32vh;
+  right:8vw;top:16vh;
+}
+.white .m3{
+  width:28vw;height:40vh;
+  right:14vw;bottom:10vh;
+}
+.white .m4{
+  width:20vw;height:28vh;
+  left:36vw;bottom:8vh;
+}
+.white .m5{
+  width:18vw;height:24vh;
+  left:10vw;bottom:6vh;
+}
+
+/* ---------------- BLACK ---------------- */
 
 .black{
-  background:#0d0d0d;
-  color:#fff;
+  background:radial-gradient(circle at 50% 40%, #111, #000);
 }
 
-.black img{
-  filter:contrast(1.05);
+.black .m1{
+  width:36vw;height:60vh;
+  left:12vw;top:18vh;
+}
+.black .m2{
+  width:30vw;height:44vh;
+  right:12vw;bottom:12vh;
 }
 
-/* ---------- FOOTER ---------- */
+/* ---------------- FOOTER ---------------- */
+
 footer{
-  padding:80px 6vw;
+  padding:80px 8vw;
   text-align:center;
   font-size:12px;
-  letter-spacing:.2em;
-  color:#777;
-  background:#000;
-  color:#aaa;
+  letter-spacing:.25em;
+  opacity:.5;
 }
 
-/* ---------- MOBILE ---------- */
+/* ---------------- MOBILE ---------------- */
+
 @media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
+  .media{
+    position:relative;
+    width:100%!important;
+    height:auto!important;
+    margin-bottom:40px;
   }
-  .hero img{
-    height:60vh;
-  }
-  .masonry{
-    grid-template-columns:1fr;
-  }
-  .block-a,.block-b,.block-c,.block-d,.block-e{
-    grid-column:1;
-  }
-  .tall,.mid,.short{
-    height:auto;
+  section{
+    padding:100px 6vw;
   }
 }
 </style>
@@ -146,73 +190,70 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Winter ’26<br>By Peddi</h1>
-  <img src="images/rt3.jpeg" alt="Peddi Red Tee">
+  <h1>Winter ’26<br>Peddi</h1>
+  <img src="images/rt3.jpeg" alt="">
 </section>
 
-<!-- 🔴 RED -->
+<!-- RED -->
 <section class="scene red">
-  <div class="scene-sub">Crimson Motion</div>
-  <h2 class="scene-title">The Instinct</h2>
+  <div class="scene-label">Crimson Motion</div>
+  <div class="scene-title">The Instinct</div>
 
-  <div class="masonry">
-    <div class="block-a tall">
-      <img src="images/rtsm.jpeg">
-    </div>
-    <div class="block-b tall">
-      <video autoplay muted loop playsinline>
-        <source src="videos/rtsmv.mp4" type="video/mp4">
-      </video>
-    </div>
+  <div class="media m1" data-depth="3">
+    <img src="images/rtsm.jpeg">
+  </div>
 
-    <div class="block-c mid">
-      <img src="images/rts.jpeg">
-    </div>
-    <div class="block-d mid">
-      <img src="images/rts2.jpeg">
-    </div>
-    <div class="block-e mid">
-      <img src="images/fsrs.jpeg">
-    </div>
+  <div class="media m2" data-depth="2">
+    <video autoplay muted loop playsinline>
+      <source src="videos/rtsmv.mp4">
+    </video>
+  </div>
+
+  <div class="media m3" data-depth="1">
+    <img src="images/fsrs.jpeg">
+  </div>
+
+  <div class="media m4" data-depth="2" style="width:20vw;height:26vh;left:28vw;top:14vh">
+    <img src="images/rts.jpeg">
+  </div>
+
+  <div class="media m5" data-depth="1" style="width:18vw;height:24vh;right:18vw;top:10vh">
+    <img src="images/rts2.jpeg">
   </div>
 </section>
 
-<!-- ⚪ WHITE -->
+<!-- WHITE -->
 <section class="scene white">
-  <div class="scene-sub">White Calm</div>
-  <h2 class="scene-title">The Breath</h2>
+  <div class="scene-label">White Calm</div>
+  <div class="scene-title">The Breath</div>
 
-  <div class="masonry">
-    <div class="block-a tall">
-      <img src="images/wts.jpeg">
-    </div>
-    <div class="block-b mid">
-      <img src="images/wts2.jpeg">
-    </div>
-    <div class="block-c short">
-      <img src="images/fsws.jpeg">
-    </div>
-    <div class="block-d short">
-      <img src="images/fsws2.jpeg">
-    </div>
-    <div class="block-e short">
-      <img src="images/fsws3.jpeg">
-    </div>
+  <div class="media m1" data-depth="3">
+    <img src="images/wts.jpeg">
+  </div>
+  <div class="media m2" data-depth="2">
+    <img src="images/wts2.jpeg">
+  </div>
+  <div class="media m3" data-depth="1">
+    <img src="images/fsws.jpeg">
+  </div>
+  <div class="media m4" data-depth="2">
+    <img src="images/fsws2.jpeg">
+  </div>
+  <div class="media m5" data-depth="1">
+    <img src="images/fsws3.jpeg">
   </div>
 </section>
 
-<!-- ⚫ BLACK -->
+<!-- BLACK -->
 <section class="scene black">
-  <div class="scene-sub">Noir Echo</div>
-  <h2 class="scene-title">The Silence</h2>
+  <div class="scene-label">Noir Echo</div>
+  <div class="scene-title">The Silence</div>
 
-  <div class="masonry">
-    <div class="block-c tall">
-      <img src="images/fsbs.jpeg">
-    </div>
-    <div class="block-d tall">
-      <img src="images/fsbs2.jpeg">
-    </div>
+  <div class="media m1" data-depth="2">
+    <img src="images/fsbs.jpeg">
+  </div>
+  <div class="media m2" data-depth="1">
+    <img src="images/fsbs2.jpeg">
   </div>
 </section>
 
