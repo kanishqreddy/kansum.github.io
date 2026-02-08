@@ -24,6 +24,7 @@ body {
   font-family: Inter, sans-serif;
   background: var(--bg);
   color: var(--text);
+  overflow-x:hidden;
 }
 
 /* NAV */
@@ -59,7 +60,9 @@ header {
 .nav a:hover { color:var(--text); }
 
 /* SECTIONS */
-section { padding:140px 24px; }
+section { padding:140px 24px; opacity:0; transform:translateY(30px); transition:all 1s ease-out; }
+section.visible { opacity:1; transform:translateY(0); }
+
 .full { padding:0; }
 .container { max-width:var(--max); margin:auto; }
 
@@ -71,6 +74,8 @@ section { padding:140px 24px; }
   align-items:center;
   justify-content:center;
   overflow:hidden;
+  opacity:1; /* hero always visible */
+  transform:none;
 }
 
 .hero-media {
@@ -81,12 +86,14 @@ section { padding:140px 24px; }
   height:100%;
   z-index:1;
   overflow:hidden;
+  will-change: transform; /* for smooth parallax */
 }
 
 .hero-media img {
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
+  object-position:center; 
   display:block;
 }
 
@@ -96,7 +103,7 @@ section { padding:140px 24px; }
   left:0;
   width:100%;
   height:100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
   z-index:2;
 }
 
@@ -130,12 +137,14 @@ section { padding:140px 24px; }
 /* FULL IMAGE & VIDEO */
 .full {
   position: relative;
+  will-change: transform; /* parallax */
 }
 
 .full img, .full video {
   width:100%;
-  height:100vh;
-  object-fit:cover;
+  height:80vh;
+  object-fit:contain;
+  object-position:center;
   display:block;
 }
 
@@ -145,7 +154,7 @@ section { padding:140px 24px; }
   left:0;
   width:100%;
   height:100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.2);
   z-index:1;
 }
 
@@ -169,8 +178,9 @@ section { padding:140px 24px; }
 .split img {
   width:100%;
   height:auto;
-  max-height:80vh;
-  object-fit:cover;
+  max-height:70vh;
+  object-fit:contain;
+  object-position:center;
   display:block;
 }
 
@@ -182,9 +192,9 @@ section { padding:140px 24px; }
   padding-bottom:20px;
 }
 .strip img {
-  width:420px;
+  width:320px;
   height:auto;
-  object-fit:cover;
+  object-fit:contain;
   flex-shrink:0;
   display:block;
   border-radius:4px;
@@ -200,7 +210,8 @@ section { padding:140px 24px; }
   width:100%;
   height:auto;
   max-height:420px;
-  object-fit:cover;
+  object-fit:contain;
+  object-position:center;
   display:block;
   border-radius:4px;
 }
@@ -223,7 +234,7 @@ footer {
   .split img { max-height:50vh; }
   .hero-media img { object-position:center top; }
   .strip { gap:20px; }
-  .strip img { width:280px; }
+  .strip img { width:220px; }
 }
 </style>
 </head>
@@ -241,10 +252,10 @@ footer {
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO: Red T-shirt Model -->
 <section class="hero">
   <div class="hero-media">
-    <img src="images/rt3.jpeg" alt="Hero Image">
+    <img src="images/rt3.jpeg" alt="Red T-shirt Model">
     <div class="hero-overlay"></div>
   </div>
   <h1>Winter ’26<br>By Peddi</h1>
@@ -254,43 +265,43 @@ footer {
 <section>
   <div class="container">
     <p class="statement">
-      A study in form, color, and confidence.  
+      A study in form, color, and confidence inspired by the cricket ball.  
       Peddi’s Winter ’26 collection is designed to feel effortless — 
       every day, every wear.
     </p>
   </div>
 </section>
 
-<!-- FULL IMAGE -->
+<!-- RED COLLECTION FULL IMAGE -->
 <section class="full">
-  <img src="images/rtsm.jpeg" alt="Full Visual">
+  <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
 </section>
 
-<!-- SPLIT EDITORIAL -->
+<!-- SPLIT EDITORIAL: Full Sleeve Red -->
 <section>
   <div class="split">
     <div>
-      <h2>Built Around<br>Essentials</h2>
+      <h2>Red Collection<br>Essentials</h2>
       <p>
         Clean silhouettes. Considered colors.
         Pieces designed to exist beyond seasons.
       </p>
     </div>
-    <img src="images/fsrs.jpeg" alt="Split Editorial Image">
+    <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
   </div>
 </section>
 
-<!-- PRODUCT STRIP -->
+<!-- RED & BLACK PRODUCT STRIP -->
 <section>
   <div class="strip">
-    <img src="images/rts.jpeg" alt="Product 1">
-    <img src="images/rts2.jpeg" alt="Product 2">
-    <img src="images/fsbs.jpeg" alt="Product 3">
-    <img src="images/fsbs2.jpeg" alt="Product 4">
+    <img src="images/rts.jpeg" alt="Red T-shirt Alt">
+    <img src="images/rts2.jpeg" alt="Red T-shirt Alternate">
+    <img src="images/fsbs.jpeg" alt="Full Sleeve Black">
+    <img src="images/fsbs2.jpeg" alt="Full Sleeve Black Alt">
   </div>
 </section>
 
-<!-- FULLSCREEN VIDEO -->
+<!-- FULLSCREEN VIDEO: Red T-shirt Mannequin -->
 <section id="experience" class="full">
   <video autoplay muted loop playsinline>
     <source src="videos/rtsmv.mp4" type="video/mp4">
@@ -298,15 +309,15 @@ footer {
   <div class="video-overlay"></div>
 </section>
 
-<!-- LOOKBOOK GRID -->
+<!-- WHITE COLLECTION LOOKBOOK GRID -->
 <section id="lookbook">
   <div class="container">
     <div class="grid">
-      <img src="images/wts.jpeg" alt="Lookbook 1">
-      <img src="images/wts2.jpeg" alt="Lookbook 2">
-      <img src="images/fsws.jpeg" alt="Lookbook 3">
-      <img src="images/fsws2.jpeg" alt="Lookbook 4">
-      <img src="images/fsws3.jpeg" alt="Lookbook 5">
+      <img src="images/wts.jpeg" alt="White T-shirt">
+      <img src="images/wts2.jpeg" alt="White T-shirt Alt">
+      <img src="images/fsws.jpeg" alt="Full Sleeve White">
+      <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
+      <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
     </div>
   </div>
 </section>
@@ -314,6 +325,36 @@ footer {
 <footer>
   © 2026 Peddi
 </footer>
+
+<script>
+// Scroll fade-in animations for luxury feel
+const sections = document.querySelectorAll('section:not(.hero)');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{ threshold:0.15 });
+
+sections.forEach(section => observer.observe(section));
+
+// Parallax effect for hero and fullscreen video
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  
+  const heroMedia = document.querySelector('.hero-media');
+  if(heroMedia) heroMedia.style.transform = `translateY(${scrollY * 0.3}px)`;
+
+  const fullSections = document.querySelectorAll('.full');
+  fullSections.forEach(full => {
+    if(!full.classList.contains('hero')){
+      full.style.transform = `translateY(${scrollY * 0.2}px)`;
+    }
+  });
+});
+</script>
 
 </body>
 </html>
