@@ -66,11 +66,12 @@ header{
   bottom:14px;
   left:14px;
   z-index:30;
+  filter:drop-shadow(0 8px 5px rgba(0,0,0,.25));
 }
 
 /* SECTIONS */
 .collection{
-  padding:110px 6vw 90px; /* MUCH tighter */
+  padding:100px 6vw 80px;
   opacity:0;
   position:relative;
 }
@@ -81,67 +82,58 @@ header{
   margin-bottom:32px;
 }
 
-/* COMMON IMAGE FEEL */
 .collection img,
 .collection video{
   box-shadow:var(--depth);
   border-radius:2px;
 }
 
-/* ---------------- RED — HEAT & IMPACT ---------------- */
+/* RED */
 .red-stage{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:32px;
+  gap:28px;
 }
-
 .red-stage img,
 .red-stage video{
-  height:56vh; /* unified scale */
+  height:56vh;
   object-fit:cover;
 }
-
 .red-flow{
-  margin-top:28px;
+  margin-top:26px;
   display:flex;
-  gap:20px;
+  gap:18px;
 }
-
 .red-flow img{
   height:260px;
   flex:1;
   object-fit:cover;
 }
 
-/* ---------------- WHITE — AIR & LIGHT ---------------- */
+/* WHITE */
 .white-canvas{
-  position:relative;
   display:grid;
   grid-template-columns:1.6fr 1fr;
-  gap:28px;
+  gap:26px;
 }
-
 .white-canvas > img{
   height:58vh;
   object-fit:cover;
 }
-
 .white-stack{
   display:grid;
-  gap:18px;
+  gap:16px;
 }
-
 .white-stack img{
   height:180px;
   object-fit:cover;
 }
 
-/* ---------------- BLACK — SHADOW & DEPTH ---------------- */
+/* BLACK */
 .black-room{
   display:flex;
-  gap:40px;
+  gap:36px;
 }
-
 .black-room img{
   height:58vh;
   width:50%;
@@ -166,11 +158,9 @@ footer{
     grid-template-columns:1fr;
     flex-direction:column;
   }
-
   .red-flow{
     flex-direction:column;
   }
-
   .white-stack img{
     height:220px;
   }
@@ -251,7 +241,8 @@ const colors = ["red","white","black"];
 sections.forEach((sec,i)=>{
   ScrollTrigger.create({
     trigger:sec,
-    start:"top center",
+    start:"top 65%",
+    end:"+=220",
     pin:true,
     onEnter:()=>{
       ball.style.background = colors[i];
@@ -260,21 +251,45 @@ sections.forEach((sec,i)=>{
 
       gsap.to(ball,{
         x:r.left - 10,
-        y:-140,
-        duration:.7,
-        ease:"power2.out",
+        y:-110,
+        duration:0.35,
+        ease:"power3.out",
         onComplete:()=>{
-          gsap.to(wickets[i],{rotation:-90,duration:.4});
-          gsap.to(sec,{opacity:1,duration:.5});
+          gsap.to(wickets[i],{
+            rotation:-90,
+            duration:0.25,
+            ease:"power2.in"
+          });
+
+          gsap.to(sec,{opacity:1,duration:0.35});
           if(i===0) redVideo.play();
+
           gsap.to(ball,{
             x:window.innerWidth+80,
             y:window.innerHeight+80,
-            duration:.6
+            duration:0.35,
+            ease:"power2.in"
           });
         }
       });
     }
+  });
+
+  /* Immersive depth */
+  sec.querySelectorAll("img, video").forEach(el=>{
+    gsap.fromTo(el,
+      { y:30, scale:1.04 },
+      {
+        y:-10,
+        scale:1,
+        scrollTrigger:{
+          trigger:sec,
+          start:"top bottom",
+          end:"bottom top",
+          scrub:0.6
+        }
+      }
+    );
   });
 });
 </script>
