@@ -59,18 +59,6 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
 
-/* Background light/shadow overlay */
-.collection::before {
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  pointer-events:none;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
-  mix-blend-mode:soft-light;
-  opacity:0;
-}
-
 /* Footer */
 footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; border-top:1px solid #eee; }
 
@@ -159,7 +147,7 @@ const hitSound = document.getElementById("hitSound");
 collections.forEach(c => c.style.opacity=0);
 redVideo.pause();
 
-// Function to animate each ball hitting wicket and exiting
+// Animate each ball hitting wicket and exiting bottom-right
 function animateStep(idx, scrollStart){
   ScrollTrigger.create({
     trigger: collections[idx],
@@ -167,6 +155,8 @@ function animateStep(idx, scrollStart){
     end: "+=400",
     pin:true,
     onEnter: ()=>{
+      // Reset ball position to bottom-left for each ball
+      gsap.set(ball,{x:0, y:0});
       ball.style.background = ["red","white","black"][idx];
 
       const rect = wickets[idx].getBoundingClientRect();
@@ -175,7 +165,6 @@ function animateStep(idx, scrollStart){
       const deltaX = rect.left + rect.width/2 - (ballRect.left + ballRect.width/2);
       const deltaY = rect.top - ballRect.top - 50; // arc above wicket
 
-      // Animate ball to wicket
       gsap.to(ball, {
         x: deltaX,
         y: deltaY,
@@ -185,7 +174,6 @@ function animateStep(idx, scrollStart){
         duration:0.8,
         ease:"power2.out",
         onComplete: ()=>{
-          // Bounce down onto wicket
           gsap.to(ball,{
             y: deltaY + 50,
             rotation:720,
@@ -199,7 +187,7 @@ function animateStep(idx, scrollStart){
               gsap.to(collections[idx], {opacity:1, duration:0.5});
               if(idx===0) redVideo.play();
 
-              // Ball exits bottom-right
+              // Exit to bottom-right
               gsap.to(ball,{
                 x: window.innerWidth + 100,
                 y: window.innerHeight + 100,
