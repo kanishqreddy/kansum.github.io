@@ -20,8 +20,8 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket animation sections */
-.cricket-section { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; justify-content:center; align-items:flex-end; }
+/* Cricket Animation Container */
+.cricket-container { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; justify-content:center; align-items:flex-end; }
 .ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; }
 .wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:100px; transform-origin:bottom center; }
 
@@ -53,11 +53,15 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </header>
 
-<!-- CRICKET + RED COLLECTION -->
-<div class="cricket-section" id="cricket1">
-  <div class="ball" id="ball1"></div>
-  <div class="wicket" id="wicket1" style="left:30%;"></div>
+<!-- Cricket Container with 3 wickets -->
+<div class="cricket-container">
+  <div class="ball" id="ball"></div>
+  <div class="wicket" id="wicket1" style="left:25%;"></div>
+  <div class="wicket" id="wicket2" style="left:50%;"></div>
+  <div class="wicket" id="wicket3" style="left:75%;"></div>
 </div>
+
+<!-- RED COLLECTION -->
 <section class="collection" id="redCollection" style="background:#ffe5e5;">
   <div class="split">
     <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
@@ -72,11 +76,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </section>
 
-<!-- CRICKET + WHITE COLLECTION -->
-<div class="cricket-section" id="cricket2">
-  <div class="ball" id="ball2"></div>
-  <div class="wicket" id="wicket2" style="left:50%;"></div>
-</div>
+<!-- WHITE COLLECTION -->
 <section class="collection" id="whiteCollection" style="background:#f5f5f5;">
   <img src="images/wts.jpeg" alt="White T-shirt">
   <div class="split">
@@ -87,11 +87,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </section>
 
-<!-- CRICKET + BLACK COLLECTION -->
-<div class="cricket-section" id="cricket3">
-  <div class="ball" id="ball3"></div>
-  <div class="wicket" id="wicket3" style="left:70%;"></div>
-</div>
+<!-- BLACK COLLECTION -->
 <section class="collection" id="blackCollection" style="background:#111; color:#fff;">
   <div class="split">
     <img src="images/fsbs.jpeg" alt="Black Sleeve">
@@ -106,42 +102,56 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Function to animate one ball + wicket + collection
-function animateCricket(ballId, wicketId, collectionId, videoId){
-  const ball = document.getElementById(ballId);
-  const wicket = document.getElementById(wicketId);
-  const collection = document.getElementById(collectionId);
-  const video = videoId ? document.getElementById(videoId) : null;
-  const hitSound = document.getElementById('hitSound');
+const ball = document.getElementById("ball");
+const wickets = [
+  document.getElementById("wicket1"),
+  document.getElementById("wicket2"),
+  document.getElementById("wicket3")
+];
+const collections = [
+  document.getElementById("redCollection"),
+  document.getElementById("whiteCollection"),
+  document.getElementById("blackCollection")
+];
+const redVideo = document.getElementById("redVideo");
+const hitSound = document.getElementById("hitSound");
 
-  collection.style.opacity=0;
-  if(video) video.pause();
+collections.forEach(c=>c.style.opacity=0);
+redVideo.pause();
 
+// Sequential ScrollTriggers for each wicket
+const positions = [wickets[0].offsetLeft, wickets[1].offsetLeft, wickets[2].offsetLeft];
+
+positions.forEach((xPos, idx)=>{
   ScrollTrigger.create({
-    trigger: "#"+ballId,
-    start: "top center",
-    end: "bottom center",
+    trigger: ".cricket-container",
+    start: "top+=" + (window.innerHeight*idx),
+    end: "+=300",
     scrub:1,
     pin:true,
     onEnter: ()=>{
-      gsap.to(ball, {x: parseInt(wicket.style.left)/100*window.innerWidth, y:-150, rotation:360, scaleX:1.2, scaleY:0.8, duration:0.8,
+      // Ball animation
+      gsap.to(ball, {
+        x: xPos,
+        y: -150,
+        rotation:360,
+        scaleX:1.2,
+        scaleY:0.8,
+        duration:0.8,
         onComplete: ()=>{
           gsap.to(ball, {y:0, rotation:720, scaleX:1, scaleY:1, duration:0.5, ease:"bounce.out"});
+          // Wicket falls
           hitSound.currentTime=0; hitSound.play();
-          gsap.to(wicket, {rotation:-90, duration:0.5, ease:"power2.inOut"});
-          gsap.to(collection, {opacity:1, duration:0.5});
-          if(video) video.play();
+          gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
+          // Show collection
+          gsap.to(collections[idx], {opacity:1, duration:0.5});
+          if(idx===0) redVideo.play();
         }
       });
     }
   });
-}
-
-// Animate each sequentially
-animateCricket("ball1","wicket1","redCollection","redVideo");
-animateCricket("ball2","wicket2","whiteCollection",null);
-animateCricket("ball3","wicket3","blackCollection",null);
-
+});
 </script>
+
 </body>
 </html>
