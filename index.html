@@ -11,7 +11,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/MotionPathPlugin.min.js"></script>
 
 <style>
 body { margin:0; font-family:Inter,sans-serif; background:#fefefe; overflow-x:hidden; }
@@ -21,36 +20,34 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket container on right side */
+/* Cricket wickets line at bottom */
 .cricket-container {
   position:fixed;
-  top:80px;
-  right:20px; 
-  width:60px;
-  height:80vh;
+  bottom:50px;
+  left:50%;
+  transform: translateX(-50%);
+  width:300px;
   display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  align-items:center;
+  justify-content:space-between;
+  align-items:flex-end;
   pointer-events:none;
   z-index:999;
 }
 .wicket {
   width:40px;
   height:100px;
-  margin-bottom:15px;
   transform-origin:bottom center;
 }
 .ball {
+  position:fixed;
   width:40px;
   height:40px;
-  background:red;
+  bottom:20px;
+  left:20px; /* start bottom-left */
   border-radius:50%;
-  position:absolute;
-  bottom:0;
-  left:0;
-  filter: drop-shadow(0 5px 3px rgba(0,0,0,0.3));
-  z-index:10;
+  background:red;
+  z-index:1000;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
 }
 
 /* Collections */
@@ -60,7 +57,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
 
-/* Lighting overlay for luxury feel */
+/* Lighting overlay */
 .collection::before {
   content:"";
   position:absolute;
@@ -78,7 +75,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 @media(max-width:900px){
   .ball { width:35px; height:35px; }
   .split img, .split video { max-height:45vh; min-width:150px; }
-  .cricket-container { width:40px; }
+  .cricket-container { width:220px; }
 }
 </style>
 </head>
@@ -95,7 +92,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </header>
 
-<!-- Cricket container with SVG wickets -->
+<!-- Cricket container with wickets -->
 <div class="cricket-container" id="cricketContainer">
   <svg class="wicket" id="wicket1" viewBox="0 0 50 100">
     <rect x="10" y="0" width="5" height="100" fill="#8b5a2b"/>
@@ -121,8 +118,9 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
     <rect x="10" y="50" width="25" height="5" fill="#8b5a2b"/>
     <rect x="10" y="95" width="25" height="5" fill="#8b5a2b"/>
   </svg>
-  <div class="ball" id="ball"></div>
 </div>
+
+<div class="ball" id="ball"></div>
 
 <!-- Collections -->
 <section class="collection" id="redCollection" style="background:#ffe5e5;">
@@ -161,19 +159,11 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <audio id="hitSound" src="wicket-hit.mp3"></audio>
 
 <script>
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const ball = document.getElementById("ball");
-const wickets = [
-  document.getElementById("wicket1"),
-  document.getElementById("wicket2"),
-  document.getElementById("wicket3")
-];
-const collections = [
-  document.getElementById("redCollection"),
-  document.getElementById("whiteCollection"),
-  document.getElementById("blackCollection")
-];
+const wickets = [document.getElementById("wicket1"), document.getElementById("wicket2"), document.getElementById("wicket3")];
+const collections = [document.getElementById("redCollection"), document.getElementById("whiteCollection"), document.getElementById("blackCollection")];
 const redVideo = document.getElementById("redVideo");
 const hitSound = document.getElementById("hitSound");
 
@@ -181,16 +171,9 @@ const hitSound = document.getElementById("hitSound");
 collections.forEach(c => c.style.opacity=0);
 redVideo.pause();
 
-// Ball trail
-const trail = ball.cloneNode(true);
-trail.style.background = "rgba(255,0,0,0.2)";
-trail.style.zIndex = "5";
-ball.parentElement.appendChild(trail);
-
 // Ball colors for each collection
 const ballColors = ["red","white","black"];
 
-// Animate a single step: ball from bottom-left to wicket
 function animateStep(idx, scrollStart){
   ScrollTrigger.create({
     trigger: collections[idx],
@@ -198,21 +181,19 @@ function animateStep(idx, scrollStart){
     end: "+=400",
     pin:true,
     onEnter: ()=>{
-      // change ball color
       ball.style.background = ballColors[idx];
 
-      // Calculate target coordinates of wicket
+      // Target: center of corresponding wicket
       const rect = wickets[idx].getBoundingClientRect();
-      const container = document.body.getBoundingClientRect();
-      const targetX = rect.left + rect.width/2 - 20; // adjust for ball size
-      const targetY = rect.top + window.scrollY; 
+      const targetX = rect.left + rect.width/2 - 20;
+      const targetY = window.innerHeight - rect.height;
 
       gsap.fromTo(ball, {x:0, y:window.innerHeight-50, scaleX:1, scaleY:1},
         {x:targetX, y:targetY, scaleX:1.3, scaleY:0.7, rotation:360, duration:1, ease:"power1.inOut",
-        onUpdate:()=>{ trail.style.left = ball.style.left; trail.style.bottom = ball.style.bottom; },
         onComplete: ()=>{
           gsap.to(ball, {scaleX:1, scaleY:1, rotation:720, duration:0.5, ease:"bounce.out"});
-          hitSound.currentTime=0; hitSound.play();
+          hitSound.currentTime=0;
+          hitSound.play();
           gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
           gsap.to(collections[idx], {opacity:1, duration:0.5});
           if(idx===0) redVideo.play();
