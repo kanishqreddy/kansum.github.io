@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
 <style>
 :root {
   --bg:#ffffff;
@@ -17,62 +20,28 @@
   --accent:#c1121f;
   --max:1400px;
 }
-
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family: Inter, sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
-
-/* NAV */
+body { font-family:Inter,sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
 header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); z-index:100; }
 .nav { max-width:var(--max); margin:auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; }
 .brand { font-family:"Playfair Display",serif; font-size:18px; letter-spacing:.25em; }
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; }
 .nav a:hover { color:var(--text); }
+section { padding:0; opacity:0; transition:opacity 0.8s ease-out; }
+section.visible { opacity:1; }
 
-/* SECTIONS */
-section { padding:80px 24px; opacity:0; transform:translateY(30px); transition:all 1s ease-out; }
-section.visible { opacity:1; transform:translateY(0); }
-.container { max-width:var(--max); margin:auto; }
+/* Cricket animation container */
+.cricket-container { position:relative; width:100%; height:100vh; overflow:hidden; background:#fefefe; display:flex; justify-content:center; align-items:flex-end; }
+.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; }
+.wickets { position:absolute; bottom:100px; display:flex; gap:60px; }
+.wicket { width:20px; height:100px; background:#8b5a2b; position:relative; transform-origin:bottom center; }
+.collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; font-size:48px; font-family:"Playfair Display",serif; text-transform:uppercase; opacity:0; }
+.collection.visible { opacity:1; transition:opacity 0.5s; }
 
-/* HERO */
-.hero { position: relative; min-height:70vh; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:40px; }
-.hero-media { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden; will-change: transform; }
-.hero-media img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
-.hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4)); z-index:2; }
-.hero h1 { position: relative; z-index:3; color:#fff; text-align:center; font-size:clamp(48px,8vw,100px); line-height:1.1; margin:0 20px; opacity:0; animation:fadeIn 2s ease forwards; animation-delay:0.5s; }
-
-@keyframes fadeIn { to { opacity:1; } }
-
-/* STATEMENT */
-.statement { font-size:20px; max-width:720px; color:var(--muted); margin:auto; line-height:1.6; text-align:center; }
-
-/* FULL IMAGE + VIDEO SIDE BY SIDE */
-.red-full { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:40px; justify-content:center; }
-.red-full img, .red-full video { flex:1; min-width:300px; max-width:600px; height:70vh; object-fit:contain; border-radius:4px; }
-.red-full video { display:block; }
-.red-full .video-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1; }
-
-/* SPLIT / CREATIVE LAYOUT */
-.split { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-bottom:40px; }
-.split h2 { font-family:"Playfair Display",serif; font-size:42px; line-height:1.1; }
-.split p { font-size:18px; color:var(--muted); line-height:1.6; }
-.split img { width:100%; height:auto; max-height:60vh; object-fit:contain; object-position:center; display:block; }
-
-/* PRODUCT STRIP / LOOKBOOK */
-.strip, .grid { display:flex; gap:20px; overflow-x:auto; margin-bottom:40px; }
-.strip img, .grid img { width:280px; height:auto; object-fit:contain; flex-shrink:0; border-radius:4px; transition: transform 0.3s; }
-.strip img:hover, .grid img:hover { transform:scale(1.05); }
-
-/* FOOTER */
-footer { padding:60px 24px; text-align:center; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); border-top:1px solid #eee; }
-
-/* MOBILE */
-@media (max-width:900px){
-  .hero h1 { font-size:clamp(32px,7vw,60px); }
-  .split { grid-template-columns:1fr; gap:30px; }
-  .split img { max-height:45vh; }
-  .strip img, .grid img { width:220px; }
-  .red-full { flex-direction:column; }
+/* Mobile adjustments */
+@media(max-width:900px){
+  .ball { width:35px; height:35px; }
+  .collection { font-size:32px; text-align:center; }
 }
 </style>
 </head>
@@ -89,103 +58,63 @@ footer { padding:60px 24px; text-align:center; font-size:12px; letter-spacing:.2
   </div>
 </header>
 
-<!-- ================== RED COLLECTION ================== -->
-<section class="hero">
-  <div class="hero-media"><img src="images/rt3.jpeg" alt="Red T-shirt Model"><div class="hero-overlay"></div></div>
-  <h1>Red Collection</h1>
-</section>
-
-<section>
-  <div class="container">
-    <p class="statement">Red Collection inspired by the cricket ball: confident silhouettes, bold statement.</p>
+<!-- Cricket animation + wickets -->
+<div class="cricket-container">
+  <div class="ball"></div>
+  <div class="wickets">
+    <div class="wicket" id="wicket1"></div>
+    <div class="wicket" id="wicket2"></div>
+    <div class="wicket" id="wicket3"></div>
   </div>
-</section>
+</div>
 
-<section class="red-full">
-  <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
-  <video autoplay muted loop playsinline>
-    <source src="videos/rtsmv.mp4" type="video/mp4">
-  </video>
-</section>
+<!-- Collection Sections triggered by wickets -->
+<section class="collection" id="redCollection" style="background:#ffe5e5;">Red Collection</section>
+<section class="collection" id="whiteCollection" style="background:#f5f5f5;">White Collection</section>
+<section class="collection" id="blackCollection" style="background:#e5e5e5; color:#fff;">Black Collection</section>
 
-<section class="split">
-  <div>
-    <h2>Red Collection Essentials</h2>
-    <p>Clean silhouettes. Considered colors. Pieces designed to exist beyond seasons.</p>
-  </div>
-  <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
-</section>
-
-<section class="strip">
-  <img src="images/rts.jpeg" alt="Red T-shirt">
-  <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
-</section>
-
-<!-- ================== BLACK COLLECTION ================== -->
-<section class="hero">
-  <div class="hero-media"><img src="images/fsbs.jpeg" alt="Full Sleeve Black"><div class="hero-overlay"></div></div>
-  <h1>Black Collection</h1>
-</section>
-
-<section class="split">
-  <div>
-    <h2>Black Collection Essentials</h2>
-    <p>Timeless black pieces, minimalism and elegance.</p>
-  </div>
-  <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-    <img src="images/fsbs.jpeg" style="flex:1; min-width:250px; max-height:45vh;" alt="Black Sleeve">
-    <img src="images/fsbs2.jpeg" style="flex:1; min-width:250px; max-height:45vh;" alt="Black Sleeve Alt">
-    <!-- duplicate creatively to fill space -->
-    <img src="images/fsbs.jpeg" style="flex:1; min-width:250px; max-height:45vh;" alt="Black Sleeve Duplicate">
-  </div>
-</section>
-
-<section class="strip">
-  <img src="images/fsbs.jpeg" alt="Black Sleeve">
-  <img src="images/fsbs2.jpeg" alt="Black Sleeve Alt">
-</section>
-
-<!-- ================== WHITE COLLECTION ================== -->
-<section class="hero">
-  <div class="hero-media"><img src="images/wts.jpeg" alt="White T-shirt"><div class="hero-overlay"></div></div>
-  <h1>White Collection</h1>
-</section>
-
-<section class="split">
-  <div>
-    <h2>White Collection Essentials</h2>
-    <p>Minimalist, crisp, inspired by cricket ball curves.</p>
-  </div>
-  <img src="images/fsws.jpeg" alt="Full Sleeve White">
-</section>
-
-<section class="grid">
-  <img src="images/wts2.jpeg" alt="White T-shirt Alt">
-  <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
-  <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
-</section>
-
-<footer>© 2026 Peddi</footer>
+<footer style="padding:80px 24px;text-align:center;font-size:12px;color:#666;border-top:1px solid #eee;">
+© 2026 Peddi
+</footer>
 
 <script>
-// Scroll fade-in
-const sections = document.querySelectorAll('section:not(.hero)');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-},{ threshold:0.15 });
-sections.forEach(section => observer.observe(section));
+gsap.registerPlugin(ScrollTrigger);
 
-// Parallax effect
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  document.querySelectorAll('.hero-media').forEach(h => h.style.transform = `translateY(${scrollY*0.2}px)`);
-  document.querySelectorAll('.red-full, .split, .grid').forEach(f => f.style.transform = `translateY(${scrollY*0.1}px)`);
+// Ball animation timeline
+const ball = document.querySelector('.ball');
+const redColl = document.getElementById('redCollection');
+const whiteColl = document.getElementById('whiteCollection');
+const blackColl = document.getElementById('blackCollection');
+const wickets = [document.getElementById('wicket1'), document.getElementById('wicket2'), document.getElementById('wicket3')];
+
+let tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".cricket-container",
+    start: "top top",
+    end: "+=2000", // scroll distance
+    scrub:1,
+    pin:true,
+    anticipatePin:1
+  }
 });
+
+// First ball hits first wicket → show red collection
+tl.to(ball, {x:window.innerWidth*0.25, y:-150, rotation:360, duration:1})
+  .to(ball, {y:0, duration:0.5, ease:"bounce.out"})
+  .to(wickets[0], {rotation:-90, duration:0.5, ease:"power2.inOut"})
+  .to(redColl, {opacity:1, duration:0.5}, "-=0.3");
+
+// Second ball hits second wicket → show white collection
+tl.to(ball, {x:window.innerWidth*0.5, y:-150, rotation:360, duration:1})
+  .to(ball, {y:0, duration:0.5, ease:"bounce.out"})
+  .to(wickets[1], {rotation:-90, duration:0.5, ease:"power2.inOut"})
+  .to(whiteColl, {opacity:1, duration:0.5}, "-=0.3");
+
+// Third ball hits third wicket → show black collection
+tl.to(ball, {x:window.innerWidth*0.75, y:-150, rotation:360, duration:1})
+  .to(ball, {y:0, duration:0.5, ease:"bounce.out"})
+  .to(wickets[2], {rotation:-90, duration:0.5, ease:"power2.inOut"})
+  .to(blackColl, {opacity:1, duration:0.5}, "-=0.3");
 </script>
 
 </body>
