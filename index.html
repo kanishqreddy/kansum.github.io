@@ -22,7 +22,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 
 /* Cricket Container */
 .cricket-container { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; justify-content:center; align-items:flex-end; }
-.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; }
+.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
 .wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:100px; transform-origin:bottom center; }
 
 /* Collections */
@@ -116,11 +116,11 @@ const collections = [
 const redVideo = document.getElementById("redVideo");
 const hitSound = document.getElementById("hitSound");
 
-// Hide collections initially
-collections.forEach(c => c.style.opacity = 0);
+// Hide all collections
+collections.forEach(c=>c.style.opacity=0);
 redVideo.pause();
 
-// Function for sequential wicket + collection animation
+// Function for sequential wicket + collection animation with cinematic squash/stretch
 function setupWicketSequence(idx, xPos, startOffset){
   ScrollTrigger.create({
     trigger: ".cricket-container",
@@ -129,15 +129,24 @@ function setupWicketSequence(idx, xPos, startOffset){
     scrub:1,
     pin:true,
     onEnter: ()=>{
+      // Ball animation with squash/stretch
       gsap.to(ball, {
         x:xPos,
         y:-150,
         rotation:360,
-        scaleX:1.2,
-        scaleY:0.8,
-        duration:0.8,
+        scaleX:1.3,
+        scaleY:0.7,
+        duration:0.6,
+        ease:"power2.out",
         onComplete: ()=>{
-          gsap.to(ball, {y:0, rotation:720, scaleX:1, scaleY:1, duration:0.5, ease:"bounce.out"});
+          gsap.to(ball, {
+            y:0,
+            rotation:720,
+            scaleX:1,
+            scaleY:1,
+            duration:0.5,
+            ease:"bounce.out"
+          });
           // Wicket falls
           hitSound.currentTime=0; hitSound.play();
           gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
@@ -150,12 +159,11 @@ function setupWicketSequence(idx, xPos, startOffset){
   });
 }
 
-// Sequential scroll triggers
+// Sequential scroll triggers with cinematic timing
 setupWicketSequence(0, window.innerWidth*0.25, 0);                // Red
 setupWicketSequence(1, window.innerWidth*0.5, window.innerHeight); // White
 setupWicketSequence(2, window.innerWidth*0.75, window.innerHeight*2); // Black
 
 </script>
-
 </body>
 </html>
