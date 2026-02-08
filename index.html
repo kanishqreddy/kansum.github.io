@@ -13,8 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
-:root { --bg:#fff; --text:#111; --muted:#666; }
-body { margin:0; font-family:Inter,sans-serif; overflow-x:hidden; background:var(--bg); }
+body { margin:0; font-family:Inter,sans-serif; background:#fefefe; overflow-x:hidden; }
 header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); z-index:100; }
 .nav { max-width:1400px; margin:auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; }
 .brand { font-family:"Playfair Display",serif; font-size:18px; letter-spacing:.25em; }
@@ -29,7 +28,6 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 
 /* Collections */
 .collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; opacity:0; flex-direction:column; gap:20px; padding:40px 20px; }
-.collection.visible { opacity:1; transition:opacity 0.5s; }
 .split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
 
@@ -66,7 +64,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </div>
 
-<!-- Collections -->
+<!-- RED COLLECTION -->
 <section class="collection" id="redCollection" style="background:#ffe5e5;">
   <div class="split">
     <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
@@ -81,6 +79,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </section>
 
+<!-- WHITE COLLECTION -->
 <section class="collection" id="whiteCollection" style="background:#f5f5f5;">
   <img src="images/wts.jpeg" alt="White T-shirt">
   <div class="split">
@@ -91,6 +90,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </section>
 
+<!-- BLACK COLLECTION -->
 <section class="collection" id="blackCollection" style="background:#111; color:#fff;">
   <div class="split">
     <img src="images/fsbs.jpeg" alt="Black Sleeve">
@@ -99,7 +99,6 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </section>
 
-<!-- Footer -->
 <footer>© 2026 Peddi</footer>
 
 <!-- Wicket hit sound -->
@@ -114,34 +113,33 @@ const collections = [document.getElementById('redCollection'), document.getEleme
 const redVideo = document.getElementById('redVideo');
 const hitSound = document.getElementById('hitSound');
 
+// Hide all collections initially
 collections.forEach(c=>c.style.opacity=0);
 redVideo.pause();
 
-let tl = gsap.timeline({
-  scrollTrigger:{
-    trigger:".cricket-container",
-    start:"top top",
-    end:"+="+window.innerHeight*3,
-    scrub:1,
-    pin:true
-  }
-});
-
-// Function to animate ball, wicket, and show collection
-function hitWicket(idx, xPos){
-  tl.to(ball, {x:xPos, y:-150, rotation:360, scaleX:1.2, scaleY:0.8, duration:0.8})
-    .to(ball, {y:0, rotation:720, scaleX:1, scaleY:1, duration:0.5, ease:"bounce.out", onComplete:()=>{
-      hitSound.currentTime=0; hitSound.play();
-      if(idx===0) redVideo.play();
-    }})
-    .to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"})
-    .to(collections[idx], {opacity:1, duration:0.5}, "-=0.3");
+// Function to create independent ScrollTrigger for each ball+collection
+function setupBallTrigger(idx, xPos, startScroll){
+  ScrollTrigger.create({
+    trigger: ".cricket-container",
+    start: startScroll,
+    end: startScroll+"+=200",
+    scrub: true,
+    onEnter: ()=>{
+      gsap.to(ball, {x:xPos, y:-150, rotation:360, scaleX:1.2, scaleY:0.8, duration:0.8, onComplete: ()=>{
+        gsap.to(ball, {y:0, rotation:720, scaleX:1, scaleY:1, duration:0.5, ease:"bounce.out"});
+        hitSound.currentTime =0; hitSound.play();
+        if(idx===0) redVideo.play();
+        gsap.to(collections[idx], {opacity:1, duration:0.5});
+        gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
+      }});
+    }
+  });
 }
 
-// Sequential hits
-hitWicket(0, window.innerWidth*0.25);
-hitWicket(1, window.innerWidth*0.5);
-hitWicket(2, window.innerWidth*0.75);
+// Sequential triggers at different scroll positions
+setupBallTrigger(0, window.innerWidth*0.25, "top top");
+setupBallTrigger(1, window.innerWidth*0.5, "top+="+window.innerHeight*0.8);
+setupBallTrigger(2, window.innerWidth*0.75, "top+="+window.innerHeight*1.6);
 </script>
 
 </body>
