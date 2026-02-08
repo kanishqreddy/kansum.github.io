@@ -44,13 +44,13 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .ball {
   width:50px;
   height:50px;
-  background:red;
   border-radius:50%;
   position:fixed;
   bottom:20px;
   left:20px;
   filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2));
   z-index:1000;
+  pointer-events:none;
 }
 
 /* Collections */
@@ -159,7 +159,6 @@ const hitSound = document.getElementById("hitSound");
 collections.forEach(c => c.style.opacity=0);
 redVideo.pause();
 
-// Animate ball hitting wicket
 function animateStep(idx, scrollStart){
   ScrollTrigger.create({
     trigger: collections[idx],
@@ -170,22 +169,24 @@ function animateStep(idx, scrollStart){
       ball.style.background = ["red","white","black"][idx];
 
       const rect = wickets[idx].getBoundingClientRect();
-      const targetX = rect.left;
-      const targetY = window.innerHeight - rect.height;
+      const ballRect = ball.getBoundingClientRect();
 
-      // Arc animation to wicket
+      const deltaX = rect.left + rect.width/2 - (ballRect.left + ballRect.width/2);
+      const deltaY = rect.top - ballRect.top - 50; // arc above wicket
+
+      // Animate ball to wicket
       gsap.to(ball, {
-        x: targetX,
-        y: targetY - 50,
+        x: deltaX,
+        y: deltaY,
         rotation:360,
         scaleX:1.3,
         scaleY:0.7,
         duration:0.8,
         ease:"power2.out",
         onComplete: ()=>{
-          // Bounce down onto wicket
+          // Bounce down
           gsap.to(ball,{
-            y: targetY,
+            y: deltaY + 50,
             rotation:720,
             scaleX:1,
             scaleY:1,
@@ -193,7 +194,6 @@ function animateStep(idx, scrollStart){
             ease:"bounce.out",
             onComplete: ()=>{
               hitSound.currentTime=0; hitSound.play();
-              // Wicket falls only after ball hits
               gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
               gsap.to(collections[idx], {opacity:1, duration:0.5});
               if(idx===0) redVideo.play();
@@ -205,7 +205,7 @@ function animateStep(idx, scrollStart){
   });
 }
 
-// Sequential animation
+// Sequential steps
 animateStep(0,"top");      // Red
 animateStep(1,"top+=100"); // White
 animateStep(2,"top+=200"); // Black
