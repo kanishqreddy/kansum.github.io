@@ -6,19 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
-:root{
-  --lux-shadow: 0 40px 80px rgba(0,0,0,.15);
-}
-
 body{
   margin:0;
   font-family:Inter,sans-serif;
-  background:#fefefe;
+  background:#fff;
   overflow-x:hidden;
 }
 
@@ -34,7 +29,7 @@ header{
 .nav{
   max-width:1400px;
   margin:auto;
-  padding:18px 32px;
+  padding:16px 28px;
   display:flex;
   justify-content:space-between;
 }
@@ -44,131 +39,114 @@ header{
   letter-spacing:.25em;
 }
 
-/* ================= CRICKET ================= */
+/* ---------------- CRICKET ---------------- */
 
 .cricket-container{
   position:fixed;
-  bottom:40px;
+  bottom:32px;
   left:50%;
   transform:translateX(-50%);
-  width:180px;
+  width:140px;
   display:flex;
   justify-content:space-between;
-  z-index:20;
   pointer-events:none;
+  z-index:20;
 }
 
 .wicket{
-  width:16px;
-  height:100px;
+  width:14px;
+  height:90px;
   background:#8b5a2b;
   transform-origin:bottom;
 }
 
 .ball{
-  width:44px;
-  height:44px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   position:fixed;
-  bottom:20px;
-  left:20px;
+  bottom:16px;
+  left:16px;
   z-index:30;
-  filter:drop-shadow(0 10px 6px rgba(0,0,0,.25));
+  filter:drop-shadow(0 8px 5px rgba(0,0,0,.25));
 }
 
-/* ================= COLLECTIONS ================= */
+/* ---------------- COLLECTIONS ---------------- */
 
 .collection{
-  min-height:100vh;
-  padding:160px 6vw 120px;
+  padding:120px 6vw 80px;
   opacity:0;
-  position:relative;
 }
 
-/* HEADINGS */
 .collection h2{
   font-family:"Playfair Display",serif;
-  font-size:clamp(48px,6vw,96px);
-  margin-bottom:60px;
+  font-size:clamp(40px,5vw,72px);
+  margin-bottom:40px;
 }
 
-/* ===== RED – HERO EDITORIAL ===== */
-
-.red-editorial{
+/* RED */
+.red-main{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:60px;
-  align-items:center;
+  grid-template-columns:1.1fr .9fr;
+  gap:32px;
 }
 
-.red-editorial img{
+.red-main img,
+.red-main video{
   width:100%;
-  height:80vh;
+  height:60vh;
   object-fit:cover;
-  box-shadow:var(--lux-shadow);
 }
 
-.red-editorial video{
-  width:100%;
-  height:80vh;
-  object-fit:cover;
-  box-shadow:var(--lux-shadow);
-}
-
-/* Supporting row */
-.support-strip{
-  margin-top:80px;
+.red-grid{
+  margin-top:32px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:40px;
+  gap:24px;
 }
 
-.support-strip img{
-  width:100%;
-  height:420px;
+.red-grid img{
+  height:280px;
   object-fit:cover;
 }
 
-/* ===== WHITE – CLEAN LAYERED ===== */
-
+/* WHITE */
 .white-grid{
   display:grid;
   grid-template-columns:2fr 1fr;
-  gap:60px;
+  gap:32px;
 }
 
-.white-grid img:first-child{
-  height:90vh;
+.white-grid > img{
+  height:65vh;
   object-fit:cover;
 }
 
 .white-stack{
   display:grid;
-  gap:30px;
+  gap:24px;
 }
 
 .white-stack img{
-  height:42vh;
+  height:200px;
   object-fit:cover;
 }
 
-/* ===== BLACK – DRAMATIC STRIP ===== */
-
-.black-strip{
-  display:flex;
-  gap:60px;
+/* BLACK */
+.black-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
 }
 
-.black-strip img{
-  width:33%;
-  height:80vh;
+.black-grid img{
+  height:60vh;
   object-fit:cover;
-  box-shadow:var(--lux-shadow);
 }
 
 /* FOOTER */
 footer{
-  padding:80px;
+  padding:64px 24px;
   text-align:center;
   font-size:12px;
   color:#666;
@@ -177,20 +155,18 @@ footer{
 
 /* MOBILE */
 @media(max-width:900px){
-  .red-editorial,
+  .red-main,
   .white-grid,
-  .black-strip{
-    grid-template-columns:1fr;
-    flex-direction:column;
-  }
-
-  .support-strip{
+  .black-grid{
     grid-template-columns:1fr;
   }
 
-  .black-strip img{
-    width:100%;
-    height:60vh;
+  .red-grid{
+    grid-template-columns:1fr;
+  }
+
+  .white-stack img{
+    height:220px;
   }
 }
 </style>
@@ -216,18 +192,20 @@ footer{
 <section class="collection" id="red" style="background:#ffe5e5;">
   <h2>Red Collection</h2>
 
-  <div class="red-editorial">
+  <div class="red-main">
     <img src="images/rtsm.jpeg">
     <video muted loop playsinline id="redVideo">
       <source src="videos/rtsmv.mp4">
     </video>
   </div>
 
-  <div class="support-strip">
+  <div class="red-grid">
     <img src="images/rt3.jpeg">
     <img src="images/rts.jpeg">
     <img src="images/rts2.jpeg">
   </div>
+
+  <img src="images/fsrs.jpeg" style="width:100%;height:340px;object-fit:cover;margin-top:24px;">
 </section>
 
 <!-- WHITE -->
@@ -237,6 +215,7 @@ footer{
   <div class="white-grid">
     <img src="images/wts.jpeg">
     <div class="white-stack">
+      <img src="images/wts2.jpeg">
       <img src="images/fsws.jpeg">
       <img src="images/fsws2.jpeg">
       <img src="images/fsws3.jpeg">
@@ -248,10 +227,9 @@ footer{
 <section class="collection" id="black" style="background:#111;color:#fff;">
   <h2>Black Collection</h2>
 
-  <div class="black-strip">
+  <div class="black-grid">
     <img src="images/fsbs.jpeg">
     <img src="images/fsbs2.jpeg">
-    <img src="images/fsbs.jpeg">
   </div>
 </section>
 
@@ -277,17 +255,18 @@ sections.forEach((sec,i)=>{
       const r = wickets[i].getBoundingClientRect();
 
       gsap.to(ball,{
-        x:r.left - 20,
-        y:-200,
-        duration:.8,
+        x:r.left - 10,
+        y:-160,
+        duration:.7,
         ease:"power2.out",
         onComplete:()=>{
           gsap.to(wickets[i],{rotation:-90,duration:.4});
-          gsap.to(sec,{opacity:1,duration:.6});
+          gsap.to(sec,{opacity:1,duration:.5});
+          if(i===0) document.getElementById("redVideo").play();
           gsap.to(ball,{
             x:window.innerWidth+100,
             y:window.innerHeight+100,
-            duration:.7
+            duration:.6
           });
         }
       });
