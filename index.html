@@ -11,6 +11,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/MotionPathPlugin.min.js"></script>
 
 <style>
 body { margin:0; font-family:Inter,sans-serif; background:#fefefe; overflow-x:hidden; }
@@ -24,7 +25,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .cricket-container {
   position:fixed;
   top:80px;
-  right:20px; /* near scrollbar */
+  right:20px; 
   width:60px;
   height:80vh;
   display:flex;
@@ -39,7 +40,6 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
   height:100px;
   margin-bottom:15px;
   transform-origin:bottom center;
-  cursor:pointer;
 }
 .ball {
   width:40px;
@@ -48,8 +48,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
   border-radius:50%;
   position:absolute;
   bottom:0;
-  left:50%;
-  transform:translateX(-50%);
+  left:0;
   filter: drop-shadow(0 5px 3px rgba(0,0,0,0.3));
   z-index:10;
 }
@@ -162,9 +161,8 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <audio id="hitSound" src="wicket-hit.mp3"></audio>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-// Ball and wickets
 const ball = document.getElementById("ball");
 const wickets = [
   document.getElementById("wicket1"),
@@ -189,7 +187,10 @@ trail.style.background = "rgba(255,0,0,0.2)";
 trail.style.zIndex = "5";
 ball.parentElement.appendChild(trail);
 
-// Animate a single wicket + collection
+// Ball colors for each collection
+const ballColors = ["red","white","black"];
+
+// Animate a single step: ball from bottom-left to wicket
 function animateStep(idx, scrollStart){
   ScrollTrigger.create({
     trigger: collections[idx],
@@ -197,30 +198,25 @@ function animateStep(idx, scrollStart){
     end: "+=400",
     pin:true,
     onEnter: ()=>{
-      gsap.to(ball,{
-        y:-180,
-        rotation:360,
-        scaleX:1.3,
-        scaleY:0.7,
-        duration:0.6,
-        ease:"power2.out",
-        onUpdate:()=>{ trail.style.bottom = ball.style.bottom; },
+      // change ball color
+      ball.style.background = ballColors[idx];
+
+      // Calculate target coordinates of wicket
+      const rect = wickets[idx].getBoundingClientRect();
+      const container = document.body.getBoundingClientRect();
+      const targetX = rect.left + rect.width/2 - 20; // adjust for ball size
+      const targetY = rect.top + window.scrollY; 
+
+      gsap.fromTo(ball, {x:0, y:window.innerHeight-50, scaleX:1, scaleY:1},
+        {x:targetX, y:targetY, scaleX:1.3, scaleY:0.7, rotation:360, duration:1, ease:"power1.inOut",
+        onUpdate:()=>{ trail.style.left = ball.style.left; trail.style.bottom = ball.style.bottom; },
         onComplete: ()=>{
-          gsap.to(ball,{
-            y:0,
-            rotation:720,
-            scaleX:1,
-            scaleY:1,
-            duration:0.5,
-            ease:"bounce.out"
-          });
-          hitSound.currentTime=0;
-          hitSound.play();
+          gsap.to(ball, {scaleX:1, scaleY:1, rotation:720, duration:0.5, ease:"bounce.out"});
+          hitSound.currentTime=0; hitSound.play();
           gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
           gsap.to(collections[idx], {opacity:1, duration:0.5});
           if(idx===0) redVideo.play();
-        }
-      });
+        }});
     }
   });
 }
