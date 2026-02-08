@@ -91,13 +91,14 @@ section{
 }
 
 .hero img{
-  width:50%;
-  height:90vh;
+  width:40%;          /* reduced from 50% */
+  height:80vh;        /* reduced from 90vh */
   object-fit:cover;
   border-radius:8px;
   box-shadow:0 20px 40px rgba(0,0,0,0.5);
   position:relative;
   z-index:1;
+  top:10vh;           /* slightly lower to align with text */
 }
 
 /* ---------------- SCENES ---------------- */
@@ -195,8 +196,8 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Animate each media with parallax and subtle fade/rotation
-document.querySelectorAll('.media').forEach((el,index)=>{
+// Animate media with subtle scroll parallax and fade-in
+document.querySelectorAll('.media').forEach((el)=>{
   gsap.fromTo(el,
     {y:50, opacity:0, rotation:0},
     {
