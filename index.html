@@ -20,8 +20,8 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket Container */
-.cricket-container { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; justify-content:center; align-items:flex-end; }
+/* Cricket animation */
+.cricket-container { position:relative; width:100%; height:100vh; display:flex; justify-content:center; align-items:flex-end; overflow:hidden; }
 .ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:100px; left:0; z-index:50; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
 .wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:100px; transform-origin:bottom center; }
 
@@ -116,21 +116,19 @@ const collections = [
 const redVideo = document.getElementById("redVideo");
 const hitSound = document.getElementById("hitSound");
 
-// Hide all collections
-collections.forEach(c=>c.style.opacity=0);
+// Hide all collections initially
+collections.forEach(c => c.style.opacity = 0);
 redVideo.pause();
 
-// Function for sequential wicket + collection animation with cinematic squash/stretch
-function setupWicketSequence(idx, xPos, startOffset){
+function animateWicket(idx, xPos, startOffset){
   ScrollTrigger.create({
     trigger: ".cricket-container",
     start: "top+=" + startOffset,
     end: "+=400",
-    scrub:1,
     pin:true,
+    scrub:1,
     onEnter: ()=>{
-      // Ball animation with squash/stretch
-      gsap.to(ball, {
+      gsap.to(ball,{
         x:xPos,
         y:-150,
         rotation:360,
@@ -138,8 +136,8 @@ function setupWicketSequence(idx, xPos, startOffset){
         scaleY:0.7,
         duration:0.6,
         ease:"power2.out",
-        onComplete: ()=>{
-          gsap.to(ball, {
+        onComplete:()=>{
+          gsap.to(ball,{
             y:0,
             rotation:720,
             scaleX:1,
@@ -147,10 +145,9 @@ function setupWicketSequence(idx, xPos, startOffset){
             duration:0.5,
             ease:"bounce.out"
           });
-          // Wicket falls
-          hitSound.currentTime=0; hitSound.play();
+          hitSound.currentTime=0;
+          hitSound.play();
           gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
-          // Show collection
           gsap.to(collections[idx], {opacity:1, duration:0.5});
           if(idx===0) redVideo.play();
         }
@@ -159,11 +156,10 @@ function setupWicketSequence(idx, xPos, startOffset){
   });
 }
 
-// Sequential scroll triggers with cinematic timing
-setupWicketSequence(0, window.innerWidth*0.25, 0);                // Red
-setupWicketSequence(1, window.innerWidth*0.5, window.innerHeight); // White
-setupWicketSequence(2, window.innerWidth*0.75, window.innerHeight*2); // Black
-
+// Sequential offsets for true storytelling
+animateWicket(0, window.innerWidth*0.25, 0);                // Red
+animateWicket(1, window.innerWidth*0.5, window.innerHeight); // White
+animateWicket(2, window.innerWidth*0.75, window.innerHeight*2); // Black
 </script>
 </body>
 </html>
