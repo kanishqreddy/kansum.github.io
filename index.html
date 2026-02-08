@@ -30,6 +30,10 @@ section{
   min-height:100vh;
   padding:8vh 6vw;
   overflow:hidden;
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .scene-label{
@@ -91,21 +95,24 @@ section{
 }
 
 .hero img{
-  width:40%;          /* reduced from 50% */
-  height:80vh;        /* reduced from 90vh */
+  width:40%;          /* zoomed out */
+  height:80vh;
   object-fit:cover;
   border-radius:8px;
   box-shadow:0 20px 40px rgba(0,0,0,0.5);
   position:relative;
   z-index:1;
-  top:10vh;           /* slightly lower to align with text */
+  top:10vh;
 }
 
 /* ---------------- SCENES ---------------- */
 .scene{overflow:hidden;}
 
+/* RED COLLECTION */
 .red{
-  background:radial-gradient(circle at 30% 20%, #3a0000, #000);
+  background:
+    radial-gradient(circle at 30% 20%, #3a0000, #000),
+    url('images/vangogh-red.jpg') center/cover no-repeat;
 }
 .red .m1{width:35vw;height:55vh;left:5vw;top:20vh;}
 .red .m2{width:28vw;height:38vh;right:6vw;top:25vh;}
@@ -113,8 +120,11 @@ section{
 .red .m4{width:18vw;height:28vh;right:28vw;bottom:5vh;}
 .red .m5{width:20vw;height:32vh;left:40vw;bottom:20vh;}
 
+/* WHITE COLLECTION */
 .white{
-  background:radial-gradient(circle at 70% 30%, #ffffff, #e8e8e8);
+  background:
+    radial-gradient(circle at 70% 30%, #ffffff, #e8e8e8),
+    url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
 }
 .white .m1{width:38vw;height:55vh;left:5vw;top:18vh;}
@@ -123,8 +133,11 @@ section{
 .white .m4{width:18vw;height:28vh;right:28vw;bottom:15vh;}
 .white .m5{width:20vw;height:30vh;left:40vw;bottom:20vh;}
 
+/* BLACK COLLECTION */
 .black{
-  background:radial-gradient(circle at 50% 40%, #111, #000);
+  background:
+    radial-gradient(circle at 50% 40%, #111, #000),
+    url('images/vangogh-black.jpg') center/cover no-repeat;
 }
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
 .black .m2{width:30vw;height:44vh;right:10vw;bottom:10vh;}
@@ -153,7 +166,7 @@ footer{
   <img src="images/rt3.jpeg" alt="">
 </section>
 
-<!-- RED -->
+<!-- RED COLLECTION -->
 <section class="scene red">
   <div class="scene-label">Crimson Motion</div>
   <div class="scene-title">The Instinct</div>
@@ -166,7 +179,7 @@ footer{
   <div class="media m5"><img src="images/rts2.jpeg"></div>
 </section>
 
-<!-- WHITE -->
+<!-- WHITE COLLECTION -->
 <section class="scene white">
   <div class="scene-label">White Calm</div>
   <div class="scene-title">The Breath</div>
@@ -179,7 +192,7 @@ footer{
   <div class="media m5"><img src="images/fsws3.jpeg"></div>
 </section>
 
-<!-- BLACK -->
+<!-- BLACK COLLECTION -->
 <section class="scene black">
   <div class="scene-label">Noir Echo</div>
   <div class="scene-title">The Silence</div>
@@ -196,7 +209,7 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Animate media with subtle scroll parallax and fade-in
+// Animate floating media
 document.querySelectorAll('.media').forEach((el)=>{
   gsap.fromTo(el,
     {y:50, opacity:0, rotation:0},
@@ -224,6 +237,19 @@ gsap.to(redVideo, {
     end:"bottom top",
     scrub:1
   }
+});
+
+// Optional subtle parallax for backgrounds
+['.red','.white','.black'].forEach(selector=>{
+  gsap.to(selector,{
+    backgroundPosition:'center 10%',
+    scrollTrigger:{
+      trigger:selector,
+      start:'top bottom',
+      end:'bottom top',
+      scrub:true
+    }
+  });
 });
 </script>
 
