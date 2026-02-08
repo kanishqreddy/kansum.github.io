@@ -32,7 +32,6 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 /* SECTIONS */
 section { padding:80px 24px; opacity:0; transform:translateY(30px); transition:all 1s ease-out; }
 section.visible { opacity:1; transform:translateY(0); }
-
 .container { max-width:var(--max); margin:auto; }
 
 /* HERO */
@@ -45,13 +44,13 @@ section.visible { opacity:1; transform:translateY(0); }
 @keyframes fadeIn { to { opacity:1; } }
 
 /* STATEMENT */
-.statement { font-size:20px; max-width:720px; color:var(--muted); margin:auto; line-height:1.6; }
+.statement { font-size:20px; max-width:720px; color:var(--muted); margin:auto; line-height:1.6; text-align:center; }
 
-/* FULL IMAGE & VIDEO */
-.full-section { position:relative; margin-bottom:40px; }
-.full-section img, .full-section video { width:100%; height:70vh; object-fit:contain; object-position:center; display:block; }
-.full-section video { display:block; }
-.video-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1; }
+/* FULL IMAGE + VIDEO SIDE BY SIDE */
+.red-full { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:40px; justify-content:center; }
+.red-full img, .red-full video { flex:1; min-width:300px; max-width:600px; height:70vh; object-fit:contain; border-radius:4px; }
+.red-full video { display:block; }
+.red-full .video-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1; }
 
 /* SPLIT / CREATIVE LAYOUT */
 .split { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-bottom:40px; }
@@ -73,6 +72,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; letter-spacing:.2
   .split { grid-template-columns:1fr; gap:30px; }
   .split img { max-height:45vh; }
   .strip img, .grid img { width:220px; }
+  .red-full { flex-direction:column; }
 }
 </style>
 </head>
@@ -97,12 +97,15 @@ footer { padding:60px 24px; text-align:center; font-size:12px; letter-spacing:.2
 
 <section>
   <div class="container">
-    <p class="statement">Red Collection inspired by cricket ball: confident silhouettes, bold statement.</p>
+    <p class="statement">Red Collection inspired by the cricket ball: confident silhouettes, bold statement.</p>
   </div>
 </section>
 
-<section class="full-section">
+<section class="red-full">
   <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
+  <video autoplay muted loop playsinline>
+    <source src="videos/rtsmv.mp4" type="video/mp4">
+  </video>
 </section>
 
 <section class="split">
@@ -118,13 +121,6 @@ footer { padding:60px 24px; text-align:center; font-size:12px; letter-spacing:.2
   <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
 </section>
 
-<section class="full-section">
-  <video autoplay muted loop playsinline>
-    <source src="videos/rtsmv.mp4" type="video/mp4">
-  </video>
-  <div class="video-overlay"></div>
-</section>
-
 <!-- ================== BLACK COLLECTION ================== -->
 <section class="hero">
   <div class="hero-media"><img src="images/fsbs.jpeg" alt="Full Sleeve Black"><div class="hero-overlay"></div></div>
@@ -136,9 +132,11 @@ footer { padding:60px 24px; text-align:center; font-size:12px; letter-spacing:.2
     <h2>Black Collection Essentials</h2>
     <p>Timeless black pieces, minimalism and elegance.</p>
   </div>
-  <div style="display:flex; gap:20px; flex-wrap:wrap;">
-    <img src="images/fsbs.jpeg" style="flex:1; min-width:200px; max-height:40vh;" alt="Black Sleeve">
-    <img src="images/fsbs2.jpeg" style="flex:1; min-width:200px; max-height:40vh;" alt="Black Sleeve Alt">
+  <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+    <img src="images/fsbs.jpeg" style="flex:1; min-width:250px; max-height:45vh;" alt="Black Sleeve">
+    <img src="images/fsbs2.jpeg" style="flex:1; min-width:250px; max-height:45vh;" alt="Black Sleeve Alt">
+    <!-- duplicate creatively to fill space -->
+    <img src="images/fsbs.jpeg" style="flex:1; min-width:250px; max-height:45vh;" alt="Black Sleeve Duplicate">
   </div>
 </section>
 
@@ -186,7 +184,7 @@ sections.forEach(section => observer.observe(section));
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   document.querySelectorAll('.hero-media').forEach(h => h.style.transform = `translateY(${scrollY*0.2}px)`);
-  document.querySelectorAll('.full-section').forEach(f => f.style.transform = `translateY(${scrollY*0.1}px)`);
+  document.querySelectorAll('.red-full, .split, .grid').forEach(f => f.style.transform = `translateY(${scrollY*0.1}px)`);
 });
 </script>
 
