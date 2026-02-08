@@ -20,10 +20,39 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
 .nav a:hover { color:#111; }
 
-/* Cricket container fixed at top */
-.cricket-container { position:fixed; top:80px; left:0; width:100%; height:300px; display:flex; justify-content:center; align-items:flex-end; pointer-events:none; z-index:10; }
-.ball { width:50px; height:50px; background:red; border-radius:50%; position:absolute; bottom:0; left:0; filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2)); }
-.wicket { width:20px; height:100px; background:#8b5a2b; position:absolute; bottom:0; transform-origin:bottom center; }
+/* Cricket container on right side */
+.cricket-container {
+  position:fixed;
+  top:80px;
+  right:20px; /* near scrollbar */
+  width:60px;
+  height:80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  pointer-events:none;
+  z-index:999;
+}
+.wicket {
+  width:40px;
+  height:100px;
+  margin-bottom:15px;
+  transform-origin:bottom center;
+  cursor:pointer;
+}
+.ball {
+  width:40px;
+  height:40px;
+  background:red;
+  border-radius:50%;
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  filter: drop-shadow(0 5px 3px rgba(0,0,0,0.3));
+  z-index:10;
+}
 
 /* Collections */
 .collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:20px; padding:40px 20px; opacity:0;
@@ -32,7 +61,7 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 .split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
 
-/* Background light/shadow overlay */
+/* Lighting overlay for luxury feel */
 .collection::before {
   content:"";
   position:absolute;
@@ -47,10 +76,10 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 /* Footer */
 footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; border-top:1px solid #eee; }
 
-/* Mobile */
 @media(max-width:900px){
   .ball { width:35px; height:35px; }
   .split img, .split video { max-height:45vh; min-width:150px; }
+  .cricket-container { width:40px; }
 }
 </style>
 </head>
@@ -67,12 +96,33 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
   </div>
 </header>
 
-<!-- Cricket container -->
+<!-- Cricket container with SVG wickets -->
 <div class="cricket-container" id="cricketContainer">
+  <svg class="wicket" id="wicket1" viewBox="0 0 50 100">
+    <rect x="10" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="20" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="30" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="10" y="0" width="25" height="5" fill="#8b5a2b"/>
+    <rect x="10" y="50" width="25" height="5" fill="#8b5a2b"/>
+    <rect x="10" y="95" width="25" height="5" fill="#8b5a2b"/>
+  </svg>
+  <svg class="wicket" id="wicket2" viewBox="0 0 50 100">
+    <rect x="10" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="20" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="30" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="10" y="0" width="25" height="5" fill="#8b5a2b"/>
+    <rect x="10" y="50" width="25" height="5" fill="#8b5a2b"/>
+    <rect x="10" y="95" width="25" height="5" fill="#8b5a2b"/>
+  </svg>
+  <svg class="wicket" id="wicket3" viewBox="0 0 50 100">
+    <rect x="10" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="20" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="30" y="0" width="5" height="100" fill="#8b5a2b"/>
+    <rect x="10" y="0" width="25" height="5" fill="#8b5a2b"/>
+    <rect x="10" y="50" width="25" height="5" fill="#8b5a2b"/>
+    <rect x="10" y="95" width="25" height="5" fill="#8b5a2b"/>
+  </svg>
   <div class="ball" id="ball"></div>
-  <div class="wicket" id="wicket1" style="left:25%;"></div>
-  <div class="wicket" id="wicket2" style="left:50%;"></div>
-  <div class="wicket" id="wicket3" style="left:75%;"></div>
 </div>
 
 <!-- Collections -->
@@ -148,14 +198,13 @@ function animateStep(idx, scrollStart){
     pin:true,
     onEnter: ()=>{
       gsap.to(ball,{
-        x:wickets[idx].offsetLeft,
         y:-180,
         rotation:360,
         scaleX:1.3,
         scaleY:0.7,
         duration:0.6,
         ease:"power2.out",
-        onUpdate: ()=>{ trail.style.left = ball.offsetLeft + "px"; trail.style.bottom = ball.style.bottom; },
+        onUpdate:()=>{ trail.style.bottom = ball.style.bottom; },
         onComplete: ()=>{
           gsap.to(ball,{
             y:0,
@@ -168,7 +217,7 @@ function animateStep(idx, scrollStart){
           hitSound.currentTime=0;
           hitSound.play();
           gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
-          gsap.to(collections[idx], {opacity:1, duration:0.5, ease:"power1.inOut"});
+          gsap.to(collections[idx], {opacity:1, duration:0.5});
           if(idx===0) redVideo.play();
         }
       });
@@ -196,19 +245,7 @@ collections.forEach(collection=>{
     });
   });
 });
-
-// Background lighting/shadow fade per collection
-collections.forEach(collection=>{
-  gsap.to(collection.querySelector('::before'),{
-    opacity:0.3,
-    scrollTrigger: {
-      trigger: collection,
-      start: "top bottom",
-      end: "bottom top",
-      scrub:true
-    }
-  });
-});
 </script>
+
 </body>
 </html>
