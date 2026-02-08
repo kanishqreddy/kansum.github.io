@@ -20,43 +20,13 @@
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body {
-  font-family: Inter, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x:hidden;
-}
+body { font-family: Inter, sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
 
 /* NAV */
-header {
-  position: fixed;
-  top:0;
-  width:100%;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(10px);
-  z-index:100;
-}
-.nav {
-  max-width:var(--max);
-  margin:auto;
-  padding:18px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand {
-  font-family:"Playfair Display",serif;
-  font-size:18px;
-  letter-spacing:.25em;
-}
-.nav a {
-  margin-left:26px;
-  font-size:12px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted);
-  text-decoration:none;
-}
+header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); z-index:100; }
+.nav { max-width:var(--max); margin:auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-family:"Playfair Display",serif; font-size:18px; letter-spacing:.25em; }
+.nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; }
 .nav a:hover { color:var(--text); }
 
 /* SECTIONS */
@@ -67,167 +37,41 @@ section.visible { opacity:1; transform:translateY(0); }
 .container { max-width:var(--max); margin:auto; }
 
 /* HERO */
-.hero {
-  position: relative;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  opacity:1; /* hero always visible */
-  transform:none;
-}
+.hero { position: relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; opacity:1; transform:none; }
+.hero-media { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden; will-change: transform; }
+.hero-media img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
+.hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4)); z-index:2; }
+.hero h1 { position: relative; z-index:3; color:#fff; text-align:center; font-size:clamp(56px,9vw,140px); line-height:1.1; margin:0 20px; opacity:0; animation:fadeIn 2s ease forwards; animation-delay:0.5s; }
 
-.hero-media {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:1;
-  overflow:hidden;
-  will-change: transform; /* for smooth parallax */
-}
-
-.hero-media img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center; 
-  display:block;
-}
-
-.hero-overlay {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
-  z-index:2;
-}
-
-.hero h1 {
-  position: relative;
-  z-index:3;
-  color:#fff;
-  text-align:center;
-  font-size:clamp(56px,9vw,140px);
-  line-height:1.1;
-  margin:0 20px;
-  opacity:0;
-  animation:fadeIn 2s ease forwards;
-  animation-delay:0.5s;
-}
-
-/* Fade-in animation for hero text */
-@keyframes fadeIn {
-  to { opacity:1; }
-}
+/* Fade-in animation */
+@keyframes fadeIn { to { opacity:1; } }
 
 /* STATEMENT */
-.statement {
-  font-size:22px;
-  max-width:720px;
-  color:var(--muted);
-  margin:auto;
-  line-height:1.6;
-}
+.statement { font-size:22px; max-width:720px; color:var(--muted); margin:auto; line-height:1.6; }
 
 /* FULL IMAGE & VIDEO */
-.full {
-  position: relative;
-  will-change: transform; /* parallax */
-}
-
-.full img, .full video {
-  width:100%;
-  height:80vh;
-  object-fit:contain;
-  object-position:center;
-  display:block;
-}
-
-.video-overlay {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.2);
-  z-index:1;
-}
+.full { position: relative; will-change: transform; }
+.full img, .full video { width:100%; height:80vh; object-fit:contain; object-position:center; display:block; }
+.video-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1; }
 
 /* SPLIT EDITORIAL */
-.split {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:center;
-}
-.split h2 {
-  font-family:"Playfair Display",serif;
-  font-size:48px;
-  line-height:1.1;
-}
-.split p {
-  font-size:18px;
-  color:var(--muted);
-  line-height:1.6;
-}
-.split img {
-  width:100%;
-  height:auto;
-  max-height:70vh;
-  object-fit:contain;
-  object-position:center;
-  display:block;
-}
+.split { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.split h2 { font-family:"Playfair Display",serif; font-size:48px; line-height:1.1; }
+.split p { font-size:18px; color:var(--muted); line-height:1.6; }
+.split img { width:100%; height:auto; max-height:70vh; object-fit:contain; object-position:center; display:block; }
 
 /* PRODUCT STRIP */
-.strip {
-  display:flex;
-  gap:40px;
-  overflow-x:auto;
-  padding-bottom:20px;
-}
-.strip img {
-  width:320px;
-  height:auto;
-  object-fit:contain;
-  flex-shrink:0;
-  display:block;
-  border-radius:4px;
-}
+.strip { display:flex; gap:40px; overflow-x:auto; padding-bottom:20px; }
+.strip img { width:320px; height:auto; object-fit:contain; flex-shrink:0; display:block; border-radius:4px; }
 
 /* LOOKBOOK GRID */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:50px;
-}
-.grid img {
-  width:100%;
-  height:auto;
-  max-height:420px;
-  object-fit:contain;
-  object-position:center;
-  display:block;
-  border-radius:4px;
-}
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:50px; }
+.grid img { width:100%; height:auto; max-height:420px; object-fit:contain; object-position:center; display:block; border-radius:4px; }
 
 /* FOOTER */
-footer {
-  padding:80px 24px;
-  text-align:center;
-  font-size:12px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-  border-top:1px solid #eee;
-}
+footer { padding:80px 24px; text-align:center; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); border-top:1px solid #eee; }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 @media (max-width:900px){
   .hero h1 { font-size:clamp(36px,8vw,80px); }
   .split { grid-template-columns:1fr; gap:40px; }
@@ -252,73 +96,92 @@ footer {
   </div>
 </header>
 
-<!-- HERO: Red T-shirt Model -->
+<!-- RED COLLECTION -->
 <section class="hero">
   <div class="hero-media">
     <img src="images/rt3.jpeg" alt="Red T-shirt Model">
     <div class="hero-overlay"></div>
   </div>
-  <h1>Winter ’26<br>By Peddi</h1>
+  <h1>Red Collection</h1>
 </section>
 
-<!-- STATEMENT -->
 <section>
   <div class="container">
     <p class="statement">
       A study in form, color, and confidence inspired by the cricket ball.  
-      Peddi’s Winter ’26 collection is designed to feel effortless — 
-      every day, every wear.
+      Peddi’s Red Collection features effortless silhouettes for every day.
     </p>
   </div>
 </section>
 
-<!-- RED COLLECTION FULL IMAGE -->
 <section class="full">
   <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
 </section>
 
-<!-- SPLIT EDITORIAL: Full Sleeve Red -->
 <section>
   <div class="split">
     <div>
-      <h2>Red Collection<br>Essentials</h2>
-      <p>
-        Clean silhouettes. Considered colors.
-        Pieces designed to exist beyond seasons.
-      </p>
+      <h2>Red Collection Essentials</h2>
+      <p>Clean silhouettes. Considered colors. Pieces designed to exist beyond seasons.</p>
     </div>
     <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
   </div>
 </section>
 
-<!-- RED & BLACK PRODUCT STRIP -->
 <section>
   <div class="strip">
-    <img src="images/rts.jpeg" alt="Red T-shirt Alt">
-    <img src="images/rts2.jpeg" alt="Red T-shirt Alternate">
-    <img src="images/fsbs.jpeg" alt="Full Sleeve Black">
-    <img src="images/fsbs2.jpeg" alt="Full Sleeve Black Alt">
+    <img src="images/rts.jpeg" alt="Red T-shirt Alternate">
+    <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
   </div>
 </section>
 
-<!-- FULLSCREEN VIDEO: Red T-shirt Mannequin -->
-<section id="experience" class="full">
+<section class="full">
   <video autoplay muted loop playsinline>
     <source src="videos/rtsmv.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
 </section>
 
-<!-- WHITE COLLECTION LOOKBOOK GRID -->
-<section id="lookbook">
-  <div class="container">
-    <div class="grid">
-      <img src="images/wts.jpeg" alt="White T-shirt">
-      <img src="images/wts2.jpeg" alt="White T-shirt Alt">
-      <img src="images/fsws.jpeg" alt="Full Sleeve White">
-      <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
-      <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
+<!-- BLACK COLLECTION -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="images/fsbs.jpeg" alt="Black Full Sleeve">
+    <div class="hero-overlay"></div>
+  </div>
+  <h1>Black Collection</h1>
+</section>
+
+<section>
+  <div class="strip">
+    <img src="images/fsbs.jpeg" alt="Full Sleeve Black">
+    <img src="images/fsbs2.jpeg" alt="Black Variation">
+  </div>
+</section>
+
+<!-- WHITE COLLECTION -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="images/wts.jpeg" alt="White T-shirt">
+    <div class="hero-overlay"></div>
+  </div>
+  <h1>White Collection</h1>
+</section>
+
+<section>
+  <div class="split">
+    <div>
+      <h2>White Collection Essentials</h2>
+      <p>Minimalist, crisp, and inspired by the clean elegance of cricket ball design.</p>
     </div>
+    <img src="images/fsws.jpeg" alt="Full Sleeve White">
+  </div>
+</section>
+
+<section>
+  <div class="grid">
+    <img src="images/wts2.jpeg" alt="White T-shirt Alt">
+    <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
+    <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
   </div>
 </section>
 
@@ -327,7 +190,7 @@ footer {
 </footer>
 
 <script>
-// Scroll fade-in animations for luxury feel
+// Scroll fade-in animations
 const sections = document.querySelectorAll('section:not(.hero)');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -340,19 +203,11 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(section => observer.observe(section));
 
-// Parallax effect for hero and fullscreen video
+// Parallax for hero and full image/video
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
-  
-  const heroMedia = document.querySelector('.hero-media');
-  if(heroMedia) heroMedia.style.transform = `translateY(${scrollY * 0.3}px)`;
-
-  const fullSections = document.querySelectorAll('.full');
-  fullSections.forEach(full => {
-    if(!full.classList.contains('hero')){
-      full.style.transform = `translateY(${scrollY * 0.2}px)`;
-    }
-  });
+  document.querySelectorAll('.hero-media').forEach(h => h.style.transform = `translateY(${scrollY * 0.3}px)`);
+  document.querySelectorAll('.full').forEach(f => f.style.transform = `translateY(${scrollY * 0.2}px)`);
 });
 </script>
 
