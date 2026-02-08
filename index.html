@@ -159,6 +159,7 @@ const hitSound = document.getElementById("hitSound");
 collections.forEach(c => c.style.opacity=0);
 redVideo.pause();
 
+// Function to animate each ball hitting wicket and exiting
 function animateStep(idx, scrollStart){
   ScrollTrigger.create({
     trigger: collections[idx],
@@ -184,7 +185,7 @@ function animateStep(idx, scrollStart){
         duration:0.8,
         ease:"power2.out",
         onComplete: ()=>{
-          // Bounce down
+          // Bounce down onto wicket
           gsap.to(ball,{
             y: deltaY + 50,
             rotation:720,
@@ -197,6 +198,15 @@ function animateStep(idx, scrollStart){
               gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
               gsap.to(collections[idx], {opacity:1, duration:0.5});
               if(idx===0) redVideo.play();
+
+              // Ball exits bottom-right
+              gsap.to(ball,{
+                x: window.innerWidth + 100,
+                y: window.innerHeight + 100,
+                rotation:1080,
+                duration:0.8,
+                ease:"power1.in",
+              });
             }
           });
         }
@@ -205,7 +215,7 @@ function animateStep(idx, scrollStart){
   });
 }
 
-// Sequential steps
+// Animate sequentially
 animateStep(0,"top");      // Red
 animateStep(1,"top+=100"); // White
 animateStep(2,"top+=200"); // Black
