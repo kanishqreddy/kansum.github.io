@@ -1,74 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Peddi® — Crafted by Seam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Peddi — Everyday Essentials</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eee;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  letter-spacing: .3em;
+  font-size: 14px;
+}
+
+.nav a {
+  margin-left: 26px;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #666;
+  text-decoration: none;
+}
+
+section {
+  padding: 140px 24px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(56px, 9vw, 120px);
+  line-height: 1;
+}
+
+.full {
+  padding: 0;
+}
+
+.full img, .full video {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 60px;
+}
+
+figure img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+footer {
+  padding: 60px 24px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .18em;
+  color: #666;
+}
+</style>
 </head>
+
 <body>
 
-<!-- LOADER -->
-<div class="loader">
-  <span>Peddi</span>
-</div>
+<header>
+  <div class="nav">
+    <span class="brand">PEDDI</span>
+    <nav>
+      <a href="#collection">Collection</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <!-- HERO -->
-<section class="hero snap">
-  <div class="hero-left">
-    <span class="eyebrow">Established by Discipline</span>
-    <h1>Peddi</h1>
-    <p>Luxury formed by restraint.</p>
-  </div>
-
-  <div class="hero-right">
-    <img src="images/hero-model.jpg" alt="Peddi Model">
-    <svg class="seam" viewBox="0 0 300 900">
-      <path id="seamPath"
-        d="M150 0 C220 250 80 650 150 900"
-        stroke="#111"
-        stroke-width="3"
-        stroke-dasharray="8 14"
-        fill="none"/>
-    </svg>
+<section class="hero">
+  <div class="container">
+    <h1>Everyday<br>Essentials<br>by Peddi</h1>
   </div>
 </section>
 
-<!-- STITCH SECTION -->
-<section class="stitch snap">
-  <div class="stitch-text active">
-    <h2>The line decides everything.</h2>
+<!-- STATEMENT -->
+<section>
+  <div class="container">
+    <p style="max-width:720px;font-size:22px;color:#666;">
+      Peddi is a modern clothing label focused on bold colors,
+      clean silhouettes, and everyday wear.
+    </p>
   </div>
-  <div class="stitch-text">
-    <h2>Without it, form collapses.</h2>
+</section>
+
+<!-- FULL BLEED IMAGE -->
+<section class="full">
+  <img src="rt3" alt="Red T-shirt">
+</section>
+
+<!-- COLLECTION -->
+<section id="collection">
+  <div class="container">
+    <h2 style="font-family:Playfair Display;font-size:42px;margin-bottom:80px;">
+      The Collection
+    </h2>
+
+    <div class="grid">
+      <figure>
+        <img src="rts2">
+        <figcaption>Red T-Shirt</figcaption>
+      </figure>
+
+      <figure>
+        <img src="fsrs">
+        <figcaption>Full Sleeve Red</figcaption>
+      </figure>
+
+      <figure>
+        <img src="fsbs">
+        <figcaption>Full Sleeve Black</figcaption>
+      </figure>
+    </div>
   </div>
-  <div class="stitch-text">
-    <h2>With it, balance exists.</h2>
-  </div>
+</section>
+
+<!-- FULL BLEED VIDEO -->
+<section class="full">
+  <video autoplay muted loop playsinline>
+    <source src="rtsmv.mp4" type="video/mp4">
+  </video>
 </section>
 
 <!-- LOOKBOOK -->
-<section class="lookbook snap">
-  <div class="track">
-    <div class="look"><img src="images/look1.jpg"><span>Seam Jacket</span></div>
-    <div class="look"><img src="images/look2.jpg"><span>Match White</span></div>
-    <div class="look"><img src="images/look3.jpg"><span>Core Layer</span></div>
+<section id="lookbook">
+  <div class="container">
+    <div class="grid">
+      <figure>
+        <img src="wts">
+        <figcaption>White T-Shirt</figcaption>
+      </figure>
+
+      <figure>
+        <img src="fsws">
+        <figcaption>Full Sleeve White</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="manifesto snap">
-  <h2>
-    Every Peddi garment is weighted,
-    measured, and finished by hand —
-    <em>like the cricket ball that inspired it.</em>
-  </h2>
-</section>
-
-<footer>
-  Peddi® — Quietly Precise
+<footer id="contact">
+  © 2026 Peddi
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
