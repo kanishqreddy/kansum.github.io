@@ -27,10 +27,22 @@ header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); 
 
 /* Collections */
 .collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:20px; padding:40px 20px; opacity:0;
-  transition: transform 0.6s ease, box-shadow 0.6s ease; border-radius:8px; }
-.collection:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  border-radius:8px; position:relative; overflow:hidden; transition: transform 0.6s ease, box-shadow 0.6s ease; }
+.collection:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 .split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
+
+/* Background light/shadow overlay */
+.collection::before {
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  mix-blend-mode:soft-light;
+  opacity:0;
+}
 
 /* Footer */
 footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; border-top:1px solid #eee; }
@@ -102,6 +114,7 @@ footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; borde
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+// Ball and wickets
 const ball = document.getElementById("ball");
 const wickets = [
   document.getElementById("wicket1"),
@@ -120,7 +133,7 @@ const hitSound = document.getElementById("hitSound");
 collections.forEach(c => c.style.opacity=0);
 redVideo.pause();
 
-// Ball trail for cinematic effect
+// Ball trail
 const trail = ball.cloneNode(true);
 trail.style.background = "rgba(255,0,0,0.2)";
 trail.style.zIndex = "5";
@@ -164,9 +177,38 @@ function animateStep(idx, scrollStart){
 }
 
 // Sequential animation
-animateStep(0,"top");       // Red
-animateStep(1,"top+=100");  // White
-animateStep(2,"top+=200");  // Black
+animateStep(0,"top");
+animateStep(1,"top+=100");
+animateStep(2,"top+=200");
+
+// Parallax for images/videos
+collections.forEach(collection=>{
+  const elements = collection.querySelectorAll('img, video');
+  elements.forEach(el=>{
+    gsap.to(el, {
+      y:30,
+      scrollTrigger: {
+        trigger: collection,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  });
+});
+
+// Background lighting/shadow fade per collection
+collections.forEach(collection=>{
+  gsap.to(collection.querySelector('::before'),{
+    opacity:0.3,
+    scrollTrigger: {
+      trigger: collection,
+      start: "top bottom",
+      end: "bottom top",
+      scrub:true
+    }
+  });
+});
 </script>
 </body>
 </html>
