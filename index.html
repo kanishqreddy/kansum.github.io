@@ -5,208 +5,295 @@
 <title>Peddi — Winter ’26</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
-body { margin:0; font-family:Inter,sans-serif; background:#fefefe; overflow-x:hidden; }
-header { position: fixed; top:0; width:100%; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); z-index:100; }
-.nav { max-width:1400px; margin:auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; }
-.brand { font-family:"Playfair Display",serif; font-size:18px; letter-spacing:.25em; }
-.nav a { margin-left:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#666; text-decoration:none; }
-.nav a:hover { color:#111; }
+:root{
+  --lux-shadow: 0 40px 80px rgba(0,0,0,.15);
+}
 
-/* Cricket container bottom-center */
-.cricket-container {
+body{
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:#fefefe;
+  overflow-x:hidden;
+}
+
+header{
   position:fixed;
-  bottom:50px;
+  top:0;
+  width:100%;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  z-index:100;
+}
+
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:18px 32px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.brand{
+  font-family:"Playfair Display",serif;
+  letter-spacing:.25em;
+}
+
+/* ================= CRICKET ================= */
+
+.cricket-container{
+  position:fixed;
+  bottom:40px;
   left:50%;
-  transform: translateX(-50%);
+  transform:translateX(-50%);
   width:180px;
   display:flex;
   justify-content:space-between;
-  align-items:flex-end;
+  z-index:20;
   pointer-events:none;
-  z-index:10;
 }
 
-.wicket {
-  width:20px;
+.wicket{
+  width:16px;
   height:100px;
   background:#8b5a2b;
-  transform-origin:bottom center;
+  transform-origin:bottom;
 }
 
-.ball {
-  width:50px;
-  height:50px;
+.ball{
+  width:44px;
+  height:44px;
   border-radius:50%;
   position:fixed;
   bottom:20px;
   left:20px;
-  filter:drop-shadow(0 10px 5px rgba(0,0,0,0.2));
-  z-index:1000;
-  pointer-events:none;
+  z-index:30;
+  filter:drop-shadow(0 10px 6px rgba(0,0,0,.25));
 }
 
-/* Collections */
-.collection { width:100%; min-height:80vh; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:20px; padding:40px 20px; opacity:0; position:relative; overflow:hidden; transition: transform 0.6s ease, box-shadow 0.6s ease; }
-.collection:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-.split { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.split img, .split video { flex:1; min-width:250px; max-height:60vh; border-radius:4px; object-fit:contain; }
+/* ================= COLLECTIONS ================= */
 
-/* Footer */
-footer { padding:60px 24px; text-align:center; font-size:12px; color:#666; border-top:1px solid #eee; }
+.collection{
+  min-height:100vh;
+  padding:160px 6vw 120px;
+  opacity:0;
+  position:relative;
+}
 
+/* HEADINGS */
+.collection h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(48px,6vw,96px);
+  margin-bottom:60px;
+}
+
+/* ===== RED – HERO EDITORIAL ===== */
+
+.red-editorial{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:60px;
+  align-items:center;
+}
+
+.red-editorial img{
+  width:100%;
+  height:80vh;
+  object-fit:cover;
+  box-shadow:var(--lux-shadow);
+}
+
+.red-editorial video{
+  width:100%;
+  height:80vh;
+  object-fit:cover;
+  box-shadow:var(--lux-shadow);
+}
+
+/* Supporting row */
+.support-strip{
+  margin-top:80px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+.support-strip img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+}
+
+/* ===== WHITE – CLEAN LAYERED ===== */
+
+.white-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:60px;
+}
+
+.white-grid img:first-child{
+  height:90vh;
+  object-fit:cover;
+}
+
+.white-stack{
+  display:grid;
+  gap:30px;
+}
+
+.white-stack img{
+  height:42vh;
+  object-fit:cover;
+}
+
+/* ===== BLACK – DRAMATIC STRIP ===== */
+
+.black-strip{
+  display:flex;
+  gap:60px;
+}
+
+.black-strip img{
+  width:33%;
+  height:80vh;
+  object-fit:cover;
+  box-shadow:var(--lux-shadow);
+}
+
+/* FOOTER */
+footer{
+  padding:80px;
+  text-align:center;
+  font-size:12px;
+  color:#666;
+  border-top:1px solid #eee;
+}
+
+/* MOBILE */
 @media(max-width:900px){
-  .ball { width:35px; height:35px; }
-  .split img, .split video { max-height:45vh; min-width:150px; }
+  .red-editorial,
+  .white-grid,
+  .black-strip{
+    grid-template-columns:1fr;
+    flex-direction:column;
+  }
+
+  .support-strip{
+    grid-template-columns:1fr;
+  }
+
+  .black-strip img{
+    width:100%;
+    height:60vh;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="nav">
     <div class="brand">PEDDI</div>
-    <nav>
-      <a href="#collection">Collection</a>
-      <a href="#experience">Experience</a>
-      <a href="#lookbook">Lookbook</a>
-    </nav>
   </div>
 </header>
 
-<!-- Cricket container -->
-<div class="cricket-container" id="cricketContainer">
-  <div class="wicket" id="wicket1"></div>
-  <div class="wicket" id="wicket2"></div>
-  <div class="wicket" id="wicket3"></div>
+<!-- Cricket -->
+<div class="cricket-container">
+  <div class="wicket" id="w1"></div>
+  <div class="wicket" id="w2"></div>
+  <div class="wicket" id="w3"></div>
 </div>
-
 <div class="ball" id="ball"></div>
 
-<!-- Collections -->
-<section class="collection" id="redCollection" style="background:#ffe5e5;">
-  <div class="split">
-    <img src="images/rtsm.jpeg" alt="Red T-shirt Mannequin">
-    <video id="redVideo" muted loop playsinline>
-      <source src="videos/rtsmv.mp4" type="video/mp4">
+<!-- RED -->
+<section class="collection" id="red" style="background:#ffe5e5;">
+  <h2>Red Collection</h2>
+
+  <div class="red-editorial">
+    <img src="images/rtsm.jpeg">
+    <video muted loop playsinline id="redVideo">
+      <source src="videos/rtsmv.mp4">
     </video>
   </div>
-  <img src="images/fsrs.jpeg" alt="Full Sleeve Red">
-  <div class="split">
-    <img src="images/rts.jpeg" alt="Red T-shirt">
-    <img src="images/rts2.jpeg" alt="Red T-shirt Alt">
+
+  <div class="support-strip">
+    <img src="images/rt3.jpeg">
+    <img src="images/rts.jpeg">
+    <img src="images/rts2.jpeg">
   </div>
 </section>
 
-<section class="collection" id="whiteCollection" style="background:#f5f5f5;">
-  <img src="images/wts.jpeg" alt="White T-shirt">
-  <div class="split">
-    <img src="images/wts2.jpeg" alt="White T-shirt Alt">
-    <img src="images/fsws.jpeg" alt="Full Sleeve White">
-    <img src="images/fsws2.jpeg" alt="Full Sleeve White Alt">
-    <img src="images/fsws3.jpeg" alt="Full Sleeve White Alt 2">
+<!-- WHITE -->
+<section class="collection" id="white" style="background:#f5f5f5;">
+  <h2>White Collection</h2>
+
+  <div class="white-grid">
+    <img src="images/wts.jpeg">
+    <div class="white-stack">
+      <img src="images/fsws.jpeg">
+      <img src="images/fsws2.jpeg">
+      <img src="images/fsws3.jpeg">
+    </div>
   </div>
 </section>
 
-<section class="collection" id="blackCollection" style="background:#111; color:#fff;">
-  <div class="split">
-    <img src="images/fsbs.jpeg" alt="Black Sleeve">
-    <img src="images/fsbs2.jpeg" alt="Black Sleeve Alt">
-    <img src="images/fsbs.jpeg" alt="Black Sleeve Duplicate">
+<!-- BLACK -->
+<section class="collection" id="black" style="background:#111;color:#fff;">
+  <h2>Black Collection</h2>
+
+  <div class="black-strip">
+    <img src="images/fsbs.jpeg">
+    <img src="images/fsbs2.jpeg">
+    <img src="images/fsbs.jpeg">
   </div>
 </section>
 
 <footer>© 2026 Peddi</footer>
-<audio id="hitSound" src="wicket-hit.mp3"></audio>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
 const ball = document.getElementById("ball");
-const wickets = [
-  document.getElementById("wicket1"),
-  document.getElementById("wicket2"),
-  document.getElementById("wicket3")
-];
-const collections = [
-  document.getElementById("redCollection"),
-  document.getElementById("whiteCollection"),
-  document.getElementById("blackCollection")
-];
-const redVideo = document.getElementById("redVideo");
-const hitSound = document.getElementById("hitSound");
+const wickets = [w1,w2,w3];
+const sections = [red,white,black];
+const colors = ["red","white","black"];
 
-// Hide collections initially
-collections.forEach(c => c.style.opacity=0);
-redVideo.pause();
-
-// Animate each ball hitting wicket and exiting bottom-right
-function animateStep(idx, scrollStart){
+sections.forEach((sec,i)=>{
   ScrollTrigger.create({
-    trigger: collections[idx],
-    start: "top "+scrollStart,
-    end: "+=400",
+    trigger:sec,
+    start:"top center",
     pin:true,
-    onEnter: ()=>{
-      // Reset ball position to bottom-left for each ball
-      gsap.set(ball,{x:0, y:0});
-      ball.style.background = ["red","white","black"][idx];
+    onEnter:()=>{
+      ball.style.background = colors[i];
+      gsap.set(ball,{x:0,y:0});
 
-      const rect = wickets[idx].getBoundingClientRect();
-      const ballRect = ball.getBoundingClientRect();
+      const r = wickets[i].getBoundingClientRect();
 
-      const deltaX = rect.left + rect.width/2 - (ballRect.left + ballRect.width/2);
-      const deltaY = rect.top - ballRect.top - 50; // arc above wicket
-
-      gsap.to(ball, {
-        x: deltaX,
-        y: deltaY,
-        rotation:360,
-        scaleX:1.3,
-        scaleY:0.7,
-        duration:0.8,
+      gsap.to(ball,{
+        x:r.left - 20,
+        y:-200,
+        duration:.8,
         ease:"power2.out",
-        onComplete: ()=>{
+        onComplete:()=>{
+          gsap.to(wickets[i],{rotation:-90,duration:.4});
+          gsap.to(sec,{opacity:1,duration:.6});
           gsap.to(ball,{
-            y: deltaY + 50,
-            rotation:720,
-            scaleX:1,
-            scaleY:1,
-            duration:0.4,
-            ease:"bounce.out",
-            onComplete: ()=>{
-              hitSound.currentTime=0; hitSound.play();
-              gsap.to(wickets[idx], {rotation:-90, duration:0.5, ease:"power2.inOut"});
-              gsap.to(collections[idx], {opacity:1, duration:0.5});
-              if(idx===0) redVideo.play();
-
-              // Exit to bottom-right
-              gsap.to(ball,{
-                x: window.innerWidth + 100,
-                y: window.innerHeight + 100,
-                rotation:1080,
-                duration:0.8,
-                ease:"power1.in",
-              });
-            }
+            x:window.innerWidth+100,
+            y:window.innerHeight+100,
+            duration:.7
           });
         }
       });
     }
   });
-}
-
-// Animate sequentially
-animateStep(0,"top");      // Red
-animateStep(1,"top+=100"); // White
-animateStep(2,"top+=200"); // Black
+});
 </script>
 
 </body>
