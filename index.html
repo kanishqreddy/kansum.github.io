@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Peddi — Winter ’26 Cinematic</title>
+<title>Peddi — Winter ’26 Interactive</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,53 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
-:root{
-  --ease:cubic-bezier(.6,0,.1,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Inter,sans-serif;
-  background:#0a0a0a;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* ---------------- GLOBAL ---------------- */
-section{
-  position:relative;
-  min-height:100vh;
-  padding:8vh 6vw;
-  overflow:hidden;
-  background-blend-mode: soft-light;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.scene-label{
-  font-size:12px;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  opacity:.6;
-  margin-bottom:8px;
-  position:relative; z-index:10;
-}
-
-.scene-title{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(48px,8vw,120px);
-  line-height:1.05;
-  margin-bottom:16px;
-  position:relative; z-index:10;
-}
-
-.scene-subtext{
-  font-size:16px;
-  max-width:500px;
-  line-height:1.5;
-  opacity:.7;
-  margin-bottom:60px;
-  position:relative; z-index:10;
+  margin:0; font-family:Inter,sans-serif; background:#0a0a0a; color:#fff; overflow-x:hidden;
 }
 
 /* ---------------- MEDIA ---------------- */
@@ -67,24 +22,34 @@ section{
   box-shadow:0 20px 40px rgba(0,0,0,0.3);
   opacity:0;
   z-index:5;
+  cursor:pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .media img,
 .media video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  width:100%; height:100%; object-fit:cover; border-radius:8px;
 }
+.media:hover{
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+}
+
+/* ---------------- LIGHTBOX ---------------- */
+#lightbox{
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center;
+  z-index:999;
+}
+#lightbox img, #lightbox video{
+  max-width:90%; max-height:90%; border-radius:8px;
+}
+#lightbox video{background:#000;}
 
 /* ---------------- HERO ---------------- */
 .hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  min-height:100vh;
-  padding:8vh 6vw;
+  display:flex; justify-content:space-between; align-items:center;
+  min-height:100vh; padding:8vh 6vw;
 }
-
 .hero h1{
   font-family:"Playfair Display",serif;
   font-size:clamp(64px,10vw,160px);
@@ -92,26 +57,24 @@ section{
   max-width:45%;
   position:relative; z-index:10;
 }
-
 .hero img{
-  width:40%;          
-  height:80vh;        
-  object-fit:cover;
-  border-radius:8px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-  position:relative;
-  z-index:1;
-  top:10vh;           
+  width:40%; height:80vh; object-fit:cover;
+  border-radius:8px; box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  position:relative; z-index:1; top:10vh;
 }
 
 /* ---------------- SCENES ---------------- */
-.scene{overflow:hidden;}
+.scene{
+  position:relative; min-height:100vh; padding:8vh 6vw; overflow:hidden;
+  background-blend-mode: soft-light; background-size: cover; background-repeat:no-repeat; background-position:center;
+}
+.scene-label{font-size:12px; letter-spacing:.3em; text-transform:uppercase; opacity:.6; margin-bottom:8px; position:relative; z-index:10;}
+.scene-title{font-family:"Playfair Display",serif; font-size:clamp(48px,8vw,120px); line-height:1.05; margin-bottom:16px; position:relative; z-index:10;}
+.scene-subtext{font-size:16px; max-width:500px; line-height:1.5; opacity:.7; margin-bottom:60px; position:relative; z-index:10;}
 
 /* RED COLLECTION */
 .red{
-  background:
-    radial-gradient(circle at 30% 20%, rgba(58,0,0,0.4), rgba(0,0,0,0.4)),
-    url('images/vangogh-red.jpg') center/cover no-repeat;
+  background: radial-gradient(circle at 30% 20%, rgba(58,0,0,0.4), rgba(0,0,0,0.4)), url('images/vangogh-red.jpg') center/cover no-repeat;
 }
 .red .m1{width:35vw;height:55vh;left:5vw;top:20vh;}
 .red .m2{width:28vw;height:38vh;right:6vw;top:25vh;}
@@ -121,9 +84,7 @@ section{
 
 /* WHITE COLLECTION */
 .white{
-  background:
-    radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4), rgba(232,232,232,0.4)),
-    url('images/vangogh-white.jpg') center/cover no-repeat;
+  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4), rgba(232,232,232,0.4)), url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
 }
 .white .m1{width:38vw;height:55vh;left:5vw;top:18vh;}
@@ -134,21 +95,13 @@ section{
 
 /* BLACK COLLECTION */
 .black{
-  background:
-    radial-gradient(circle at 50% 40%, rgba(17,17,17,0.4), rgba(0,0,0,0.4)),
-    url('images/vangogh-black.jpg') center/cover no-repeat;
+  background: radial-gradient(circle at 50% 40%, rgba(17,17,17,0.4), rgba(0,0,0,0.4)), url('images/vangogh-black.jpg') center/cover no-repeat;
 }
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
 .black .m2{width:30vw;height:44vh;right:10vw;bottom:10vh;}
 
 /* ---------------- FOOTER ---------------- */
-footer{
-  padding:80px 6vw;
-  text-align:center;
-  font-size:12px;
-  letter-spacing:.25em;
-  opacity:.5;
-}
+footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em; opacity:.5;}
 
 /* ---------------- MOBILE ---------------- */
 @media(max-width:900px){
@@ -157,15 +110,7 @@ footer{
 }
 
 /* ---------------- PARTICLES ---------------- */
-.particle{
-  position:absolute;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  opacity:0.3;
-  background:white;
-  pointer-events:none;
-}
+.particle{position:absolute;width:8px;height:8px;border-radius:50%;opacity:0.3;background:white;pointer-events:none;}
 </style>
 </head>
 <body>
@@ -212,60 +157,32 @@ footer{
   <div class="media m2"><img src="images/fsbs2.jpeg"></div>
 </section>
 
-<footer>
-  © 2026 Peddi — Born from Motion
-</footer>
+<footer>© 2026 Peddi — Born from Motion</footer>
 
-<!-- PARTICLES -->
+<!-- LIGHTBOX MODAL -->
+<div id="lightbox"><img src="" alt=""><video controls></video></div>
+
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
 // Animate floating media
 document.querySelectorAll('.media').forEach((el)=>{
-  gsap.fromTo(el,
-    {y:50, opacity:0, rotation:0},
-    {
-      y:-30,
-      rotation:Math.random()*6-3,
-      opacity:1,
-      scrollTrigger:{
-        trigger:el,
-        start:"top 90%",
-        end:"top 30%",
-        scrub:1
-      }
-    }
-  );
+  gsap.fromTo(el,{y:50,opacity:0},{y:-30,opacity:1,duration:1,scrollTrigger:{trigger:el,start:"top 90%",end:"top 30%",scrub:1}});
 });
 
 // Red video slow zoom
 const redVideo = document.querySelector('.red video');
-gsap.to(redVideo, {
-  scale:1.05,
-  scrollTrigger:{
-    trigger:'.red',
-    start:"top bottom",
-    end:"bottom top",
-    scrub:1
-  }
-});
+if(redVideo){
+  gsap.to(redVideo,{scale:1.05,scrollTrigger:{trigger:'.red',start:"top bottom",end:"bottom top",scrub:1}});
+}
 
 // Background subtle parallax
 ['.red','.white','.black'].forEach(selector=>{
-  gsap.to(selector,{
-    backgroundPosition:'center 10%',
-    scrollTrigger:{
-      trigger:selector,
-      start:'top bottom',
-      end:'bottom top',
-      scrub:true
-    }
-  });
+  gsap.to(selector,{backgroundPosition:'center 10%',scrollTrigger:{trigger:selector,start:'top bottom',end:'bottom top',scrub:true}});
 });
 
 // Generate floating brush-stroke particles
-const totalParticles = 40;
-for(let i=0;i<totalParticles;i++){
+for(let i=0;i<40;i++){
   const p = document.createElement('div');
   p.classList.add('particle');
   p.style.left=Math.random()*100+'vw';
@@ -273,16 +190,38 @@ for(let i=0;i<totalParticles;i++){
   p.style.width = p.style.height = 4 + Math.random()*6+'px';
   p.style.background = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.2)`;
   document.body.appendChild(p);
-  gsap.to(p,{
-    y:'+=200',
-    x:'+=50',
-    rotation:Math.random()*360,
-    repeat:-1,
-    duration:10 + Math.random()*10,
-    ease:"sine.inOut",
-    yoyo:true
-  });
+  gsap.to(p,{y:'+=200',x:'+=50',rotation:Math.random()*360,repeat:-1,duration:10 + Math.random()*10,ease:"sine.inOut",yoyo:true});
 }
+
+// LIGHTBOX INTERACTIVITY
+const lightbox = document.getElementById('lightbox');
+const lbImg = lightbox.querySelector('img');
+const lbVideo = lightbox.querySelector('video');
+
+document.querySelectorAll('.media img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    lbVideo.style.display='none';
+    lbVideo.pause();
+    lbImg.src = img.src;
+    lbImg.style.display='block';
+    lightbox.style.display='flex';
+  });
+});
+
+document.querySelectorAll('.media video').forEach(video=>{
+  video.addEventListener('click', ()=>{
+    lbImg.style.display='none';
+    lbVideo.src = video.querySelector('source').src;
+    lbVideo.style.display='block';
+    lbVideo.play();
+    lightbox.style.display='flex';
+  });
+});
+
+lightbox.addEventListener('click', ()=>{
+  lightbox.style.display='none';
+  lbVideo.pause();
+});
 </script>
 
 </body>
