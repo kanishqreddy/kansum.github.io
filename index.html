@@ -23,20 +23,23 @@ body{
   opacity:0;
   z-index:5;
   cursor:pointer;
+  overflow:hidden;
+  transform-style: preserve-3d;
+}
+
+.media-inner{
+  width:100%; height:100%;
   transition: transform 0.4s cubic-bezier(.6,0,.1,1), box-shadow 0.4s cubic-bezier(.6,0,.1,1), z-index 0.2s;
   transform-style: preserve-3d;
 }
-.media img,
-.media video{
-  width:100%; height:100%; object-fit:cover; border-radius:8px;
-}
 
-/* ---------------- POP-OUT HOVER (CLOTHES ONLY) ---------------- */
-.scene .media img:not([src*="vangogh"]):hover,
-.scene .media video:hover{
+/* Hover pop-out on clothes only */
+.media img:not([src*="vangogh"]):hover,
+.media video:hover {
   transform: scale(1.2) translateY(-20px) rotateX(5deg) rotateY(5deg);
   box-shadow: 0 40px 60px rgba(0,0,0,0.6);
   z-index:50;
+  will-change: transform;
 }
 
 /* ---------------- LIGHTBOX ---------------- */
@@ -132,11 +135,11 @@ footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em
   <div class="scene-title">The Instinct</div>
   <div class="scene-subtext">Where form meets force. Born from movement, refined into design.</div>
 
-  <div class="media m1"><img src="images/rtsm.jpeg"></div>
-  <div class="media m2"><video autoplay muted loop playsinline><source src="videos/rtsmv.mp4"></video></div>
-  <div class="media m3"><img src="images/fsrs.jpeg"></div>
-  <div class="media m4"><img src="images/rts.jpeg"></div>
-  <div class="media m5"><img src="images/rts2.jpeg"></div>
+  <div class="media m1"><div class="media-inner"><img src="images/rtsm.jpeg"></div></div>
+  <div class="media m2"><div class="media-inner"><video autoplay muted loop playsinline><source src="videos/rtsmv.mp4"></video></div></div>
+  <div class="media m3"><div class="media-inner"><img src="images/fsrs.jpeg"></div></div>
+  <div class="media m4"><div class="media-inner"><img src="images/rts.jpeg"></div></div>
+  <div class="media m5"><div class="media-inner"><img src="images/rts2.jpeg"></div></div>
 </section>
 
 <!-- WHITE COLLECTION -->
@@ -145,11 +148,11 @@ footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em
   <div class="scene-title">The Breath</div>
   <div class="scene-subtext">Light elements, composed with softness. A quiet rhythm in motion.</div>
 
-  <div class="media m1"><img src="images/wts.jpeg"></div>
-  <div class="media m2"><img src="images/wts2.jpeg"></div>
-  <div class="media m3"><img src="images/fsws.jpeg"></div>
-  <div class="media m4"><img src="images/fsws2.jpeg"></div>
-  <div class="media m5"><img src="images/fsws3.jpeg"></div>
+  <div class="media m1"><div class="media-inner"><img src="images/wts.jpeg"></div></div>
+  <div class="media m2"><div class="media-inner"><img src="images/wts2.jpeg"></div></div>
+  <div class="media m3"><div class="media-inner"><img src="images/fsws.jpeg"></div></div>
+  <div class="media m4"><div class="media-inner"><img src="images/fsws2.jpeg"></div></div>
+  <div class="media m5"><div class="media-inner"><img src="images/fsws3.jpeg"></div></div>
 </section>
 
 <!-- BLACK COLLECTION -->
@@ -158,8 +161,8 @@ footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em
   <div class="scene-title">The Silence</div>
   <div class="scene-subtext">Silent contrast, deep resonance. Material in shadow, presence in stillness.</div>
 
-  <div class="media m1"><img src="images/fsbs.jpeg"></div>
-  <div class="media m2"><img src="images/fsbs2.jpeg"></div>
+  <div class="media m1"><div class="media-inner"><img src="images/fsbs.jpeg"></div></div>
+  <div class="media m2"><div class="media-inner"><img src="images/fsbs2.jpeg"></div></div>
 </section>
 
 <footer>© 2026 Peddi — Born from Motion</footer>
