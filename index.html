@@ -114,21 +114,47 @@ body{
 /* ---------------- FOOTER ---------------- */
 footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em; opacity:.5;}
 
-/* ---------------- MOBILE ---------------- */
+/* ---------------- MOBILE RESPONSIVE FIX ---------------- */
 @media(max-width:900px){
-  .hero img, .media{position:relative;width:100%!important;height:auto!important;margin-bottom:40px;}
-  .hero{flex-direction:column;align-items:flex-start;}
+  .hero{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:5vh 4vw;
+  }
+  .hero .hero-img{
+    width:90%;
+    height:auto;
+    top:0;
+    margin-bottom:30px;
+  }
+  .scene{
+    padding:5vh 4vw;
+    min-height:auto;
+  }
+  /* Stack media elements vertically on mobile */
+  .scene .media{
+    position:relative !important;
+    width:100% !important;
+    height:auto !important;
+    margin-bottom:20px;
+    transform:none !important;
+  }
+  .scene .scene-title, .scene .scene-subtext, .scene .scene-label{
+    max-width:100%;
+    font-size:clamp(18px,5vw,48px);
+  }
+  .red, .white, .black{
+    background-size:cover;
+    background-position:center center;
+  }
 }
-
-/* ---------------- PARTICLES ---------------- */
-.particle{position:absolute;width:8px;height:8px;border-radius:50%;opacity:0.3;background:white;pointer-events:none;}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Peddi:  First Ball, First Six</h1>
+  <h1>Peddi: First Ball, First Six</h1>
   <div class="media hero-img">
     <img src="images/rt3.jpeg" alt="Red T-shirt Model">
   </div>
