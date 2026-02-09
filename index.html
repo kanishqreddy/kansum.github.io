@@ -141,6 +141,39 @@ section{
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
 .black .m2{width:30vw;height:44vh;right:10vw;bottom:10vh;}
 
+/* ---------------- CRICKET BALL & WICKET ---------------- */
+.cricket-container{
+  position:fixed;
+  bottom:5vh;
+  left:50%;
+  transform:translateX(-50%);
+  width:300px;
+  height:120px;
+  pointer-events:none;
+  z-index:20;
+}
+
+.ball{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background:red;
+  filter:drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+  z-index:25;
+}
+
+.wicket{
+  width:15px;
+  height:80px;
+  background:#8b5a2b;
+  position:absolute;
+  bottom:0;
+  transform-origin:bottom center;
+}
+
 /* ---------------- FOOTER ---------------- */
 footer{
   padding:80px 6vw;
@@ -148,12 +181,6 @@ footer{
   font-size:12px;
   letter-spacing:.25em;
   opacity:.5;
-}
-
-/* ---------------- MOBILE ---------------- */
-@media(max-width:900px){
-  .hero img, .media{position:relative;width:100%!important;height:auto!important;margin-bottom:40px;}
-  .hero{flex-direction:column;align-items:flex-start;}
 }
 
 /* ---------------- PARTICLES ---------------- */
@@ -166,6 +193,12 @@ footer{
   background:white;
   pointer-events:none;
 }
+
+/* ---------------- MOBILE ---------------- */
+@media(max-width:900px){
+  .hero img, .media{position:relative;width:100%!important;height:auto!important;margin-bottom:40px;}
+  .hero{flex-direction:column;align-items:flex-start;}
+}
 </style>
 </head>
 <body>
@@ -175,6 +208,14 @@ footer{
   <h1>Winter ’26<br>Peddi</h1>
   <img src="images/rt3.jpeg" alt="">
 </section>
+
+<!-- Cricket container -->
+<div class="cricket-container">
+  <div class="ball" id="ball"></div>
+  <div class="wicket" id="w1" style="left:0;"></div>
+  <div class="wicket" id="w2" style="left:50px;"></div>
+  <div class="wicket" id="w3" style="left:100px;"></div>
+</div>
 
 <!-- RED COLLECTION -->
 <section class="scene red">
@@ -216,54 +257,59 @@ footer{
   © 2026 Peddi — Born from Motion
 </footer>
 
-<!-- PARTICLES -->
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Animate floating media
-document.querySelectorAll('.media').forEach((el)=>{
-  gsap.fromTo(el,
-    {y:50, opacity:0, rotation:0},
-    {
-      y:-30,
-      rotation:Math.random()*6-3,
-      opacity:1,
-      scrollTrigger:{
-        trigger:el,
-        start:"top 90%",
-        end:"top 30%",
-        scrub:1
-      }
-    }
-  );
-});
+const ball = document.getElementById('ball');
+const wickets = [document.getElementById('w1'),document.getElementById('w2'),document.getElementById('w3')];
+const collections = [document.querySelector('.red'),document.querySelector('.white'),document.querySelector('.black')];
 
-// Red video slow zoom
-const redVideo = document.querySelector('.red video');
-gsap.to(redVideo, {
-  scale:1.05,
-  scrollTrigger:{
-    trigger:'.red',
+// Hide all collections initially
+collections.forEach(c=>c.style.opacity=0);
+
+// Ball animation per collection
+function ballHit(idx,color){
+  const col = collections[idx];
+  const startX = 0;
+  const endX = 200;
+  ball.style.background = color;
+  gsap.set(ball,{x:startX, y:0});
+  ScrollTrigger.create({
+    trigger: col,
     start:"top bottom",
-    end:"bottom top",
-    scrub:1
-  }
+    end:"+=300",
+    onEnter:()=>{
+      gsap.to(ball,{x:endX, y:-50, rotation:360, duration:0.6, ease:"power2.out",
+        onComplete:()=>{
+          gsap.to(ball,{y:0, rotation:720, duration:0.5, ease:"bounce.out"});
+          gsap.to(wickets[idx],{rotation:-90,duration:0.5,ease:"power2.inOut"});
+          gsap.to(col,{opacity:1,duration:0.5});
+        }
+      });
+    }
+  });
+}
+
+ballHit(0,'red');
+ballHit(1,'white');
+ballHit(2,'black');
+
+// Floating media animations
+document.querySelectorAll('.media').forEach((el)=>{
+  gsap.fromTo(el,{y:50,opacity:0,rotation:0},{y:-30,rotation:Math.random()*6-3,opacity:1,
+    scrollTrigger:{trigger:el,start:"top 90%",end:"top 30%",scrub:1}});
 });
 
 // Background subtle parallax
 ['.red','.white','.black'].forEach(selector=>{
-  gsap.to(selector,{
-    backgroundPosition:'center 10%',
-    scrollTrigger:{
-      trigger:selector,
-      start:'top bottom',
-      end:'bottom top',
-      scrub:true
-    }
-  });
+  gsap.to(selector,{backgroundPosition:'center 10%',scrollTrigger:{trigger:selector,start:'top bottom',end:'bottom top',scrub:true}});
 });
 
-// Generate floating brush-stroke particles
+// Red video slow zoom
+const redVideo = document.querySelector('.red video');
+gsap.to(redVideo,{scale:1.05,scrollTrigger:{trigger:'.red',start:"top bottom",end:"bottom top",scrub:1}});
+
+// Particles
 const totalParticles = 40;
 for(let i=0;i<totalParticles;i++){
   const p = document.createElement('div');
@@ -273,15 +319,7 @@ for(let i=0;i<totalParticles;i++){
   p.style.width = p.style.height = 4 + Math.random()*6+'px';
   p.style.background = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.2)`;
   document.body.appendChild(p);
-  gsap.to(p,{
-    y:'+=200',
-    x:'+=50',
-    rotation:Math.random()*360,
-    repeat:-1,
-    duration:10 + Math.random()*10,
-    ease:"sine.inOut",
-    yoyo:true
-  });
+  gsap.to(p,{y:'+=200',x:'+=50',rotation:Math.random()*360,repeat:-1,duration:10+Math.random()*10,ease:"sine.inOut",yoyo:true});
 }
 </script>
 
