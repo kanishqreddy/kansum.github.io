@@ -83,7 +83,7 @@ body{
 .scene-title{font-family:"Playfair Display",serif; font-size:clamp(48px,8vw,120px); line-height:1.05; margin-bottom:16px; position:relative; z-index:10;}
 .scene-subtext{font-size:16px; max-width:500px; line-height:1.5; opacity:.7; margin-bottom:60px; position:relative; z-index:10;}
 
-/* RED COLLECTION */
+/* ---------------- COLLECTION BACKGROUNDS ---------------- */
 .red{
   background: radial-gradient(circle at 30% 20%, rgba(58,0,0,0.4), rgba(0,0,0,0.4)), url('images/vangogh-red.jpg') center/cover no-repeat;
 }
@@ -93,7 +93,6 @@ body{
 .red .m4{width:18vw;height:28vh;right:28vw;bottom:5vh;}
 .red .m5{width:20vw;height:32vh;left:40vw;bottom:20vh;}
 
-/* WHITE COLLECTION */
 .white{
   background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4), rgba(232,232,232,0.4)), url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
@@ -104,7 +103,6 @@ body{
 .white .m4{width:18vw;height:28vh;right:28vw;bottom:15vh;}
 .white .m5{width:20vw;height:30vh;left:40vw;bottom:20vh;}
 
-/* BLACK COLLECTION */
 .black{
   background: radial-gradient(circle at 50% 40%, rgba(17,17,17,0.4), rgba(0,0,0,0.4)), url('images/vangogh-black.jpg') center/cover no-repeat;
 }
@@ -114,24 +112,18 @@ body{
 /* ---------------- FOOTER ---------------- */
 footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em; opacity:.5;}
 
-/* ---------------- MOBILE RESPONSIVE FIX ---------------- */
+/* ---------------- MOBILE ---------------- */
 @media(max-width:900px){
   .hero{
-    flex-direction:column;
-    align-items:flex-start;
-    padding:5vh 4vw;
+    flex-direction:column; align-items:flex-start; padding:5vh 4vw;
   }
   .hero .hero-img{
-    width:90%;
-    height:auto;
-    top:0;
-    margin-bottom:30px;
+    width:90%; height:auto; top:0; margin-bottom:30px;
   }
   .scene{
     padding:5vh 4vw;
-    min-height:auto;
+    min-height:auto; /* allow section to shrink on mobile */
   }
-  /* Stack media elements vertically on mobile */
   .scene .media{
     position:relative !important;
     width:100% !important;
@@ -148,6 +140,9 @@ footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em
     background-position:center center;
   }
 }
+
+/* ---------------- PARTICLES ---------------- */
+.particle{position:absolute;width:8px;height:8px;border-radius:50%;opacity:0.3;background:white;pointer-events:none;}
 </style>
 </head>
 <body>
