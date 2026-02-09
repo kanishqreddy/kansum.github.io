@@ -11,36 +11,54 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
-:root{
-  --ease:cubic-bezier(.6,0,.1,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Inter,sans-serif;
-  background:#0a0a0a;
-  color:#fff;
-  overflow-x:hidden;
+  margin:0; font-family:Inter,sans-serif; background:#0a0a0a; color:#fff; overflow-x:hidden;
 }
 
-/* ---------------- GLOBAL ---------------- */
-section{
+/* ---------------- HERO ---------------- */
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  min-height:100vh;
+  padding:8vh 6vw;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(64px,10vw,160px);
+  line-height:1;
+  max-width:45%;
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.hero img{
+  width:40%;          
+  height:80vh;        
+  object-fit:cover;
+  border-radius:8px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* ---------------- SCENES ---------------- */
+.scene{
   position:relative;
   min-height:100vh;
   padding:8vh 6vw;
   overflow:hidden;
-  background-blend-mode: soft-light;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
 }
 
 .scene-label{
   font-size:12px;
   letter-spacing:.3em;
   text-transform:uppercase;
-  opacity:.6;
+  opacity:0;
   margin-bottom:8px;
-  position:relative; z-index:10;
+  transform:translateY(20px);
 }
 
 .scene-title{
@@ -48,16 +66,17 @@ section{
   font-size:clamp(48px,8vw,120px);
   line-height:1.05;
   margin-bottom:16px;
-  position:relative; z-index:10;
+  opacity:0;
+  transform:translateY(30px);
 }
 
 .scene-subtext{
   font-size:16px;
   max-width:500px;
   line-height:1.5;
-  opacity:.7;
+  opacity:0;
   margin-bottom:60px;
-  position:relative; z-index:10;
+  transform:translateY(30px);
 }
 
 /* ---------------- MEDIA ---------------- */
@@ -76,38 +95,7 @@ section{
   object-fit:cover;
 }
 
-/* ---------------- HERO ---------------- */
-.hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  min-height:100vh;
-  padding:8vh 6vw;
-}
-
-.hero h1{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(64px,10vw,160px);
-  line-height:1;
-  max-width:45%;
-  position:relative; z-index:10;
-}
-
-.hero img{
-  width:40%;          
-  height:80vh;        
-  object-fit:cover;
-  border-radius:8px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-  position:relative;
-  z-index:1;
-  top:10vh;           
-}
-
-/* ---------------- SCENES ---------------- */
-.scene{overflow:hidden;}
-
-/* RED COLLECTION */
+/* ---------------- COLLECTION BACKGROUNDS ---------------- */
 .red{
   background:
     radial-gradient(circle at 30% 20%, rgba(58,0,0,0.4), rgba(0,0,0,0.4)),
@@ -119,7 +107,6 @@ section{
 .red .m4{width:18vw;height:28vh;right:28vw;bottom:5vh;}
 .red .m5{width:20vw;height:32vh;left:40vw;bottom:20vh;}
 
-/* WHITE COLLECTION */
 .white{
   background:
     radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4), rgba(232,232,232,0.4)),
@@ -132,7 +119,6 @@ section{
 .white .m4{width:18vw;height:28vh;right:28vw;bottom:15vh;}
 .white .m5{width:20vw;height:30vh;left:40vw;bottom:20vh;}
 
-/* BLACK COLLECTION */
 .black{
   background:
     radial-gradient(circle at 50% 40%, rgba(17,17,17,0.4), rgba(0,0,0,0.4)),
@@ -141,37 +127,26 @@ section{
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
 .black .m2{width:30vw;height:44vh;right:10vw;bottom:10vh;}
 
-/* ---------------- CRICKET BALL & WICKET ---------------- */
-.cricket-container{
-  position:fixed;
-  bottom:5vh;
-  left:50%;
-  transform:translateX(-50%);
-  width:300px;
-  height:120px;
+/* ---------------- OVERLAY LIGHTING ---------------- */
+.overlay{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
   pointer-events:none;
-  z-index:20;
+  z-index:3;
 }
 
-.ball{
-  width:40px;
-  height:40px;
+/* ---------------- PARTICLES / BRUSH STROKES ---------------- */
+.particle{
+  position:absolute;
+  width:8px;
+  height:8px;
   border-radius:50%;
-  position:absolute;
-  bottom:0;
-  left:0;
-  background:red;
-  filter:drop-shadow(0 5px 5px rgba(0,0,0,0.5));
-  z-index:25;
-}
-
-.wicket{
-  width:15px;
-  height:80px;
-  background:#8b5a2b;
-  position:absolute;
-  bottom:0;
-  transform-origin:bottom center;
+  opacity:0.3;
+  background:white;
+  pointer-events:none;
+  z-index:4;
 }
 
 /* ---------------- FOOTER ---------------- */
@@ -183,18 +158,7 @@ footer{
   opacity:.5;
 }
 
-/* ---------------- PARTICLES ---------------- */
-.particle{
-  position:absolute;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  opacity:0.3;
-  background:white;
-  pointer-events:none;
-}
-
-/* ---------------- MOBILE ---------------- */
+/* ---------------- MEDIA RESPONSIVE ---------------- */
 @media(max-width:900px){
   .hero img, .media{position:relative;width:100%!important;height:auto!important;margin-bottom:40px;}
   .hero{flex-direction:column;align-items:flex-start;}
@@ -207,18 +171,12 @@ footer{
 <section class="hero">
   <h1>Winter ’26<br>Peddi</h1>
   <img src="images/rt3.jpeg" alt="">
+  <div class="overlay"></div>
 </section>
-
-<!-- Cricket container -->
-<div class="cricket-container">
-  <div class="ball" id="ball"></div>
-  <div class="wicket" id="w1" style="left:0;"></div>
-  <div class="wicket" id="w2" style="left:50px;"></div>
-  <div class="wicket" id="w3" style="left:100px;"></div>
-</div>
 
 <!-- RED COLLECTION -->
 <section class="scene red">
+  <div class="overlay"></div>
   <div class="scene-label">Crimson Motion</div>
   <div class="scene-title">The Instinct</div>
   <div class="scene-subtext">Where form meets force. Born from movement, refined into design.</div>
@@ -232,6 +190,7 @@ footer{
 
 <!-- WHITE COLLECTION -->
 <section class="scene white">
+  <div class="overlay"></div>
   <div class="scene-label">White Calm</div>
   <div class="scene-title">The Breath</div>
   <div class="scene-subtext">Light elements, composed with softness. A quiet rhythm in motion.</div>
@@ -245,6 +204,7 @@ footer{
 
 <!-- BLACK COLLECTION -->
 <section class="scene black">
+  <div class="overlay"></div>
   <div class="scene-label">Noir Echo</div>
   <div class="scene-title">The Silence</div>
   <div class="scene-subtext">Silent contrast, deep resonance. Material in shadow, presence in stillness.</div>
@@ -260,44 +220,15 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-const ball = document.getElementById('ball');
-const wickets = [document.getElementById('w1'),document.getElementById('w2'),document.getElementById('w3')];
-const collections = [document.querySelector('.red'),document.querySelector('.white'),document.querySelector('.black')];
-
-// Hide all collections initially
-collections.forEach(c=>c.style.opacity=0);
-
-// Ball animation per collection
-function ballHit(idx,color){
-  const col = collections[idx];
-  const startX = 0;
-  const endX = 200;
-  ball.style.background = color;
-  gsap.set(ball,{x:startX, y:0});
-  ScrollTrigger.create({
-    trigger: col,
-    start:"top bottom",
-    end:"+=300",
-    onEnter:()=>{
-      gsap.to(ball,{x:endX, y:-50, rotation:360, duration:0.6, ease:"power2.out",
-        onComplete:()=>{
-          gsap.to(ball,{y:0, rotation:720, duration:0.5, ease:"bounce.out"});
-          gsap.to(wickets[idx],{rotation:-90,duration:0.5,ease:"power2.inOut"});
-          gsap.to(col,{opacity:1,duration:0.5});
-        }
-      });
-    }
-  });
-}
-
-ballHit(0,'red');
-ballHit(1,'white');
-ballHit(2,'black');
+// Text fade-in/slide-in
+document.querySelectorAll('.scene-label, .scene-title, .scene-subtext, .hero h1').forEach(el=>{
+  gsap.fromTo(el,{y:40,opacity:0},{y:0,opacity:1,duration:1,ease:"power2.out",
+    scrollTrigger:{trigger:el,start:"top 90%",end:"top 60%",toggleActions:"play none none none"}});
+});
 
 // Floating media animations
-document.querySelectorAll('.media').forEach((el)=>{
-  gsap.fromTo(el,{y:50,opacity:0,rotation:0},{y:-30,rotation:Math.random()*6-3,opacity:1,
-    scrollTrigger:{trigger:el,start:"top 90%",end:"top 30%",scrub:1}});
+document.querySelectorAll('.media').forEach(el=>{
+  gsap.fromTo(el,{y:50,opacity:0},{y:0,opacity:1,duration:1,scrollTrigger:{trigger:el,start:"top 90%",end:"top 30%",scrub:1}});
 });
 
 // Background subtle parallax
@@ -305,12 +236,13 @@ document.querySelectorAll('.media').forEach((el)=>{
   gsap.to(selector,{backgroundPosition:'center 10%',scrollTrigger:{trigger:selector,start:'top bottom',end:'bottom top',scrub:true}});
 });
 
-// Red video slow zoom
-const redVideo = document.querySelector('.red video');
-gsap.to(redVideo,{scale:1.05,scrollTrigger:{trigger:'.red',start:"top bottom",end:"bottom top",scrub:1}});
+// Overlay subtle movement
+document.querySelectorAll('.overlay').forEach(overlay=>{
+  gsap.to(overlay,{backgroundPosition:"20% 20%",scrollTrigger:{trigger:overlay,start:"top bottom",end:"bottom top",scrub:true}});
+});
 
-// Particles
-const totalParticles = 40;
+// Generate brush-stroke particles
+const totalParticles = 50;
 for(let i=0;i<totalParticles;i++){
   const p = document.createElement('div');
   p.classList.add('particle');
@@ -320,7 +252,7 @@ for(let i=0;i<totalParticles;i++){
   p.style.background = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},0.2)`;
   document.body.appendChild(p);
   gsap.to(p,{y:'+=200',x:'+=50',rotation:Math.random()*360,repeat:-1,duration:10+Math.random()*10,ease:"sine.inOut",yoyo:true});
-}
+});
 </script>
 
 </body>
