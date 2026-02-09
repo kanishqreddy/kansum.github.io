@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Peddi</title>
+<title>Peddi — Winter ’26 Cinematic</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -57,10 +57,21 @@ body{
   max-width:45%;
   position:relative; z-index:10;
 }
-.hero img{
-  width:40%; height:80vh; object-fit:cover;
-  border-radius:8px; box-shadow:0 20px 40px rgba(0,0,0,0.5);
-  position:relative; z-index:1; top:10vh;
+.hero h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(24px,4vw,48px);
+  margin-top:16px;
+  color:#ffebcd;
+  position:relative; z-index:10;
+}
+.hero .hero-img{
+  position:relative;
+  width:40%;
+  height:80vh;
+  border-radius:8px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  top:10vh;
+  z-index:1;
 }
 
 /* ---------------- SCENES ---------------- */
@@ -119,7 +130,9 @@ footer{padding:80px 6vw; text-align:center; font-size:12px; letter-spacing:.25em
 <section class="hero">
   <h1>Peddi</h1>
   <h2>First Ball, First Six</h2>
-  <img src="images/rt3.jpeg" alt="">
+  <div class="media hero-img">
+    <img src="images/rt3.jpeg" alt="Red T-shirt Model">
+  </div>
 </section>
 
 <!-- RED COLLECTION -->
@@ -199,6 +212,7 @@ const lightbox = document.getElementById('lightbox');
 const lbImg = lightbox.querySelector('img');
 const lbVideo = lightbox.querySelector('video');
 
+// All images
 document.querySelectorAll('.media img').forEach(img=>{
   img.addEventListener('click',()=>{
     lbVideo.style.display='none';
@@ -209,6 +223,7 @@ document.querySelectorAll('.media img').forEach(img=>{
   });
 });
 
+// All videos
 document.querySelectorAll('.media video').forEach(video=>{
   video.addEventListener('click', ()=>{
     lbImg.style.display='none';
@@ -219,6 +234,7 @@ document.querySelectorAll('.media video').forEach(video=>{
   });
 });
 
+// Close lightbox
 lightbox.addEventListener('click', ()=>{
   lightbox.style.display='none';
   lbVideo.pause();
