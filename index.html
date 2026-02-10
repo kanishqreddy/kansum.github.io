@@ -27,26 +27,22 @@ body{
   opacity:0;
   z-index:5;
   cursor:pointer;
+  overflow:hidden;
   transition: transform .4s ease, box-shadow .4s ease;
-  will-change: transform;
 }
 
 .media img,
 .media video{
-  width:100%;
-  height:100%;
+  width:110%;
+  height:110%;
   object-fit:cover;
   border-radius:8px;
-  will-change: transform;
+  transform-origin:center;
 }
 
 .media:hover{
-  transform: scale(1.06) translateY(-12px) rotateZ(.4deg);
+  transform: scale(1.05) translateY(-12px);
   box-shadow:0 40px 70px rgba(0,0,0,.6);
-}
-
-.media:hover img{
-  filter:contrast(1.05) saturate(1.05);
 }
 
 /* ---------------- LIGHTBOX ---------------- */
@@ -125,7 +121,7 @@ body{
 /* ---------------- COLLECTIONS ---------------- */
 .red{
   background:
-  radial-gradient(circle at 30% 20%, rgba(58,0,0,.4), rgba(0,0,0,.6)),
+  radial-gradient(circle at 30% 20%, rgba(58,0,0,.4), rgba(0,0,0,.7)),
   url('images/vangogh-red.jpg') center/cover no-repeat;
 }
 .red .m1{width:35vw;height:55vh;left:5vw;top:20vh;}
@@ -136,7 +132,7 @@ body{
 
 .white{
   background:
-  radial-gradient(circle at 70% 30%, rgba(255,255,255,.4), rgba(230,230,230,.6)),
+  radial-gradient(circle at 70% 30%, rgba(255,255,255,.4), rgba(230,230,230,.7)),
   url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
 }
@@ -148,7 +144,7 @@ body{
 
 .black{
   background:
-  radial-gradient(circle at 50% 40%, rgba(17,17,17,.5), rgba(0,0,0,.7)),
+  radial-gradient(circle at 50% 40%, rgba(17,17,17,.5), rgba(0,0,0,.8)),
   url('images/vangogh-black.jpg') center/cover no-repeat;
 }
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
@@ -161,17 +157,6 @@ footer{
   font-size:12px;
   letter-spacing:.25em;
   opacity:.5;
-}
-
-/* ---------------- PARTICLES ---------------- */
-.particle{
-  position:absolute;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  opacity:.25;
-  background:white;
-  pointer-events:none;
 }
 </style>
 </head>
@@ -223,40 +208,39 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* ENTRY FLOAT */
+/* ENTRY FADE + FLOAT */
 gsap.utils.toArray('.media').forEach(el=>{
-  gsap.fromTo(el,{y:60,opacity:0},{y:-20,opacity:1,duration:1.2,
-    scrollTrigger:{trigger:el,start:"top 85%",scrub:1}});
-});
-
-/* AMBIENT BREATHING (KEY EFFECT) */
-gsap.utils.toArray('.media img').forEach((img,i)=>{
-  gsap.to(img,{
-    scale:1.04,
-    duration:6+Math.random()*4,
-    repeat:-1,
-    yoyo:true,
-    ease:"sine.inOut",
-    delay:i*.2
+  gsap.fromTo(el,{y:60,opacity:0},{
+    y:-20,opacity:1,duration:1.2,
+    scrollTrigger:{trigger:el,start:"top 85%",scrub:1}
   });
 });
 
-/* MICRO DRIFT */
-gsap.utils.toArray('.media').forEach((el,i)=>{
-  gsap.to(el,{
-    y:i%2?40:-40,
-    scrollTrigger:{trigger:el,start:"top bottom",end:"bottom top",scrub:true}
-  });
+/* ---------------- GIF-LIKE IMAGE LOOPS ---------------- */
+document.querySelectorAll('.media img').forEach((img,i)=>{
+  const dir = i % 2 === 0 ? 1 : -1;
+
+  gsap.fromTo(img,
+    { scale:1, x:0, y:0 },
+    {
+      scale:1.18,
+      x:25 * dir,
+      y:-20 * dir,
+      duration:9 + Math.random()*4,
+      ease:"sine.inOut",
+      repeat:-1,
+      yoyo:true
+    }
+  );
 });
 
-/* PARTICLES */
-for(let i=0;i<30;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'vw';
-  p.style.top=Math.random()*100+'vh';
-  document.body.appendChild(p);
-  gsap.to(p,{y:200,x:50,repeat:-1,yoyo:true,duration:10+Math.random()*10,ease:"sine.inOut"});
+/* HERO IMAGE = CINEMATIC LOOP */
+const heroImg = document.querySelector('.hero-img img');
+if(heroImg){
+  gsap.fromTo(heroImg,
+    { scale:1, y:0 },
+    { scale:1.2, y:-30, duration:12, repeat:-1, yoyo:true, ease:"sine.inOut" }
+  );
 }
 
 /* LIGHTBOX */
@@ -265,14 +249,29 @@ const lbImg=lb.querySelector('img');
 const lbVid=lb.querySelector('video');
 
 document.querySelectorAll('.media img').forEach(img=>{
-  img.onclick=()=>{lbVid.pause();lbVid.style.display='none';lbImg.src=img.src;lbImg.style.display='block';lb.style.display='flex';}
+  img.onclick=()=>{
+    lbVid.pause();
+    lbVid.style.display='none';
+    lbImg.src=img.src;
+    lbImg.style.display='block';
+    lb.style.display='flex';
+  };
 });
 
 document.querySelectorAll('.media video').forEach(v=>{
-  v.onclick=()=>{lbImg.style.display='none';lbVid.src=v.querySelector('source').src;lbVid.style.display='block';lbVid.play();lb.style.display='flex';}
+  v.onclick=()=>{
+    lbImg.style.display='none';
+    lbVid.src=v.querySelector('source').src;
+    lbVid.style.display='block';
+    lbVid.play();
+    lb.style.display='flex';
+  };
 });
 
-lb.onclick=()=>{lb.style.display='none';lbVid.pause();};
+lb.onclick=()=>{
+  lb.style.display='none';
+  lbVid.pause();
+};
 </script>
 
 </body>
