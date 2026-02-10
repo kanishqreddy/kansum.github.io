@@ -23,25 +23,18 @@ body{
 .media{
   position:absolute;
   border-radius:8px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
   opacity:0;
-  z-index:5;
-  cursor:pointer;
   overflow:hidden;
 }
 
 .media img,
 .media video{
-  width:115%;
-  height:115%;
+  width:120%;
+  height:120%;
   object-fit:cover;
   border-radius:8px;
   transform-origin:center;
-}
-
-.media:hover{
-  transform:scale(1.05) translateY(-10px);
-  box-shadow:0 40px 70px rgba(0,0,0,.6);
 }
 
 /* HERO */
@@ -58,7 +51,7 @@ body{
   line-height:1;
   max-width:45%;
 }
-.hero .hero-img{
+.hero-img{
   width:40%;
   height:80vh;
   position:relative;
@@ -78,9 +71,10 @@ body{
 .scene-title{font-family:"Playfair Display",serif;font-size:clamp(48px,8vw,120px);}
 .scene-subtext{max-width:500px;opacity:.7;margin-bottom:60px;}
 
-/* COLLECTIONS */
+/* RED COLLECTION */
 .red{
-  background:radial-gradient(circle at 30% 20%,rgba(58,0,0,.4),rgba(0,0,0,.85)),
+  background:
+  radial-gradient(circle at 30% 20%, rgba(80,0,0,.45), rgba(0,0,0,.9)),
   url('images/vangogh-red.jpg') center/cover no-repeat;
 }
 .red .m1{width:35vw;height:55vh;left:5vw;top:20vh;}
@@ -89,8 +83,10 @@ body{
 .red .m4{width:18vw;height:28vh;right:28vw;bottom:5vh;}
 .red .m5{width:20vw;height:32vh;left:40vw;bottom:20vh;}
 
+/* WHITE COLLECTION */
 .white{
-  background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.4),rgba(230,230,230,.85)),
+  background:
+  radial-gradient(circle at 70% 30%, rgba(255,255,255,.45), rgba(235,235,235,.9)),
   url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
 }
@@ -100,8 +96,10 @@ body{
 .white .m4{width:18vw;height:28vh;right:28vw;bottom:15vh;}
 .white .m5{width:20vw;height:30vh;left:40vw;bottom:20vh;}
 
+/* BLACK COLLECTION */
 .black{
-  background:radial-gradient(circle at 50% 40%,rgba(17,17,17,.6),rgba(0,0,0,.9)),
+  background:
+  radial-gradient(circle at 50% 40%, rgba(17,17,17,.6), rgba(0,0,0,.95)),
   url('images/vangogh-black.jpg') center/cover no-repeat;
 }
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
@@ -119,6 +117,7 @@ footer{
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Peddi: First Ball, First Six</h1>
   <div class="media hero-img">
@@ -126,6 +125,7 @@ footer{
   </div>
 </section>
 
+<!-- RED -->
 <section class="scene red">
   <div class="scene-label">Crimson Motion</div>
   <div class="scene-title">The Instinct</div>
@@ -138,6 +138,7 @@ footer{
   <div class="media m5"><img src="images/rts2.jpeg"></div>
 </section>
 
+<!-- WHITE -->
 <section class="scene white">
   <div class="scene-label">White Calm</div>
   <div class="scene-title">The Breath</div>
@@ -149,6 +150,7 @@ footer{
   <div class="media m5"><img src="images/fsws3.jpeg"></div>
 </section>
 
+<!-- BLACK -->
 <section class="scene black">
   <div class="scene-label">Noir Echo</div>
   <div class="scene-title">The Silence</div>
@@ -162,50 +164,48 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* IMAGE = FADE-IN + MOTION + LOOP (ALL AT ONCE) */
-document.querySelectorAll('.media img').forEach((img,i)=>{
-  const dir = i % 2 === 0 ? 1 : -1;
+/* FADE + MOVE IMMEDIATELY */
+document.querySelectorAll('.media').forEach((media,i)=>{
+  const drift = i % 2 === 0 ? 1 : -1;
 
-  gsap.fromTo(img.parentElement,
+  gsap.fromTo(media,
     { opacity:0, y:40 },
     {
       opacity:1,
       y:0,
-      duration:0.8,
+      duration:0.6,
       ease:"power2.out",
       scrollTrigger:{
-        trigger:img.parentElement,
+        trigger:media,
         start:"top 90%"
       }
     }
   );
 
-  gsap.fromTo(img,
+  const inner = media.querySelector('img, video');
+  gsap.fromTo(inner,
     { scale:1, x:0, y:0 },
     {
-      scale:1.2,
-      x:30 * dir,
-      y:-25 * dir,
-      duration:5,
+      scale:1.25,
+      x:35 * drift,
+      y:-25 * drift,
+      duration:4,
       ease:"sine.inOut",
       repeat:-1,
       yoyo:true,
       scrollTrigger:{
-        trigger:img.parentElement,
+        trigger:media,
         start:"top 90%"
       }
     }
   );
 });
 
-/* HERO IMAGE */
-const hero = document.querySelector('.hero-img img');
-if(hero){
-  gsap.fromTo(hero,
-    { scale:1, y:0 },
-    { scale:1.22, y:-30, duration:5, repeat:-1, yoyo:true, ease:"sine.inOut" }
-  );
-}
+/* HERO LOOP */
+gsap.fromTo('.hero-img img',
+  { scale:1, y:0 },
+  { scale:1.22, y:-30, duration:4, repeat:-1, yoyo:true, ease:"sine.inOut" }
+);
 </script>
 
 </body>
