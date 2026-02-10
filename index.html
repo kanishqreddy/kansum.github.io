@@ -28,37 +28,20 @@ body{
   z-index:5;
   cursor:pointer;
   overflow:hidden;
-  transition:transform .4s ease, box-shadow .4s ease;
 }
 
 .media img,
 .media video{
-  width:110%;
-  height:110%;
+  width:115%;
+  height:115%;
   object-fit:cover;
   border-radius:8px;
   transform-origin:center;
 }
 
 .media:hover{
-  transform:scale(1.05) translateY(-12px);
+  transform:scale(1.05) translateY(-10px);
   box-shadow:0 40px 70px rgba(0,0,0,.6);
-}
-
-/* LIGHTBOX */
-#lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-#lightbox img,#lightbox video{
-  max-width:90%;
-  max-height:90%;
-  border-radius:8px;
 }
 
 /* HERO */
@@ -78,8 +61,8 @@ body{
 .hero .hero-img{
   width:40%;
   height:80vh;
-  top:10vh;
   position:relative;
+  top:10vh;
 }
 
 /* SCENES */
@@ -91,13 +74,13 @@ body{
   background-size:cover;
   background-position:center;
 }
-.scene-label{font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.6;}
+.scene-label{font-size:12px;letter-spacing:.3em;opacity:.6;}
 .scene-title{font-family:"Playfair Display",serif;font-size:clamp(48px,8vw,120px);}
 .scene-subtext{max-width:500px;opacity:.7;margin-bottom:60px;}
 
 /* COLLECTIONS */
 .red{
-  background:radial-gradient(circle at 30% 20%,rgba(58,0,0,.4),rgba(0,0,0,.8)),
+  background:radial-gradient(circle at 30% 20%,rgba(58,0,0,.4),rgba(0,0,0,.85)),
   url('images/vangogh-red.jpg') center/cover no-repeat;
 }
 .red .m1{width:35vw;height:55vh;left:5vw;top:20vh;}
@@ -107,7 +90,7 @@ body{
 .red .m5{width:20vw;height:32vh;left:40vw;bottom:20vh;}
 
 .white{
-  background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.4),rgba(230,230,230,.8)),
+  background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.4),rgba(230,230,230,.85)),
   url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
 }
@@ -118,7 +101,7 @@ body{
 .white .m5{width:20vw;height:30vh;left:40vw;bottom:20vh;}
 
 .black{
-  background:radial-gradient(circle at 50% 40%,rgba(17,17,17,.5),rgba(0,0,0,.9)),
+  background:radial-gradient(circle at 50% 40%,rgba(17,17,17,.6),rgba(0,0,0,.9)),
   url('images/vangogh-black.jpg') center/cover no-repeat;
 }
 .black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
@@ -176,69 +159,53 @@ footer{
 
 <footer>© 2026 Peddi</footer>
 
-<div id="lightbox"><img><video controls></video></div>
-
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* ENTRY */
-gsap.utils.toArray('.media').forEach(el=>{
-  gsap.fromTo(el,{y:50,opacity:0},{
-    y:-20,opacity:1,duration:1,
-    scrollTrigger:{trigger:el,start:"top 90%"}
-  });
-});
-
-/* FAST START + GIF LOOP */
+/* IMAGE = FADE-IN + MOTION + LOOP (ALL AT ONCE) */
 document.querySelectorAll('.media img').forEach((img,i)=>{
-  const dir = i%2===0?1:-1;
+  const dir = i % 2 === 0 ? 1 : -1;
+
+  gsap.fromTo(img.parentElement,
+    { opacity:0, y:40 },
+    {
+      opacity:1,
+      y:0,
+      duration:0.8,
+      ease:"power2.out",
+      scrollTrigger:{
+        trigger:img.parentElement,
+        start:"top 90%"
+      }
+    }
+  );
 
   gsap.fromTo(img,
-    {scale:1,x:0,y:0},
+    { scale:1, x:0, y:0 },
     {
-      scale:1.08,
-      x:12*dir,
-      y:-10*dir,
-      duration:1.1,
-      ease:"power2.out",
-      onComplete:()=>{
-        gsap.to(img,{
-          scale:1.18,
-          x:25*dir,
-          y:-20*dir,
-          duration:6,
-          repeat:-1,
-          yoyo:true,
-          ease:"sine.inOut"
-        });
+      scale:1.2,
+      x:30 * dir,
+      y:-25 * dir,
+      duration:5,
+      ease:"sine.inOut",
+      repeat:-1,
+      yoyo:true,
+      scrollTrigger:{
+        trigger:img.parentElement,
+        start:"top 90%"
       }
     }
   );
 });
 
-/* HERO LOOP */
-const hero=document.querySelector('.hero-img img');
+/* HERO IMAGE */
+const hero = document.querySelector('.hero-img img');
 if(hero){
-  gsap.fromTo(hero,{scale:1,y:0},{
-    scale:1.12,y:-18,duration:1.5,ease:"power2.out",
-    onComplete:()=>{
-      gsap.to(hero,{scale:1.2,y:-30,duration:7,repeat:-1,yoyo:true,ease:"sine.inOut"});
-    }
-  });
+  gsap.fromTo(hero,
+    { scale:1, y:0 },
+    { scale:1.22, y:-30, duration:5, repeat:-1, yoyo:true, ease:"sine.inOut" }
+  );
 }
-
-/* LIGHTBOX */
-const lb=document.getElementById('lightbox');
-const lbImg=lb.querySelector('img');
-const lbVid=lb.querySelector('video');
-
-document.querySelectorAll('.media img').forEach(img=>{
-  img.onclick=()=>{lbVid.pause();lbVid.style.display='none';lbImg.src=img.src;lbImg.style.display='block';lb.style.display='flex';}
-});
-document.querySelectorAll('.media video').forEach(v=>{
-  v.onclick=()=>{lbImg.style.display='none';lbVid.src=v.querySelector('source').src;lbVid.style.display='block';lbVid.play();lb.style.display='flex';}
-});
-lb.onclick=()=>{lb.style.display='none';lbVid.pause();};
 </script>
 
 </body>
