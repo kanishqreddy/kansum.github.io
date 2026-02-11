@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 
 <style>
 body{
@@ -15,78 +16,16 @@ body{
   font-family:Inter,sans-serif;
   background:#0a0a0a;
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* ---------- GLOBAL ---------- */
-section{
-  padding:8vh 6vw;
-}
-
-h1,h2{
-  font-family:"Playfair Display",serif;
-}
-
-/* ---------- HERO ---------- */
-.hero{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:32px;
-  min-height:100vh;
-}
-
-.hero h1{
-  font-size:clamp(48px,7vw,120px);
-  line-height:1;
-}
-
-.hero-img{
-  border-radius:16px;
-  overflow:hidden;
-  aspect-ratio:3/4;
-}
-
-.hero-img img{
-  width:120%;
-  height:120%;
-  object-fit:cover;
-}
-
-/* ---------- SCENE ---------- */
-.scene{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.scene-label{
-  font-size:12px;
-  letter-spacing:.3em;
-  opacity:.6;
-}
-
-.scene-title{
-  font-size:clamp(40px,6vw,96px);
-  line-height:1.05;
-}
-
-.scene-subtext{
-  max-width:520px;
-  opacity:.7;
-  margin-bottom:20px;
-}
-
-/* ---------- MEDIA GRID (PHONE STYLE EVERYWHERE) ---------- */
-.media-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:24px;
-}
-
+/* MEDIA */
 .media{
-  border-radius:16px;
+  position:absolute;
+  border-radius:8px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  opacity:0;
   overflow:hidden;
-  box-shadow:0 20px 40px rgba(0,0,0,.45);
-  aspect-ratio:3/4;
 }
 
 .media img,
@@ -94,36 +33,78 @@ h1,h2{
   width:120%;
   height:120%;
   object-fit:cover;
+  border-radius:8px;
+  transform-origin:center;
 }
 
-/* ---------- BACKGROUNDS ---------- */
+/* HERO */
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  min-height:100vh;
+  padding:8vh 6vw;
+}
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(64px,10vw,160px);
+  line-height:1;
+  max-width:45%;
+}
+.hero-img{
+  width:40%;
+  height:80vh;
+  position:relative;
+  top:10vh;
+}
+
+/* SCENES */
+.scene{
+  position:relative;
+  min-height:100vh;
+  padding:8vh 6vw;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+}
+.scene-label{font-size:12px;letter-spacing:.3em;opacity:.6;}
+.scene-title{font-family:"Playfair Display",serif;font-size:clamp(48px,8vw,120px);}
+.scene-subtext{max-width:500px;opacity:.7;margin-bottom:60px;}
+
+/* RED COLLECTION */
 .red{
   background:
   radial-gradient(circle at 30% 20%, rgba(80,0,0,.45), rgba(0,0,0,.9)),
   url('images/vangogh-red.jpg') center/cover no-repeat;
 }
+.red .m1{width:35vw;height:55vh;left:5vw;top:20vh;}
+.red .m2{width:28vw;height:38vh;right:6vw;top:25vh;}
+.red .m3{width:22vw;height:30vh;left:20vw;bottom:10vh;}
+.red .m4{width:18vw;height:28vh;right:28vw;bottom:5vh;}
+.red .m5{width:20vw;height:32vh;left:40vw;bottom:20vh;}
 
+/* WHITE COLLECTION */
 .white{
   background:
-  radial-gradient(circle at 70% 30%, rgba(255,255,255,.4), rgba(235,235,235,.9)),
+  radial-gradient(circle at 70% 30%, rgba(255,255,255,.45), rgba(235,235,235,.9)),
   url('images/vangogh-white.jpg') center/cover no-repeat;
   color:#111;
 }
+.white .m1{width:38vw;height:55vh;left:5vw;top:18vh;}
+.white .m2{width:28vw;height:38vh;right:6vw;top:22vh;}
+.white .m3{width:24vw;height:32vh;left:28vw;bottom:10vh;}
+.white .m4{width:18vw;height:28vh;right:28vw;bottom:15vh;}
+.white .m5{width:20vw;height:30vh;left:40vw;bottom:20vh;}
 
+/* BLACK COLLECTION */
 .black{
   background:
   radial-gradient(circle at 50% 40%, rgba(17,17,17,.6), rgba(0,0,0,.95)),
   url('images/vangogh-black.jpg') center/cover no-repeat;
 }
+.black .m1{width:36vw;height:60vh;left:10vw;top:20vh;}
+.black .m2{width:30vw;height:44vh;right:10vw;bottom:10vh;}
 
-/* ---------- DESKTOP: SAME AS PHONE, JUST WIDER ---------- */
-@media(min-width:900px){
-  .media-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-/* ---------- FOOTER ---------- */
 footer{
   padding:80px 6vw;
   text-align:center;
@@ -138,8 +119,8 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Peddi:<br>First Ball,<br>First Six</h1>
-  <div class="hero-img media">
+  <h1>Peddi: First Ball, First Six</h1>
+  <div class="media hero-img">
     <img src="images/rt3.jpeg">
   </div>
 </section>
@@ -150,13 +131,11 @@ footer{
   <div class="scene-title">The Instinct</div>
   <div class="scene-subtext">Where form meets force.</div>
 
-  <div class="media-grid">
-    <div class="media"><img src="images/rtsm.jpeg"></div>
-    <div class="media"><video autoplay muted loop playsinline><source src="videos/rtsmv.mp4"></video></div>
-    <div class="media"><img src="images/fsrs.jpeg"></div>
-    <div class="media"><img src="images/rts.jpeg"></div>
-    <div class="media"><img src="images/rts2.jpeg"></div>
-  </div>
+  <div class="media m1"><img src="images/rtsm.jpeg"></div>
+  <div class="media m2"><video autoplay muted loop playsinline><source src="videos/rtsmv.mp4"></video></div>
+  <div class="media m3"><img src="images/fsrs.jpeg"></div>
+  <div class="media m4"><img src="images/rts.jpeg"></div>
+  <div class="media m5"><img src="images/rts2.jpeg"></div>
 </section>
 
 <!-- WHITE -->
@@ -164,13 +143,11 @@ footer{
   <div class="scene-label">White Calm</div>
   <div class="scene-title">The Breath</div>
 
-  <div class="media-grid">
-    <div class="media"><img src="images/wts.jpeg"></div>
-    <div class="media"><img src="images/wts2.jpeg"></div>
-    <div class="media"><img src="images/fsws.jpeg"></div>
-    <div class="media"><img src="images/fsws2.jpeg"></div>
-    <div class="media"><img src="images/fsws3.jpeg"></div>
-  </div>
+  <div class="media m1"><img src="images/wts.jpeg"></div>
+  <div class="media m2"><img src="images/wts2.jpeg"></div>
+  <div class="media m3"><img src="images/fsws.jpeg"></div>
+  <div class="media m4"><img src="images/fsws2.jpeg"></div>
+  <div class="media m5"><img src="images/fsws3.jpeg"></div>
 </section>
 
 <!-- BLACK -->
@@ -178,33 +155,57 @@ footer{
   <div class="scene-label">Noir Echo</div>
   <div class="scene-title">The Silence</div>
 
-  <div class="media-grid">
-    <div class="media"><img src="images/fsbs.jpeg"></div>
-    <div class="media"><img src="images/fsbs2.jpeg"></div>
-  </div>
+  <div class="media m1"><img src="images/fsbs.jpeg"></div>
+  <div class="media m2"><img src="images/fsbs2.jpeg"></div>
 </section>
 
 <footer>© 2026 Peddi</footer>
 
 <script>
-/* IMMERSIVE INNER MOTION (FRAME STAYS STILL) */
-document.querySelectorAll('.media').forEach((media,i)=>{
-  const inner = media.querySelector('img,video');
-  const drift = i % 2 ? 1 : -1;
+gsap.registerPlugin(ScrollTrigger);
 
+/* FADE + MOVE IMMEDIATELY */
+document.querySelectorAll('.media').forEach((media,i)=>{
+  const drift = i % 2 === 0 ? 1 : -1;
+
+  gsap.fromTo(media,
+    { opacity:0, y:40 },
+    {
+      opacity:1,
+      y:0,
+      duration:0.6,
+      ease:"power2.out",
+      scrollTrigger:{
+        trigger:media,
+        start:"top 90%"
+      }
+    }
+  );
+
+  const inner = media.querySelector('img, video');
   gsap.fromTo(inner,
-    { scale:1.1, x:0, y:0 },
+    { scale:1, x:0, y:0 },
     {
       scale:1.25,
-      x:25 * drift,
-      y:-20 * drift,
-      duration:3,
+      x:35 * drift,
+      y:-25 * drift,
+      duration:4,
       ease:"sine.inOut",
       repeat:-1,
-      yoyo:true
+      yoyo:true,
+      scrollTrigger:{
+        trigger:media,
+        start:"top 90%"
+      }
     }
   );
 });
+
+/* HERO LOOP */
+gsap.fromTo('.hero-img img',
+  { scale:1, y:0 },
+  { scale:1.22, y:-30, duration:4, repeat:-1, yoyo:true, ease:"sine.inOut" }
+);
 </script>
 
 </body>
