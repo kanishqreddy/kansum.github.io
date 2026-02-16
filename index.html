@@ -2073,33 +2073,45 @@
 
     <!-- ================= NIGHT CITY : JJK PROJECT ================= -->
 
-<section id="jjk-nightcity">
+<section id="jjk-nightcity" style="position:relative; width:100%; min-height:600px; overflow:hidden;">
   <h2 class="section-heading">JJK: Cursed Techniques</h2>
   <span class="glitch" data-text="Scroll below to be Gojo">Scroll below to be Gojo</span>
 
   <style>
-    body { margin:0; overflow:hidden; background:#000; font-family:'Courier New',sans-serif; }
-    #jjk-nightcity h1 { font-size:3rem; margin:0; letter-spacing:10px; font-weight:900; text-shadow:0 0 20px rgba(0,0,0,.3); background:linear-gradient(to bottom,#fff,#888); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-align:center; }
-    #technique-name { font-size:1.2rem; color:#00ffff; margin-top:15px; font-weight:bold; letter-spacing:4px; text-transform:uppercase; text-shadow:0 0 10px rgba(0,255,255,0.5); text-align:center; }
-    #video-container { position:absolute; bottom:2%; left:18%; transform:translateX(-50%) scaleX(-1); width:85vw; max-width:450px; height:42vh; border-radius:25px; overflow:hidden; border:2px solid rgba(255,255,255,0.2); z-index:20; background:#000; box-shadow:0 0 40px rgba(0,0,0,.9);}
-    video { width:100%; height:100%; object-fit:cover; opacity:.8; }
-    #output_canvas { position:absolute; top:0; left:0; width:100%; height:100%; }
-    #grain { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:5;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"); }
-  </style>
-
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    #jjk-nightcity h1 {
+      font-size:3rem; margin:0; letter-spacing:10px; font-weight:900;
+      text-shadow:0 0 20px rgba(0,0,0,.3);
+      background:linear-gradient(to bottom,#fff,#888);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-align:center;
+      position:relative; z-index:5;
     }
-  }
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    #jjk-nightcity #technique-name {
+      font-size:1.2rem; color:#00ffff; margin-top:15px; font-weight:bold;
+      letter-spacing:4px; text-transform:uppercase;
+      text-shadow:0 0 10px rgba(0,255,255,0.5);
+      text-align:center;
+      position:relative; z-index:5;
+    }
+    #jjk-nightcity #video-container {
+      position:absolute; bottom:10px; left:50%; transform:translateX(-50%) scaleX(-1);
+      width:85%; max-width:450px; height:42vh;
+      border-radius:25px; overflow:hidden; border:2px solid rgba(255,255,255,0.2);
+      z-index:5; background:#000; box-shadow:0 0 40px rgba(0,0,0,.9);
+    }
+    #jjk-nightcity video {
+      width:100%; height:100%; object-fit:cover; opacity:.8;
+    }
+    #jjk-nightcity canvas {
+      position:absolute; top:0; left:0; width:100%; height:100%; z-index:10;
+    }
+    #jjk-nightcity #grain {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      pointer-events:none; z-index:3;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    }
+  </style>
 
   <div id="grain"></div>
 
@@ -2119,22 +2131,23 @@
   import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
   import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
+  const container = document.getElementById('jjk-nightcity');
+
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(75, container.clientWidth/container.clientHeight, 0.1, 1000);
   camera.position.z = 55;
 
   const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  document.getElementById('jjk-nightcity').appendChild(renderer.domElement);
+  container.appendChild(renderer.domElement);
 
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene,camera));
-  const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth,window.innerHeight),1.5,0.4,0.85);
+  const bloomPass = new UnrealBloomPass(new THREE.Vector2(container.clientWidth,container.clientHeight),1.5,0.4,0.85);
   composer.addPass(bloomPass);
 
-  // ======= Optimized Particles =======
-  const COUNT = 8000; 
+  const COUNT = 8000;
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array(COUNT*3);
   const colors = new Float32Array(COUNT*3);
@@ -2151,23 +2164,22 @@
   }));
   scene.add(particles);
 
-  // ======= Kamehameha Beam =======
+  // Beam
   const kameBeamGeo = new THREE.CylinderGeometry(1.2,1.8,120,32,1,true);
   const kameBeamMat = new THREE.MeshBasicMaterial({ color:0x33ccff, transparent:true, opacity:0, blending:THREE.AdditiveBlending });
   const kameBeam = new THREE.Mesh(kameBeamGeo,kameBeamMat);
   kameBeam.rotation.x = Math.PI/2;
   kameBeam.position.z = -60;
   scene.add(kameBeam);
-  let kamePower=0;
-  let kamePulse=0;
+
+  let kamePower=0, kamePulse=0;
   let kameOrigin = new THREE.Vector3(0,0,-60);
   let kameDir = new THREE.Vector3(0,0,-1);
-
   let currentTech='neutral', shakeIntensity=0, glowColor='#00ffff';
 
-  // ======= Hand Tracking =======
-  const videoElement = document.querySelector('.input_video');
-  const canvasElement = document.getElementById('output_canvas');
+  // Hand Tracking
+  const videoElement = container.querySelector('.input_video');
+  const canvasElement = container.querySelector('canvas');
   const canvasCtx = canvasElement.getContext('2d');
 
   const hands = new Hands({locateFile:(file)=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});
@@ -2205,7 +2217,7 @@
   function updateState(tech){
     if(currentTech===tech) return;
     currentTech=tech;
-    const nameEl=document.getElementById('technique-name');
+    const nameEl=container.querySelector('#technique-name');
     shakeIntensity = tech!=='neutral'?0.3:0;
     if(tech==='kamehameha'){ glowColor='#33ccff'; nameEl.innerText="KAMEHAMEHA"; bloomPass.strength=4.0; shakeIntensity=0.4; }
     else{ glowColor='#00ffff'; nameEl.innerText="Neutral State"; bloomPass.strength=1.0; }
@@ -2216,7 +2228,8 @@
 
   function animate(){
     requestAnimationFrame(animate);
-    if(shakeIntensity>0) renderer.domElement.style.transform=`translate(${(Math.random()-0.5)*shakeIntensity*30}px, ${(Math.random()-0.5)*shakeIntensity*30}px)`;
+
+    if(shakeIntensity>0) renderer.domElement.style.transform=`translate(${(Math.random()-0.5)*shakeIntensity*20}px, ${(Math.random()-0.5)*shakeIntensity*20}px)`;
     else renderer.domElement.style.transform='translate(0,0)';
 
     const pos = particles.geometry.attributes.position.array;
@@ -2228,7 +2241,7 @@
     particles.geometry.attributes.color.needsUpdate=true;
     particles.geometry.attributes.size.needsUpdate=true;
 
-    // ===== Beam Logic + Pulse =====
+    // Beam + pulse
     if(currentTech==='kamehameha'){ 
       kamePower = Math.min(kamePower+0.05,1);
       kamePulse += 0.15;
@@ -2247,10 +2260,10 @@
   animate();
 
   window.addEventListener('resize',()=>{
-    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.aspect=container.clientWidth/container.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth,window.innerHeight);
-    composer.setSize(window.innerWidth,window.innerHeight);
+    renderer.setSize(container.clientWidth,container.clientHeight);
+    composer.setSize(container.clientWidth,container.clientHeight);
   });
   </script>
 </section>
