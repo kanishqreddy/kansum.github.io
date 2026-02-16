@@ -2073,51 +2073,84 @@
 
     <!-- ================= NIGHT CITY : JJK PROJECT ================= -->
 
-<section id="jjk-nightcity" style="position:relative; width:100%; min-height:600px; overflow:hidden;">
+<!-- ================= NIGHT CITY : JJK PROJECT ================= -->
+
+<section id="jjk-nightcity">
   <h2 class="section-heading">JJK: Cursed Techniques</h2>
   <span class="glitch" data-text="Scroll below to be Gojo">Scroll below to be Gojo</span>
 
   <style>
-    #jjk-nightcity h1 {
-      font-size:3rem; margin:0; letter-spacing:10px; font-weight:900;
-      text-shadow:0 0 20px rgba(0,0,0,.3);
-      background:linear-gradient(to bottom,#fff,#888);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      text-align:center;
-      position:relative; z-index:5;
+    body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Courier New', sans-serif; }
+
+    #ui {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      pointer-events: none;
+      z-index: 10;
     }
-    #jjk-nightcity #technique-name {
-      font-size:1.2rem; color:#00ffff; margin-top:15px; font-weight:bold;
-      letter-spacing:4px; text-transform:uppercase;
-      text-shadow:0 0 10px rgba(0,255,255,0.5);
-      text-align:center;
-      position:relative; z-index:5;
+
+    h1 { 
+      font-size: 3rem; margin: 0; letter-spacing: 10px; 
+      font-weight: 900; 
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(to bottom, #fff, #888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    #jjk-nightcity #video-container {
-      position:absolute; bottom:10px; left:50%; transform:translateX(-50%) scaleX(-1);
-      width:85%; max-width:450px; height:42vh;
-      border-radius:25px; overflow:hidden; border:2px solid rgba(255,255,255,0.2);
-      z-index:5; background:#000; box-shadow:0 0 40px rgba(0,0,0,.9);
+
+    #technique-name { 
+      font-size: 1.2rem; color: #00ffff; margin-top: 15px; 
+      font-weight: bold; letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
-    #jjk-nightcity video {
-      width:100%; height:100%; object-fit:cover; opacity:.8;
+
+    #video-container {
+      position: absolute;
+      bottom: 2%;
+      left: 18%;
+      transform: translateX(-50%) scaleX(-1);
+      width: 85vw;
+      max-width: 450px;
+      height: 42vh; 
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      z-index: 20;
+      background-color: #000; 
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.9);
     }
-    #jjk-nightcity canvas {
-      position:absolute; top:0; left:0; width:100%; height:100%; z-index:10;
-    }
-    #jjk-nightcity #grain {
-      position:absolute; top:0; left:0; width:100%; height:100%;
-      pointer-events:none; z-index:3;
+
+    video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+    #output_canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+    #grain {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 5;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
     }
   </style>
 
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+
   <div id="grain"></div>
 
-  <div id="jjk-ui">
+  <div id="jjk-nightcity">
     <h1>呪術廻戦</h1>
-    <div id="technique-name">Neutral State</div>
+    <div id="technique-name">CURSED ENERGY</div>
   </div>
 
   <div id="video-container">
@@ -2126,145 +2159,175 @@
   </div>
 
   <script type="module">
-  import * as THREE from 'three';
-  import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-  import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-  import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import * as THREE from 'three';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-  const container = document.getElementById('jjk-nightcity');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 55;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, container.clientWidth/container.clientHeight, 0.1, 1000);
-  camera.position.z = 55;
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.getElementById('jjk-nightcity').appendChild(renderer.domElement);
 
-  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  container.appendChild(renderer.domElement);
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+    composer.addPass(bloomPass);
 
-  const composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene,camera));
-  const bloomPass = new UnrealBloomPass(new THREE.Vector2(container.clientWidth,container.clientHeight),1.5,0.4,0.85);
-  composer.addPass(bloomPass);
+    const COUNT = 20000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(COUNT * 3);
+    const colors = new Float32Array(COUNT * 3);
+    const sizes = new Float32Array(COUNT);
 
-  const COUNT = 8000;
-  const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(COUNT*3);
-  const colors = new Float32Array(COUNT*3);
-  const sizes = new Float32Array(COUNT);
-  const targetPositions = new Float32Array(COUNT*3);
-  const targetColors = new Float32Array(COUNT*3);
-  const targetSizes = new Float32Array(COUNT);
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors,3));
-  geometry.setAttribute('size', new THREE.BufferAttribute(sizes,1));
+    const targetPositions = new Float32Array(COUNT * 3);
+    const targetColors = new Float32Array(COUNT * 3);
+    const targetSizes = new Float32Array(COUNT);
 
-  const particles = new THREE.Points(geometry,new THREE.PointsMaterial({
-    size:0.3, vertexColors:true, blending:THREE.AdditiveBlending, transparent:true, depthWrite:false
-  }));
-  scene.add(particles);
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
-  // Beam
-  const kameBeamGeo = new THREE.CylinderGeometry(1.2,1.8,120,32,1,true);
-  const kameBeamMat = new THREE.MeshBasicMaterial({ color:0x33ccff, transparent:true, opacity:0, blending:THREE.AdditiveBlending });
-  const kameBeam = new THREE.Mesh(kameBeamGeo,kameBeamMat);
-  kameBeam.rotation.x = Math.PI/2;
-  kameBeam.position.z = -60;
-  scene.add(kameBeam);
+    const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ size: 0.3, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false }));
+    scene.add(particles);
 
-  let kamePower=0, kamePulse=0;
-  let kameOrigin = new THREE.Vector3(0,0,-60);
-  let kameDir = new THREE.Vector3(0,0,-1);
-  let currentTech='neutral', shakeIntensity=0, glowColor='#00ffff';
+    // --- Add Kamehameha Beam ---
+    const kameBeamGeo = new THREE.CylinderGeometry(1.2, 1.8, 120, 32, 1, true);
+    const kameBeamMat = new THREE.MeshBasicMaterial({ color: 0x33ccff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending });
+    const kameBeam = new THREE.Mesh(kameBeamGeo, kameBeamMat);
+    kameBeam.rotation.x = Math.PI / 2;
+    kameBeam.position.z = -60;
+    scene.add(kameBeam);
+    let kamePower = 0;
+    let kamePulse = 0;
+    let kameOrigin = new THREE.Vector3(0,0,-60);
+    let kameDir = new THREE.Vector3(0,0,-1);
 
-  // Hand Tracking
-  const videoElement = container.querySelector('.input_video');
-  const canvasElement = container.querySelector('canvas');
-  const canvasCtx = canvasElement.getContext('2d');
+    // Hand Tracking
+    let currentTech = 'neutral';
+    let shakeIntensity = 0;
+    const videoElement = document.querySelector('.input_video');
+    const canvasElement = document.getElementById('output_canvas');
+    const canvasCtx = canvasElement.getContext('2d');
+    let glowColor = '#00ffff';
 
-  const hands = new Hands({locateFile:(file)=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});
-  hands.setOptions({ maxNumHands:2, modelComplexity:1, minDetectionConfidence:0.7 });
+    const hands = new Hands({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}` });
+    hands.setOptions({ maxNumHands: 2, modelComplexity: 1, minDetectionConfidence: 0.7 });
 
-  function isKamehamehaPose(handsLm){
-    if(!handsLm || handsLm.length!==2) return false;
-    const [h1,h2] = handsLm;
-    const wristDist = Math.hypot(h1[0].x-h2[0].x,h1[0].y-h2[0].y);
-    const fingersUp = h => h[8].y<h[6].y && h[12].y<h[10].y && h[16].y<h[14].y && h[20].y<h[18].y;
-    return wristDist<0.12 && fingersUp(h1) && fingersUp(h2);
-  }
+    function isKamehamehaPose(handsLm){
+      if(!handsLm || handsLm.length!==2) return false;
+      const [h1,h2] = handsLm;
+      const wristDist = Math.hypot(h1[0].x - h2[0].x, h1[0].y - h2[0].y);
+      const fingersUp = h => h[8].y<h[6].y && h[12].y<h[10].y && h[16].y<h[14].y && h[20].y<h[18].y;
+      return wristDist<0.12 && fingersUp(h1) && fingersUp(h2);
+    }
 
-  hands.onResults((results)=>{
-    canvasCtx.clearRect(0,0,canvasElement.width,canvasElement.height);
-    let detected='neutral';
-    if(results.multiHandLandmarks){
-      results.multiHandLandmarks.forEach(lm=>{
-        drawConnectors(canvasCtx,lm,HAND_CONNECTIONS,{color:glowColor,lineWidth:4});
-        drawLandmarks(canvasCtx,lm,{color:'#fff',lineWidth:1,radius:2});
-      });
-      if(isKamehamehaPose(results.multiHandLandmarks)){
-        detected='kamehameha';
-        const h1 = results.multiHandLandmarks[0];
-        const h2 = results.multiHandLandmarks[1];
-        const avgX = (h1[0].x+h2[0].x)/2;
-        const avgY = (h1[0].y+h2[0].y)/2;
-        kameOrigin.set((avgX-0.5)*60, -(avgY-0.5)*60, -60);
-        kameDir.set(h2[0].x-h1[0].x,h2[0].y-h1[0].y,-1).normalize();
+    hands.onResults((results) => {
+      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      let detected = 'neutral';
+
+      if (results.multiHandLandmarks) {
+        results.multiHandLandmarks.forEach((lm) => {
+          drawConnectors(canvasCtx, lm, HAND_CONNECTIONS, { color: glowColor, lineWidth: 5 });
+          drawLandmarks(canvasCtx, lm, { color: '#fff', lineWidth: 1, radius: 2 });
+        });
+
+        if(isKamehamehaPose(results.multiHandLandmarks)){
+          detected = 'kamehameha';
+          const h1 = results.multiHandLandmarks[0];
+          const h2 = results.multiHandLandmarks[1];
+          const avgX = (h1[0].x + h2[0].x)/2;
+          const avgY = (h1[0].y + h2[0].y)/2;
+          kameOrigin.set((avgX-0.5)*60, -(avgY-0.5)*60, -60);
+          kameDir.set(h2[0].x-h1[0].x, h2[0].y-h1[0].y, -1).normalize();
+        }
+      }
+
+      updateState(detected);
+    });
+
+    function updateState(tech){
+      if(currentTech === tech) return;
+      currentTech = tech;
+      const nameEl = document.getElementById('technique-name');
+      shakeIntensity = tech !== 'neutral' ? 0.4 : 0;
+
+      if(tech === 'shrine'){ glowColor = '#ff0000'; nameEl.innerText = "Domain Expansion: Malevolent Shrine"; bloomPass.strength = 2.5; }
+      else if(tech === 'purple'){ glowColor = '#bb00ff'; nameEl.innerText = "Secret Technique: Hollow Purple"; bloomPass.strength = 4.0; }
+      else if(tech === 'void'){ glowColor = '#00ffff'; nameEl.innerText = "Domain Expansion: Infinite Void"; bloomPass.strength = 2.0; }
+      else if(tech === 'red'){ glowColor = '#ff3333'; nameEl.innerText = "Reverse Cursed Technique: Red"; bloomPass.strength = 2.5; }
+      else if(tech === 'kamehameha'){ glowColor = '#33ccff'; nameEl.innerText = "KAMEHAMEHA"; bloomPass.strength = 4.0; }
+      else{ glowColor = '#00ffff'; nameEl.innerText = "Neutral State"; bloomPass.strength = 1.0; }
+
+      // --- Particles target update (existing logic) ---
+      for(let i=0; i<COUNT; i++){
+        let p;
+        if(tech==='neutral'){ p={x:0,y:0,z:0,r:0,g:0,b:0,s:0}; }
+        else if(tech==='red'){ p = getRed(i); }
+        else if(tech==='void'){ p = getVoid(i); }
+        else if(tech==='purple'){ p = getPurple(i); }
+        else if(tech==='shrine'){ p = getShrine(i); }
+        else if(tech==='kamehameha'){ 
+          // small surrounding particles
+          const angle = Math.random()*Math.PI*2;
+          const radius = 5+Math.random()*5;
+          p={ x:kameOrigin.x+radius*Math.cos(angle), y:kameOrigin.y+radius*Math.sin(angle), z:kameOrigin.z+Math.random()*5, r:0.2, g:0.5, b:1.0, s:0.8};
+        }
+        targetPositions[i*3] = p.x; targetPositions[i*3+1] = p.y; targetPositions[i*3+2] = p.z;
+        targetColors[i*3] = p.r; targetColors[i*3+1] = p.g; targetColors[i*3+2] = p.b;
+        targetSizes[i] = p.s;
       }
     }
-    updateState(detected);
-  });
 
-  function updateState(tech){
-    if(currentTech===tech) return;
-    currentTech=tech;
-    const nameEl=container.querySelector('#technique-name');
-    shakeIntensity = tech!=='neutral'?0.3:0;
-    if(tech==='kamehameha'){ glowColor='#33ccff'; nameEl.innerText="KAMEHAMEHA"; bloomPass.strength=4.0; shakeIntensity=0.4; }
-    else{ glowColor='#00ffff'; nameEl.innerText="Neutral State"; bloomPass.strength=1.0; }
-  }
+    const cameraUtils = new Camera(videoElement, {
+      onFrame: async () => { canvasElement.width=videoElement.videoWidth; canvasElement.height=videoElement.videoHeight; await hands.send({image:videoElement}); },
+      width:640, height:480
+    });
+    cameraUtils.start();
 
-  const cameraUtils = new Camera(videoElement,{ onFrame: async()=>{ canvasElement.width=videoElement.videoWidth; canvasElement.height=videoElement.videoHeight; await hands.send({image:videoElement}); }, width:640, height:480 });
-  cameraUtils.start();
+    function animate(){
+      requestAnimationFrame(animate);
 
-  function animate(){
-    requestAnimationFrame(animate);
+      if(shakeIntensity>0){
+        renderer.domElement.style.transform=`translate(${(Math.random()-0.5)*shakeIntensity*40}px, ${(Math.random()-0.5)*shakeIntensity*40}px)`;
+      } else { renderer.domElement.style.transform='translate(0,0)'; }
 
-    if(shakeIntensity>0) renderer.domElement.style.transform=`translate(${(Math.random()-0.5)*shakeIntensity*20}px, ${(Math.random()-0.5)*shakeIntensity*20}px)`;
-    else renderer.domElement.style.transform='translate(0,0)';
+      const pos = particles.geometry.attributes.position.array;
+      const col = particles.geometry.attributes.color.array;
+      const siz = particles.geometry.attributes.size.array;
+      for(let i=0;i<COUNT*3;i++){ pos[i]+=(targetPositions[i]-pos[i])*0.1; col[i]+=(targetColors[i]-col[i])*0.1; }
+      for(let i=0;i<COUNT;i++){ siz[i]+=(targetSizes[i]-siz[i])*0.1; }
+      particles.geometry.attributes.position.needsUpdate=true;
+      particles.geometry.attributes.color.needsUpdate=true;
+      particles.geometry.attributes.size.needsUpdate=true;
 
-    const pos = particles.geometry.attributes.position.array;
-    const col = particles.geometry.attributes.color.array;
-    const siz = particles.geometry.attributes.size.array;
-    for(let i=0;i<COUNT*3;i++){ pos[i]+=(targetPositions[i]-pos[i])*0.1; col[i]+=(targetColors[i]-col[i])*0.1; }
-    for(let i=0;i<COUNT;i++){ siz[i]+=(targetSizes[i]-siz[i])*0.1; }
-    particles.geometry.attributes.position.needsUpdate=true;
-    particles.geometry.attributes.color.needsUpdate=true;
-    particles.geometry.attributes.size.needsUpdate=true;
+      // --- Beam logic ---
+      if(currentTech==='kamehameha'){
+        kamePower = Math.min(kamePower+0.05,1);
+        kamePulse += 0.15;
+        const pulseScale = 1 + Math.sin(kamePulse)*0.25;
+        kameBeam.scale.set((1+kamePower*1.5)*pulseScale, kamePower*pulseScale, (1+kamePower*1.5)*pulseScale);
+        kameBeam.material.opacity = kamePower;
+        kameBeam.position.lerp(kameOrigin,0.2);
+        const quaternion = new THREE.Quaternion();
+        quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), kameDir.clone());
+        kameBeam.quaternion.slerp(quaternion,0.2);
+      } else kamePower = Math.max(kamePower-0.05,0);
 
-    // Beam + pulse
-    if(currentTech==='kamehameha'){ 
-      kamePower = Math.min(kamePower+0.05,1);
-      kamePulse += 0.15;
-      const pulseScale = 1 + Math.sin(kamePulse)*0.25;
-      kameBeam.scale.set((1+kamePower*1.5)*pulseScale,kamePower* pulseScale,(1+kamePower*1.5)*pulseScale);
-      kameBeam.material.opacity = kamePower;
+      composer.render();
+    }
+    animate();
 
-      kameBeam.position.lerp(kameOrigin,0.2);
-      const quaternion = new THREE.Quaternion();
-      quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), kameDir.clone());
-      kameBeam.quaternion.slerp(quaternion,0.2);
-    } else kamePower=Math.max(kamePower-0.05,0);
-
-    composer.render();
-  }
-  animate();
-
-  window.addEventListener('resize',()=>{
-    camera.aspect=container.clientWidth/container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth,container.clientHeight);
-    composer.setSize(container.clientWidth,container.clientHeight);
-  });
+    window.addEventListener('resize',()=>{
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      composer.setSize(window.innerWidth, window.innerHeight);
+    });
   </script>
 </section>
 
