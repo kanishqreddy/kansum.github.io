@@ -2957,5 +2957,285 @@
       });
     }
   </script>
+<!-- ============ TOMORROW'S MOVERS — HEURISTIC FORECAST (EXPERIMENTAL) ============ -->
+<section id="forecast">
+  <div class="section-heading">// FORECAST LAB</div>
+  <div class="section-sub">heuristic momentum model &middot; logs predictions &middot; auto-compares vs next session's actuals</div>
+
+  <div class="card" style="overflow:hidden; margin-bottom:20px;">
+    <div style="font-size:13px; line-height:1.7; color:var(--text-muted); margin-bottom:14px;">
+      This generates a ranked guess for tomorrow's movers using a simple transparent formula:
+      <code style="color:var(--accent);">score = (today's %change × 0.6) + (5-day momentum × 0.3) + (volume ratio × 0.1)</code>.
+      It is a toy heuristic, not research or advice — the point is to log it and see how it
+      compares against what actually happens.
+    </div>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">
+      <button id="run-forecast" class="btn-primary" style="border:none;">▶ generate today's forecast</button>
+      <button id="check-results" class="btn-ghost">📊 check yesterday's forecast vs actuals</button>
+      <button id="clear-log" class="btn-ghost">🗑 clear saved forecasts</button>
+    </div>
+
+    <div id="forecast-status" style="font-family:'Share Tech Mono', monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;"></div>
+
+    <div id="forecast-table-wrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <div class="card" style="overflow:hidden;">
+    <div class="section-heading" style="font-size:16px; margin-bottom:10px;">// ACCURACY LOG</div>
+    <div id="accuracy-summary" style="font-family:'Share Tech Mono', monospace; font-size:12px; color:var(--text-muted); margin-bottom:10px;">no completed comparisons yet.</div>
+    <div id="accuracy-table-wrap" style="overflow-x:auto;"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const PROXY = "https://api.allorigins.win/raw?url=";
+  const PRICE_MIN = 0.1;
+  const PRICE_MAX = 500;
+
+  // Basket of NSE small/mid price symbols (Yahoo format). Extend as needed.
+  const SYMBOLS = [
+    "IDEA.NS","YESBANK.NS","SUZLON.NS","IRFC.NS","BHEL.NS","NHPC.NS","TATAPOWER.NS",
+    "PNB.NS","BANKBARODA.NS","IOC.NS","ONGC.NS","SAIL.NS","NMDC.NS","RVNL.NS",
+    "IRCTC.NS","ZOMATO.NS","PAYTM.NS","TRIDENT.NS","JPPOWER.NS","RPOWER.NS",
+    "VEDL.NS","HUDCO.NS","IRB.NS","GMRINFRA.NS","NATIONALUM.NS","JINDALSTEL.NS",
+    "ASHOKLEY.NS","TATACOMM.NS","CANBK.NS","UNIONBANK.NS"
+  ];
+
+  const LOG_KEY = "forecastLog_v1";
+
+  const statusEl = document.getElementById("forecast-status");
+  const tableWrap = document.getElementById("forecast-table-wrap");
+  const accSummary = document.getElementById("accuracy-summary");
+  const accTableWrap = document.getElementById("accuracy-table-wrap");
+
+  function todayStr() {
+    return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  }
+
+  function loadLog() {
+    try {
+      return JSON.parse(localStorage.getItem(LOG_KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+  function saveLog(log) {
+    localStorage.setItem(LOG_KEY, JSON.stringify(log));
+  }
+
+  // Fetch ~1 month of daily data so we can compute 5-day momentum + volume ratio
+  async function fetchHistory(symbol) {
+    const target = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1mo`;
+    const url = PROXY + encodeURIComponent(target);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    const result = data?.chart?.result?.[0];
+    if (!result) throw new Error("No data for " + symbol);
+
+    const closes = result.indicators.quote[0].close.filter(v => v != null);
+    const volumes = result.indicators.quote[0].volume.filter(v => v != null);
+    const meta = result.meta;
+
+    if (closes.length < 6) throw new Error("Not enough history for " + symbol);
+
+    const last = closes[closes.length - 1];
+    const prev = closes[closes.length - 2];
+    const fiveBack = closes[closes.length - 6];
+
+    const todayChange = ((last - prev) / prev) * 100;
+    const momentum5d = ((last - fiveBack) / fiveBack) * 100;
+
+    const avgVol = volumes.slice(-6, -1).reduce((a, b) => a + b, 0) / 5;
+    const lastVol = volumes[volumes.length - 1];
+    const volRatio = avgVol > 0 ? lastVol / avgVol : 1;
+
+    return {
+      symbol: symbol.replace(".NS", ""),
+      name: meta.shortName || meta.symbol || symbol,
+      price: last,
+      todayChange,
+      momentum5d,
+      volRatio,
+    };
+  }
+
+  async function fetchLatestPrice(symbol) {
+    const target = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`;
+    const url = PROXY + encodeURIComponent(target);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    const result = data?.chart?.result?.[0];
+    if (!result) throw new Error("No data for " + symbol);
+    const meta = result.meta;
+    const price = meta.regularMarketPrice;
+    const prevClose = meta.chartPreviousClose ?? meta.previousClose;
+    const pChange = prevClose ? ((price - prevClose) / prevClose) * 100 : 0;
+    return { price, pChange };
+  }
+
+  function score(stock) {
+    // Simple transparent heuristic — weights are arbitrary, not backtested.
+    const volRatioCapped = Math.min(stock.volRatio, 3); // cap extreme volume spikes
+    return (stock.todayChange * 0.6) + (stock.momentum5d * 0.3) + ((volRatioCapped - 1) * 10 * 0.1);
+  }
+
+  function renderForecastTable(ranked) {
+    let html = `<table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <thead><tr style="border-bottom:1px solid rgba(255,179,0,0.4);">
+        <th style="text-align:left; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Stock</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Price</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Today %</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">5D Mom %</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Vol Ratio</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--accent); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Score</th>
+      </tr></thead><tbody>`;
+
+    ranked.forEach((s) => {
+      html += `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+        <td style="padding:8px 6px;"><div style="font-weight:600;">${s.name}</div><div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted);">${s.symbol}</div></td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace;">₹${s.price.toFixed(2)}</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace; color:${s.todayChange>=0?'#22c55e':'var(--accent-alt)'};">${s.todayChange.toFixed(2)}%</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.momentum5d.toFixed(2)}%</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.volRatio.toFixed(2)}x</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace; color:var(--accent); font-weight:700;">${s.score.toFixed(2)}</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    tableWrap.innerHTML = html;
+  }
+
+  async function runForecast() {
+    statusEl.textContent = "fetching history for " + SYMBOLS.length + " symbols...";
+    tableWrap.innerHTML = "";
+
+    const results = await Promise.allSettled(SYMBOLS.map(fetchHistory));
+    const ok = results
+      .filter(r => r.status === "fulfilled")
+      .map(r => r.value)
+      .filter(s => s.price >= PRICE_MIN && s.price <= PRICE_MAX);
+
+    if (ok.length === 0) {
+      statusEl.textContent = "feed unavailable — try refresh.";
+      return;
+    }
+
+    ok.forEach(s => s.score = score(s));
+    ok.sort((a, b) => b.score - a.score);
+    const top10 = ok.slice(0, 10);
+
+    renderForecastTable(top10);
+
+    const log = loadLog();
+    const date = todayStr();
+    // Replace any existing entry for today
+    const filtered = log.filter(e => e.date !== date);
+    filtered.push({
+      date,
+      predictions: top10.map(s => ({ symbol: s.symbol, name: s.name, predictedPrice: s.price, score: s.score })),
+    });
+    saveLog(filtered);
+
+    statusEl.textContent = `forecast generated and saved for ${date} (${ok.length}/${SYMBOLS.length} symbols loaded). check back tomorrow.`;
+  }
+
+  function pearsonCorrelation(x, y) {
+    const n = x.length;
+    if (n < 2) return null;
+    const meanX = x.reduce((a,b)=>a+b,0)/n;
+    const meanY = y.reduce((a,b)=>a+b,0)/n;
+    let num = 0, denX = 0, denY = 0;
+    for (let i=0;i<n;i++) {
+      const dx = x[i]-meanX, dy = y[i]-meanY;
+      num += dx*dy; denX += dx*dx; denY += dy*dy;
+    }
+    if (denX === 0 || denY === 0) return null;
+    return num / Math.sqrt(denX*denY);
+  }
+
+  async function checkResults() {
+    const log = loadLog();
+    const today = todayStr();
+    // Find the most recent entry that is NOT today (i.e. yesterday's or earlier forecast)
+    const past = log.filter(e => e.date !== today).sort((a,b) => b.date.localeCompare(a.date));
+
+    if (past.length === 0) {
+      accSummary.textContent = "no past forecasts to check yet — generate one today, come back tomorrow.";
+      accTableWrap.innerHTML = "";
+      return;
+    }
+
+    const entry = past[0];
+    statusEl.textContent = `checking forecast from ${entry.date} against current prices...`;
+
+    const symbols = entry.predictions.map(p => p.symbol + ".NS");
+    const results = await Promise.allSettled(symbols.map(fetchLatestPrice));
+
+    const rows = entry.predictions.map((p, i) => {
+      const r = results[i];
+      const actual = r.status === "fulfilled" ? r.value : null;
+      return {
+        ...p,
+        actualPrice: actual ? actual.price : null,
+        actualChange: actual ? actual.pChange : null,
+      };
+    }).filter(r => r.actualPrice != null);
+
+    if (rows.length === 0) {
+      accSummary.textContent = "could not fetch current prices for comparison — try again later.";
+      return;
+    }
+
+    // Correlation between predicted rank score and actual % change achieved
+    const scores = rows.map(r => r.score);
+    const actuals = rows.map(r => r.actualChange);
+    const corr = pearsonCorrelation(scores, actuals);
+
+    // Hit rate: did predicted top-half actually end up positive?
+    const positiveCount = rows.filter(r => r.actualChange > 0).length;
+    const hitRate = (positiveCount / rows.length) * 100;
+
+    accSummary.innerHTML = `forecast date: <span style="color:var(--accent);">${entry.date}</span> &nbsp;|&nbsp;
+      correlation (predicted score vs actual %chg): <span style="color:var(--accent);">${corr === null ? "n/a" : corr.toFixed(2)}</span> &nbsp;|&nbsp;
+      % of predicted list that went up: <span style="color:var(--accent);">${hitRate.toFixed(0)}%</span> (${positiveCount}/${rows.length})`;
+
+    let html = `<table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <thead><tr style="border-bottom:1px solid rgba(255,179,0,0.4);">
+        <th style="text-align:left; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Stock</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Predicted Score</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Price Then</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Price Now</th>
+        <th style="text-align:right; padding:8px 6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; font-size:11px; text-transform:uppercase;">Actual %Chg</th>
+      </tr></thead><tbody>`;
+
+    rows.forEach(r => {
+      html += `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+        <td style="padding:8px 6px;"><div style="font-weight:600;">${r.name}</div><div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted);">${r.symbol}</div></td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace; color:var(--accent);">${r.score.toFixed(2)}</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace;">₹${r.predictedPrice.toFixed(2)}</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace;">₹${r.actualPrice.toFixed(2)}</td>
+        <td style="padding:8px 6px; text-align:right; font-family:'Share Tech Mono', monospace; color:${r.actualChange>=0?'#22c55e':'var(--accent-alt)'};">${r.actualChange.toFixed(2)}%</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    accTableWrap.innerHTML = html;
+    statusEl.textContent = `comparison complete for ${entry.date}.`;
+  }
+
+  document.getElementById("run-forecast").addEventListener("click", runForecast);
+  document.getElementById("check-results").addEventListener("click", checkResults);
+  document.getElementById("clear-log").addEventListener("click", () => {
+    localStorage.removeItem(LOG_KEY);
+    statusEl.textContent = "forecast log cleared.";
+    tableWrap.innerHTML = "";
+    accSummary.textContent = "no completed comparisons yet.";
+    accTableWrap.innerHTML = "";
+  });
+})();
+</script>
+<!-- ============ END FORECAST LAB ============ -->
 </body>
 </html>
