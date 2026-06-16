@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-06-16T05:00:00+05:30",
+  "generatedAt": "2026-06-16T08:30:00+05:30",
   "history": [
     {
-      "date": "2026-06-15",
-      "lastUpdated": "2026-06-15T15:35:00+05:30",
+      "date": "2026-06-16",
+      "lastUpdated": "2026-06-16T08:30:00+05:30",
+      "marketStatus": "pre-open",
       "predictions": [
         {
           "symbol": "ASHOKLEY",
@@ -23,7 +24,38 @@
           "sentimentTerms": ["+mou", "+discount scheme"],
           "score": 1.92,
           "predictedPrice": 236.96,
-          "predictedPct": 1.92
+          "predictedPct": 1.92,
+          "trackRecord": { "checks": 9, "hitRatePct": 55.6, "avgErrorPct": 2.3 }
+        },
+        {
+          "symbol": "SUZLON",
+          "name": "Suzlon Energy Limited",
+          "price": 55.08,
+          "todayChangePct": 3.36,
+          "momentum5dPct": -0.42,
+          "volRatio": 1.07,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": 1.68,
+          "predictedPrice": 56.01,
+          "predictedPct": 1.68,
+          "trackRecord": { "checks": 9, "hitRatePct": 44.4, "avgErrorPct": 3.1 }
+        },
+        {
+          "symbol": "IRFC",
+          "name": "Indian Railway Finance Corporation",
+          "price": 95.89,
+          "todayChangePct": 2.74,
+          "momentum5dPct": -0.60,
+          "volRatio": 1.17,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": 1.18,
+          "predictedPrice": 97.02,
+          "predictedPct": 1.18,
+          "trackRecord": null
         }
       ]
     }
