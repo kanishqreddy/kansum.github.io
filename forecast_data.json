@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-06-16T05:00:00+05:30",
+  "history": [
+    {
+      "date": "2026-06-15",
+      "lastUpdated": "2026-06-15T15:35:00+05:30",
+      "predictions": [
+        {
+          "symbol": "ASHOKLEY",
+          "name": "Ashok Leyland Limited",
+          "price": 232.50,
+          "todayChangePct": 1.2,
+          "momentum5dPct": 2.1,
+          "volRatio": 1.4,
+          "news": [
+            {
+              "title": "Ashok Leyland signs MoU with MoRTH for Delhi-NCR truck and bus replacement scheme offering 8% discount on eligible vehicles",
+              "link": "https://news.google.com/",
+              "published": "Mon, 15 Jun 2026 23:48:00 GMT"
+            }
+          ],
+          "sentimentScore": 1.0,
+          "sentimentTerms": ["+mou", "+discount scheme"],
+          "score": 1.92,
+          "predictedPrice": 236.96,
+          "predictedPct": 1.92
+        }
+      ]
+    }
+  ]
+}
