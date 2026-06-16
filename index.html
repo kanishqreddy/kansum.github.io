@@ -1927,6 +1927,7 @@
     <div class="quickhack-item quickhack-item--apps" data-target="#apps">apps</div>
     <div class="quickhack-item quickhack-item--contact" data-target="#contact">contact</div>
     <div class="quickhack-item quickhack-item--map" data-target="#map">map</div>
+    <div class="quickhack-item quickhack-item--forecast" data-target="#forecast">forecast</div>
   </div>
 
   <!-- NAVBAR -->
@@ -1952,6 +1953,9 @@
         </a>
         <a class="nav-link" href="#map">
           <span class="nav-chip"></span><span>map</span>
+        </a>
+        <a class="nav-link" href="#forecast">
+          <span class="nav-chip"></span><span>forecast</span>
         </a>
         <a class="nav-link nav-link--static-active" href="#contact">
           <span class="nav-chip"></span><span>contact</span>
@@ -2098,9 +2102,17 @@
           <div id="technique-name">CURSED ENERGY</div>
       </div>
 
-      <div id="video-container">
+      <div id="jjk-cam-gate" style="position:absolute; bottom:4%; left:18%; transform:translateX(-50%); width:85vw; max-width:450px; z-index:20; text-align:center;">
+        <button id="jjk-start-cam" class="btn-primary" style="border:none; font-size:13px; padding:10px 22px;">🖐 test hand tracking</button>
+        <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted); margin-top:8px; letter-spacing:0.08em;">
+          camera only activates when you press this · nothing is uploaded or stored
+        </div>
+      </div>
+
+      <div id="video-container" style="display:none;">
           <video class="input_video"></video>
           <canvas id="output_canvas"></canvas>
+          <button id="jjk-stop-cam" style="position:absolute; top:8px; right:8px; z-index:30; background:rgba(0,0,0,0.6); color:#fff; border:1px solid rgba(255,255,255,0.3); border-radius:8px; padding:4px 10px; font-size:11px; cursor:pointer;">⏹ stop</button>
       </div>
 
   <script type="module">
@@ -2285,7 +2297,35 @@
               await hands.send({image: videoElement});
           }, width: 640, height: 480
       });
-      cameraUtils.start();
+
+      // Camera only starts when the user explicitly clicks the button —
+      // no auto getUserMedia() prompt on page load.
+      const jjkGate = document.getElementById('jjk-cam-gate');
+      const jjkVideoContainer = document.getElementById('video-container');
+      const jjkStartBtn = document.getElementById('jjk-start-cam');
+      const jjkStopBtn = document.getElementById('jjk-stop-cam');
+
+      jjkStartBtn.addEventListener('click', async () => {
+          jjkStartBtn.disabled = true;
+          jjkStartBtn.textContent = 'requesting camera...';
+          try {
+              await cameraUtils.start();
+              jjkGate.style.display = 'none';
+              jjkVideoContainer.style.display = 'block';
+          } catch (err) {
+              jjkStartBtn.disabled = false;
+              jjkStartBtn.textContent = '🖐 test hand tracking';
+              alert('Camera access was denied or is unavailable.');
+          }
+      });
+
+      jjkStopBtn.addEventListener('click', () => {
+          cameraUtils.stop();
+          jjkVideoContainer.style.display = 'none';
+          jjkGate.style.display = 'block';
+          jjkStartBtn.disabled = false;
+          jjkStartBtn.textContent = '🖐 test hand tracking';
+      });
 
       // Animation
       function animate() {
@@ -2343,7 +2383,249 @@
 
 <!-- ============================================================ -->
 
-    
+    <!-- ============ FORECAST LAB ============ -->
+    <section id="forecast">
+      <h2 class="section-heading">// forecast lab</h2>
+      <p class="section-sub" id="forecast-market-status">checking market status...</p>
+
+      <div class="card" style="overflow:hidden; margin-bottom:20px;">
+        <div style="font-size:13px; line-height:1.7; color:var(--text-muted); margin-bottom:14px;">
+          Score = <code style="color:var(--accent);">(today's %chg × 0.5) + (5-day momentum × 0.25) + (volume spike × 0.15) + (news sentiment × 0.10)</code>.
+          Predicted next-session price = current price × (1 + score/10), clamped to ±10%.
+          <strong style="color:var(--accent-alt);">Toy heuristic, not financial research.</strong>
+          Each stock's "track record" below is its own real historical hit-rate &mdash; not a guess.
+        </div>
+        <div id="forecast-status" style="font-family:'Share Tech Mono', monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">loading...</div>
+        <div id="forecast-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px;"></div>
+      </div>
+
+      <div class="card" style="overflow:hidden;">
+        <h3 class="section-heading" style="font-size:16px; margin-bottom:10px;">// accuracy log</h3>
+        <div id="accuracy-summary" style="font-family:'Share Tech Mono', monospace; font-size:12px; color:var(--text-muted); margin-bottom:10px;">loading...</div>
+        <div id="trend-table-wrap" style="overflow-x:auto;"></div>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      const DATA_URL = "forecast_data.json";
+      const PROXIES = [
+        "https://api.allorigins.win/raw?url=",
+        "https://corsproxy.io/?",
+        "https://api.codetabs.com/v1/proxy?quest="
+      ];
+      const LIVE_POLL_MS = 45 * 1000;
+
+      const statusEl = document.getElementById("forecast-status");
+      const marketStatusEl = document.getElementById("forecast-market-status");
+      const cardsEl = document.getElementById("forecast-cards");
+      const accSummary = document.getElementById("accuracy-summary");
+      const trendWrap = document.getElementById("trend-table-wrap");
+
+      let currentPredictions = [];
+      let liveTimer = null;
+
+      function getMarketStatus() {
+        const now = new Date();
+        const istMinutes = (now.getUTCHours() * 60 + now.getUTCMinutes() + 330) % 1440;
+        const day = new Date(now.getTime() + 330 * 60000).getUTCDay();
+        const isWeekday = day >= 1 && day <= 5;
+        const open = 9 * 60 + 15;
+        const close = 15 * 60 + 30;
+
+        if (!isWeekday) return "closed-weekend";
+        if (istMinutes < open) return "pre-open";
+        if (istMinutes >= open && istMinutes < close) return "open";
+        return "post-close";
+      }
+
+      function timeAgo(pubDateStr) {
+        if (!pubDateStr) return "";
+        const d = new Date(pubDateStr);
+        if (isNaN(d.getTime())) return "";
+        const diffMin = Math.round((Date.now() - d.getTime()) / 60000);
+        if (diffMin < 60) return diffMin + "m ago";
+        const diffH = Math.round(diffMin / 60);
+        if (diffH < 24) return diffH + "h ago";
+        return Math.round(diffH / 24) + "d ago";
+      }
+
+      async function fetchWithProxy(targetUrl) {
+        let lastErr;
+        for (const proxy of PROXIES) {
+          try {
+            const res = await fetch(proxy + encodeURIComponent(targetUrl));
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return await res.json();
+          } catch (e) { lastErr = e; }
+        }
+        throw lastErr || new Error("All proxies failed");
+      }
+
+      async function fetchLivePrice(symbol) {
+        const target = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}.NS?interval=1m&range=1d`;
+        const data = await fetchWithProxy(target);
+        const result = data?.chart?.result?.[0];
+        if (!result) throw new Error("no data");
+        const meta = result.meta;
+        return {
+          price: meta.regularMarketPrice,
+          pChange: meta.chartPreviousClose ? ((meta.regularMarketPrice - meta.chartPreviousClose) / meta.chartPreviousClose) * 100 : 0,
+        };
+      }
+
+      function trackRecordBadge(tr) {
+        if (!tr || tr.checks === 0) {
+          return `<span style="color:var(--text-muted);">no track record yet</span>`;
+        }
+        const color = tr.hitRatePct >= 60 ? "#22c55e" : (tr.hitRatePct >= 40 ? "var(--accent)" : "var(--accent-alt)");
+        return `<span style="color:${color};">${tr.hitRatePct}% directionally correct</span> over ${tr.checks} day${tr.checks>1?'s':''} &middot; avg error ${tr.avgErrorPct}%`;
+      }
+
+      function renderCards(predictions, marketStatus) {
+        cardsEl.innerHTML = predictions.map(s => {
+          const dirColor = s.predictedPct >= 0 ? "#22c55e" : "var(--accent-alt)";
+          const sentColor = s.sentimentScore > 0 ? "#22c55e" : (s.sentimentScore < 0 ? "var(--accent-alt)" : "var(--text-muted)");
+
+          const newsHtml = (s.news && s.news.length)
+            ? s.news.map(n => `
+                <a href="${n.link}" target="_blank" rel="noopener" style="display:block; font-size:11px; line-height:1.5; color:var(--text-main); margin-bottom:6px; text-decoration:underline;">
+                  ${n.title}<span style="display:block; font-family:'Share Tech Mono', monospace; font-size:9px; color:var(--text-muted); text-decoration:none;">${timeAgo(n.published)}</span>
+                </a>`).join("")
+            : `<div style="font-size:11px; color:var(--text-muted); font-family:'Share Tech Mono', monospace;">no recent headlines found</div>`;
+
+          const priceLabel = marketStatus === "open" ? "Live" : "Last Close";
+
+          return `
+            <div class="card" data-symbol="${s.symbol}">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+                <div style="font-weight:700; font-size:15px;">${s.name}</div>
+                <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted);">${s.symbol}</div>
+              </div>
+              <div style="display:flex; gap:14px; margin-bottom:4px; font-family:'Share Tech Mono', monospace; font-size:13px; flex-wrap:wrap;">
+                <div>${priceLabel}: <strong class="live-price" style="color:var(--text-main);">₹${s.price.toFixed(2)}</strong></div>
+                <div>Predicted: <strong style="color:${dirColor};">₹${s.predictedPrice.toFixed(2)}</strong></div>
+                <div style="color:${dirColor};">${s.predictedPct>=0?'+':''}${s.predictedPct.toFixed(2)}%</div>
+              </div>
+              <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted); margin-bottom:6px;">
+                sentiment: <span style="color:${sentColor};">${s.sentimentScore > 0 ? '+' : ''}${s.sentimentScore.toFixed(2)}</span>
+                ${s.sentimentTerms && s.sentimentTerms.length ? ` &middot; ${s.sentimentTerms.join(", ")}` : ""}
+              </div>
+              <div style="font-family:'Share Tech Mono', monospace; font-size:10px; margin-bottom:10px; padding:6px 8px; background:rgba(255,179,0,0.06); border-radius:6px;">
+                ${trackRecordBadge(s.trackRecord)}
+              </div>
+              ${s.actualPrice != null ? `
+              <div style="font-family:'Share Tech Mono', monospace; font-size:11px; margin-bottom:8px; padding:8px; border:1px dashed ${s.directionCorrect ? '#22c55e' : 'var(--accent-alt)'}; border-radius:6px;">
+                <strong style="color:${s.directionCorrect ? '#22c55e' : 'var(--accent-alt)'};">${s.directionCorrect ? '✓ CORRECT DIRECTION' : '✗ WRONG DIRECTION'}</strong><br>
+                actual: ₹${s.actualPrice.toFixed(2)} (${s.actualPct>=0?'+':''}${s.actualPct.toFixed(2)}%) &middot; gap vs prediction: ${s.gainCaptured>=0?'+':''}${s.gainCaptured.toFixed(2)}pts
+              </div>` : ""}
+              <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">latest news</div>
+              ${newsHtml}
+            </div>`;
+        }).join("");
+      }
+
+      async function pollLivePrices() {
+        if (currentPredictions.length === 0) return;
+        const cards = document.querySelectorAll('#forecast-cards [data-symbol]');
+        for (const card of cards) {
+          const symbol = card.getAttribute('data-symbol');
+          try {
+            const live = await fetchLivePrice(symbol);
+            const priceEl = card.querySelector('.live-price');
+            if (priceEl && live.price) priceEl.textContent = `₹${live.price.toFixed(2)}`;
+          } catch (e) { /* keep last known value on failure */ }
+          await new Promise(r => setTimeout(r, 200));
+        }
+      }
+
+      function renderAccuracy(history) {
+        const withSummary = history.filter(e => e.summary).sort((a,b) => a.date.localeCompare(b.date));
+        if (withSummary.length === 0) {
+          accSummary.textContent = "no completed comparisons yet — check back after the first full trading day.";
+          trendWrap.innerHTML = "";
+          return;
+        }
+        const latest = withSummary[withSummary.length - 1].summary;
+        accSummary.innerHTML = `latest (<strong style="color:var(--accent);">${latest.date}</strong>): ` +
+          `correlation <span style="color:var(--accent);">${latest.correlation ?? "n/a"}</span> &nbsp;|&nbsp; ` +
+          `hit rate <span style="color:var(--accent);">${latest.hitRate}%</span> &nbsp;|&nbsp; ` +
+          `avg price error <span style="color:var(--accent-alt);">${latest.avgPriceErrorPct}%</span>`;
+
+        let html = `<table style="width:100%; border-collapse:collapse; font-size:12px; margin-top:10px;">
+          <thead><tr style="border-bottom:1px solid rgba(255,179,0,0.4);">
+            <th style="text-align:left; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Date</th>
+            <th style="text-align:right; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Correlation</th>
+            <th style="text-align:right; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Hit Rate</th>
+            <th style="text-align:right; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Avg Price Error</th>
+          </tr></thead><tbody>`;
+        withSummary.slice(-14).forEach(e => {
+          const s = e.summary;
+          html += `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:6px; font-family:'Share Tech Mono', monospace;">${s.date}</td>
+            <td style="padding:6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.correlation ?? "n/a"}</td>
+            <td style="padding:6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.hitRate}%</td>
+            <td style="padding:6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.avgPriceErrorPct}%</td>
+          </tr>`;
+        });
+        html += `</tbody></table>`;
+        trendWrap.innerHTML = html;
+      }
+
+      function statusLabel(marketStatus, dataDate, lastUpdated) {
+        const updatedStr = new Date(lastUpdated).toLocaleString("en-IN", {dateStyle:"medium", timeStyle:"short"});
+        switch (marketStatus) {
+          case "pre-open":
+            return `pre-market &middot; showing today's (${dataDate}) prediction set, generated ${updatedStr} &middot; market opens 9:15am IST`;
+          case "open":
+            return `market live &middot; prices polling every 45s &middot; predictions for today (${dataDate}) generated ${updatedStr}`;
+          case "post-close":
+            return `market closed &middot; showing tomorrow's prediction set based on today's (${dataDate}) close, generated ${updatedStr}`;
+          default:
+            return `market closed (weekend) &middot; showing most recent (${dataDate}) prediction set, generated ${updatedStr}`;
+        }
+      }
+
+      function init() {
+        const marketStatus = getMarketStatus();
+        marketStatusEl.textContent = {
+          "pre-open": "🟡 pre-market — not yet open",
+          "open": "🟢 market live",
+          "post-close": "🔴 market closed for the day",
+          "closed-weekend": "⚫ market closed — weekend",
+        }[marketStatus];
+
+        fetch(DATA_URL)
+          .then(r => r.json())
+          .then(data => {
+            const history = data.history || [];
+            if (history.length === 0) {
+              statusEl.textContent = "no data yet — waiting for first GitHub Action run.";
+              return;
+            }
+            const latest = history[history.length - 1];
+            currentPredictions = latest.predictions;
+            renderCards(currentPredictions, marketStatus);
+            renderAccuracy(history);
+            statusEl.textContent = statusLabel(marketStatus, latest.date, latest.lastUpdated);
+
+            if (marketStatus === "open") {
+              pollLivePrices();
+              if (liveTimer) clearInterval(liveTimer);
+              liveTimer = setInterval(pollLivePrices, LIVE_POLL_MS);
+            }
+          })
+          .catch(err => {
+            statusEl.textContent = "could not load forecast_data.json — make sure the GitHub Action has run at least once.";
+            console.error(err);
+          });
+      }
+
+      init();
+    })();
+    </script>
+    <!-- ============ END FORECAST LAB ============ -->
+
     <section id="map">
       <h2 class="section-heading">net map</h2>
       <p class="section-sub">holomap · jump to districts.</p>
@@ -2388,14 +2670,16 @@
       <div class="bd-line">
         <div class="bd-scrub" id="bd-scrub"></div>
         <div class="bd-marker" style="left:5%;" data-target="#hero"></div>
-        <div class="bd-marker" style="left:40%;" data-target="#apps"></div>
-        <div class="bd-marker" style="left:65%;" data-target="#map"></div>
-        <div class="bd-marker" style="left:90%;" data-target="#contact"></div>
+        <div class="bd-marker" style="left:35%;" data-target="#apps"></div>
+        <div class="bd-marker" style="left:58%;" data-target="#map"></div>
+        <div class="bd-marker" style="left:75%;" data-target="#forecast"></div>
+        <div class="bd-marker" style="left:92%;" data-target="#contact"></div>
       </div>
       <div class="bd-labels">
         <span class="bd-label bd-label--active" data-target="#hero">overview</span>
         <span class="bd-label" data-target="#apps">apps</span>
         <span class="bd-label" data-target="#map">map</span>
+        <span class="bd-label" data-target="#forecast">forecast</span>
         <span class="bd-label" data-target="#contact">contact</span>
       </div>
     </div>
@@ -2940,145 +3224,5 @@
       });
     }
   </script>
-
-        <!-- ============ FORECAST LAB ============ -->
-<section id="forecast">
-  <div class="section-heading">// FORECAST LAB</div>
-  <div class="section-sub">runs 24/7 via github actions &middot; stocks ≤ ₹500 &middot; momentum + news sentiment heuristic &middot; auto-compares at 3:30pm ist</div>
-
-  <div class="card" style="overflow:hidden; margin-bottom:20px;">
-    <div style="font-size:13px; line-height:1.7; color:var(--text-muted); margin-bottom:14px;">
-      Score = <code style="color:var(--accent);">(today's %chg × 0.5) + (5-day momentum × 0.25) + (volume spike × 0.15) + (news sentiment × 0.10)</code>.
-      News sentiment is a simple keyword match (e.g. "MoU", "order win" = positive; "downgrade", "probe" = negative) &mdash;
-      it WILL misjudge nuanced headlines. Predicted price = current price × (1 + score/10), clamped to ±10%.
-      <strong style="color:var(--accent-alt);">Toy heuristic, not financial research</strong> &mdash; tracked below for honest accuracy over time.
-    </div>
-    <div id="forecast-status" style="font-family:'Share Tech Mono', monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">loading...</div>
-    <div id="forecast-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;"></div>
-  </div>
-
-  <div class="card" style="overflow:hidden;">
-    <div class="section-heading" style="font-size:16px; margin-bottom:10px;">// ACCURACY LOG</div>
-    <div id="accuracy-summary" style="font-family:'Share Tech Mono', monospace; font-size:12px; color:var(--text-muted); margin-bottom:10px;">loading...</div>
-    <div id="trend-table-wrap" style="overflow-x:auto;"></div>
-  </div>
-</section>
-
-<script>
-(function () {
-  const DATA_URL = "forecast_data.json"; // generated by GitHub Action, same repo root
-
-  const statusEl = document.getElementById("forecast-status");
-  const cardsEl = document.getElementById("forecast-cards");
-  const accSummary = document.getElementById("accuracy-summary");
-  const trendWrap = document.getElementById("trend-table-wrap");
-
-  function timeAgo(pubDateStr) {
-    if (!pubDateStr) return "";
-    const d = new Date(pubDateStr);
-    if (isNaN(d.getTime())) return "";
-    const diffMin = Math.round((Date.now() - d.getTime()) / 60000);
-    if (diffMin < 60) return diffMin + "m ago";
-    const diffH = Math.round(diffMin / 60);
-    if (diffH < 24) return diffH + "h ago";
-    return Math.round(diffH / 24) + "d ago";
-  }
-
-  function renderCards(predictions) {
-    const top10 = predictions.slice(0, 10);
-    cardsEl.innerHTML = top10.map(s => {
-      const dirColor = s.predictedPct >= 0 ? "#22c55e" : "var(--accent-alt)";
-      const sentColor = s.sentimentScore > 0 ? "#22c55e" : (s.sentimentScore < 0 ? "var(--accent-alt)" : "var(--text-muted)");
-      const newsHtml = (s.news && s.news.length)
-        ? s.news.map(n => `
-            <a href="${n.link}" target="_blank" rel="noopener" style="display:block; font-size:11px; line-height:1.5; color:var(--text-main); margin-bottom:6px; text-decoration:underline;">
-              ${n.title}
-              <span style="display:block; font-family:'Share Tech Mono', monospace; font-size:9px; color:var(--text-muted); text-decoration:none;">${timeAgo(n.published)}</span>
-            </a>`).join("")
-        : `<div style="font-size:11px; color:var(--text-muted); font-family:'Share Tech Mono', monospace;">no recent headlines found</div>`;
-
-      const termsHtml = (s.sentimentTerms && s.sentimentTerms.length)
-        ? `<div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:${sentColor}; margin-top:4px;">matched: ${s.sentimentTerms.join(", ")}</div>`
-        : "";
-
-      return `
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
-            <div style="font-weight:700; font-size:15px;">${s.name}</div>
-            <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted);">${s.symbol}</div>
-          </div>
-          <div style="display:flex; gap:14px; margin-bottom:4px; font-family:'Share Tech Mono', monospace; font-size:13px;">
-            <div>Now: <strong style="color:var(--text-main);">₹${s.price.toFixed(2)}</strong></div>
-            <div>Pred: <strong style="color:${dirColor};">₹${s.predictedPrice.toFixed(2)}</strong></div>
-            <div style="color:${dirColor};">${s.predictedPct>=0?'+':''}${s.predictedPct.toFixed(2)}%</div>
-          </div>
-          <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted);">
-            sentiment: <span style="color:${sentColor};">${s.sentimentScore > 0 ? '+' : ''}${s.sentimentScore.toFixed(2)}</span>
-            ${termsHtml}
-          </div>
-          <div style="font-family:'Share Tech Mono', monospace; font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin:8px 0 6px;">latest news</div>
-          ${newsHtml}
-        </div>`;
-    }).join("");
-  }
-
-  function renderAccuracy(history) {
-    const withSummary = history.filter(e => e.summary).sort((a,b) => a.date.localeCompare(b.date));
-
-    if (withSummary.length === 0) {
-      accSummary.textContent = "no completed comparisons yet — check back after the first full trading day.";
-      trendWrap.innerHTML = "";
-      return;
-    }
-
-    const latest = withSummary[withSummary.length - 1].summary;
-    accSummary.innerHTML = `latest (<strong style="color:var(--accent);">${latest.date}</strong>): ` +
-      `correlation <span style="color:var(--accent);">${latest.correlation === null ? "n/a" : latest.correlation}</span> &nbsp;|&nbsp; ` +
-      `hit rate <span style="color:var(--accent);">${latest.hitRate}%</span> &nbsp;|&nbsp; ` +
-      `avg price error <span style="color:var(--accent-alt);">${latest.avgPriceErrorPct}%</span>`;
-
-    let html = `<table style="width:100%; border-collapse:collapse; font-size:12px; margin-top:10px;">
-      <thead><tr style="border-bottom:1px solid rgba(255,179,0,0.4);">
-        <th style="text-align:left; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Date</th>
-        <th style="text-align:right; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Correlation</th>
-        <th style="text-align:right; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Hit Rate</th>
-        <th style="text-align:right; padding:6px; color:var(--text-muted); font-family:'Share Tech Mono', monospace; text-transform:uppercase;">Avg Price Error</th>
-      </tr></thead><tbody>`;
-    withSummary.slice(-14).forEach(e => {
-      const s = e.summary;
-      html += `<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-        <td style="padding:6px; font-family:'Share Tech Mono', monospace;">${s.date}</td>
-        <td style="padding:6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.correlation === null ? "n/a" : s.correlation}</td>
-        <td style="padding:6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.hitRate}%</td>
-        <td style="padding:6px; text-align:right; font-family:'Share Tech Mono', monospace;">${s.avgPriceErrorPct}%</td>
-      </tr>`;
-    });
-    html += `</tbody></table>`;
-    trendWrap.innerHTML = html;
-  }
-
-  fetch(DATA_URL)
-    .then(r => r.json())
-    .then(data => {
-      const history = data.history || [];
-      if (history.length === 0) {
-        statusEl.textContent = "no data yet — waiting for first GitHub Action run.";
-        return;
-      }
-      const latest = history[history.length - 1];
-      renderCards(latest.predictions);
-      renderAccuracy(history);
-
-      const generated = new Date(data.generatedAt || latest.lastUpdated);
-      statusEl.textContent = `data for ${latest.date} · last updated ${generated.toLocaleString("en-IN", {dateStyle:"medium", timeStyle:"short"})} · top 10 of ${latest.predictions.length} stocks ≤₹500`;
-    })
-    .catch(err => {
-      statusEl.textContent = "could not load forecast_data.json — make sure the GitHub Action has run at least once.";
-      console.error(err);
-    });
-})();
-</script>
-<!-- ============ END FORECAST LAB ============ -->
-
 </body>
 </html>
