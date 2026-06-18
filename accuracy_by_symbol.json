@@ -1,233 +1,266 @@
 {
   "SUZLON": {
-    "checks": 1,
+    "checks": 2,
     "correct": 1,
     "errors": [
-      1.65
-    ]
-  },
-  "HUDCO": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.09
-    ]
-  },
-  "ASHOKLEY": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.41
-    ]
-  },
-  "YESBANK": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      4.62
-    ]
-  },
-  "ITC": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      0.48
-    ]
-  },
-  "ZEEL": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      1.27
-    ]
-  },
-  "RVNL": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      1.5
-    ]
-  },
-  "GAIL": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      0.73
-    ]
-  },
-  "IOC": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.12
-    ]
-  },
-  "IRB": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.09
-    ]
-  },
-  "VEDL": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      2.11
-    ]
-  },
-  "NHPC": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      0.48
-    ]
-  },
-  "TRIDENT": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.0
-    ]
-  },
-  "WIPRO": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.98
-    ]
-  },
-  "MOTHERSON": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      1.71
-    ]
-  },
-  "ONGC": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      1.29
-    ]
-  },
-  "SAIL": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.77
-    ]
-  },
-  "TATAPOWER": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.12
-    ]
-  },
-  "UNIONBANK": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      1.91
-    ]
-  },
-  "IRFC": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      2.88
-    ]
-  },
-  "ADANIPOWER": {
-    "checks": 1,
-    "correct": 1,
-    "errors": [
-      0.92
-    ]
-  },
-  "JPPOWER": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      0.83
-    ]
-  },
-  "CANBK": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
+      1.65,
       1.87
     ]
   },
-  "TATASTEEL": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      1.6
-    ]
-  },
-  "POWERGRID": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      0.54
-    ]
-  },
-  "COALINDIA": {
-    "checks": 1,
-    "correct": 0,
-    "errors": [
-      1.19
-    ]
-  },
-  "RPOWER": {
-    "checks": 1,
+  "HUDCO": {
+    "checks": 2,
     "correct": 1,
     "errors": [
+      0.09,
+      1.21
+    ]
+  },
+  "ASHOKLEY": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.41,
+      0.9
+    ]
+  },
+  "YESBANK": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      4.62,
+      0.63
+    ]
+  },
+  "ITC": {
+    "checks": 2,
+    "correct": 0,
+    "errors": [
+      0.48,
+      0.15
+    ]
+  },
+  "ZEEL": {
+    "checks": 2,
+    "correct": 0,
+    "errors": [
+      1.27,
+      1.71
+    ]
+  },
+  "RVNL": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      1.5,
+      0.6
+    ]
+  },
+  "GAIL": {
+    "checks": 2,
+    "correct": 0,
+    "errors": [
+      0.73,
+      0.82
+    ]
+  },
+  "IOC": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      0.12,
+      0.21
+    ]
+  },
+  "IRB": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      0.09,
+      0.28
+    ]
+  },
+  "VEDL": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      2.11,
       0.41
     ]
   },
-  "PNB": {
-    "checks": 1,
+  "NHPC": {
+    "checks": 2,
     "correct": 0,
     "errors": [
-      0.98
+      0.48,
+      2.15
+    ]
+  },
+  "TRIDENT": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      0.0,
+      3.89
+    ]
+  },
+  "WIPRO": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.98,
+      0.94
+    ]
+  },
+  "MOTHERSON": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      1.71,
+      0.3
+    ]
+  },
+  "ONGC": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      1.29,
+      0.31
+    ]
+  },
+  "SAIL": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.77,
+      1.47
+    ]
+  },
+  "TATAPOWER": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      0.12,
+      0.33
+    ]
+  },
+  "UNIONBANK": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      1.91,
+      1.22
+    ]
+  },
+  "IRFC": {
+    "checks": 2,
+    "correct": 0,
+    "errors": [
+      2.88,
+      0.85
+    ]
+  },
+  "ADANIPOWER": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.92,
+      4.59
+    ]
+  },
+  "JPPOWER": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.83,
+      0.17
+    ]
+  },
+  "CANBK": {
+    "checks": 2,
+    "correct": 0,
+    "errors": [
+      1.87,
+      0.39
+    ]
+  },
+  "TATASTEEL": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      1.6,
+      0.67
+    ]
+  },
+  "POWERGRID": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.54,
+      0.75
+    ]
+  },
+  "COALINDIA": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      1.19,
+      0.82
+    ]
+  },
+  "RPOWER": {
+    "checks": 2,
+    "correct": 2,
+    "errors": [
+      0.41,
+      0.6
+    ]
+  },
+  "PNB": {
+    "checks": 2,
+    "correct": 1,
+    "errors": [
+      0.98,
+      0.6
     ]
   },
   "BANKBARODA": {
-    "checks": 1,
-    "correct": 0,
+    "checks": 2,
+    "correct": 1,
     "errors": [
-      2.48
+      2.48,
+      0.31
     ]
   },
   "IDEA": {
-    "checks": 1,
-    "correct": 0,
+    "checks": 2,
+    "correct": 1,
     "errors": [
-      2.21
+      2.21,
+      0.47
     ]
   },
   "NMDC": {
-    "checks": 1,
+    "checks": 2,
     "correct": 1,
     "errors": [
-      0.09
+      0.09,
+      0.67
     ]
   },
   "BHEL": {
-    "checks": 1,
-    "correct": 0,
+    "checks": 2,
+    "correct": 1,
     "errors": [
-      2.26
+      2.26,
+      3.19
     ]
   },
   "NATIONALUM": {
-    "checks": 1,
+    "checks": 2,
     "correct": 0,
     "errors": [
-      1.16
+      1.16,
+      0.77
     ]
   }
 }
