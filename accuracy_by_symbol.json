@@ -1,365 +1,398 @@
 {
   "SUZLON": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       1.65,
       1.87,
       1.17,
       0.07,
-      1.85
+      1.85,
+      0.4
     ]
   },
   "HUDCO": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       0.09,
       1.21,
       1.48,
       1.27,
-      1.43
+      1.43,
+      0.31
     ]
   },
   "ASHOKLEY": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       0.41,
       0.9,
       1.36,
       0.41,
-      3.64
+      3.64,
+      2.51
     ]
   },
   "YESBANK": {
-    "checks": 5,
+    "checks": 6,
     "correct": 3,
     "errors": [
       4.62,
       0.63,
       0.67,
       1.88,
-      1.55
+      1.55,
+      1.76
     ]
   },
   "ITC": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       0.48,
       0.15,
       0.4,
       0.55,
-      0.42
+      0.42,
+      0.18
     ]
   },
   "ZEEL": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       1.27,
       1.71,
       1.36,
       1.81,
-      1.12
+      1.12,
+      0.64
     ]
   },
   "RVNL": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       1.5,
       0.6,
       2.16,
       0.81,
-      2.82
+      2.82,
+      0.12
     ]
   },
   "GAIL": {
-    "checks": 5,
+    "checks": 6,
     "correct": 1,
     "errors": [
       0.73,
       0.82,
       1.51,
       1.91,
-      2.08
+      2.08,
+      0.86
     ]
   },
   "IOC": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       0.12,
       0.21,
       2.07,
       0.7,
-      0.83
+      0.83,
+      2.1
     ]
   },
   "IRB": {
-    "checks": 5,
-    "correct": 4,
+    "checks": 6,
+    "correct": 5,
     "errors": [
       0.09,
       0.28,
       0.14,
       1.11,
-      1.45
+      1.45,
+      0.47
     ]
   },
   "VEDL": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       2.11,
       0.41,
       1.56,
       1.74,
-      8.75
+      8.75,
+      0.55
     ]
   },
   "NHPC": {
-    "checks": 5,
-    "correct": 0,
+    "checks": 6,
+    "correct": 1,
     "errors": [
       0.48,
       2.15,
       0.66,
       3.2,
-      0.8
+      0.8,
+      1.75
     ]
   },
   "TRIDENT": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       0.0,
       3.89,
       0.93,
       0.65,
-      1.95
+      1.95,
+      4.11
     ]
   },
   "WIPRO": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       0.98,
       0.94,
       1.31,
       0.63,
-      3.15
+      3.15,
+      0.13
     ]
   },
   "MOTHERSON": {
-    "checks": 5,
+    "checks": 6,
     "correct": 4,
     "errors": [
       1.71,
       0.3,
       0.54,
       0.11,
-      1.5
+      1.5,
+      0.82
     ]
   },
   "ONGC": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       1.29,
       0.31,
       0.5,
       0.25,
-      0.37
+      0.37,
+      1.69
     ]
   },
   "SAIL": {
-    "checks": 5,
+    "checks": 6,
     "correct": 3,
     "errors": [
       0.77,
       1.47,
       1.22,
       2.91,
-      3.17
+      3.17,
+      1.62
     ]
   },
   "TATAPOWER": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       0.12,
       0.33,
       0.24,
       0.89,
-      2.09
+      2.09,
+      1.12
     ]
   },
   "UNIONBANK": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       1.91,
       1.22,
       0.49,
       0.52,
-      0.82
+      0.82,
+      0.35
     ]
   },
   "IRFC": {
-    "checks": 5,
-    "correct": 1,
+    "checks": 6,
+    "correct": 2,
     "errors": [
       2.88,
       0.85,
       0.88,
       1.3,
-      2.4
+      2.4,
+      6.55
     ]
   },
   "ADANIPOWER": {
-    "checks": 5,
+    "checks": 6,
     "correct": 3,
     "errors": [
       0.92,
       4.59,
       0.11,
       0.67,
-      1.17
+      1.17,
+      0.73
     ]
   },
   "JPPOWER": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       0.83,
       0.17,
       0.5,
       0.99,
-      1.33
+      1.33,
+      0.11
     ]
   },
   "CANBK": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       1.87,
       0.39,
       0.89,
       0.96,
-      3.37
+      3.37,
+      0.07
     ]
   },
   "TATASTEEL": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       1.6,
       0.67,
       0.9,
       0.01,
-      2.88
+      2.88,
+      1.68
     ]
   },
   "POWERGRID": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       0.54,
       0.75,
       1.05,
       1.05,
-      0.8
+      0.8,
+      0.62
     ]
   },
   "COALINDIA": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       1.19,
       0.82,
       0.09,
       0.51,
-      1.07
+      1.07,
+      0.43
     ]
   },
   "RPOWER": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       0.41,
       0.6,
       2.18,
       1.59,
-      2.55
+      2.55,
+      2.3
     ]
   },
   "PNB": {
-    "checks": 5,
+    "checks": 6,
     "correct": 1,
     "errors": [
       0.98,
       0.6,
       0.8,
       1.07,
-      2.27
+      2.27,
+      0.38
     ]
   },
   "BANKBARODA": {
-    "checks": 5,
+    "checks": 6,
     "correct": 1,
     "errors": [
       2.48,
       0.31,
       0.83,
       1.92,
-      3.07
+      3.07,
+      0.98
     ]
   },
   "IDEA": {
-    "checks": 5,
-    "correct": 2,
+    "checks": 6,
+    "correct": 3,
     "errors": [
       2.21,
       0.47,
       0.74,
       0.67,
-      2.35
+      2.35,
+      0.84
     ]
   },
   "NMDC": {
-    "checks": 5,
-    "correct": 3,
+    "checks": 6,
+    "correct": 4,
     "errors": [
       0.09,
       0.67,
       0.01,
       0.19,
-      3.5
+      3.5,
+      0.4
     ]
   },
   "BHEL": {
-    "checks": 5,
+    "checks": 6,
     "correct": 2,
     "errors": [
       2.26,
       3.19,
       1.52,
       1.34,
-      3.05
+      3.05,
+      0.83
     ]
   },
   "NATIONALUM": {
-    "checks": 5,
-    "correct": 1,
+    "checks": 6,
+    "correct": 2,
     "errors": [
       1.16,
       0.77,
       2.29,
       0.55,
-      6.28
+      6.28,
+      1.69
     ]
   }
 }
