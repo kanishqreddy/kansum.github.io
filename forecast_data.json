@@ -1,1361 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-10-13",
-      "lastUpdated": "2026-10-13T23:02:29.477737+05:30",
-      "predictions": [
-        {
-          "symbol": "IRFC",
-          "name": "INDIAN RAILWAY FIN CORP L",
-          "price": 79.62,
-          "todayChangePct": 6.59,
-          "momentum5dPct": 4.08,
-          "volRatio": 1.8,
-          "news": [
-            {
-              "title": "Indian Railway Finance Corporation Ltd. Share Price Update - Univest",
-              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxON0w1UDRnWXhsNzlCU1daY3Z2Tm14UEVzaEs3YnkxZWI3MnFzREZUZEhYSjduYWY0dTdGN3VLdlBMeUtoR3VxYUFoenVnekdWRXBkbjJaSHRLYUJNeUgzblQ3bi01MGp6VlQyaFhCT1BPNTY0UkhEb09saDZaMEduMUl0UHRiODMxYnpJNDJINWs5VUtGSnpOMUN3T2lfOXJxbnow?oc=5",
-              "published": "Tue, 13 Oct 2026 04:59:00 GMT"
-            },
-            {
-              "title": "IRFC Interim Dividend 2026: Record Date 23 Oct, Yield, History - Univest",
-              "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQNVl1VUIxbEFaYmZjdlo5ME9oR0tOTHpIblhFVXJpYzY4aHBMU0txUU9SbUVZRkg1NTNKaFdtVkJCTEk1N0N4NVhrVEFUZ0FuNWQwXzRfNWJhV01pNzQ5NFI0Qmp0ZC1leTFZWEdad3V1bVhpTzQ4bmcydWxqYTl6d1l6clJVOWw4dWlXa2otT1FHblc1ZDFGU2dYYVZwTFJFdWxMeExoRzczemQzclFZY1hlMDkxLTRycWRNTWo0UTZ1bFFCa3pCWFRVQTIxeG14c0ZnRg?oc=5",
-              "published": "Tue, 13 Oct 2026 10:27:00 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+dividend"
-          ],
-          "score": 6.52,
-          "predictedPrice": 80.14,
-          "predictedPct": 0.65,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 51.2,
-            "avgErrorPct": 1.16
-          },
-          "actualPrice": 79.75,
-          "actualPct": 0.16,
-          "priceErrorPct": 0.49,
-          "gainCaptured": -0.49,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "SUZLON",
-          "name": "SUZLON ENERGY LIMITED",
-          "price": 40.19,
-          "todayChangePct": 6.89,
-          "momentum5dPct": 3.26,
-          "volRatio": 1.35,
-          "news": [
-            {
-              "title": "Most Active Stocks October 13, 2026 at 3:30 PM IST - HDFC Sky",
-              "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9mbXFjVi1yWVJjZW1rN3lCY1RfMlRxSDlrZ1V2TGRYNWlVMktOeEhfckM4TWliSWtNWUFYRXk2akxaakIzSWZXSFBWWlE1R2I5MVRVcG41Zm1NXzIxNFNoZUNlV00xVGp5NlA0NjhrRHZvNWxUQnJETWR3?oc=5",
-              "published": "Tue, 13 Oct 2026 10:28:07 GMT"
-            },
-            {
-              "title": "Buy Suzlon Energy Ltd for the Target Rs 65 by Motilal Oswal Financial Services Ltd - Investment Guru India",
-              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdlhEOUNQTVdmZVQ3THphOXlfdGFLX3o1Z2Y5cVppMWtqWmdwRmg2VWllSDdTVGJEd095R0hyY05XUEJ0YnNoc0xfRU0tc3pLejR6SFNyT1JKdVFQNEZCYnJKb2xOXzhVaGhHNW9Nd0pndWxUQm1fa3FSQXRwLVAxdFNzZVJhUWpoX0MzcnowWFpsTXNVcFdQdzFvakxNbjcwQ01QQmQtV2o5bHpGLV9iSDFUYndZeVc2OF8zS2VjVWZkQUk3Q3dfaXgxRQ?oc=5",
-              "published": "Tue, 13 Oct 2026 04:00:52 GMT"
-            },
-            {
-              "title": "8 Stocks To Buy For Long Term: Analysts recommend 5 largecap, 2 midcap, 1 smallcap scrips; Dr Lal Pathlabs on the list - Zee Business",
-              "link": "https://news.google.com/rss/articles/CBMirAJBVV95cUxOWEZaUGlSMDhHOWN6Yko5ZFNGTGNaam51OThCYnJPcFhQQ3M3bVQ2cERhMkRZRFFlbFZSUlJGTXdVSnNOLVV2RnhlSHFUMHVXV0xCUU80andsUkRKdHBmTjhkSDh6cnV0TlIwU0lJVmwtT1JRcktMNXY3cnpHbGlhNFdwLXZaRU12bmFHcEpXSlNBRDh3RjlMd1B4ZnlxMDdLaHZVdlRvblhZdl9kNGVfSkpPWjhCS1k4dFhFYnFlWDlza3JyQnUxNzUtcWhzdko4MUUtT2cyeVAzWE9kRUNQdFZ3M0U4andIdEFlVXVhWklReUwxS196djU1dEZYcG05UExIa2trVjlsYmdJeDJNd1p0MWFQM2FDaGN6TmNhVEg4X2djaXRIcUc1UXE?oc=5",
-              "published": "Tue, 13 Oct 2026 11:17:00 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 4.78,
-          "predictedPrice": 40.38,
-          "predictedPct": 0.48,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 58.1,
-            "avgErrorPct": 1.49
-          },
-          "actualPrice": 40.8,
-          "actualPct": 1.52,
-          "priceErrorPct": 1.03,
-          "gainCaptured": 1.04,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "ZEEL",
-          "name": "ZEE ENTERTAINMENT ENT LTD",
-          "price": 74.14,
-          "todayChangePct": 5.96,
-          "momentum5dPct": 0.77,
-          "volRatio": 0.82,
-          "news": [
-            {
-              "title": "Zee Marathi\u2019s \u2018Home Minister\u2019 and \u2018Sa Re Ga Ma Pa\u2019 attract 25+ brand partnerships - MediaNews4U",
-              "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPVEtvSG9vdDgzY2ZjbFpSNE9Pd2FMQjIzLU1DcnVhazdnX0tvR3ZqcW96RDJhd3FWZUR3S0ZFa0phSWxCeXVLMkJULUR3dW41MHNzbzlVMWRXdGlmUVpacEFmZ1pkY3dSNE03bjJjMnNfckRiR3hSU1RjRHpvQzVCQURFSzByVmduSmtHTHB2OUJWZ3gzU3YxSkszVWt3bHYxVzFLSE9PQQ?oc=5",
-              "published": "Tue, 13 Oct 2026 11:17:56 GMT"
-            },
-            {
-              "title": "FACT CHECK \u2014 Will FIFA World Cup 2030 be available for free on Netflix? - Sportstar",
-              "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQYWxkbHl1S01CS3N0S08wRWZDeDRGU2l2Ri1HNWRmQkR4cDRwMTFzVVFhZzNSbzJNeGZIdFMySlhxVjNGTVRlQzB1YjhTVGdQUTVGOEdOc0RYT2JMdGVNdzFoeXIyejBoU250Z3gwVFZrUlE5R0gyeHpkdjR1VUtqS3ctV2JHZXhZLUJLVTllOXRXQ25CczNJdS1fRzhsT29VUnczTEt2NFpsQXJhSWppU0xDOGMxN2pieVh5Nk5nTGJpTEN3ajBZb2FLVlJQT3U0NFFWaWlvS2R1VmtvR2Jtem5sejIyUTjSAe4BQVVfeXFMT2J5bVZ1X0JhckI4ajFZcmxGRHltSzhWTk5IQlQydnVLU3JrT1QtN2JKNGdTaHdCZzFwN09tREgxUlJjYk9GVFdCVkF3enVNemxsaUtNWmszM0VHaVltSndFX0I5NkdJUGZmM2tNdlM5LThraUNtWFZtMWlIVjlxRUQ4Q3JFblNJbDhFM005VDBzcnd1c09wZzg1Unk0d3JORTN5VXRpVHZOTm9aT0p6d1pQbS1sM3hWRHV1RVloWV9QSmViMVlXNE93R043VEpEUUdKbHB3MENDR3N3RWdWcGdLbk1VcTBHYmo4NmpzZw?oc=5",
-              "published": "Tue, 13 Oct 2026 12:38:00 GMT"
-            },
-            {
-              "title": "Aasha OTT Release on Malayalam Zee5 October 16 - Passionate In Marketing",
-              "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPME1lWTdITDdScmIwcTluWXhFOWdQUklYajRZazE1Q1NlTE5iY25LWG93aVVyZzFkNnFMQmowZG94d1hfVEY1bDdIaFBOb0JYdVFqbm9rS3JKWEtGWDlFYmlKWmRhX2ZLalNyNV9JVTZSVjZ4UHpwWHRQZm9US3RmU2JxTUxmZExkZDlGQWxYZnZfMTJCRkpZUHBpeTlPUjFxRERnUFN0RldKNTZEZVE3RlpJOVNqRzR6c1lUS1A2dVFNeTYwOEdnTF9hVHliemVCNUNfN1g1cDRWdEViT09Cd1VRczYxS25iQ1pqWTBFdEZsZlk?oc=5",
-              "published": "Tue, 13 Oct 2026 07:29:48 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+partnership"
-          ],
-          "score": 3.9,
-          "predictedPrice": 74.43,
-          "predictedPct": 0.39,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 50.0,
-            "avgErrorPct": 2.01
-          },
-          "actualPrice": 73.81,
-          "actualPct": -0.45,
-          "priceErrorPct": 0.84,
-          "gainCaptured": -0.84,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "WIPRO",
-          "name": "WIPRO LTD",
-          "price": 169.0,
-          "todayChangePct": 3.96,
-          "momentum5dPct": 4.23,
-          "volRatio": 0.94,
-          "news": [
-            {
-              "title": "Wipro Limited (WIT) Stock Price, News, Quote & History - Yahoo! Finance Canada",
-              "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE11TnBRUTJocWdiZWlxS2tIaXlmdGVUWE95ODZEdF91bEdTT3JrV1p3R29ZNmp2U084elpYdHd6VTRoQktGbGlyQ2tIT2ZfOUlJ?oc=5",
-              "published": "Tue, 13 Oct 2026 06:45:09 GMT"
-            },
-            {
-              "title": "Wipro Share Price - Upstox",
-              "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5KdElZR3B2X3pjUm1GemQyR3d5VktiaGR0OUVqYkgtMEtmS25BbGhDMS01MTg5d2hCQ3pLLVZjR3hLMlVPTXRuVkdhMDBtenZUUGFlb2VjbC1uQkFa?oc=5",
-              "published": "Tue, 13 Oct 2026 10:41:25 GMT"
-            },
-            {
-              "title": "Wipro NSE:WIPRO U.S. PERM Suspension Impact Statement - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRmNaMXpWaE1yN244WUdxdDlTYWFXV2pBMnBzWDR6SVJUYkJoRTdwdnJlTXU2amc4dC0xUmV1YzJCQ0FTV2s4dVdReHV5bUM4UzF6NUVXcGthQWM4NEhFakhaeTlNZjEyNzRVdUhZOGVTZ1B4RWtHSHRvTTlJbE1OMU1aV3ROalpXMDBqcUgtdVBaRnY4eVhaQkdtNU1xdDAzaXNzMTNKbFZfRFBZRXJEOEktdjk?oc=5",
-              "published": "Tue, 13 Oct 2026 11:26:00 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 2.95,
-          "predictedPrice": 169.5,
-          "predictedPct": 0.3,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 43.0,
-            "avgErrorPct": 1.22
-          },
-          "actualPrice": 170.92,
-          "actualPct": 1.14,
-          "priceErrorPct": 0.83,
-          "gainCaptured": 0.84,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "JPPOWER",
-          "name": "JAIPRAKASH POWER VEN. LTD",
-          "price": 15.07,
-          "todayChangePct": 3.72,
-          "momentum5dPct": 1.07,
-          "volRatio": 1.28,
-          "news": [],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 2.55,
-          "predictedPrice": 15.11,
-          "predictedPct": 0.26,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 52.3,
-            "avgErrorPct": 1.57
-          },
-          "actualPrice": 15.43,
-          "actualPct": 2.39,
-          "priceErrorPct": 2.07,
-          "gainCaptured": 2.13,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "MOTHERSON",
-          "name": "SAMVRDHNA MTHRSN INTL LTD",
-          "price": 160.0,
-          "todayChangePct": 4.58,
-          "momentum5dPct": 2.24,
-          "volRatio": 0.58,
-          "news": [],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 2.22,
-          "predictedPrice": 160.36,
-          "predictedPct": 0.22,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 46.5,
-            "avgErrorPct": 1.4
-          },
-          "actualPrice": 159.8,
-          "actualPct": -0.12,
-          "priceErrorPct": 0.35,
-          "gainCaptured": -0.34,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "IRB",
-          "name": "IRB INFRA DEV LTD.",
-          "price": 17.87,
-          "todayChangePct": 2.23,
-          "momentum5dPct": 5.93,
-          "volRatio": 0.66,
-          "news": [
-            {
-              "title": "PNC Infratech Share Price Today: Price Rise View - Univest",
-              "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE84MUx6ckZ6ZGFueE9Dd21qRm5fS2tnLTJ1VzR6Zk5weExtN2o2X3o2N0dBclZvVUxRTXdtNkRZZjNnT0VjZVo5dTMyeGlRV2NMakx0SVlfTXQxRVFvbUU4UzZURF8tS2RCRVA1bWtfdEthNWtTSTd3OE40dFlxQ0E?oc=5",
-              "published": "Tue, 13 Oct 2026 07:26:00 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 2.09,
-          "predictedPrice": 17.91,
-          "predictedPct": 0.21,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 51.2,
-            "avgErrorPct": 1.55
-          },
-          "actualPrice": 17.77,
-          "actualPct": -0.56,
-          "priceErrorPct": 0.79,
-          "gainCaptured": -0.77,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "HUDCO",
-          "name": "HSG & URBAN DEV CORPN LTD",
-          "price": 164.16,
-          "todayChangePct": 2.76,
-          "momentum5dPct": 1.28,
-          "volRatio": 0.58,
-          "news": [
-            {
-              "title": "HSG Laser Celebrates 20 Years with Global Partners and Unveils New Strategy - PR Newswire",
-              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQSW9oek4xb2ppMnpZY3VPcVYzcHpIN0R4Yl9jaG12emhCanEwbUZlUVFOcGpGd3NESHZ3RWZ2ZndFeEdiQWVHM2ZnWEtRNGl0SE9jZFlEOVA3eWJGZ0hvZkVDdFA2SWRkU0RjSDFWM1J6YlhReUxpVEdoN3NKd1NzRUNxMi1MYWsyYWVmWGtrRW9yclUtVUlSSG5DUkpUS1VQenBFMjRjMWx2Z044eTFnc2hmY3pXMmthaURJSEdxc3Jqc1dPUE56V3h6aw?oc=5",
-              "published": "Tue, 13 Oct 2026 07:27:00 GMT"
-            },
-            {
-              "title": "8th Pay Commission Bengaluru meeting today: Postal employees seek higher pay, HSG-I upgrade - Livemint",
-              "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQWHBOY3pCbTBPbDdubGUtSWc4TDRQem1DNm5KZG10OWo4eUtkS29UZWRpTER3c1lLdEdiNHJrU3VYZGE4S0pTd0swMTdQeHZCUnp4LThQcFdTVlB3cWlfTUthdV9OQ1FNRmVJdHJEdXFET0lUaml0ZW5iSFo5VlVZVW0yUE13RHRybHltQjk0aGRjZjFtaEJWdTVRcms0eE5EbDN4WTVRYkZCNjlCclNIOVdMcWxxaWZxYTVyS2tZbDVVWUNtT2t1VEpFODFiUFEzb0JsSVdXNDVORHZUdVJYS010RVA0R2tGZWFfNllR0gHzAUFVX3lxTE9sWVpYcktwOXNTbmpVZ0NMd3NOQTBGWkRGeklINkhoMl9nSzUyOEJGTFJIcVBnRHJMdFIwd0FrQ285RUM3SHNsNFVhUkNxaEVEUnd4bFlGZEpOWmo2Tm5hR3NkRFJfR1hibUdHc1hxQzMtMFpzc2l4di1QdEF4RlUzamE2QkNsZld6bUQtb2k3LThDUUVMZjJ6azZqR1BiZEJiS3FpXzlBYjhPNjdUVjVmd053U3RGVkltSnpPYnJ3dHE0Q1Z2dkVGMzFlT0VZZEx1WGp6bUtSbDRjSG1kRjFMMXpGaEhqQWs5eDRfdW9GSFV1aw?oc=5",
-              "published": "Wed, 07 Oct 2026 08:04:34 GMT"
-            },
-            {
-              "title": "Compare with ALPINE HSG. - Equitymaster",
-              "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNd0IteVgtMkdMNFVLclBLNUsxOVU0aVRkSWwxazhEX3A4WkFXcEZBemlZU05UVF85WmVobHlkcGc4NzFyYmFkYTJES3Y4SUlQc1dmS2xTME44OTF1SW5qcnBHVzNoV0NrQ2Q3elN6aGVJWHA5RE1obWVxM3JlOFkzOU5LWU9lWE1DNjhJUWdTdk5iZUlUX3I5ekVNSQ?oc=5",
-              "published": "Wed, 07 Oct 2026 18:25:09 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+upgrade"
-          ],
-          "score": 2.07,
-          "predictedPrice": 164.5,
-          "predictedPct": 0.21,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 46.5,
-            "avgErrorPct": 1.23
-          },
-          "actualPrice": 164.05,
-          "actualPct": -0.07,
-          "priceErrorPct": 0.27,
-          "gainCaptured": -0.28,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "BHEL",
-          "name": "BHEL",
-          "price": 442.35,
-          "todayChangePct": 2.02,
-          "momentum5dPct": 3.11,
-          "volRatio": 1.15,
-          "news": [
-            {
-              "title": "BHEL shares fall ahead of Q2 results - Here's what the street expects from the PSU - CNBC TV18",
-              "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPaU1QZmJsTmlMRVVDVW9XRFdUS0hNZlEza214QkYzWGhHb1d2WDhhdkY2MVdfeTZWVk9pOXZhdWlTdHVNZWtvRFduemJNX1RXbnZKM2J1d2w3TTlKZm5WRldiZ0VQa0xSWndxOXZyLUpTX0JqUzVwY3NsQ0Vpa3p6cnlYbWtYZkwwbmFYTTZMd3lIZDFkZHNlWWNwQTN4em9UN0J2LVZMTmI4WUNuTXVsRGJaWFNVZDBsU2E5LXVLWW9IeVVMSlk2elFEMXVkd9IB0wFBVV95cUxQc0JFQjFMMFdpSTJCZ0hFal84MERZZ0dYVjI2UnNrVzhBSXpicGY4MXVFYl9nSUJsU2hkeU1rVnhyYzd2NkNHWkFSVzVnUUdmemVLN1p2M0lOcU5hTmphdmtGVnJCNm9QUzVRSkt3d3VYN0prdlo2cDcyUmRuX1QtYXJkUzFYU0ZycDdla2dnX09idDZBRWJyTk1LbVpPdkpJbzVYUFhPaFY4aUdaRWpJTXl6SVdNN1cyZGNQSi1fdlV2MkV5ZVA5WUJPZXBKOU1NTVpB?oc=5",
-              "published": "Tue, 13 Oct 2026 07:40:26 GMT"
-            },
-            {
-              "title": "BHEL shares fall ahead of Q2 results - Here's what the street expects from the PSU - CNBC TV18 - LinkedIn",
-              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZ1B4S0ZsNVR4VEdWczI2QVd6N3BOeURWb3ZFTHExOEpVRzBEMURhMWRwWEIwR0tELUJjNjJoZU9JQ3RmVjE2NHUyN2gtMTAzYlBvSktvVXhRcnhqZ3BTaGhjU1FXeGlENUJRV2hseUhKLV95aUZYdUFBVlVKam0zaU5IVDJLcW5qWkp5dVhHaWRkeFFRUWdvQTVodGR1b2ZxTXhxcHdpT0dlem9jODlDWWFadmtfcFJv?oc=5",
-              "published": "Tue, 13 Oct 2026 08:08:25 GMT"
-            },
-            {
-              "title": "BHEL Q2 FY27 Results on October 14, 2026: Profit May Jump 78% to Rs.654 Crore as EBITDA Rises 52% - NiftyTrader",
-              "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQbFN2bnJCbWFwaHdBM0pNMnA3MVlabnRnbzFKWTJCbVUzMm91bUtKU1lkd3o5WENOUXItdGxVUlhTcEp3TjhvMUtlcGxJM3lPLVZ4dWFBYmhLdEJZTkdia1ZfMkVYc3c1cFhTZGxsVXVreENsVGlPM0JFNFZwWWlQdg?oc=5",
-              "published": "Tue, 13 Oct 2026 13:16:29 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 2.01,
-          "predictedPrice": 443.24,
-          "predictedPct": 0.2,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 44.2,
-            "avgErrorPct": 1.56
-          },
-          "actualPrice": 464.0,
-          "actualPct": 4.89,
-          "priceErrorPct": 4.47,
-          "gainCaptured": 4.69,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "IRCTC",
-          "name": "INDIAN RAIL TOUR CORP LTD",
-          "price": 468.9,
-          "todayChangePct": 2.2,
-          "momentum5dPct": 3.56,
-          "volRatio": 0.9,
-          "news": [
-            {
-              "title": "Indian Railway Finance Corporation Ltd. Share Price Update - Univest",
-              "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxON0w1UDRnWXhsNzlCU1daY3Z2Tm14UEVzaEs3YnkxZWI3MnFzREZUZEhYSjduYWY0dTdGN3VLdlBMeUtoR3VxYUFoenVnekdWRXBkbjJaSHRLYUJNeUgzblQ3bi01MGp6VlQyaFhCT1BPNTY0UkhEb09saDZaMEduMUl0UHRiODMxYnpJNDJINWs5VUtGSnpOMUN3T2lfOXJxbnow?oc=5",
-              "published": "Tue, 13 Oct 2026 04:59:00 GMT"
-            },
-            {
-              "title": "Want To Visit Shirdi, Trimbakeshwar And Ajanta-Ellora Caves? IRCTC Announces 6-Day Tour | Check Details - News18",
-              "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxObFNEekR0bWNPRGlITUh6M01EbEprNV84Qlpzd1dSb05JT1pKdUtCZkZtNHdYMXJWdFJyeGZvQVRSMjJMdU5EbzlkZ0FWUWRvZ3VxNVdZRGFhZWFlWFZQOFQ4cDNfZG05VXRGd1lySmNtdWdnZGVtTWpXM0pDR3hudEZPR0x6SGNneTJOY2hqUEdqalBtT1FxYWtKaW1tMVNNeloybkk4U2lPd2U5Y1BsOFppNHZwUURQS1ZrT2FOeEIxN1lDMEFMUmdkeXdhVE5zd3dKTnB6M1J0bUN1OG54dUtyd2V0bUdmd3RQdFlacGZhX3lJQ1dsdmtCZmpwSXdiNG1XWngwNER5Q3AyWTRMeVVTQnFPd9IBlgJBVV95cUxObFNEekR0bWNPRGlITUh6M01EbEprNV84Qlpzd1dSb05JT1pKdUtCZkZtNHdYMXJWdFJyeGZvQVRSMjJMdU5EbzlkZ0FWUWRvZ3VxNVdZRGFhZWFlWFZQOFQ4cDNfZG05VXRGd1lySmNtdWdnZGVtTWpXM0pDR3hudEZPR0x6SGNneTJOY2hqUEdqalBtT1FxYWtKaW1tMVNNeloybkk4U2lPd2U5Y1BsOFppNHZwUURQS1ZrT2FOeEIxN1lDMEFMUmdkeXdhVE5zd3dKTnB6M1J0bUN1OG54dUtyd2V0bUdmd3RQdFlacGZhX3lJQ1dsdmtCZmpwSXdiNG1XWngwNER5Q3AyWTRMeVVTQnFPdw?oc=5",
-              "published": "Tue, 13 Oct 2026 10:21:25 GMT"
-            },
-            {
-              "title": "Stocks to Watch Today: HCL Tech, Nazara, BOI, TD Power, Juniper Green, Airflow Rail, Globus Power, Vikran Engg, ARSS Infra Ceigall India, IRCON - BusinessLine",
-              "link": "https://news.google.com/rss/articles/CBMixwJBVV95cUxQaFBtbGUteGRLcGpWanZxX2VfeVlYQnQzS1NLNTV0dFROZ0YtdTYxRzdpdVBsbjBkUEJ0WG1EUXRLQ0Frdmd4eEIzWTlZc19DLUpIYU1veFJSTjhneU5ZQ1ZxWlB1bGNPaXo4dUtBWTlRbU0weXJMZ3NnUHNGYkpRT0hnc24zbjdYTEVYdW1QSm9YSmQzZVVLZUc0UVlyVE1TSE5yNENVN2xhZzRKNUxfVXg1QjJRY0J6ME04NFlZd3ZPdnh2UGRyNkxjU284T3ZkY1FHR3hJTlZrUENiMTI5LTdqdElXUVdPaVpoNWk2VWNiTVBLQzlobWFyV1RSUFdoNnZITUgyaXhlN3UyQVl4RENBLWdFdG04OHZpVm1VcXJoQTBTMWxhSG54WEl5LUF3VjI3amV3akhfQ3MyM0Nxb09YbUFrOEHSAc4CQVVfeXFMTkRfWGJMUW9vc1B2TWVMRXpQQXB0bUtUdFYxcl9mNktYdmFveVA5RnVudmNPQWNhQWFGd0hJekhnNjJuZmlESEs4NUduYzZ0SmxrWG9LWGp1eWNyT2Z0WEh1X1Vqc1FUN2VDN1RiVjVxOGtZQTkxVWVVVS0wbGZKajNoZ085RjNEYlhHRVptUkx0Y3BGOEZEYWlTUWRQVkN4R2pqTng5Sm14UXY0dkNTX0M5UTlxQTMxZzJlNWFKRzNDNkxaX1haUEU5S0QyV2lPYlNHcTFlanFITkY4Njgwc041VnVQdVNEYnBiR29tSi1Fb1lTZzF2VFJpc3dWbFNBTDRiTGdPNDdpLWtVbnlQMXNYWmNFNGwyZzlsVGJzcElmS2psY092aTU4WlZ1VzNOX2hxZHNMSTQzVjhCQWwzTExER3FkSGM3VVJwemJjdw?oc=5",
-              "published": "Tue, 13 Oct 2026 04:35:16 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 1.84,
-          "predictedPrice": 469.76,
-          "predictedPct": 0.18,
-          "trackRecord": {
-            "checks": 56,
-            "hitRatePct": 55.4,
-            "avgErrorPct": 0.82
-          },
-          "actualPrice": 477.1,
-          "actualPct": 1.75,
-          "priceErrorPct": 1.54,
-          "gainCaptured": 1.57,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "TRIDENT",
-          "name": "TRIDENT LIMITED",
-          "price": 22.16,
-          "todayChangePct": 0.91,
-          "momentum5dPct": 1.47,
-          "volRatio": 0.59,
-          "news": [
-            {
-              "title": "Triumph Trident 800 Available in India at Rs 10.95 Lakh - Autocar Professional",
-              "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPVjdpRTBxLVQ3RjJoUUNULU5hekxYdUtGc0NobGVVQTVUamVZWE9KcWlSZkdJbTk3OUVnQVhaT3dnaXRFR0dhanVCOW9lY1pRYk5ROVVWdEJzVWdTdm1yR1dmQzRFTkFnR040Nm1PS1NaY1piNjJrbUVPMGg1UUsydWVYZERIQTZBSjBLTEljbW9aUE1rdFZZ0gGfAUFVX3lxTE9ieHJuRk11TGJmclFBSnpkdzNZR3VuNTl3Q1gzQl9WclVxcTY1N294VmZqcXJQSlJmRHpFMTJaOF9rc0hYaWFFVXRTREVVcGctbnVqaXJNM01yVlpNREdPZ1NxZ0VrWk5hTUNETGt3Z0ZVbTNwUHpqU3pzbmJVOExkaXRhS1cxMzB4clI2QWZrcjVMM0NnNVM3aDhoY0ozOA?oc=5",
-              "published": "Tue, 13 Oct 2026 07:51:31 GMT"
-            },
-            {
-              "title": "Triumph Trident 800 Launched in India at Rs 10.95 Lakh - autoX",
-              "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQZHdZV214TDhOR2RJZ2JWTjRoOEh6RUFsd0tNMkhpOUFiRkdRWnM2WHpaaXNoTlBRMzBQRFZpNWNLY2JCSUlYUkpEaVZ5bkJLc2hyMmd1TWE5WFctamEtRG81OVd3TW5xRGE5R3F3ajJmT0VwYmE0ZkdSM01yV2FKNkZwM1NDVlVLQnZWTkxnbVlsYTYyb2p3M0tkczI0T0U?oc=5",
-              "published": "Tue, 13 Oct 2026 09:33:00 GMT"
-            },
-            {
-              "title": "SRIT INDIA LTD. Stock/Share price , NSE/BSE Forecast News and Live Quotes - Equitymaster",
-              "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNbVdaV1JTZDM3QWpYRVQ5akFnTjJTbGRWYkRsQzY4Y1JLZnVfbDVvU0tYRXVNeTdveEg4WmxlVEZpVDdKMlB1YVVhRFRQZzhkc0ZlTHBSN1RYMXhuc0JqOU1GUHFpMEVKaVBKbUs2VERuek1WRy0tMUJxODlaejFzSUxpSjdZdzFRZlRDbw?oc=5",
-              "published": "Tue, 13 Oct 2026 04:26:02 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+launch"
-          ],
-          "score": 1.21,
-          "predictedPrice": 22.19,
-          "predictedPct": 0.12,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 46.5,
-            "avgErrorPct": 0.85
-          },
-          "actualPrice": 22.32,
-          "actualPct": 0.72,
-          "priceErrorPct": 0.58,
-          "gainCaptured": 0.6,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "TATASTEEL",
-          "name": "TATA STEEL LIMITED",
-          "price": 175.0,
-          "todayChangePct": 0.69,
-          "momentum5dPct": -1.76,
-          "volRatio": 1.03,
-          "news": [
-            {
-              "title": "Tata Steel, Vedanta or Lloyds Metals? Analyst shares top stock pick - Business Today",
-              "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQb05MZWRZTkFnU2Z3eW9qZDJaNkRkODhYbTh5cE5OdHQwVmxRam5kN2hMS1RENGlhcG03SGgtdEtqU2FmSXpiVUFsRHZaWGFQWXI4R3p1dks0LVdmTzVDdHFJWXdCQ2JTR0c4QjBuWFVHR1JpbVVYbDFpajJhT3VGakxtWkVFaFk0LUg3RTFNekpZdHNTRUttcmV2a0Y4Q08takxyU1J6VktOemRKeERldlY0OENiNXl2azdXaVN1UU41cl84Z3ZZaHlPY252UdIB0wFBVV95cUxPYkRYQXRCRUJxakxIbDJWYWlsMnhmRGdEa2FXUGlkSmpJa1U1SV9KQzFoYTZNcVpWbEt0cXRYZFlNazBQaEFOVEtvMC1Ib2ZYWkVBdG1uVjFDbXBiZkFpZE9IV01kZV9vYldEdlVULTktQnhINzd1MkxlSWVvc0VIY01aUHYwM2QzVHRHUHBhVG1JRU9oelNWak52LXRlUlZsR0FOUEVNVlRGSGZBX1JzRHJMTmRwekdMRW1vaVJDc25GVWxaSnJFYW5KM2xYUkl0cl9V?oc=5",
-              "published": "Tue, 13 Oct 2026 11:36:15 GMT"
-            },
-            {
-              "title": "Dividend comparison: TCS, Tata Elxsi, Trent - Which Tata stock paid highest amount in FY26? What 9 firms disbursed - Livemint",
-              "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxOM19yMVhzOGZBc0FOWEVsTWlCTGsyUHdhTGVib2ZUeFpkMTVRRV9DX2JDTEJCTU1ucWl0R3I3MzFHbWRkN2VNd1VER09taXNtQzJ1VTY2VHBjemVXRmZacnNiSzRzY1l2enNXbUQ5TkszSjNYZFJEN29HdmlqbF9oandNNXdsRHdOWTVoVFNsMG5YQ0EyZEo2Q1NJcXVrZHB3SU1OUXJOTUwxMnJXMXlnTHFlZUUzMklxVURLTkl3cGFYa01Sc3dCVVJFSnVudGs3U1JTV3g0TjR0TFRxNHJ3U01CdUt2UkpFdFlhb3BEWXNiSGNNdXc0ZXNJSHM1a3dNT0VtT1RnSVdXZ9IBjwJBVV95cUxQaWx5OTBiSFBCM2hBVlVyOXpXeGJJYVZWVWg1RGZ4aG9FV19RTllwb2pzNFJabWh6Qk1VOFJ2UVZlYmlyd2FRTXVEcFFJeDd3LXhIRDNFVVhON2V0TDNvRDFGb2ZDZkJuaFRZbDFxMmhHejJIdjBGWGlvTnRfNFJoR0tPOThScmU5S3h5Qm9YOWNUR2N1TWR0Y2pGaWZpTE1lNkVFYkJoQzgtZVpCSmdxX2pjUnpTd0tBbENqY1hYdk9KTWktc1hpbW85WVM1dWk3Y2pzVFVCRS1ncVNiMDNyNUtzdkk1ZWN6dVh4T3hGTzlnTUJUUFhRSDZaZ20xbVRHVkhEeC1kdUNlQU9iTWZV?oc=5",
-              "published": "Tue, 13 Oct 2026 07:56:59 GMT"
-            },
-            {
-              "title": "Gallantt Ispat Share Price News: Price Action and Valuation - Univest",
-              "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE92Z2Q1SzM1OVlnRXJIcUNLdXA1VzhsbDg3dElsZDRBUEtDajlJLTA1VVRuV0FmUUlwcWRfWkN4bjVFN0JfSGg4QXh0bXdlWnQycVBfTk9ZR1lsdjd1a3o2VW1uOEtISUtSaEJnVGx1a3UySEVYQTZza09TNA?oc=5",
-              "published": "Tue, 13 Oct 2026 05:54:00 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+mou",
-            "+dividend"
-          ],
-          "score": 0.95,
-          "predictedPrice": 175.17,
-          "predictedPct": 0.1,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 47.7,
-            "avgErrorPct": 1.27
-          },
-          "actualPrice": 174.49,
-          "actualPct": -0.29,
-          "priceErrorPct": 0.39,
-          "gainCaptured": -0.39,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "YESBANK",
-          "name": "YES BANK LIMITED",
-          "price": 20.85,
-          "todayChangePct": 1.71,
-          "momentum5dPct": -1.0,
-          "volRatio": 1.08,
-          "news": [
-            {
-              "title": "HDFC vs ICICI vs Yes Bank: Q4 Results Spark Stock-Specific Rally; Which Bank Stock Wins The Race? Target Price - Goodreturns",
-              "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQMWZLN0xvUld0YmFqY2NJWXM4SU95WGx2bmFadnlmLXRZOURERkxzWGxHaEwzSDRfTE9lNkJFM1lqQ0FzcEdfbFEwbjM0SFpFM18zVUxITG1Mc2pSNmRmTUUxVDJFdC1zY1hvcnh1QVlzb3N1NFB6YWxjdTU3eEgwbVhHb2prQnBvY2NOcWJEZG1zMVJFeEJZMmZIeFpRcDhYNzMwald5bTZSb3UyZDFxNEx5eWZBU1pjRlVjWlBKRDFmOEhUVktZVzJwUmVCaVBLWHRfbVVrM2E5UQ?oc=5",
-              "published": "Tue, 13 Oct 2026 12:37:31 GMT"
-            },
-            {
-              "title": "KTKBANK Share Price Today - Karnataka Bank on NSE/BSE - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ETTdfQk9pRHhQQ2xjVFJuRFhpZGJNTGhidGlSUHRiaDhsaEtTNW12akViVTZhTXJoa0NZQ040dnpTSVI0Zzl3U2tmYUthSWxTZHBIR0FZclBYQQ?oc=5",
-              "published": "Tue, 13 Oct 2026 13:51:04 GMT"
-            },
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [
-            "+rally",
-            "-ban"
-          ],
-          "score": 0.73,
-          "predictedPrice": 20.87,
-          "predictedPct": 0.07,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 43.0,
-            "avgErrorPct": 1.36
-          },
-          "actualPrice": 21.2,
-          "actualPct": 1.68,
-          "priceErrorPct": 1.56,
-          "gainCaptured": 1.61,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "GAIL",
-          "name": "GAIL (INDIA) LTD",
-          "price": 168.3,
-          "todayChangePct": 1.0,
-          "momentum5dPct": 0.48,
-          "volRatio": 1.07,
-          "news": [
-            {
-              "title": "Top stocks to buy or sell today: Stock market recommendations for October 13, 2026 - check list - The Times of India",
-              "link": "https://news.google.com/rss/articles/CBMivAJBVV95cUxPSnNiOEpaSjRMRWowRi1WUzVzWE1HSlpoT3h5U01qRUVFMVRMVGYxNHcxUUxuNFowN2tRamNoLUNaTnRERHJfNkR5NG9FYVlBS0pkNEhKcTYwR0Y0RHhDNFF3RkcxYlBGVDN4MmUtUWVKNlBvVVhDRXU3eUlTLWc0R0Z2aWVacEhobXlPZXd6eXc0d09iS28xbkplMGlBTDg1X2JWVFhEVUkxak9VYzZSSGJCcHZCSTc2YjBZT1h5TzZEZVBST0tRbV9maDBfVWZYWF9zN0FhYjZDZjYzbWRDa21mcy1tUjlVbjUyWDRfc1NVRzBFN3VfeUw4cmliMTRXcmlRT3R6aEhsVklIaXNXTkhfSmFyVVk1WEVqYi1oV2hXTURCV0dUWWpOSFhPVWdMNzh1S2VzUjJjU1810gG8AkFVX3lxTE9Kc2I4SlpKNExFajBGLVZTNXNYTUdKWmhPeHlTTWpFRUUxVExUZjE0dzFRTG40WjA3a1FqY2gtQ1pOdEREcl82RHk0b0VhWUFLSmQ0SEpxNjBHRjREeEM0UXdGRzFiUEZUM3gyZS1RZUo2UG9VWENFdTd5SVMtZzRHRnZpZVpwSGhteU9ld3p5dzR3T2JLbzFuSmUwaUFMODVfYlZUWERVSTFqT1VjNlJIYkJwdkJJNzZiMFlPWHlPNkRlUFJPS1FtX2ZoMF9VZlhYX3M3QWFiNkNmNjNtZENrbWZzLW1SOVVuNTJYNF9zU1VHMEU3dV95TDhyaWIxNFdyaVFPdHpoSGxWSUhpc1dOSF9KYXJVWTVYRWpiLWhXaFdNREJXR1RZak5IWE9VZ0w3OHVLZXNSMmNTXzU?oc=5",
-              "published": "Tue, 13 Oct 2026 03:26:00 GMT"
-            },
-            {
-              "title": "Indian Gas Exchange Gets SEBI Nod for Its IPO - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQYk5VcEIzOWtDcFlNOVVOMGNUWHlxaDlFWnh3YXdvYUh1MklURDM4dHZsOGhwd2c1Q2t3bHJhbmNPOUVnenJ1cjM5eVNLU08td2lqTmk0Y2RLV3JMc2NabVhvbFVDVmliSXVWZHRoMWtEVk9hUERBNmhDTmh0VFRBM2N5eEpuMDJRRVdhMkxfOE1ILVUwTmw1MW52OEVOVmJzdEFUSnJPWS00ZXJKZnRtV1RjckdYSjNCS05tSXVDcnlDV00wbFlzdWFwbHQ5enU4WGhoRzRnNzhVVjRYZGc?oc=5",
-              "published": "Tue, 13 Oct 2026 07:23:00 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 0.73,
-          "predictedPrice": 168.42,
-          "predictedPct": 0.07,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 53.5,
-            "avgErrorPct": 0.78
-          },
-          "actualPrice": 166.96,
-          "actualPct": -0.8,
-          "priceErrorPct": 0.87,
-          "gainCaptured": -0.87,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "RVNL",
-          "name": "RAIL VIKAS NIGAM LIMITED",
-          "price": 197.3,
-          "todayChangePct": 3.49,
-          "momentum5dPct": 0.18,
-          "volRatio": 0.95,
-          "news": [
-            {
-              "title": "Deepak Mohanty joins RVNL as Non-Official Director - https://whispersinthecorridors.net/",
-              "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQWnlnODhCekd6TnZVLXBCaXNrcjFxbkdtQUdqcXROczBScTVYbWZFdWxyaW1XRi1MbkI3dThWUy0yaXhZUnV2eFQ0eDNkUi1iREVVc3FEd0dwTGRGbnBmQVR1VldDNFJZWHc3ZC1fck9xNFhaX2Y5QXNjQnlVYjZTWllzenlVdjRWaGFjZmlDN3l4VF9z?oc=5",
-              "published": "Tue, 13 Oct 2026 07:14:42 GMT"
-            },
-            {
-              "title": "PNC Infratech Share Price Today: Price Rise View - Univest",
-              "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE84MUx6ckZ6ZGFueE9Dd21qRm5fS2tnLTJ1VzR6Zk5weExtN2o2X3o2N0dBclZvVUxRTXdtNkRZZjNnT0VjZVo5dTMyeGlRV2NMakx0SVlfTXQxRVFvbUU4UzZURF8tS2RCRVA1bWtfdEthNWtTSTd3OE40dFlxQ0E?oc=5",
-              "published": "Tue, 13 Oct 2026 07:26:00 GMT"
-            },
-            {
-              "title": "Buzzing stocks for Tuesday: HCL Tech, Nazara, Bank of India, TD Power, Juniper Green, Airflow Rail, Globus Power, Vikran Engg, Minda Corp, ARSS Infra Ceigall India, IRCON - TradingView",
-              "link": "https://news.google.com/rss/articles/CBMivAJBVV95cUxQRjJ2QTQySmRQYklKQlhJcVowbWZXTXBOQzJ6UWhobk5kVHpwSU00QmE1NGQ3dFBSVXVTeXRjdmctYmpKVlp3Sm05Zl9LOTlMejExZWJWZk8xSk5NTzVNcS1oZVlJRnRzb1RxSE9CeUlKNW1pWXQxM3hTcDd0R1RfVGxib1lvQVJiVjFYX1I0bFhzMlJfTk94dmQ2WGZrRzREY01LMkxwV1BvYkFEUjBiSEJBcGhlclltTzdSNmExQ3A5YmpYVHlJZmdxWjZtQVpCcWFRekRBRWdRQlRmNnl6aFpxd3RLcF9qZFN0a3BzOEVyTDJkSmVTdi0yb2xZWDJLMjBEOW1nRHFiM0Y2anJjRV80RnJuNzkzeV9oMmdQOGsyOHVNYmZNdDlNcGlqZDVVQWtpTFhneVBwOTN0?oc=5",
-              "published": "Tue, 13 Oct 2026 03:30:00 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-ban"
-          ],
-          "score": 0.71,
-          "predictedPrice": 197.44,
-          "predictedPct": 0.07,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 53.5,
-            "avgErrorPct": 1.62
-          },
-          "actualPrice": 196.88,
-          "actualPct": -0.21,
-          "priceErrorPct": 0.28,
-          "gainCaptured": -0.28,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "VEDL",
-          "name": "VEDANTA LIMITED",
-          "price": 256.3,
-          "todayChangePct": -2.92,
-          "momentum5dPct": 0.49,
-          "volRatio": 1.69,
-          "news": [
-            {
-              "title": "Vedanta Demerger Update: When Will Investors Receive Shares In Their Demat? Listing Date Details Inside - Goodreturns",
-              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQd19XZEtNU0NndHBJQU0yMFlQeEFPc1dYcUczbXh6Wl9HbTlqb2FtZXdJN0xCWEpPWEhGYXJkbUwxbkpSYVRpYXJpTzdMVGlTbnA3aDktMXhWSHRCQUVWVUtna2luZTBiajVjd2g3ZDJ4S2swaUh3Y0hnYkFWd1l5UU1PNkVmMTZPM0Z5TE8zanJzTEJGY2Y3LTRudGozVncxdXhHY3VkUVJmX05YbWE2ODRPb1ZFbUZOMk56S3YybG5lU0h5b3QxQzBZT3NkcFlHUFpTS1RSNA?oc=5",
-              "published": "Tue, 13 Oct 2026 09:16:22 GMT"
-            },
-            {
-              "title": "Vedanta Oil and Gas Ltd. Share Price Today - Vedanta Oil and Gas Ltd. Stock Price Live NSE/BSE - CNBC TV18",
-              "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQanlKcVVhVjZ5YmFsWTNIb015ekNYb1JGN0FGMEtiVW81QVJ0bDhDTUVvTDVYTlhCOUxqWDFoYWxKcm16LTZmWUNJTGZuTXdvYTBMcGNKQVdwalpCajllOFNCdzZsbTZ6TG51VXA3ejZLYkY4UllscktFVEdIRlVOWFJ4Y0NkRG5oNHc?oc=5",
-              "published": "Tue, 13 Oct 2026 08:23:00 GMT"
-            },
-            {
-              "title": "Vedanta, TCS dividend record date on October 14: Last opportunity to buy for payout - Upstox",
-              "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOR09MbWdvdUd0MFlCOG1MNUhqV0ZkTGJobmdOMDJoOHdWY2FLeDVlc3Q3SkJaM1NEZ09FaWI3ZkhWZTd3RFJ0R3hmM2h3WjFDS0I2NFRPbFpQcDZ4d0lZcnp1ZDhuaXZQVjh2czNNUGRVcFdaSUtBSFVkZ2Z5TW5NeFl6VjZ0OWFjWnU2U3g4OXNoRG0xalFrMFB4Qi1ONkhFS1Btc21xOWhBd0VlUENnX19NU1I3bGdYdlU1MVdQZzlvV0dSTkkyNVQ3a3k?oc=5",
-              "published": "Tue, 13 Oct 2026 03:04:05 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+merger",
-            "+dividend"
-          ],
-          "score": 0.7,
-          "predictedPrice": 256.48,
-          "predictedPct": 0.07,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 53.5,
-            "avgErrorPct": 1.66
-          },
-          "actualPrice": 250.0,
-          "actualPct": -0.52,
-          "priceErrorPct": 2.59,
-          "gainCaptured": -0.59,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "POWERGRID",
-          "name": "POWER GRID CORP. LTD.",
-          "price": 250.5,
-          "todayChangePct": 0.54,
-          "momentum5dPct": -2.53,
-          "volRatio": 1.45,
-          "news": [
-            {
-              "title": "Power Grid (NSE:POWERGRID) Commissions Rajasthan 20 GW Renewable Transmission Project - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxOeHpIZUdUWTBBaURFYmcxX3RKZW9EdDVqYUVaVml5OGJaQkJXUGtVemx1cmlCSTR2UzBXYlhTemp0U2RUNHN6czRzVWlPX2ZsWlZaRkU1V0lMX2ZVNFpzMUlWdlQ4OVdMc3l0b19vc2trR1VWaVdkYnpTM1dPRE03c2JUbW5lQ1JZNUYwUVNxRHNXeXlhcVVvOWlqdDFveTZzMGZEMkl1UmVfaTV5bzJOZ2RWTGNMZkUwOWhjbVI3UUxBMXRtdThqcXFaeTZiaGZUUEJGYjBfSlVxdUpRTmpxTVJOVFV0Umlzbk5Wdm8yNV9wdlBCa3p6d1gtcjhSYkxaekFrb2tETkwxQWxTaThrXw?oc=5",
-              "published": "Tue, 13 Oct 2026 13:07:00 GMT"
-            },
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            },
-            {
-              "title": "REC Power Completes Sale of Transmission Subsidiaries - SolarQuarter",
-              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQNzc5bDBHZDNRNG4tYW1LNldKRVV3NldJMzdtNmk1UXpMX0tkRzdiUS0zZlZ1VHNFN2FxWGpGOE1DNnh2ZS0wWi1CYTlfRThkYzdlRnpXOHBaMklMekdZWWlLSE9pRk5WQUJqTDdIc3p0eU1WaXdtSVJXOTFZak9FSlJ5MTJPUnpDa1B4dXQwczRPdHVOa3NEbGlnWk9qYTVqZEtWWHd2Vk9xVV91VVh0MXVWcGgzck8zY3MyUXVnQlozRFZybzBoLUZEeGdMMGRyNTRFRTNUNA?oc=5",
-              "published": "Tue, 13 Oct 2026 10:10:11 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 0.31,
-          "predictedPrice": 250.58,
-          "predictedPct": 0.03,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 36.0,
-            "avgErrorPct": 1.06
-          },
-          "actualPrice": 248.95,
-          "actualPct": -0.62,
-          "priceErrorPct": 0.65,
-          "gainCaptured": -0.65,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "NHPC",
-          "name": "NHPC LTD",
-          "price": 73.49,
-          "todayChangePct": 0.69,
-          "momentum5dPct": 2.07,
-          "volRatio": 0.55,
-          "news": [
-            {
-              "title": "Trigyn Tech Nine Monthly Results, Nine Monthly Earnings for Trigyn Tech - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNNEVhOUtvNzV4eFEwU3NlS0pzNERuWnZZMUcwa3cwdDFFLTY3LWtnU0RpMnVKcXI3bzZhTDBRcVA5OGI0Ym4xSVNYYUVPRzZwdTEzeHgwWW1xczVvZzdVWmFrZF9WU1Nwa2JfSVdmYVYxb01aS2hualJ0b3h3M1ZsU1dPQlZCZ1JaWG4xa0Npak5Xc0gtN2prNg?oc=5",
-              "published": "Tue, 13 Oct 2026 15:47:23 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": 0.19,
-          "predictedPrice": 73.5,
-          "predictedPct": 0.02,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 45.3,
-            "avgErrorPct": 0.81
-          },
-          "actualPrice": 73.72,
-          "actualPct": 0.31,
-          "priceErrorPct": 0.3,
-          "gainCaptured": 0.29,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "TATAPOWER",
-          "name": "TATA POWER CO LTD",
-          "price": 345.0,
-          "todayChangePct": 0.83,
-          "momentum5dPct": -1.85,
-          "volRatio": 0.49,
-          "news": [
-            {
-              "title": "Tata Power MoU With Imperial College London: Key Details - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPbzM0dlE0djRINWZiMzVZd3k3eXdWY3lWTUdEeEFLY0RqUWNhLUcySWphcHhKMkZSOVFtU0hOdklXMDQ4YUo2N0lIWnRNVlpOOXdkczZsbjVKMkx4Rjd5UHE4cXgtY0xMcXc4VkdaWUZBRnBSRnlJRlh0RkdVWTF5eVlydnNiYWZ4NHBZcEJ3Z0Fsc2Y2alY3NkozamZ5S18zSE1ER3BsTjM4OFAwLTh0NVlqZTRRa0FhWURETWtlQl8?oc=5",
-              "published": "Tue, 13 Oct 2026 08:57:00 GMT"
-            },
-            {
-              "title": "Tata Power signs MoU with Imperial College London for energy research - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNTDJPZ19GVGl6WHB2SWpXVVctbDRsVW9SWlN6MDhFMjVhdDktU2dlS01GNDVvdU5ncUxWRllUMDNQWkVGaEZ2NHRHRG5MbUpicUxXODdhd3RSVG92aUN0emJQd2lOMjVDTVRqT3RWaTRia18xdG1RWVlJajBCbVRVbjdJUEd2d2JJdFg4am45UURlRzdkazhYMDFpMjRnSy1UVldlbUJJS1N5bWZ5TWFEMVpVWS12bmto?oc=5",
-              "published": "Tue, 13 Oct 2026 09:22:10 GMT"
-            },
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+mou"
-          ],
-          "score": 0.19,
-          "predictedPrice": 345.07,
-          "predictedPct": 0.02,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 54.7,
-            "avgErrorPct": 1.08
-          },
-          "actualPrice": 353.0,
-          "actualPct": 2.32,
-          "priceErrorPct": 2.25,
-          "gainCaptured": 2.3,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "UNIONBANK",
-          "name": "UNION BANK OF INDIA",
-          "price": 172.22,
-          "todayChangePct": -0.49,
-          "momentum5dPct": 2.53,
-          "volRatio": 1.29,
-          "news": [
-            {
-              "title": "Ashok Leyland, Union Bank partner to offer vehicle financing solutions - ET Auto",
-              "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNR3B1OXptUVhqR3MwempkaWp2aGwxRm1QdFNhVUFjZGlYal9XTEdFUURObE9LWHd2Rk5pVUZDS1BTU1dNb3RxUlFBZGZlMmN4VU5KMU51Uk5PRXU1cHhmQm13dzQ4cnFxVDFra2U2WlkxSDZtM1RqaUVwSm5xb1Y2WVBWUzRWYUN0aHVFclFER0dYaXBMUXNtc2h5NmRsNXRJN1lDOEdLdTVVeEM1eFkxNzB2TDdNMDF2c2lvdjdsRTBfeG4xTlh3dVNIS0V4VUJySEJPYTl1WDhiYVZuU3hvdVNlWdIB4wFBVV95cUxNR3B1OXptUVhqR3MwempkaWp2aGwxRm1QdFNhVUFjZGlYal9XTEdFUURObE9LWHd2Rk5pVUZDS1BTU1dNb3RxUlFBZGZlMmN4VU5KMU51Uk5PRXU1cHhmQm13dzQ4cnFxVDFra2U2WlkxSDZtM1RqaUVwSm5xb1Y2WVBWUzRWYUN0aHVFclFER0dYaXBMUXNtc2h5NmRsNXRJN1lDOEdLdTVVeEM1eFkxNzB2TDdNMDF2c2lvdjdsRTBfeG4xTlh3dVNIS0V4VUJySEJPYTl1WDhiYVZuU3hvdVNlWQ?oc=5",
-              "published": "Tue, 13 Oct 2026 06:31:28 GMT"
-            },
-            {
-              "title": "Ashok Leyland partners with Union Bank of India for vehicle financing - Manufacturing Today India",
-              "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBaQk9iVEVLdzNFaUZwMUNfVXVncXloUTRQSlVWMHI2M1podVh6NDlaYlFnbk5VNzdpNWdnaUNIaFJ3Y0ozM2tPVVRZaXdPM2k5dWc4X3l1QTNjc1VjNGhRVmJrQnVWMVprVjZ6eHp6bWFRUWhLaXlqeng2WGROZw?oc=5",
-              "published": "Tue, 13 Oct 2026 08:49:10 GMT"
-            },
-            {
-              "title": "Ashok Leyland Ties Up With Union Bank for Truck, Bus Loans - Autocar Professional",
-              "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOYVZfN1Zzc0EycThRaERibVJ2SENwZ3BHZzJyUGFIYmxJS0ZvZXVsNzdQU1k2eWQzc2o1d2ZlNWhfODdKMjNyd3htQVNkeTFZVy1kR0pYenNXQW5SeHpxcVFOSDlmT3djZ2I2NmF2NUhDd3FWQUFuRHJKU0w3cGZTdU1scWJ4RlVlczVESGdWQ01SNVpYT3p0OWk0Z1p3a3paSUFWT9IBrAFBVV95cUxNX21nQlp1TnB2SXdjRHNpRXlybTBidTBzTFR4QllVY1JlRlBFZVJUekM4YWxPSkhpb3ZfbGVwZ1JHa0h2SGZrR0ZxdEg4RlRuRTBOdWhjMFgzak1faXBad1M0MTBpcFBEaFNGOUtPaERMTm5yWURHbGVrWDI2MUhyN0V1RUxZc2RMb1hEdk1ONmxsMUpPb3dzSkJacHphRUV1YVVSRm1OeVFxRl9D?oc=5",
-              "published": "Tue, 13 Oct 2026 05:39:12 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-ban"
-          ],
-          "score": -0.18,
-          "predictedPrice": 172.19,
-          "predictedPct": -0.02,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 43.0,
-            "avgErrorPct": 1.28
-          },
-          "actualPrice": 174.0,
-          "actualPct": 1.03,
-          "priceErrorPct": 1.04,
-          "gainCaptured": 1.05,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "ASHOKLEY",
-          "name": "ASHOK LEYLAND LTD",
-          "price": 147.37,
-          "todayChangePct": 1.59,
-          "momentum5dPct": -3.43,
-          "volRatio": 0.9,
-          "news": [
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            },
-            {
-              "title": "Atmastco Ltd. Share Price Today: Rs 111 and Valuation View - Univest",
-              "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE53bU1acFlBRFNoQVpFdDRJYmY4YkdQV2hjbVBBUUZzbzkyT3JQTnhsVGxxUjVJTkFxcXk5SFpvbEF5Z3ZzNGxzb1BHR1kxNk1JdDZRVFB5Zm44c1ZpQjl6cEdjTkU0d3dWdVQ1TTZna2hjR240SnhtUQ?oc=5",
-              "published": "Tue, 13 Oct 2026 05:55:00 GMT"
-            },
-            {
-              "title": "ADISOFT TECHNOLOGIES Upper Circuit Today: Price, Data and Peers - Univest",
-              "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9pRC11aWRNX05FSzlGQ0hnT250TWtSRGdPcko1a05CMU5UQUZ6T0Qyc3gyYWR5TjA4ak1VSzJIbXRJcEtReERGTEc5MXNKSnlNN2JvS203UjQ3cFFyT0JOM3pCa1MxQ0t1Nl9lNVowMFZENFpWdGU5a2pxMVBKdw?oc=5",
-              "published": "Tue, 13 Oct 2026 09:04:00 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": -0.21,
-          "predictedPrice": 147.34,
-          "predictedPct": -0.02,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 50.0,
-            "avgErrorPct": 1.37
-          },
-          "actualPrice": 145.0,
-          "actualPct": -1.61,
-          "priceErrorPct": 1.61,
-          "gainCaptured": -1.59,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "CANBK",
-          "name": "CANARA BANK",
-          "price": 120.44,
-          "todayChangePct": 0.71,
-          "momentum5dPct": 1.64,
-          "volRatio": 0.88,
-          "news": [
-            {
-              "title": "Q2 Results Today, 13 October 2026: Tata Elxsi, Canara Bank, Hero Motors, TARIL, 18 Other Stocks To Declare Q2 - Goodreturns",
-              "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNYjR0c1NXQTBoTGstQ3RENWgwZWZSM3kxbnFVSkE3T1R3WGtva3U2OXdOYTlib1g4YXNwR3Jadms4eTF0bU1PT3VoUUhwem1uWjY2ekVYN3RaRVZRVnd1RnpTNHlCbGZfTEhRcnR3QUF6bFVkbFJfVUNIZFBqT1Z0Vkp3ZFRhNkxkRVozdnpOMElobHAyQXpVeFhkWDJkYjg0OTNVUENkd1A5cEpyWUZwcDkyY2l5TUE5WFBfMW5DdG1GV0J5VkcxQ1ZZbno4UmtZbGhnbEJvRTRmRFk?oc=5",
-              "published": "Tue, 13 Oct 2026 01:56:22 GMT"
-            },
-            {
-              "title": "Canara Bank Q2 Preview: NII seen rising 17% YoY, Profit growth likely to stay flat - Zee Business",
-              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPS3ZCc01VWDdhYkV0YlhvM3FGTmZBa2c3VmFWRno0a1NBSlZYbHg3bU1vZ09lWU5iNTFUNFBSRnloRDlqamJ2N3VEMno4c09WQnJXRDAwbzNlWms3c2d5ZHZOemNJVlpOeDNtUTJ3ZnltVUdqZmp1YzczMlBEa2hGV1NhMmFkZl8ySy1OUlNObWZheXFMQ2NGaVBiZkRkVW1BQnhTdVJIYTAtWG1sLUI1Y2NialNLOGh1TmpTTkpsN1hoRGJVbVlvSnR3?oc=5",
-              "published": "Tue, 13 Oct 2026 14:17:00 GMT"
-            },
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-ban"
-          ],
-          "score": -0.42,
-          "predictedPrice": 120.39,
-          "predictedPct": -0.04,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 51.2,
-            "avgErrorPct": 0.85
-          },
-          "actualPrice": 124.76,
-          "actualPct": 3.59,
-          "priceErrorPct": 3.5,
-          "gainCaptured": 3.63,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "PNB",
-          "name": "PUNJAB NATIONAL BANK",
-          "price": 116.55,
-          "todayChangePct": -0.37,
-          "momentum5dPct": 3.74,
-          "volRatio": 0.78,
-          "news": [
-            {
-              "title": "Is Punjab National Bank the Best Stock in Its Sector? A Look at the Numbers - Univest",
-              "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5WLXBSbzUxLVE2N01IMnhlMFRlSlhwSktTUHlIOEZkVllpRVVxNWFBc29LRHZZSVJLdzA0TjZiOTNvaXFZQVo3RkdyRDYydmNmLWQxVEFVblhRMFowX29HNjdkUQ?oc=5",
-              "published": "Tue, 13 Oct 2026 04:57:31 GMT"
-            },
-            {
-              "title": "Punjab National Bank Q2FY27 Earnings Call on 16 October 2026 - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNQ1FwczktRWlUQVVCbnNGc0xFWmtSb1BUd1FGekJMaHBiWWhSMl9aMEwteDhGM2V2WG83NDlqQlhCeXJGRUMzYlV0R2FRNDJqY3kwcWpQMEl4aWVTZElxUkxwcjBwUEkwdHNMUVFnSlJEdFhtaVNkWmI4QVlRenBFdkVKZldtUGdiNnJ1V3FHMXVKXzY5VllBcFRRVmxPRnNpNjNUMXZsWEo0NllCMVFLU2duNGRyLXpfbWVzYUZMQ25HMV8xc1NoNkhVdnB6VnFBMHY5bA?oc=5",
-              "published": "Tue, 13 Oct 2026 11:17:00 GMT"
-            },
-            {
-              "title": "Delhi court cancels look-out circular against accused in Rs 247-crore 'fraud' involving PNB - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxNV2dlNk8yQl9ZVFcxZkhaeDVZTGtCX00zRGY1X2duMDd5RGEtLXY5bFhBY2lqWHdJMU5Xd3BYU28ycXhHYUJtc1U1dU0tUnRMXzVldDBJbnpLXzRwLWhHRV9Db0hsdm5oSTJqTEx4ZW9LcGUxR1pXbl9rZEZwanFPdUNsZDdwblJmQ3YyeDh6V2hTWkdBRjVidDlhQXgzblZDRnQ4cE15ZWlzUEhkai1LOEVteTJfcE1JS2haZkIyZWIzT2tORXNZWXhXelJfcWU0SUFPY0dzSzZ1TlQtY2xaTHMyT1VzMGJEcDBGbHBUamNMWnN0dVhUSDQ5ZVgwUWR1Ulp3UVdORdIBjAJBVV95cUxOWXNkV3R5SDFCZ3Y2UVE3SDBUWVQ0d1FyVVVDcnN1X08xVUdfcjY1bWljd0lKdnJtMkhLS3Y3aGlHemVDTE9vUmluV011VjR4WncxRlctSWw5N04wMFl0dUIzMS1IcV9SRDZQLTliWXhKZ0M0WExncFNRbG9GWDFFc0RTOFlGYlEtNG82c0pvS3pnVnZ6cUxvU1NKMjJUaEVzUmdHdzZiUXlGUk1rczlJbjZkZ05VT2FlUG1kcFRXdURrNjZPaHh5QWJNYW1mNlBsbDhKN3o0N1Rfb2g2eHJXS1JXdW5HNGZuUE5oenJYSkhFcnAxQ2hhU1I4UUZ0SDdneTlJM0JSUE1FVXlE?oc=5",
-              "published": "Tue, 13 Oct 2026 16:50:58 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-fraud",
-            "-ban"
-          ],
-          "score": -0.58,
-          "predictedPrice": 116.48,
-          "predictedPct": -0.06,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 44.2,
-            "avgErrorPct": 1.09
-          },
-          "actualPrice": 118.5,
-          "actualPct": 1.67,
-          "priceErrorPct": 1.7,
-          "gainCaptured": 1.73,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "BANKBARODA",
-          "name": "BANK OF BARODA",
-          "price": 238.43,
-          "todayChangePct": 1.12,
-          "momentum5dPct": 2.42,
-          "volRatio": 0.48,
-          "news": [
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            },
-            {
-              "title": "BR Shetty sues Bank of Baroda for $15 billion, alleges lender enabled NMC fraud - BusinessLine",
-              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQOW53SUZReEptOFFNS3QxVzY0SzBQZGx6TnMyeFQ2T2xaS3M5QzB6Q3Y0b2JveTdwN3hWcG5qSVZZMUU1UWNhRDVNaE8xX2ZwNzRBeGxDRW9aZXhVclBKdjB6N0FnOXFDd3NGZXkyU3l5SWpJRnZGWlJvbVVpX3JkTDNpY3c4RTZJQzNJMk14ZWlrVUJHdU1QUHlCU0pVMWd4RFV0dzRDSTVuWC14eURIT2JSVUExQ2VyTGVVaWxqeHV6NmkyNEVaUVFFRWsyS1IwX3lIY1V0NkNIUm1L0gHjAUFVX3lxTE10MEpxXzU0M3pZeERnaEVXODdDcHc1ZWVXOGxwT3Nka3JfaWNrOTBlbGNHc3R6UTRybEkyaFNmUlhQU0pUcTZuM1dpUng5QTZmMjdzRHpnTmczUl8zN0dXa0ZsanYtUTl6WXFwNUJSOC1QZGVpUGxiZU9DakVyU3g0Tm5Xc25SVUhlMGdHNjI4aWZ1ekdCY2U1aUJGcWo5c01DdXJEUEl0VEV2UkVoMlFGUk83ckhhbDVvbnpxTHptbWV2UUdMN3pSbnVHVm5OVngxdHJyVFA3d283MUlzRXFDOGlz?oc=5",
-              "published": "Tue, 13 Oct 2026 13:26:23 GMT"
-            },
-            {
-              "title": "B.R. Shetty seeks $15 bn from Bank of Baroda over alleged role in NMC fraud in Bombay HC - Livemint",
-              "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQLWNheUdEeUNPR2t2aFk1WlEzbDdLTGZ4TGFCM0ttS1pXVUNfaFlzRjZkX2IxRUxtdUdHYTdGTG96eVpHNElCWElTNHNjVTN2RE0tTGNod2FNS3Z5QnVQanZvTUNNZ2FWdlhaUHlHSHhick02QzZZOXZOZDFacG9sZVhLa2dQVUs0ZDNOZXg3NWRFMlUwcjNDOFBvSmxRMWtPWm9jVXR3VkY3LWtUSUdubXBodEJPRnRyaXVLbEZFbXM3TVR5aFptaGFKT20yRWRheElSTWZvRFlRS1dVUzRVMQ?oc=5",
-              "published": "Tue, 13 Oct 2026 15:50:10 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-fraud",
-            "-ban"
-          ],
-          "score": -0.62,
-          "predictedPrice": 238.28,
-          "predictedPct": -0.06,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 45.3,
-            "avgErrorPct": 0.83
-          },
-          "actualPrice": 229.0,
-          "actualPct": -3.96,
-          "priceErrorPct": 4.05,
-          "gainCaptured": -3.9,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "COALINDIA",
-          "name": "COAL INDIA LTD",
-          "price": 408.5,
-          "todayChangePct": -0.74,
-          "momentum5dPct": -3.9,
-          "volRatio": 0.78,
-          "news": [
-            {
-              "title": "4 Reasons To Buy Coal India Shares Amid Macro Tailwinds For Rs 500 Target - Goodreturns",
-              "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOWjFCWEw1NTI0UkhnRy1yQXZHY1c4cGZJT0tyenk2U2RLT2FKR2o2VlJGbUkyeHBpak54dXYzbzFqTzRPVEgwWXZnVVhIQ0gxMEp2clZ0YXJzR3VOaUREYm9kclEtZ1RpMGlYamxoMnJyaXgyRFdCS0NKYzJOQnQwanJBdVdjZTRIOEZtcHhKOVBqNEdjZUkzYkp4TFpTREZZMWVkeVpvUVNBRk1Jdm5RQTFjcnVHbEJ1bUE?oc=5",
-              "published": "Tue, 13 Oct 2026 15:13:43 GMT"
-            },
-            {
-              "title": "360 ONE sets INR 516.00 target for Coal India stock - ad-hoc-news.de",
-              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOb0ZiQjUyVXZyOUgyN05obWFSaGNWUHVHekprRGpyd0E5dkxiTFhSZ0lOMlk3b2lsQUhJQ2NsZTlFNWpKUHZxZDNnWHhUWThYYzdqdDEyenMtRjVvRXdCYjUxVm1XbUxfZXNNQXRVMjBDcTNzamlQX3V2WjZYYVlRSUt6VlRiZThxYWZKeGVEeGRJNWpUNWY0eWtFazlSQlpvaXVvVHFkRlZqNlRMLXBuTXpWT24?oc=5",
-              "published": "Tue, 13 Oct 2026 12:41:59 GMT"
-            },
-            {
-              "title": "India may need to raise coal power capacity as demand surges: CEA chief - Business Standard",
-              "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQSUZ6SlpFazRoYXNIOGYzQkhPWHFFWk9ublBVTUZVR1F5bDhObHFjVDZXTHFyRGlkMG1pLWZXb0paTDJmWG14N0JyOHA1TEw2cFd5TDlzdElwMDJsU1hxWlFnTHlZMm0wU2ItcUVHUHlCYnltRHQweERlT0RfWGRpQ01Sb3dfQ3UteUFDaWstV190bjc1RG1aWjQ2OXpYQ2poamQwSFdsUDFMalJBR2JJMDV0Mnplak9pZ3poSkIzekFPTlBZZzc5ZGV2LTR4V3ZUWk1Wb9IB2gFBVV95cUxPQTFDS1ZLdVZlaEs1Q2l2bkQ4eXZYSW9LSFUwb0tRNXlaVU5PdnhXRVA3eVFRSjZfSlJySEIxVGF3STVLQUx1QnZFRlRBSVZIS3A2QW1pUmk3cVlibG5iSjZ4NDhibEJWVGNzRkFYcTVyU0t3VnlnRFFfaGd3eGpCaFVQV0xGejhxZlZGSTZBSThvU1RhSzY3NDEtM3RLdVJBcHduQ2Y4Z05rX0VZSFlwUTMydDRmb2V1ZGxHRDlNZDZkMlg0MjZ6eFp2YWRGQXVGLUczZkJXR2lmQQ?oc=5",
-              "published": "Tue, 13 Oct 2026 08:45:17 GMT"
-            }
-          ],
-          "sentimentScore": 1.0,
-          "sentimentTerms": [
-            "+demand surge"
-          ],
-          "score": -0.67,
-          "predictedPrice": 408.23,
-          "predictedPct": -0.07,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 48.8,
-            "avgErrorPct": 1.21
-          },
-          "actualPrice": 417.0,
-          "actualPct": 2.08,
-          "priceErrorPct": 2.1,
-          "gainCaptured": 2.15,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "IDEA",
-          "name": "VODAFONE IDEA LIMITED",
-          "price": 12.8,
-          "todayChangePct": -1.54,
-          "momentum5dPct": 0.47,
-          "volRatio": 0.7,
-          "news": [
-            {
-              "title": "Vodafone Idea Share Price News After Intraday Price Fall - Univest",
-              "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBkQUlSV1B3aV81YjN1TjdKa1NzVWJHYkxvcDBDQ2hQWHBFOU5nakZiT1BiNHVsZ2ZUV3hHZnFTcmpSLXZoWEZKRFJ5cDNJNkFQblpxZ29jVF9uRTRiYVl5UElvM3RBN1NpdUNaWWc0b1l2TjRnaWx4NmZB?oc=5",
-              "published": "Mon, 12 Oct 2026 23:03:31 GMT"
-            },
-            {
-              "title": "Most Active Stocks October 13, 2026 at 3:30 PM IST - HDFC Sky",
-              "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9mbXFjVi1yWVJjZW1rN3lCY1RfMlRxSDlrZ1V2TGRYNWlVMktOeEhfckM4TWliSWtNWUFYRXk2akxaakIzSWZXSFBWWlE1R2I5MVRVcG41Zm1NXzIxNFNoZUNlV00xVGp5NlA0NjhrRHZvNWxUQnJETWR3?oc=5",
-              "published": "Tue, 13 Oct 2026 10:28:07 GMT"
-            },
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": -1.1,
-          "predictedPrice": 12.79,
-          "predictedPct": -0.11,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 44.2,
-            "avgErrorPct": 2.06
-          },
-          "actualPrice": 12.67,
-          "actualPct": -1.02,
-          "priceErrorPct": 0.95,
-          "gainCaptured": -0.91,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "IOC",
-          "name": "INDIAN OIL CORP LTD",
-          "price": 126.14,
-          "todayChangePct": -0.17,
-          "momentum5dPct": -3.34,
-          "volRatio": 0.73,
-          "news": [
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            },
-            {
-              "title": "GP Petroleums Board Approves Strategic Investment In IncubIT Pipavav Terminal With Management Control - Sahi",
-              "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPS2xzQTc5QlhZa3JSTXV0V2w4SkJXYTc5bE5mc2prRkJDdlhhazdjYnVuZklwcTVGNFBMSG1CNnhERVhtQUppTTNsRDl0Uy05SllfQklnczdUS0k0NVduOURaVEladXVQck80S3l2ZllCczFxTkdPcjNTUlVOY3pBXzZpOWVMS3BfcTkyRzF1SG5sblk1S210cXBfSi1DZEZQVkxmMnlRX1A5OHdjNy1IREV6VFhHNHYyVU1qWWplMGJpN1JrU3c?oc=5",
-              "published": "Tue, 13 Oct 2026 12:07:20 GMT"
-            },
-            {
-              "title": "Indian Oil To Invest Rs 40 Crore In Boxing Development - Rediff",
-              "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPVXhyMEtTcnZlX0FYWGRsdnVvN0xQSFJ0YzhtVjE1LXNoUDlfTHVhVHEzM2h6ckl5MWRvNkFyMjgtYmxtMDh6SWRHajVjTDg4UDZGWkFXMExmUl9taHJjS0ZtMXliUlg4NnNET2Z0dnFfT3JYS1E0cC1YUE4yV1Yzc2dSb1U5N0xyekd3ajA0ZjRjYXFFVlZiZzN0ekhRbkZhTWx2WEhkRFR0d9IBrAFBVV95cUxPRWJfVUV3NUNtZ1dPVGJ5c3J4OFRFODFwM2J6RlBuR1R3MFNOcnBMVVl0QTlWUllSUmVBaFd2YkZISWlBWTlNOVNZUi01N0QzVzRMUXpReU5HNnlicVBycmF3aUZuMXVNYlRYN2FkY1E4RkNLSjlrQmlPTjA0cVB2b2I0d0pVTmY1RjZ5SmxTQnRUS1V4WHdjYmY4TGUzaExBTVJpSE1CNkNxOE9B?oc=5",
-              "published": "Tue, 13 Oct 2026 13:04:45 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": -1.32,
-          "predictedPrice": 125.97,
-          "predictedPct": -0.13,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 53.5,
-            "avgErrorPct": 1.02
-          },
-          "actualPrice": 127.8,
-          "actualPct": 1.32,
-          "priceErrorPct": 1.43,
-          "gainCaptured": 1.45,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "NMDC",
-          "name": "NMDC LTD.",
-          "price": 71.34,
-          "todayChangePct": -0.64,
-          "momentum5dPct": -3.25,
-          "volRatio": 0.73,
-          "news": [
-            {
-              "title": "NMDC NSE:NMDC New Government Director Appointment 2026 - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNR1VuOFlscDVMd3ZKV3dnWGNpZEZaU1FhQms5TlVRWWVpamtVbjdySHdxMEtMMmVIN3RiMkkwb1pPVGpTTWl6M3ZTUm1xNHFiUzZFaDA5b3ZsNDYyZk5yX3RYTGVuaTNGUDFnTFhfQUlHSnp1SjNONXFMaXVwbDRCeXZMOGM0Z1h2cGw0VXpMbm5CZVBWbFlKbEhtTDN4bHB0Y2NjVlhuWHQ0M09HaE4xci01S0UzVVJYd1VBVmUwNnB6ejBfZWc?oc=5",
-              "published": "Tue, 13 Oct 2026 13:29:00 GMT"
-            },
-            {
-              "title": "NMDC Share Price update: support, fundamentals and peers - Univest",
-              "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQaXFLV01sN0lmYktndjJLRTJGYWI5cDdBLVVCU1pra1l4aVdRU20tQnpGT1c1Sk5vS0VyZW5rdExJQndHbllJSnRLX2NnVG1uTmQ1WkVwWFFoY05GejAweFVmZkVpQXdUY3BJSEh5d1RkM0MtUkJPVHozQXpaRFQ0bFJfZw?oc=5",
-              "published": "Tue, 13 Oct 2026 00:01:15 GMT"
-            },
-            {
-              "title": "NMDC Steel appoints Sarita Chauhan as Government Director - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPdDgxVGI5UEM4OUdJZ0tlaUZyaTREdzVlWm1YejNlbFk4ZEhCa3pyU2ZlN0EtUnpMNS1OVHVyQ185aW1za01KTWJFUlFWVUZsclpUQUp0bGNpcnVLNXlhV2d3Mk5FMVZZV1dMQ2JLRUJLNzFDT3JmQ1NlNzRfUC0ydzVFenFjNGk0c3V0bTBtVmlpbm1YZFhUQm1CdGVuQVFPdHRjX2Z4aWV3ckNxV0o3SQ?oc=5",
-              "published": "Tue, 13 Oct 2026 14:26:22 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": -1.54,
-          "predictedPrice": 71.23,
-          "predictedPct": -0.15,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 53.5,
-            "avgErrorPct": 1.36
-          },
-          "actualPrice": 71.08,
-          "actualPct": -0.36,
-          "priceErrorPct": 0.21,
-          "gainCaptured": -0.21,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "RPOWER",
-          "name": "RELIANCE POWER LTD.",
-          "price": 20.03,
-          "todayChangePct": 0.1,
-          "momentum5dPct": -0.3,
-          "volRatio": 0.52,
-          "news": [
-            {
-              "title": "ED seizes Reliance Power shares worth \u20b92,026.65 crore over FCCB probe - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPNTh4bF9Xd0F1ZV80QnBQQmhLMzktNlJFcHZFRDlRcU95MnZtWXZtdHhQS3h5em1ZczZZMVJWRXNvb3hORzJ2c0daRFdjTlNoRlpvREEtQ0Q4SUdDNUFlRTN3STB5aUVVbjEzenNmTXg4RjF6YWRhSktxYVJLajhrZ3FleHhHb1VrM2tFZlNYcC1OOENLejI3Y3ZkQUFhQ2dBVHNRNnJZVGNnazFGdlBvaE81YU1mazlRSURnTA?oc=5",
-              "published": "Tue, 13 Oct 2026 17:11:26 GMT"
-            },
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            },
-            {
-              "title": "Reliance Spinning Mills Limited - RSML | Online Khabar Markets - Online Khabar",
-              "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1tVkhBQUVJdHRTR2hLWDlGUzNFdVNWYmhZcVB6dU9VZ3BmNWFkVFR3OXBvTUVENVRyU0tBQzFDN2s2UTBFdWVsMWhxQXN4Y2pJWDFxWDdFSVUwZnFn?oc=5",
-              "published": "Mon, 12 Oct 2026 21:17:15 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-probe"
-          ],
-          "score": -1.74,
-          "predictedPrice": 20.0,
-          "predictedPct": -0.17,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 55.8,
-            "avgErrorPct": 1.11
-          },
-          "actualPrice": 19.83,
-          "actualPct": -1.0,
-          "priceErrorPct": 0.86,
-          "gainCaptured": -0.83,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "SAIL",
-          "name": "STEEL AUTHORITY OF INDIA",
-          "price": 172.77,
-          "todayChangePct": 0.71,
-          "momentum5dPct": -2.36,
-          "volRatio": 0.64,
-          "news": [
-            {
-              "title": "SAIL reports board composition non-compliance and fines in FY26 - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOZm4wajVndmU2SXVPNUdMb3dEREFYZkltX2JlSGtpdXJvbmVnYXIwU0Z6TGI0enJtUG9kOHFhc3g1QWthN0N6ZXpILS1lS3IwOEpUVENlUGFQWk1oeVg1THZkWl9lckRIa3ZtTGQwa0FlTkVzZjA0bVM3Q25aQXdhUlNHV2dwRVpaTmx3WE5aM21mZEtWYWFwWUx1cjFVMFR6OWFzbUdGQmo4ekdvdXJ2cDlfU05TZ2tGcXBuUg?oc=5",
-              "published": "Tue, 13 Oct 2026 03:31:45 GMT"
-            },
-            {
-              "title": "What Are Diversified Material, Steel Tube and Integrated Steel Stocks? - Univest",
-              "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbTM3eTB2QV9LNUhfb0pxQWZlbGtFRmMzbGdhc1dvY3dTS0RCdDJVYk94dWxnVzhRYUF1cHM3bEZ0RVBXcGttYXFITS1BUXdHVHZ5VGdxUDEtdXhOZEJwY1ZrRjZTSGpqbElBQ25ZaHBGa0F2RTRsWFhEbWpPN1ZkTXI0aE9kQlhOOU84ZXAzTDdHMDVMV3N3WlpralBXZXJSTHB2Q1QxS00?oc=5",
-              "published": "Tue, 13 Oct 2026 06:30:00 GMT"
-            },
-            {
-              "title": "SAIL (NSE:SAIL): Who Are the Two New Government Nominee Directors Appointed to Its Board? - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOWnJpaEl0eFh3aE5LUGdZaFBnUkdjb1hobmZIdHlaVkMxdWZWODlSUUwxVXBSd004czNWVHNQSVRRZjkxamhFQURBZFdaeVRMNHc1Y05XVWxMV3JWX2pRTUhpeVRwZ2puX3BBeXU0MlNqWmpyd2s4QklsbVlCQVQxR2s3dUFQd2ZTakVRSlhIaG9ibFpQVTlxSTFTbzVZbkRCY2pQSndkMDBtQlF3cTlReDdrWnZOOW8ydldmaWk3NVd1SUVzdDhnUEt2SlI?oc=5",
-              "published": "Tue, 13 Oct 2026 11:52:00 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-fine"
-          ],
-          "score": -1.78,
-          "predictedPrice": 172.46,
-          "predictedPct": -0.18,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 51.2,
-            "avgErrorPct": 1.62
-          },
-          "actualPrice": 170.0,
-          "actualPct": -1.6,
-          "priceErrorPct": 1.45,
-          "gainCaptured": -1.42,
-          "directionCorrect": true
-        },
-        {
-          "symbol": "ONGC",
-          "name": "OIL AND NATURAL GAS CORP.",
-          "price": 222.65,
-          "todayChangePct": 0.62,
-          "momentum5dPct": -1.0,
-          "volRatio": 0.42,
-          "news": [
-            {
-              "title": "ONGC weighs standalone, joint venture models for new greenfield refinery - Business Standard",
-              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNNjVrUElSY3hmVmFKZjh1NXRLeHZmNU9fQ1VIbG10TDdtR05hemdvME45cUFZeGhUT1ZpbHFfOUNONVdyeE03d0VILTdLczliZDFrYzBvZVJKemd4WDBmMWNVM1I4LWZBaDhCejhZUFI0OHZjWTcxeXBfajN4Rnp0dTM0anVTbkhqNnNxOFBwQmJOdmROd1dLRldKa2x5WTdLdERQekYxNEc5V3VEYndfdmxMWHVLOE1WQ2wzMld0YXRndjN0V3o5ZU5XcUs0bDRNczVwUzJWRdIB3AFBVV95cUxONVpoWkg0a3ZHNGJENW1XNF9ocUx6bEhVVzNjVE5HM1FObU5XUEtCbFl0Si1lVlBCVDlqVmhxYllVd2JTc1BWUXVXZU9mYUliRG1vSlFTRmJMZEhUVDV4VkVfakEyTm5ZN1B0RG55bk9hT1EyYkdDSldaVklqNnNiSC1XTnloakNiaG4wMlVhbGZDaTlfcGVOcy1jUjVjREdPdkkyd3hhZ3pucWFRTjdSOWxzOHJtTlBlVi1LUWRPYXcwNGZ6b3Q4NTFmdFdpMzZKR005OG91WkFUYWNy?oc=5",
-              "published": "Tue, 13 Oct 2026 12:49:38 GMT"
-            },
-            {
-              "title": "Religare keeps INR 370.00 target for ONGC stock - ad-hoc-news.de",
-              "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQR3AzVHBDdThCem80LWtZMjBYZDM5WVdZZ29Wd0V0ZlVndlMzZXRiUmlXOUdQemtaazU2Sk9RTUJoMHc2cldvOFh6eTFzb3JQTjFLcVpvb1RvQVFmWkpGZVVoZm1sMEJUR0xlZFVSREJxU2c2UTk2LVlKTmdKeDNma0lzbnh5VHp5bER1cUJPRXhSdkFnWklrRHhfRU1hSVpJVDRVejdMbngtd3psUDNr?oc=5",
-              "published": "Tue, 13 Oct 2026 11:44:58 GMT"
-            },
-            {
-              "title": "ONGC Oil Platform Fire Off Mumbai Coast Controlled, No Injuries - Rediff MoneyWiz",
-              "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOa3dMMlE5Z3RsSWlYVkZjNDZlTHNnaFJoemlLRE9nQzNKcVFIbkI4V0xIUm93VnJKcDBLUmVpdHh3d1lsUGs1elFFMXFZVkktQThpYWVERTd3aEM5SkJBYkpzeWFSdnpGRDdPV2VpZ3ptMElHUy1HSUUtcFhJUU5QVmRfTzZ0MzJXT2QxQURCU29KVmR2c3h2aVhyY3hnZkxZV05ZNUE3dTVGN2JXOXY4V2o5cXdsWklQelHSAboBQVVfeXFMTmt3TDJROWd0bElpWFZGYzQ2ZUxzZ2hSaHppS0RPZ0MzSnFRSG5COFdMSFJvd1ZySnAwS1JlaXR4d3dZbFBrNXpRRTFxWVZJLUE4aWFlREU3d2hDOUpCQWJKc3lhUnZ6RkQ3T1dlaWd6bTBJR1MtR0lFLXBYSVFOUFZkX082dDMyV09kMUFEQlNvSlZkdnN4dmlYcmN4Z2ZMWVdOWTVBN3U1RjdiVzl2OFdqOXF3bFpJUHpR?oc=5",
-              "published": "Tue, 13 Oct 2026 10:48:59 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-fine"
-          ],
-          "score": -1.81,
-          "predictedPrice": 222.25,
-          "predictedPct": -0.18,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 45.3,
-            "avgErrorPct": 0.95
-          },
-          "actualPrice": 225.5,
-          "actualPct": 1.28,
-          "priceErrorPct": 1.44,
-          "gainCaptured": 1.46,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "NATIONALUM",
-          "name": "NATIONAL ALUMINIUM CO LTD",
-          "price": 321.0,
-          "todayChangePct": 1.61,
-          "momentum5dPct": -5.59,
-          "volRatio": 0.82,
-          "news": [
-            {
-              "title": "NALCO NSE:NATIONALUM SEBI LODR Fine Waiver Explained - Kalkine India",
-              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNNFliNzFVNGRuUkpCYzRHalc4aktaMm1iWlA5OHF5NEJuN0NEdThUVTZFelR5eTN6UloxOFFaTTFvcm1hQ1ZvWGJjd3FSckVWd3hXZTFBTkhBa3liYzNpWnJkQjRMQmgyZHFKMGZTcnZFUWE3a2M3ZGZiekVybHZZNDRDT3dUdkhtT1BlM04yTy1wUUlKbVpweVFTblRqSUtlTWJDVGk3Z3lMc2xXQmZqS0JJUjRuYnJseDhCSV9CMk43bDJuZ0NGUTU1MA?oc=5",
-              "published": "Tue, 13 Oct 2026 10:47:00 GMT"
-            },
-            {
-              "title": "NALCO seeks waiver of \u20b914.13 lakh penalty for SEBI compliance gaps - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQX0Z3eVczOXh6MjdCZURfTkdnY2tVVGZWYU01eFBad2NFX1pnS1BsalZKbFlyS0FqX21WUTZXOUQ0RnVEMHJXUmJ0QTlRd2dqNENpcFhwM0RaT0hZdDF4R2dGcW51bG9BdXBKLU1KRUI2Z0FIM0ZDQTg5UzBRY3V0MldSNU1NRlUzaWV0dE56WURiZWtkYkliOTl6MTFDNERheHB6eDhHZFgtY2ttOFFoTk14N2RiUQ?oc=5",
-              "published": "Tue, 13 Oct 2026 11:11:10 GMT"
-            },
-            {
-              "title": "Metal sector stocks today, October 13: Vedanta falls 2.98%, Welspun Corp down 2.61%; NALCO jumps 1.51% - Business Upturn",
-              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPdFloTklsOVg4RUxxTzBudlZyV2dDNldyV3dxYnFYUGczV1ZTU1BBOUxqR2J1QTFmT2lvcFg0cGNrQjF5dEhpN2otMDVCSHR5bWVzd2NBOGNqU2dybWVzVXozWlV4WDZxOURzcGExUU5BNHpLMzlnYlBYQnhwWGlaY0RIVzB4WUF2VWk0X2t5VHlzMEVQYTZuWWFtRXRFdTVESVprbFdiV3ZvNW1LdnpTWTJReU0zeklHTDdPRzFnQVZZVlpuMW1rdjFBTlN2bUdFdkVXWW11MHNHdEhU?oc=5",
-              "published": "Tue, 13 Oct 2026 05:17:57 GMT"
-            }
-          ],
-          "sentimentScore": -1.0,
-          "sentimentTerms": [
-            "-penalty",
-            "-fine"
-          ],
-          "score": -1.86,
-          "predictedPrice": 320.4,
-          "predictedPct": -0.19,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 53.5,
-            "avgErrorPct": 1.59
-          },
-          "actualPrice": 323.15,
-          "actualPct": 0.67,
-          "priceErrorPct": 0.85,
-          "gainCaptured": 0.86,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "ITC",
-          "name": "ITC LTD",
-          "price": 261.0,
-          "todayChangePct": -1.88,
-          "momentum5dPct": -2.94,
-          "volRatio": 0.33,
-          "news": [
-            {
-              "title": "ITC Share Price - Upstox",
-              "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5IMkRMcVVlTDVzbjFob3JsSlJPSWdHbFpvZjJyLTlwQnY4ejlneWdlUk01d1VMbnE2ejBSeWNvcXZuMnZWbklIeVM4UU5hcmMwendocGU1UmE1UQ?oc=5",
-              "published": "Tue, 13 Oct 2026 01:56:29 GMT"
-            },
-            {
-              "title": "Cigarette Stock: Should ITC Ltd Split Its Business Into 1:2? What's Smoking In This FMCG Giant? - Goodreturns",
-              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxObzV5S2lZbVZab3hrdVFMbDFGT2MtWkQ4QTQ2MGJ0T294Y1pQeDV5Ym5OZ0xSRGhJUVNjZEh1bkI3SXRnYk5keExFOVpocHNBeFdsMF9nS1ptSUJrSHdtTW95TjdRWVV6X2s1YUF1WFBVdW5xUVVNNWRRdG1DU2duRFBQa2dPcjdIX296YjQxV3BUenhFd1l3b2ZDOXhpMkRxTEN2TTFhckdTZC1WSGpQWE12aW4xaGxfZ1c1Y21WaHVhOTIwTDdTMXdEWGVxVFNERHc?oc=5",
-              "published": "Tue, 13 Oct 2026 08:28:59 GMT"
-            },
-            {
-              "title": "ITC stock trades at a 16.48 price-to-earnings ratio - ad-hoc-news.de",
-              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQWEE3LTRqM0VpaXJKcW8wNGhNSFFWNVF2S2lwdERWRWxsXzZEMUhMNnVkbDdtem1CRWtMS3NwVkpVVHFBZnJlWlFabXdjZFJYZE9sT3FfZzYtb0dSRElHdHJoSGJTdE9jcHR6ajV0YS1ZOHk4UThQY3dra1hQRURFUEdQeWtpb2tmY3hwOWVHVGZVbWJNeE5YQk9RV3ljbngxdWZfV29DQ3pBRzlyN08wU1dqVjU?oc=5",
-              "published": "Tue, 13 Oct 2026 12:54:22 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": -2.68,
-          "predictedPrice": 260.3,
-          "predictedPct": -0.27,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 45.3,
-            "avgErrorPct": 1.35
-          },
-          "actualPrice": 261.5,
-          "actualPct": 0.19,
-          "priceErrorPct": 0.46,
-          "gainCaptured": 0.46,
-          "directionCorrect": false
-        },
-        {
-          "symbol": "ADANIPOWER",
-          "name": "ADANI POWER LTD",
-          "price": 185.96,
-          "todayChangePct": -1.61,
-          "momentum5dPct": -7.48,
-          "volRatio": 0.59,
-          "news": [
-            {
-              "title": "Lakshmi Mills Target Share Price, Lakshmi Mills Share Price Forecast - The Economic Times",
-              "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNakxYcUM3R0RzNDhvOHlIS2h5YzliZkJlVk9IeWRJc1hCSlkzVUVYX2wxbVctM0xSMjNwcVBXcGwwUDFPNXNJeURKT2ItdXgwajZsTnE0RnEtWFVHSWh1ck5kU2RMUERRaEFQVHcyeE5CVWVsN0kwUWQ2VU5HbERhTXlodzRsb05ydEpyMWlhSUJSRnNGc0E?oc=5",
-              "published": "Tue, 13 Oct 2026 15:57:25 GMT"
-            },
-            {
-              "title": "What Are Switch and Control Gear, Generation and Power Financing Stocks? - Univest",
-              "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOYmZrMWVCUVBxaWEzUWlPeXZNMjZ1d2FnUWtOdTJwZUV6UGlTWFlTbTFZazRXZFZrYk9SNWl4alBZR25JZlJqOVk2QVo5MHNXSEZxc3JtNnFfV3ZaeGd3Uy1YQ1Y1R1k1Sm5OM3liODZaNlBuemlxelAxbGNDX2xHUkU0UHlUOGdMNFJyU1Zaa25ROURkMV85RW9DWndvenhJc1d4eWlXckx5dlk?oc=5",
-              "published": "Tue, 13 Oct 2026 06:32:00 GMT"
-            },
-            {
-              "title": "Adani Green energy sales up 32% in H1 FY27 on capacity growth - scanx.trade",
-              "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNUk8wMU5OeUZRdkVaMlZkbl9xSURLRkJ5NWgzV3NyUVl2N3Fvb2s4WjZOemNEanplcEZqUnlKSjBkeExfWENKYTYwRmh2UlNSRXZEcVFaRzN2UTZJRVk5V21UYktzVkxQRFd6SDZ1aDY0MkdTd0hmX1g4cThRdGNVQ0lEdlQ0ZHlOYTZDRnB6SlJDU1MyTExxaGdMb1lSMzVudkxDenNDOFpyck1lVDlFNQ?oc=5",
-              "published": "Tue, 13 Oct 2026 12:49:34 GMT"
-            }
-          ],
-          "sentimentScore": 0.0,
-          "sentimentTerms": [],
-          "score": -3.29,
-          "predictedPrice": 185.35,
-          "predictedPct": -0.33,
-          "trackRecord": {
-            "checks": 86,
-            "hitRatePct": 46.5,
-            "avgErrorPct": 1.62
-          },
-          "actualPrice": 195.15,
-          "actualPct": 4.94,
-          "priceErrorPct": 5.02,
-          "gainCaptured": 5.27,
-          "directionCorrect": false
-        }
-      ],
-      "marketStatus": "post-close",
-      "actualsRecorded": true,
-      "summary": {
-        "date": "2026-10-13",
-        "correlation": 0.01,
-        "hitRate": 47.1,
-        "avgPriceErrorPct": 1.44,
-        "checkedCount": 34
-      }
-    },
-    {
       "date": "2026-10-14",
       "lastUpdated": "2026-10-14T20:31:41.511207+05:30",
       "predictions": [
@@ -39064,7 +37709,12 @@
             "checks": 114,
             "hitRatePct": 48.2,
             "avgErrorPct": 1.66
-          }
+          },
+          "actualPrice": 11.91,
+          "actualPct": -1.98,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.98,
+          "directionCorrect": false
         },
         {
           "symbol": "YESBANK",
@@ -39101,7 +37751,12 @@
             "checks": 114,
             "hitRatePct": 45.6,
             "avgErrorPct": 2.22
-          }
+          },
+          "actualPrice": 17.73,
+          "actualPct": -1.01,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.01,
+          "directionCorrect": false
         },
         {
           "symbol": "SUZLON",
@@ -39136,7 +37791,12 @@
             "checks": 114,
             "hitRatePct": 61.4,
             "avgErrorPct": 1.87
-          }
+          },
+          "actualPrice": 35.86,
+          "actualPct": -2.98,
+          "priceErrorPct": NaN,
+          "gainCaptured": -12.98,
+          "directionCorrect": false
         },
         {
           "symbol": "IRFC",
@@ -39161,7 +37821,12 @@
             "checks": 114,
             "hitRatePct": 50.9,
             "avgErrorPct": 1.77
-          }
+          },
+          "actualPrice": 80.8,
+          "actualPct": -3.51,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.51,
+          "directionCorrect": false
         },
         {
           "symbol": "BHEL",
@@ -39196,7 +37861,12 @@
             "checks": 114,
             "hitRatePct": 47.4,
             "avgErrorPct": 1.91
-          }
+          },
+          "actualPrice": 415.7,
+          "actualPct": -4.14,
+          "priceErrorPct": NaN,
+          "gainCaptured": -14.14,
+          "directionCorrect": false
         },
         {
           "symbol": "NHPC",
@@ -39233,7 +37903,12 @@
             "checks": 114,
             "hitRatePct": 50.9,
             "avgErrorPct": 1.35
-          }
+          },
+          "actualPrice": 75.36,
+          "actualPct": -1.63,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.63,
+          "directionCorrect": false
         },
         {
           "symbol": "TATAPOWER",
@@ -39268,7 +37943,12 @@
             "checks": 114,
             "hitRatePct": 54.4,
             "avgErrorPct": 1.11
-          }
+          },
+          "actualPrice": 328.0,
+          "actualPct": -3.44,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.44,
+          "directionCorrect": false
         },
         {
           "symbol": "PNB",
@@ -39303,7 +37983,12 @@
             "checks": 114,
             "hitRatePct": 48.2,
             "avgErrorPct": 1.53
-          }
+          },
+          "actualPrice": 149.75,
+          "actualPct": -3.59,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.59,
+          "directionCorrect": false
         },
         {
           "symbol": "BANKBARODA",
@@ -39340,7 +38025,12 @@
             "checks": 114,
             "hitRatePct": 46.5,
             "avgErrorPct": 1.55
-          }
+          },
+          "actualPrice": 275.58,
+          "actualPct": -3.98,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.98,
+          "directionCorrect": false
         },
         {
           "symbol": "IOC",
@@ -39377,7 +38067,12 @@
             "checks": 114,
             "hitRatePct": 52.6,
             "avgErrorPct": 1.12
-          }
+          },
+          "actualPrice": 145.0,
+          "actualPct": -3.65,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.65,
+          "directionCorrect": false
         },
         {
           "symbol": "ONGC",
@@ -39412,7 +38107,12 @@
             "checks": 114,
             "hitRatePct": 45.6,
             "avgErrorPct": 1.06
-          }
+          },
+          "actualPrice": 222.85,
+          "actualPct": -0.27,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.27,
+          "directionCorrect": false
         },
         {
           "symbol": "SAIL",
@@ -39449,7 +38149,12 @@
             "checks": 114,
             "hitRatePct": 48.2,
             "avgErrorPct": 1.51
-          }
+          },
+          "actualPrice": 162.0,
+          "actualPct": -1.29,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.29,
+          "directionCorrect": false
         },
         {
           "symbol": "NMDC",
@@ -39484,7 +38189,12 @@
             "checks": 114,
             "hitRatePct": 54.4,
             "avgErrorPct": 1.16
-          }
+          },
+          "actualPrice": 67.4,
+          "actualPct": -2.18,
+          "priceErrorPct": NaN,
+          "gainCaptured": -12.18,
+          "directionCorrect": false
         },
         {
           "symbol": "RVNL",
@@ -39522,7 +38232,12 @@
             "checks": 114,
             "hitRatePct": 52.6,
             "avgErrorPct": 1.97
-          }
+          },
+          "actualPrice": 185.1,
+          "actualPct": -3.09,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.09,
+          "directionCorrect": false
         },
         {
           "symbol": "IRCTC",
@@ -39554,7 +38269,12 @@
             "checks": 84,
             "hitRatePct": 53.6,
             "avgErrorPct": 1.19
-          }
+          },
+          "actualPrice": 447.2,
+          "actualPct": -0.19,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.19,
+          "directionCorrect": false
         },
         {
           "symbol": "PAYTM",
@@ -39591,7 +38311,12 @@
             "checks": 1,
             "hitRatePct": 100.0,
             "avgErrorPct": NaN
-          }
+          },
+          "actualPrice": 1730.6,
+          "actualPct": -0.54,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.54,
+          "directionCorrect": false
         },
         {
           "symbol": "TRIDENT",
@@ -39626,7 +38351,12 @@
             "checks": 114,
             "hitRatePct": 46.5,
             "avgErrorPct": 1.36
-          }
+          },
+          "actualPrice": 23.17,
+          "actualPct": -0.94,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.94,
+          "directionCorrect": false
         },
         {
           "symbol": "JPPOWER",
@@ -39659,7 +38389,12 @@
             "checks": 114,
             "hitRatePct": 53.5,
             "avgErrorPct": 1.99
-          }
+          },
+          "actualPrice": 13.24,
+          "actualPct": -0.97,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.97,
+          "directionCorrect": false
         },
         {
           "symbol": "RPOWER",
@@ -39684,7 +38419,12 @@
             "checks": 114,
             "hitRatePct": 58.8,
             "avgErrorPct": 2.19
-          }
+          },
+          "actualPrice": 17.24,
+          "actualPct": -2.38,
+          "priceErrorPct": NaN,
+          "gainCaptured": -12.38,
+          "directionCorrect": false
         },
         {
           "symbol": "VEDL",
@@ -39722,7 +38462,12 @@
             "checks": 114,
             "hitRatePct": 57.9,
             "avgErrorPct": 1.52
-          }
+          },
+          "actualPrice": 235.53,
+          "actualPct": -1.05,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.05,
+          "directionCorrect": false
         },
         {
           "symbol": "HUDCO",
@@ -39759,7 +38504,12 @@
             "checks": 114,
             "hitRatePct": 49.1,
             "avgErrorPct": 1.74
-          }
+          },
+          "actualPrice": 158.16,
+          "actualPct": -2.92,
+          "priceErrorPct": NaN,
+          "gainCaptured": -12.92,
+          "directionCorrect": false
         },
         {
           "symbol": "IRB",
@@ -39794,7 +38544,12 @@
             "checks": 114,
             "hitRatePct": 55.3,
             "avgErrorPct": 1.78
-          }
+          },
+          "actualPrice": 17.4,
+          "actualPct": -3.6,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.6,
+          "directionCorrect": false
         },
         {
           "symbol": "NATIONALUM",
@@ -39829,7 +38584,12 @@
             "checks": 114,
             "hitRatePct": 53.5,
             "avgErrorPct": 1.92
-          }
+          },
+          "actualPrice": 298.65,
+          "actualPct": -1.5,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.5,
+          "directionCorrect": false
         },
         {
           "symbol": "JINDALSTEL",
@@ -39864,7 +38624,12 @@
             "checks": 1,
             "hitRatePct": 100.0,
             "avgErrorPct": NaN
-          }
+          },
+          "actualPrice": 1131.3,
+          "actualPct": -0.05,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.05,
+          "directionCorrect": false
         },
         {
           "symbol": "ASHOKLEY",
@@ -39899,7 +38664,12 @@
             "checks": 114,
             "hitRatePct": 55.3,
             "avgErrorPct": 1.52
-          }
+          },
+          "actualPrice": 158.7,
+          "actualPct": -2.85,
+          "priceErrorPct": NaN,
+          "gainCaptured": -12.85,
+          "directionCorrect": false
         },
         {
           "symbol": "TATACOMM",
@@ -39934,7 +38704,12 @@
             "checks": 1,
             "hitRatePct": 100.0,
             "avgErrorPct": NaN
-          }
+          },
+          "actualPrice": 1723.6,
+          "actualPct": -1.56,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.56,
+          "directionCorrect": false
         },
         {
           "symbol": "CANBK",
@@ -39971,7 +38746,12 @@
             "checks": 114,
             "hitRatePct": 50.0,
             "avgErrorPct": 1.77
-          }
+          },
+          "actualPrice": 133.75,
+          "actualPct": -3.72,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.72,
+          "directionCorrect": false
         },
         {
           "symbol": "UNIONBANK",
@@ -40008,7 +38788,12 @@
             "checks": 114,
             "hitRatePct": 44.7,
             "avgErrorPct": 1.35
-          }
+          },
+          "actualPrice": 208.2,
+          "actualPct": -4.87,
+          "priceErrorPct": NaN,
+          "gainCaptured": -14.87,
+          "directionCorrect": false
         },
         {
           "symbol": "TATASTEEL",
@@ -40043,7 +38828,12 @@
             "checks": 114,
             "hitRatePct": 45.6,
             "avgErrorPct": 1.26
-          }
+          },
+          "actualPrice": 163.0,
+          "actualPct": -8.43,
+          "priceErrorPct": NaN,
+          "gainCaptured": -18.43,
+          "directionCorrect": false
         },
         {
           "symbol": "COALINDIA",
@@ -40078,7 +38868,12 @@
             "checks": 114,
             "hitRatePct": 51.8,
             "avgErrorPct": 1.15
-          }
+          },
+          "actualPrice": 382.0,
+          "actualPct": -2.05,
+          "priceErrorPct": NaN,
+          "gainCaptured": -12.05,
+          "directionCorrect": false
         },
         {
           "symbol": "POWERGRID",
@@ -40116,7 +38911,12 @@
             "checks": 114,
             "hitRatePct": 37.7,
             "avgErrorPct": 1.06
-          }
+          },
+          "actualPrice": 264.85,
+          "actualPct": -1.54,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.54,
+          "directionCorrect": false
         },
         {
           "symbol": "WIPRO",
@@ -40153,7 +38953,12 @@
             "checks": 114,
             "hitRatePct": 44.7,
             "avgErrorPct": 1.5
-          }
+          },
+          "actualPrice": 187.29,
+          "actualPct": 0.86,
+          "priceErrorPct": NaN,
+          "gainCaptured": -9.14,
+          "directionCorrect": true
         },
         {
           "symbol": "ITC",
@@ -40190,7 +38995,12 @@
             "checks": 114,
             "hitRatePct": 43.0,
             "avgErrorPct": 1.14
-          }
+          },
+          "actualPrice": 301.0,
+          "actualPct": 0.64,
+          "priceErrorPct": NaN,
+          "gainCaptured": -9.36,
+          "directionCorrect": true
         },
         {
           "symbol": "ZEEL",
@@ -40228,7 +39038,12 @@
             "checks": 114,
             "hitRatePct": 49.1,
             "avgErrorPct": 2.73
-          }
+          },
+          "actualPrice": 71.64,
+          "actualPct": 0.35,
+          "priceErrorPct": NaN,
+          "gainCaptured": -9.65,
+          "directionCorrect": true
         },
         {
           "symbol": "DLF",
@@ -40263,7 +39078,12 @@
             "checks": 1,
             "hitRatePct": 100.0,
             "avgErrorPct": NaN
-          }
+          },
+          "actualPrice": 794.1,
+          "actualPct": 1.16,
+          "priceErrorPct": NaN,
+          "gainCaptured": -8.84,
+          "directionCorrect": true
         },
         {
           "symbol": "GAIL",
@@ -40300,7 +39120,12 @@
             "checks": 114,
             "hitRatePct": 51.8,
             "avgErrorPct": 1.08
-          }
+          },
+          "actualPrice": 185.6,
+          "actualPct": -3.05,
+          "priceErrorPct": NaN,
+          "gainCaptured": -13.05,
+          "directionCorrect": false
         },
         {
           "symbol": "ADANIPOWER",
@@ -40338,7 +39163,12 @@
             "checks": 114,
             "hitRatePct": 48.2,
             "avgErrorPct": 1.4
-          }
+          },
+          "actualPrice": 207.9,
+          "actualPct": -1.91,
+          "priceErrorPct": NaN,
+          "gainCaptured": -11.91,
+          "directionCorrect": false
         },
         {
           "symbol": "MOTHERSON",
@@ -40357,11 +39187,1150 @@
             "checks": 114,
             "hitRatePct": 44.7,
             "avgErrorPct": 1.86
+          },
+          "actualPrice": 165.76,
+          "actualPct": -0.46,
+          "priceErrorPct": NaN,
+          "gainCaptured": -10.46,
+          "directionCorrect": false
+        }
+      ],
+      "marketStatus": "pre-open",
+      "actualsRecorded": true,
+      "summary": {
+        "date": "2026-11-21",
+        "correlation": null,
+        "hitRate": 10.5,
+        "avgPriceErrorPct": NaN,
+        "checkedCount": 38
+      }
+    },
+    {
+      "date": "2026-11-23",
+      "lastUpdated": "2026-11-23T17:00:39.687628+05:30",
+      "predictions": [
+        {
+          "symbol": "ADANIPOWER",
+          "name": "ADANI POWER LTD",
+          "price": 207.9,
+          "todayChangePct": -1.91,
+          "momentum5dPct": 1.27,
+          "volRatio": 1.94,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": 0.77,
+          "predictedPrice": 208.06,
+          "predictedPct": 0.08,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 47.8,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "NMDC",
+          "name": "NMDC LTD.",
+          "price": 67.4,
+          "todayChangePct": -2.18,
+          "momentum5dPct": -2.21,
+          "volRatio": 1.75,
+          "news": [
+            {
+              "title": "Coal India vs NMDC: Mining PSU Stocks Compared 2027 - Univest",
+              "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5Ca19rSGgyS1VyTUVwck1qMnlnaDFRUWxSdkhzd19Kc0JuRmFjaXBkQTIzMUp4cGFYZXp5S2QySm5nR3ZsTlptMVB3T3h2T1Z6LTdPX3NQVndGTDJWVWdVeU9HT3EwcGlwU1FIMkVIbXJMREk?oc=5",
+              "published": "Mon, 23 Nov 2026 07:43:00 GMT"
+            },
+            {
+              "title": "Wasco to divest engineering and fabrication unit for RM782 mil; plans 30 sen special dividend - The Edge Malaysia",
+              "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5LZ0RTMkpsZHVVR3VCV21tX2trdGJCRlRGbHFoZU9naFlFYkRXUVVwU0JrVl95RTlpTFYwb1NRamh3WHBteWs2YVljU0JzVGZo?oc=5",
+              "published": "Mon, 23 Nov 2026 01:40:19 GMT"
+            },
+            {
+              "title": "NMDC Energy To Acquire Wasco's Engineering Business At $210M Enterprise Value - Forbes Middle East",
+              "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOOWhjeHdFcjluYmFNSDJtYktXUXRfNFVNaGw3Z1RpcjlhZzRvWFhCWDg4RlhlUmpRWTR4UmpZRkVicXBmWkN5OUFMcThfbVNRSUVFOWFjOUpMeS1ILWwzY3JpNmlaZndPa2haeUhPR29lTkN6YW5Qd0xRckNnOFdUYmI5M0YtdFVZNWMxeGpvOEowQ2JNdWVobW5JbzNZYk9LYmlJd1ZXQnBvY21wekNoRGZLTHpLVjZRRkpXOU5VaTNJSm8?oc=5",
+              "published": "Mon, 23 Nov 2026 05:42:31 GMT"
+            }
+          ],
+          "sentimentScore": 1.0,
+          "sentimentTerms": [
+            "+acquire",
+            "+dividend"
+          ],
+          "score": 0.48,
+          "predictedPrice": 67.43,
+          "predictedPct": 0.05,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 53.9,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "ZEEL",
+          "name": "ZEE ENTERTAINMENT ENT LTD",
+          "price": 71.64,
+          "todayChangePct": 0.35,
+          "momentum5dPct": -0.03,
+          "volRatio": 1.19,
+          "news": [
+            {
+              "title": "Zee Entertainment Enterprises Share Price - Live NSE: ZEEL Stock Price & Chart - Upstox",
+              "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1pWXR1VUhPSktKb3VUX0l6cWUxTFMzbnlKMjA4aVJTUlpRRjBSRFlnOTdTN1VjaHVROHJ1c2EyTEhrQURJSzBieGlfM2lSTnZDN3E3V290eGVsYXc5M21jQkhsY3ktOWt3VXdNUjdUMXpqQQ?oc=5",
+              "published": "Mon, 23 Nov 2026 05:58:01 GMT"
+            },
+            {
+              "title": "Kerala Court Orders Police To Register Case After Man Alleges His Mobile Number Was Displayed In Film... - Live Law",
+              "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxON3RTM1pYaERIcnZUWXFWTktqVXNISFpSTGxOdnlwNXZYTXNDUW1STjBYZ2FBYUxhTXdnaWNlU0hOcHowZmtGM0VDWHd5ZWNBTjYzQTdDbGVSeTFiZy1ZNXh6UDlLN0I5V19QUnpWUXh5NHJZYWNQRFVVWVJPdDdNWnJxaXdOdFF3V1FMM3V3R1c4MUg4Y2tjLXN30gGaAUFVX3lxTE43dFMzWlhoREhydlRZcVZOS2pVc0hIWlJMbE52eXA1dlhNc0NRbVJOMFhnYUFhTGFNd2dpY2VTSE5wejBma0YzRUNYd3llY0FONjNBN0NsZVJ5MWJnLVk1eHpQOUs3QjlXX1BSelZReHk0cllhY1BEVVVZUk90N01acnFpd050UXdXUUwzdXdHVzgxSDhja2Mtc3c?oc=5",
+              "published": "Mon, 23 Nov 2026 06:00:55 GMT"
+            },
+            {
+              "title": "BULLET Microdrama teams up with Luv.com for six-part dating series \u2018First Meets\u2019 - MediaNews4U",
+              "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPQk5mSHZJVlRvdkhZOHZMeE1zcUZQY3NYMWt6cHJHTUk5Nm5OVzducjlDNkVkRWxtZDlXZ0pkdEt2TF9XMnFDY1Zuc2JzRUJVSlQxM29ocE9adEhXVmRlOGxyQjR2bTQtWEg1elJnbS1aRkItS0tuazRYckRUZm50YTlXYkRzQXdyYnNXdGJMV0xrYlJwLXBUMVE3ODdjUG9ybVhFWEhZaFljTkE?oc=5",
+              "published": "Mon, 23 Nov 2026 10:16:41 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": 0.45,
+          "predictedPrice": 71.67,
+          "predictedPct": 0.04,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 49.6,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "ITC",
+          "name": "ITC LTD",
+          "price": 301.0,
+          "todayChangePct": 0.64,
+          "momentum5dPct": 2.0,
+          "volRatio": 1.01,
+          "news": [
+            {
+              "title": "ITC Top MF Buy In Oct, ICICI Bank Most Sold In Oct - Rediff",
+              "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQY3otdUNMSzR2TEIxVWIwOW5wbl9RTEdiakRJUlRfN2ZETm9vQndoYkxmTHljcUtlbVpuLTJhMUEzeTFVZzJqdVYxRlR5UXlGMktYLWdhWlppcmFpTFN1WHBQMWhnOVQ4LXRTT3d3azFDZE5Cdk9QTGZuY21OWExkX3JZc1gtV25oNUNBbU52bWptZmsxcmhnUlFxTHpwQTJ4RWFELWdMcXY1S01oYjNKYXdUVlhsbUZZaTBWWEVmdUJKUEdMdVZ0SWxyTzFYd9IB0AFBVV95cUxQc2prRy1DUkIzdTdBa1FMRVlsZ1ZiTWhGVFNTYzZnNGZpa1VKUXRXNWdHZnN2ajRDdXJ3WTVvcXN0dnlpWWxLUXRzZURmQVZndEZSaEJCS2FuR0Y2czhJY1E2NDhXY2VIZWtvY1RWMkpxZWlGVG5URm9yQkV5Vm5iTDNDYWZobGJlWl9Rb1lROW9UR2xmbzRXZzBrbnZIVDhsc0JlVkowT0N4dy1sTEVKb1hrQ0dKYmRENkktd0VFWVppcXFzcjQ4a3JKcHZFMGs0?oc=5",
+              "published": "Mon, 23 Nov 2026 07:07:32 GMT"
+            },
+            {
+              "title": "ITC EXPANDS BRAILLE PACKAGING TO FIAMA PERSONAL CARE PRODUCTS | The Business Guardian - newspaper - Magzter",
+              "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPSlRsZ1FJNG1xX0JzNHhvUXpJaFF5T1JMc3YyZ2NSWWwyNG52RGttbGJTeUotQ3Zvam5zZXgzMmFXN0VubUFaNUNxVGRWWFBxVVktT1otLUpfb3gyS212bzZHU1lGUjlSUTlUYmZHUXd3VnZPR2xRbUJHREZUUnVPSTN6SFhqVTd6blc4VURPbUtrTjhhR3c5dllYRnpNUFpLb0NWWnpRRGlfX2N4VTkxOUxyaXRzdlJTM2FxOXlBZjFnb1E?oc=5",
+              "published": "Mon, 23 Nov 2026 06:40:37 GMT"
+            },
+            {
+              "title": "ITC vs Godfrey Phillips: Cigarette Stocks Compared 2027 - Univest",
+              "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE43cU5Kd3J0MVhLeE5FaUNLMHNiSHpEVGxaVzdIN0l3ZFBlVjU0UXJDOUFiM0ZIbEgteGxqNG5ET3dkLVgtaGtXRVYtY1dTTzZDUUJSVHYxVEtNNDNLT0JjbnU4WmVFUzVMZmUxVjE3REp6Z2M?oc=5",
+              "published": "Mon, 23 Nov 2026 07:42:00 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -0.16,
+          "predictedPrice": 300.95,
+          "predictedPct": -0.02,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 43.5,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "ONGC",
+          "name": "OIL AND NATURAL GAS CORP.",
+          "price": 222.85,
+          "todayChangePct": -0.27,
+          "momentum5dPct": -1.82,
+          "volRatio": 1.22,
+          "news": [
+            {
+              "title": "2027 High Conviction Idea: Oil & Natural Gas Corporation Limited - Smartkarma",
+              "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWkpNMUJKM1Z1TjMybWdmb2pTTzljUmhYOGR0VWxJU21WS0VEZTRaVmpOZ09XNjQ2dF9iM2FMTkY1VFFlUGYxV1M0UnRHdHdZV1hqRTdhd1U4MXZ3TWtZLXQ4U2RxMGwxNHZTdEtRMG1QZ0o1SE9DNVZnMWd0bS15eHRiRjBLcXBaN0NpbnZvdld2c2FmVVJBWnRiTHpYWVdGTEVVMW82WWUzaXQyeUwxcHpEcHptWkVUSjRfMXJPLWQ4Um02dDZN?oc=5",
+              "published": "Mon, 23 Nov 2026 05:58:41 GMT"
+            },
+            {
+              "title": "Agarwal Says ONGC Takeover of Gujarat Block Sends Wrong Signal - Construction World",
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOa1d1RERvUmJtZ3hZclB4dVVzeUJGNFN2UUE1VTdmSi1UeFN6ckRVZV9sdVFHLWxkTDVWXzVNdFZ3WHdSV0VQV3B5TXQtOVU5R0twbVBZeHYxdzRQVWF0TDdxdzF1ZlVWMVlZWXA2RlJWZ2djamoyd2V2NEtOMFozQTllcnNwSnB1QUVWaHVnc2x0bXBwRU9LbHlQcmplODRXaG1lT0RTTVFXLWl0d0FGcWxGNW9JOTJwaFRsQ2ZXQ3YtT2pXU1lvb3BaWkJ1eU9BYkE?oc=5",
+              "published": "Mon, 23 Nov 2026 06:54:27 GMT"
+            },
+            {
+              "title": "Weekly Recap: ONGC takes Cambay control and liabilities split by type - TradingView",
+              "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPcHA2VlF5NHJpWXZSM3haLXZkZTBpSWNkTElyN0dVSUNmRnJfemdwclFEdG9yRzcyS0oxUS1rWVBKWmFZUzc2a3AxTWRRbzFMMi1zQ1lqb2R5d2Q3MnFqNER1ZkdaakNNNEwtdXF1Q0hwOHVwcHY0NXBUQ3NlWTBFMl9NUHdzNDMzOWZzamVNbVc4S1ROOWFiR19XdGJYczhENy1lRm10ZFFKUFpTYjRJOV95VEt5QU1DTlBjaVI1QWk1Ykd4aW1ENW5R?oc=5",
+              "published": "Mon, 23 Nov 2026 01:00:00 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -0.26,
+          "predictedPrice": 222.79,
+          "predictedPct": -0.03,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 45.2,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "MOTHERSON",
+          "name": "SAMVRDHNA MTHRSN INTL LTD",
+          "price": 165.76,
+          "todayChangePct": -0.46,
+          "momentum5dPct": 1.71,
+          "volRatio": 0.65,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -0.33,
+          "predictedPrice": 165.71,
+          "predictedPct": -0.03,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 44.3,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "WIPRO",
+          "name": "WIPRO LTD",
+          "price": 187.29,
+          "todayChangePct": 0.86,
+          "momentum5dPct": -3.23,
+          "volRatio": 0.97,
+          "news": [
+            {
+              "title": "Street signs: NSE tightens algo access, SAT's new jurisdiction, and more - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNMENqYkxubFhJMWRpTDM0dXlDcnVLaVdMV3J1U2trV1pVaXpvUDdVaEltVDlaRk5KVFl6ZGRkczlmbTRJT0trVDZpeEdZcUlibzNwVnJfUnRad2gtSlU5TzFFT3A5NUF6dU1SYmdaTlBEa2U2OHQ4NXEwYktORW9uOHBlX2ZsZ0xyTmV3V21ZY1NRWUJvc25yN1haSlVJdmNHc3pmdkt6aXpfeUIwV2J2VktBQWpDU1NjUzBtVjVTX2RwUkNYRDViUFVfR1lLdHpVVkHSAdcBQVVfeXFMT2dNTjh1OWlobUZMUU1UWUxjcnV6cG82akJwbmRRcmtRWm9pTVIxOTA4Sk5aVFZBYV80M0hKblpIeWwxaDRjaUlJRDljOHZRSWh1cTFfMm1kMUowbUhXbDMwdng0a3JjQktIdXhTblpDSFA2cUVJOFVoOWVYbVFuSFR5am9pUjJQWnBkaFFscjhEQlZrREtTUGRqbWZ2X0V4Vnljdjc1S1dpNklaak1UeDRaUnozbWp6R1g0SFBraWhmNjZTSTJPQnRubk1DME9Nc2tBSDE2OE0?oc=5",
+              "published": "Sun, 22 Nov 2026 15:57:20 GMT"
+            },
+            {
+              "title": "Vivek Sharma Appointed Chief Information and Transformation Officer at Wipro Enterprises Pvt Ltd - https://hrtoday.in/",
+              "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOMGVRRXItMHE0a2FzY19mRlgyenZkWGRfZ2lqd1VtcFFiTlk5ejY1QnhFR3I1WUxVbktjM1JYdUhvRDFXRjQwczJHVjlfN2syZi14RnIwTzFva1BVYURVU3hBcl9nY0RpN0JKNW0zY1AwWVZnZ015SVRnTXZ5YVJzVE1OVjBTUmY4WjFuZFdtR1pqWkp4ajl2RlVpaVRjcWRTUGdGUEhpV3Z0OHFlaVM1ZGxRZnJRSW8?oc=5",
+              "published": "Sun, 22 Nov 2026 18:01:27 GMT"
+            },
+            {
+              "title": "TCS vs Infosys vs Wipro shares: Despite global AI bloodbath, why are Indian IT stocks rising? Experts decode - Livemint",
+              "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQVTl5b21xU01iMFhQdWJkR01vdmo0YVgwclp1ak9JZGJDVjhGR1ZKaWc0OGllNXpxZVpHTjNFLTFzYllwMF84SDAxQk1pUkd5VVo1N0pPcUU0T19Vc0U1N3FtSVhCVEQ1ZUg2T2JlUmtlOWhsTU10Skg3ZEEyWXd0ZU9oZHRLVE1HRlByc1AzcGlQUElkZTdfSVJoUThlTlhlOHRacldReUZOM1JCV05jRUhKOUI4cFZWdlFFcW5UR2FUdnBiNTY1aHlJTDgyOUR3OEJCVGdqd3NaZC1mU1lzTWlLYzNBeUQ5d3F6QzQ4dW9sUVhpY2NMaVN5T0kwNTlOTmFfOVJIVGlkNUXSAYsCQVVfeXFMUFU5eW9tcVNNYjBYUHViZEdNb3ZqNGFYMHJadWpPSWRiQ1Y4RkdWSmlnNDhpZTV6cWVaR04zRS0xc2JZcDBfOEgwMUJNaVJHeVVaNTdKT3FFNE9fVXNFNTdxbUlYQlRENWVINk9iZVJrZTlobE1NdEpIN2RBMll3dGVPaGR0S1RNR0ZQcnNQM3BpUFBJZGU3X0lSaFE4ZU5YZTh0WnJXUXlGTjNSQldOY0VISjlCOHBWVnZRRXFuVEdhVHZwYjU2NWh5SUw4MjlEdzhCQlRnandzWmQtZlNZc01pS2MzQXlEOXdxekM0OHVvbFFYaWNjTGlTeU9JMDU5Tk5hXzlSSFRpZDVF?oc=5",
+              "published": "Mon, 23 Nov 2026 08:29:48 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -0.42,
+          "predictedPrice": 187.21,
+          "predictedPct": -0.04,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 45.2,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "name": "INDIAN RAIL TOUR CORP LTD",
+          "price": 447.2,
+          "todayChangePct": -0.19,
+          "momentum5dPct": -0.99,
+          "volRatio": 0.9,
+          "news": [
+            {
+              "title": "Rail Neer Profiteering: Supreme Court Issues Notice On IRCTC's Challenge To \u20b950.41 Crore GSTAT Order - LiveLawBiz",
+              "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNMWRZQS1xaVlVaXVFWkRoN1ZteXNkZUc4Q2o5ckdFc0VIQmRuNy1XSHBtVkluVzg3dmtEUV9fMFdKWk92cDc2UWx2S3NYeTZQYlBZMm9HbWU5M0pQdU1WREtIbXZ3Wlp5ZE5kME9RT2JpMHQ4X0ZqVUdobDRwcnRfQnpkR2hDWVlJSnczRkREMEwxZGxMQmN2RUxBa2pOVjU0M2o4dUhYQkg3QXZlMHVMd0tUNWphSUdWaUotZG96blBSZGtpaG90MXB1Z2dVUnBaTjlvSVBOdmY5X1hNZDNFQnBB0gHnAUFVX3lxTE0ySEVyRGp6UFhqdF9VT2lmMVRCS0VpSDQ1RHdVTm15Vy0xV2pZemE1NVBwbDNud2Z4SWhpUkpiUUcxSFY1T0dVcTRvcFJ5Sy00YWF3OUNDTjZ0S0dBNlBGM2I2U3p0VHdmWGgyYndOYXBWSHU0Qy04Zy15aGJ0Nk83UDhBSXhSLXNFb2xhaHg0TnhUV1NwTC1vZ0lRYW5wMExpTUx5emhSbURqN0pPczZFMXplX1ljTVhjOGNSdzlHSDFaUjFmY3dYZ1JRamlxXzdWZ0NFcDAyMDVjV0htYTB5SHlnN3pXaw?oc=5",
+              "published": "Mon, 23 Nov 2026 11:09:40 GMT"
+            },
+            {
+              "title": "IRCTC Share Price Target 2026 Forecast - Univest",
+              "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5NdXFHWTliWG1RREtUZ2x2WlQ4RXZwbnR5amwzVjFkVU5RUkFITy1adURfVlB1RGRDQ1EtMmF1Ql9Rc3lENTBBNWZWd3R4dkd4QzAxOXpHc3dYQlFZbTlkYmN0bGc?oc=5",
+              "published": "Sun, 22 Nov 2026 19:38:04 GMT"
+            },
+            {
+              "title": "Titagarh Rail stock trades lower despite three fresh cues - Business Today",
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPRFQyc3l3TlpFRHVBQXFxQkk0aXRrNVBvODFOdjdMQU8tbTJrM1lWalIzd2h3QXVUQVQ5cEM2ZFFVYzR4clROUk5VbzhxdVRiSTdLZ3BxaHpKRHNTN0MyWnJhRkFoMkF5MVgzTU56enBTckRweE4tM2w1Wmd5VTJrc09YckphRmhCMmV0R3VRZXF6R1E3TE5UdkRxWUxELS0xR2hSajE1TmRKT01WTElra2JmZnZfVlZaWi1mQ2xBVTJLRWJ4NktuTtIByAFBVV95cUxPRFQyc3l3TlpFRHVBQXFxQkk0aXRrNVBvODFOdjdMQU8tbTJrM1lWalIzd2h3QXVUQVQ5cEM2ZFFVYzR4clROUk5VbzhxdVRiSTdLZ3BxaHpKRHNTN0MyWnJhRkFoMkF5MVgzTU56enBTckRweE4tM2w1Wmd5VTJrc09YckphRmhCMmV0R3VRZXF6R1E3TE5UdkRxWUxELS0xR2hSajE1TmRKT01WTElra2JmZnZfVlZaWi1mQ2xBVTJLRWJ4NktuTg?oc=5",
+              "published": "Mon, 23 Nov 2026 09:30:08 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -0.49,
+          "predictedPrice": 446.98,
+          "predictedPct": -0.05,
+          "trackRecord": {
+            "checks": 85,
+            "hitRatePct": 52.9,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "RVNL",
+          "name": "RAIL VIKAS NIGAM LIMITED",
+          "price": 185.1,
+          "todayChangePct": -3.09,
+          "momentum5dPct": -4.76,
+          "volRatio": 1.69,
+          "news": [
+            {
+              "title": "RVNL Share Price - Upstox",
+              "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1oTno4WHlIMjNCMXlhcElJc0U0dkVSNk1mVm5zWEk4Ym42eGtLd21IR05WdGNuWjFiMFNYTm9VLXBsZjRnbGRBYm1xNzJUeDRSaDB1MFM4dEdqSnhXTTRSWHpmRjl3NkNpaWp1MVlBamg?oc=5",
+              "published": "Mon, 23 Nov 2026 08:47:25 GMT"
+            },
+            {
+              "title": "Ashoka Buildcon, Texmaco Rail, RVNL, Premier Explosives shares gain up to 7% on major order wins - CNBC TV18 - LinkedIn",
+              "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOWm1odzRWZ183RTN5SWdqekFGNW1Ob21tVkJtcFNGbXNwRE9FSVVDb3pKX2haX1I1dmF2a2d5cV84QVpOdjBUM1p4bEphR1JnZFU3dE1mbUo0V0RaNlRfaFJoOVh6eXNFZFphRUZyRGo2VjY4TjJTYTEybnhjaG5NR2xodng5RTBNLWFZTWFxZGJjMXIyY2JySVIyT1ZDVVAwNDJzSWQ0aVNtTU5Xb1ZEczZYMi1odlU?oc=5",
+              "published": "Mon, 23 Nov 2026 06:55:32 GMT"
+            },
+            {
+              "title": "Railway Shares Explode over Major Order Wins - Equitypandit",
+              "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1MZHJVdlVSOG5xSXJLMTFBWk1mWkl5QzRjV2xwZXN4d19YQVNsN2FxcHFNNHR1eTZhb01jTG1TSEZnZ3ZTUGhEd0VDQVBGX0NuYmkwc3hWbFR0V3h2QmdUc1pvdzIxR2hQajlOTk94ZXFZenJvdTFnWmFqWTRPd2s?oc=5",
+              "published": "Mon, 23 Nov 2026 07:36:00 GMT"
+            }
+          ],
+          "sentimentScore": 1.0,
+          "sentimentTerms": [
+            "+order win"
+          ],
+          "score": -0.7,
+          "predictedPrice": 184.97,
+          "predictedPct": -0.07,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 52.2,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "TRIDENT",
+          "name": "TRIDENT LIMITED",
+          "price": 23.17,
+          "todayChangePct": -0.94,
+          "momentum5dPct": -0.77,
+          "volRatio": 0.81,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -0.95,
+          "predictedPrice": 23.15,
+          "predictedPct": -0.1,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 46.1,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "POWERGRID",
+          "name": "POWER GRID CORP. LTD.",
+          "price": 264.85,
+          "todayChangePct": -1.54,
+          "momentum5dPct": 1.01,
+          "volRatio": 1.37,
+          "news": [
+            {
+              "title": "Stock to buy today: Power Grid Corporation of India (\u20b9268.50) - BusinessLine",
+              "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPbGtDbXowcHFZZDh6M2I2QTJ5dzNGdjZ3eEZlV21GNk1mMl9ieHZoZ1JMaTVSVXRnZGdsajk1bDU0dVhyeHJLdjdwZm9SbGVkVVBScEVkd25RWHhoOXhhNnpDQWp2d1ZHN28xd1VvUnZjYkV1WGlCbTlIUTNNU1JFMjVoY2RaNTNOeVJycno3OHYtd0s5WmNkaFQ5X29HODBTVE5RdTBsRVdzUDBhbHBjWVB0QkVScVJJMUhTdkhPLW1ROHF3Mnk2V2V2NkU5TzN2U0x2X0hoME_SAd8BQVVfeXFMTVB0cW9jOWtsMlJHQmxieVRBUWNuWW8wNXExblNMa21aTUM5eXZXWXFwek12SlRRNlR6SFdoNTdDeS1PTS1PQWd2RUkxcndnenRHeHpNekJlZVNmTTA5RE9EUXY2Zzg5cmJIdnRUeUg2OWdhbXpDMi1rMGp3YWdYUWk5Q0YwWTFqUk50TUVBb0FkVXFsTDVnTkZ0M3dNX2JZdFozdG95LTNmZDZacW5KNThSRGc0WDVVdFoyQkUxbVlLR1JuRXpFM3BkaUt0UGR0bXF5X3hITjU1cGM0b3pSUQ?oc=5",
+              "published": "Mon, 23 Nov 2026 01:00:00 GMT"
+            },
+            {
+              "title": "Trade Spotlight: How should you trade Power Grid Corporation, Federal Bank, EIH, Bajaj Holdings, Indian Hotels, and others on November 23? - TradingView",
+              "link": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQbmdrRDl0dlVZdWc2V2tLcEg2aUFSZDhQZTFKb0RUTTZiYS1sRVlOMi02ZXVwVVVOcm4zOXlYbi1Tc3E1dkhua0tLRVFBOTByNklzSEluMFZVUVV2V3hyQWllUnBiZEpiakV0TmZkbDdaQ3E5QXlHSnFxcjlFd01rTVdPSmV6ZC1OdFVNbXljYTN2VWY2a2RZSnYtdlc4UzVjWjJQWjBfY0tXeTdsR0gtM04wVC1uQW91QS0xNWZqRnlWU0RFOEUyb3BTNGR5QkRWR1RsVXlWZTNTb05wTEw2TVJGYmhBZ01sR1M1eW1oRmN1STFtUHkxc1E1QkhXbW1HSGs4RHh3ZHkxblB2Njhfbjc1NUllU2gzel90SDIwOA?oc=5",
+              "published": "Mon, 23 Nov 2026 02:53:00 GMT"
+            },
+            {
+              "title": "STOCK OF THE DAY Buy Adani Energy Solutions: SL 1455 Tgt 1495, 1510, 1525 Co. entered into an agreement with West Bengal for 1750 MW renewable energy for 25 years #StockOfTheDay #AdaniGroup #AdaniStocks #RenewableEnergy #StockMarket - Facebook",
+              "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQR19kN1ZrRW02NVhteUVqOUhQOFFVeEFiRlNCN01EaXR4WmhwNG5ob25IZFplOXlBSUhwdm9sTWNINWhYaFJ4a3pjNWdUVEpoUDJhT2czeF9RSVBsVFhGN2xmcW85bW5hSTVfQlAzSGUwQXhBXzlmbjRSWWNoTVVENXgxS1FUMnk5WGI2UGFzT181bWFvUmtlMEZYek53Uk9OM0VnQTRpWDhvaXlUbW80MHczdkdqQ1ZPdjZnQlc1ZlB3aWtxVmpzNFZwVmZRTFpmR1ZUYWkzYmNSeGVPSnpKanh3?oc=5",
+              "published": "Mon, 23 Nov 2026 03:55:22 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -0.96,
+          "predictedPrice": 264.6,
+          "predictedPct": -0.1,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 37.4,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "NHPC",
+          "name": "NHPC LTD",
+          "price": 75.36,
+          "todayChangePct": -1.63,
+          "momentum5dPct": 0.41,
+          "volRatio": 0.76,
+          "news": [
+            {
+              "title": "STOCK OF THE DAY Buy Adani Energy Solutions: SL 1455 Tgt 1495, 1510, 1525 Co. entered into an agreement with West Bengal for 1750 MW renewable energy for 25 years #StockOfTheDay #AdaniGroup #AdaniStocks #RenewableEnergy #StockMarket - Facebook",
+              "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQR19kN1ZrRW02NVhteUVqOUhQOFFVeEFiRlNCN01EaXR4WmhwNG5ob25IZFplOXlBSUhwdm9sTWNINWhYaFJ4a3pjNWdUVEpoUDJhT2czeF9RSVBsVFhGN2xmcW85bW5hSTVfQlAzSGUwQXhBXzlmbjRSWWNoTVVENXgxS1FUMnk5WGI2UGFzT181bWFvUmtlMEZYek53Uk9OM0VnQTRpWDhvaXlUbW80MHczdkdqQ1ZPdjZnQlc1ZlB3aWtxVmpzNFZwVmZRTFpmR1ZUYWkzYmNSeGVPSnpKanh3?oc=5",
+              "published": "Mon, 23 Nov 2026 03:55:22 GMT"
+            },
+            {
+              "title": "NLC India Share Price: 12.4% CAGR vs NTPC, NHPC - Univest",
+              "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPQlFNVm1VWm1TMXl2QTBLOXFCcWRiZzh6TUVTdGdvNElyX1ZlMjRDQ1F1VWM3Z0F6empKamhVY0RSTU9EM29TZUV6cEhweUFsSzJLU2RNNTJqVElhSE1xZ085cUFfY2drLUlxVmx5aFZRRDJmUy1zOHFYSjNMNno0bml2d1J1SUxUWHJqNk5xSHF6ai1aQ3FtdTJUREY?oc=5",
+              "published": "Mon, 23 Nov 2026 05:55:00 GMT"
+            },
+            {
+              "title": "Stocks to watch today, November 23: Waaree Energies, Berger Paints, Texmaco Rail, NHPC, and others - ET Now",
+              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNTk1WbVktSmNxeW8zLWFvRlVyLVJaZnRyZGlCU0d6ZUk2VnVKUmZIV0NPVFJRVEU2QTVMNDdoV01VNGQ5bGl4dzJmWGxzQm5rWnd1ZUhjT0w2NnlKakdlUmI4eFl4V0JDLWp5aU1XckRwZWVCM2ozZVVyZTN2cUpVUjBzQkdNdk1XU2JTNEk4TExnWWlDQXllMDhGNmJMZFpMemFTc3hldTV4ZXJNMWV0emR5WVFpaGRCTExqbjhaZG1EaDQ0Y0xtV19MNFhWaXJuVFNzTzFreG5UUk9x0gHiAUFVX3lxTE1XREloay1YWWh5WVdXYkJMQTJZTDlrUkN0bTE2eUk1dU9peDF0UTYyVTJiYmI1QldEOWJrSUZObkM1NXFVY3dtZW0wUm9zdnBYWUptMmlna3c2eGlJYXZVRlZhNXRmMmdpNWJGSXB2TzB0QXB4dU83dkxEOHA0SzlyUzIxZl9kd1B5OHZCUTlMQTJINWNFbkJTWlRLZ3ZwbDliVlZRczJmSnR3RDI0YTZfNGtmTFhEcDdwSEVBd0Z6d1NadDYyYWxXdHNEbzR2SUw5eFZMRXdzSUg2VmxXMWI0LVE?oc=5",
+              "published": "Mon, 23 Nov 2026 00:22:31 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -1.07,
+          "predictedPrice": 75.28,
+          "predictedPct": -0.11,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 50.4,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "NATIONALUM",
+          "name": "NATIONAL ALUMINIUM CO LTD",
+          "price": 298.65,
+          "todayChangePct": -1.5,
+          "momentum5dPct": -6.36,
+          "volRatio": 1.7,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -1.29,
+          "predictedPrice": 298.26,
+          "predictedPct": -0.13,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 53.0,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "JPPOWER",
+          "name": "JAIPRAKASH POWER VEN. LTD",
+          "price": 13.24,
+          "todayChangePct": -0.97,
+          "momentum5dPct": -4.13,
+          "volRatio": 0.9,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -1.67,
+          "predictedPrice": 13.22,
+          "predictedPct": -0.17,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 53.0,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "YESBANK",
+          "name": "YES BANK LIMITED",
+          "price": 17.73,
+          "todayChangePct": -1.01,
+          "momentum5dPct": -1.61,
+          "volRatio": 1.06,
+          "news": [
+            {
+              "title": "HDFC Bank Limited (HDFCBANK.NS) stock price, news, quote and history - Yahoo Finance Singapore",
+              "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1WdkJlRjNJZE9HNjlMcXd2U25qbnUtMFhSRXRscVA3UW9nRElrZ0oxTWdEaENMS1J1YWNsU2xUTG9uMV9GZkhaeU0zcmtoV1B1RjA1bExTNE1sNDA?oc=5",
+              "published": "Mon, 23 Nov 2026 09:26:50 GMT"
+            },
+            {
+              "title": "Most Active Stocks Today, November 23, 2026 at 12:00 PM IST - HDFC Sky",
+              "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE52Rng2bVFkcEZEX1U5dVRrazFCYm8zM1pFQWVXenB5Q19RZjFLcVJSdVlmZHotSW0weUV1WjBYaHpJdWxvalBLakpBNmRESmR3SEN0OGZDdkpYdnlLemxWWGpvQ2tIQ1NaS2wyWTBlOTNveVZueUpNbA?oc=5",
+              "published": "Mon, 23 Nov 2026 06:46:24 GMT"
+            },
+            {
+              "title": "Bank Nifty Falls Over 2%, Heads for Sharpest Single-Day Fall in Four Months: Five Key Reasons - Dalal Street Investment Journal",
+              "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPa1IyeTFjLXJtOGFNZWRmM0txcWxhcUhvemZpNkNWLS0tSTU2TzljdXExdl9lZzFaRUVvLVVXRWpNV24yMTU3WE5LRUdZV3oyc2UzSUZ6RDNtM2JvX3R3OXp1TXpTRWIzTjdqS3gwb2FVckowXzJfdDVTMVdwSlRKU1d6c2dBQWZsM2oxYXBHNnN3STRRZGlLNGJFcTVxTjFiclBYSWpJV1JGbWx4UG52aVE3U1RZRUROdFZZTHkycmh3T3FRYW9jaHlGQkoxNWZTWUpKdTRB?oc=5",
+              "published": "Mon, 23 Nov 2026 05:41:08 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -1.82,
+          "predictedPrice": 17.7,
+          "predictedPct": -0.18,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 45.2,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "IDEA",
+          "name": "VODAFONE IDEA LIMITED",
+          "price": 11.91,
+          "todayChangePct": -1.98,
+          "momentum5dPct": -4.95,
+          "volRatio": 1.11,
+          "news": [
+            {
+              "title": "Trending Stocks Today, November 23, 2026: Tata Steel, Vodafone Idea, PC Jeweller, HMA Agro in Focus - HDFC Sky",
+              "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPYzVNN1lBczhQZTVRQ29BYUxsTTJnUDJGZ3JPVFU1UU9rVHNrbFF2NV8tUm43LXZSSU1mUnRvSnpPbHhlYS1fMGdvT1VVU1l5Y3V0U0F3RktZRFNtUnJVNVdmc3owSmsxUThzTWJyeEZSdjJuTXpNRXpBTHpINTVsTW1EWlpkbkNLU0VnRlB2U3hUUmVTWEhLNmVXVGVLd040UUJUeG9fTFFYMWRxU3RvLU8yLWU2V1ZlOFE?oc=5",
+              "published": "Mon, 23 Nov 2026 07:26:11 GMT"
+            },
+            {
+              "title": "Vodafone Idea IDEA London Non-Deal Roadshow Nov 2026 - Kalkine India",
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNRnJsNk1nZHlMLXBINVRqbzlvSVU1VDJPR0pkRnlueTlxWklhck1wSmNDWE9ybW9nYVROZ2Q1bUdtSEpMWjdhQTJJb2ZLXzE0VjZwdHlveFhIV3A4WkZpRXBJajVyNHVxbFdBV1ZqNHVSRmtVVHhWVXlqTlFhdlItdWdZX19WRG8zTWZJbmdaVkV0OUR2eUQ4SXgwOHp6dm9FU0RVUTdUUHZnT25vZk5xZXREWDVfTEpj?oc=5",
+              "published": "Mon, 23 Nov 2026 07:57:00 GMT"
+            },
+            {
+              "title": "Most Active Stocks Today, November 23, 2026 at 12:00 PM IST - HDFC Sky",
+              "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE52Rng2bVFkcEZEX1U5dVRrazFCYm8zM1pFQWVXenB5Q19RZjFLcVJSdVlmZHotSW0weUV1WjBYaHpJdWxvalBLakpBNmRESmR3SEN0OGZDdkpYdnlLemxWWGpvQ2tIQ1NaS2wyWTBlOTNveVZueUpNbA?oc=5",
+              "published": "Mon, 23 Nov 2026 06:46:24 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.06,
+          "predictedPrice": 11.89,
+          "predictedPct": -0.21,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 47.8,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "BHEL",
+          "name": "BHEL",
+          "price": 415.7,
+          "todayChangePct": -4.14,
+          "momentum5dPct": -3.35,
+          "volRatio": 1.53,
+          "news": [
+            {
+              "title": "Bharat Heavy Electricals Ltd. Hits Intraday Low Amid Price Pressure - MarketsMojo",
+              "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQcERNMUU2ZEk5RU85WUhBaW85TE9CT2k3bGVMTi1acktxLVdoZ0JrclFOU3BSdDkwTnlBZlRYR1lnWFAyMWMxc0YtLWFTSWo4Wkw1cWxTcW9XUE9FYVFUeHEwcFUzZlUzVXRNTXJCLVc3Y0c4XzhicVV3VTgtQ2RQdUxOMElNQzdua08zWGtrUHN1c0pjcDdUdXotWk0yNEpJVEViTnhmRlE2eDh6WnZoU0FreEhrVXhhemN5bzVHVWljUQ?oc=5",
+              "published": "Mon, 23 Nov 2026 09:22:30 GMT"
+            },
+            {
+              "title": "Here's why this latest move from West Bengal is a sentiment negative for BHEL - CNBC TV18",
+              "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVk9NdnNLbWNCM09rQjZtS1JwUHhTRmZXdVh1UEs0V2dnQU94MWRjRWJiWVF5eHVYbTJTN2JUeFgyaW1WVjBtODFzV2xCOXFudktOdzVjUUdVbjd3Xy01V1lRNmY4ckdyMHA5R2JqX1A2SWhFWkRxSlY5VmdDSGFKUjMxUlo5VTJabGhQei1WMzRXamJrZG80UGFGeFhvNm16VHo1VE5DdkZJa3ZoMllNU1dMaWpTS3UxczhCUC1KTC1KS0M1OTFOX3FOZkItNmsycG93N1hmNjdOeVFMYUHSAd4BQVVfeXFMT1ZPTXZzS21jQjNPa0I2bUtScFB4U0ZmV3VYdVBLNFdnZ0FPeDFkY0ViYllReXh1WG0yUzdiVHhYMmltVlYwbTgxc1dsQjlxbnZLTnc1Y1FHVW43d18tNVdZUTZmOHJHcjBwOUdial9QNkloRVpEcUpWOVZnQ0hhSlIzMVJaOVUyWmxoUHotVjM0V2pia2RvNFBhRnhYbzZtelR6NVROQ3ZGSWt2aDJZTVNXTGlqU0t1MXM4QlAtSkwtSktDNTkxTl9xTmZCLTZrMnBvdzdYZjY3TnlRTGFB?oc=5",
+              "published": "Mon, 23 Nov 2026 07:26:24 GMT"
+            },
+            {
+              "title": "BHEL share price target: Analysts see up to 40% upside as thermal power pipeline expands - Business Today",
+              "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOVFpNNGhLMzY3STdiWlMzTEV5UGN3QkZldks5OUZWUmItNXBlVFFZZGl6NVdTVTEtcmxjbVhuUVdVUVc1S1RZV1gxX1J6SWI5aGxyWDZTRTVOdXdUczB5UHUxUjdmMU9zdGw2TFEtNzFNN1ZJb2NPYlZUMXlKZWxucXJiRGRzM09lTmwwNnBkRFNxRVVOVjlFQndaMDI5bUd4aUxvcDBpLS00V2tSUUdQNm5ESVFKZUc5ZGZVLXBvOG5SaV96Q0UtR0NaRzFFY0ZBMTNhQTl3N3lfSjl5VWJKb3VJLXY1UzlVWXhwSjNUbWZkUld5bmR5VXhnUdIB-wFBVV95cUxOVFpNNGhLMzY3STdiWlMzTEV5UGN3QkZldks5OUZWUmItNXBlVFFZZGl6NVdTVTEtcmxjbVhuUVdVUVc1S1RZV1gxX1J6SWI5aGxyWDZTRTVOdXdUczB5UHUxUjdmMU9zdGw2TFEtNzFNN1ZJb2NPYlZUMXlKZWxucXJiRGRzM09lTmwwNnBkRFNxRVVOVjlFQndaMDI5bUd4aUxvcDBpLS00V2tSUUdQNm5ESVFKZUc5ZGZVLXBvOG5SaV96Q0UtR0NaRzFFY0ZBMTNhQTl3N3lfSjl5VWJKb3VJLXY1UzlVWXhwSjNUbWZkUld5bmR5VXhnUQ?oc=5",
+              "published": "Mon, 23 Nov 2026 10:18:00 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.11,
+          "predictedPrice": 414.82,
+          "predictedPct": -0.21,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 47.0,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "IOC",
+          "name": "INDIAN OIL CORP LTD",
+          "price": 145.0,
+          "todayChangePct": -3.65,
+          "momentum5dPct": 0.67,
+          "volRatio": 1.22,
+          "news": [
+            {
+              "title": "Great Eastern Shipping notes KFin Technologies office shift for Dec 2026 - scanx.trade",
+              "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQNERxWFQ4dFZUWHlQU2piN1FMMGlGM2hLX2l6c3dmd0FOcDctMWZCNXp6ckZjcEhiS1RfRm5JcnJWRm4yNEhWVEVYNWZkaVNsaTJzcVIwbGhVTnVHZ19qZEZXajZOZVF5UnQ3cTFyVVVsVjg1MnlBblFFakg1YTlmbXVpdFFMWi1RT0ZDT0oxQmlaVmtuODZaY1BrWGcydG1ER3hnOXRQdHJfZE9TYVZMeDNoeHNxSWtfYmNlaDJSb2xOZw?oc=5",
+              "published": "Mon, 23 Nov 2026 07:40:24 GMT"
+            },
+            {
+              "title": "Indian Oil Corporation (IOC) Share Price Falls 2.2% Today - Univest",
+              "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPelVQcm1nNVNCemd5b2RFd0NDV09QY3RBUk5TTk9ybTNKa2kyaFlGZzdGZHlMZDFidjV1c2hjNTRrTmRPNGRUTGxqb2Nqa3Z4WUg3YVl2LVBUbnI0SG9MZG5iaVB0Mk9UMnJhQ2daeG05ODhMTFR1MU9GYkU3QjN6QVNuVTFCZw?oc=5",
+              "published": "Mon, 23 Nov 2026 05:26:00 GMT"
+            },
+            {
+              "title": "Petrol pump dealers call off strike over row oil companies - The Times of India",
+              "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQQkdCRHUtYzl3cE5NMHE1QVUtaFA5ZEVrNHd3LXpEYVZnSFRzYUw0cnl4N1NwbGFOVzVfRS1mdGZ1Y1lldUxSSUhUVC1kV1JMdWpXdWJqWlROYXVJWnBzRV8zSnNFMVh4SlhwMFVySnBkd3R5SEhtbWNKaktxR2lqek9CcEM2NklYTVhtWm1WcC1Tdkx4Um11MVdxdTBRUi1sNFdUU1h1dk9XZmQ0WnljR2NoZ3lUMG8yZmVXUFA4M2lEdllySjJRcjRraThUUE16TkdHT9IB1AFBVV95cUxQQkdCRHUtYzl3cE5NMHE1QVUtaFA5ZEVrNHd3LXpEYVZnSFRzYUw0cnl4N1NwbGFOVzVfRS1mdGZ1Y1lldUxSSUhUVC1kV1JMdWpXdWJqWlROYXVJWnBzRV8zSnNFMVh4SlhwMFVySnBkd3R5SEhtbWNKaktxR2lqek9CcEM2NklYTVhtWm1WcC1Tdkx4Um11MVdxdTBRUi1sNFdUU1h1dk9XZmQ0WnljR2NoZ3lUMG8yZmVXUFA4M2lEdllySjJRcjRraThUUE16TkdHTw?oc=5",
+              "published": "Sun, 22 Nov 2026 21:45:00 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-strike"
+          ],
+          "score": -2.33,
+          "predictedPrice": 144.66,
+          "predictedPct": -0.23,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 52.2,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "name": "INDIAN RAILWAY FIN CORP L",
+          "price": 80.8,
+          "todayChangePct": -3.51,
+          "momentum5dPct": -1.6,
+          "volRatio": 0.87,
+          "news": [],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.35,
+          "predictedPrice": 80.61,
+          "predictedPct": -0.24,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 50.4,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "SUZLON",
+          "name": "SUZLON ENERGY LIMITED",
+          "price": 35.86,
+          "todayChangePct": -2.98,
+          "momentum5dPct": -4.19,
+          "volRatio": 1.07,
+          "news": [
+            {
+              "title": "Suzlon Energy discloses a cybersecurity incident; here's what it said about the impact - CNBC TV18",
+              "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOcEp5dzN2S3dLZ0Nva0c5bmN6dmVmcG5JS1NfYlpSbXBKMjY0a1J3MVdnd0FJYzR0ZEhwRVF5aWxBNG13Z2poSVg3Z0ZfY1UyVjNBSnQ0d3ZaWTBsMmd6bzAzTUdQMDVKQmZyVlA2SVdWNFR4TzNnQnREMEhqTmhBNFVJbTduMVVFZ1RtR3pqSU5Rc24wMTl5UEhNV3NMQ3g3LTcyNHBlR0ZveUVPcm9XZVV2ZDRFRnJFbWxWR2ZwaWVxd0VYSUo0Z1dfdGFWemZiYk9CZ0pLQkdqdWPSAeABQVVfeXFMTktxMWFwV0FvYXdYZkZjRFlMeUlBX1llcHlLVzRLVUhnZjZMdlA0ZVplSWo3T19QenhDbndPcDZrZVc3WXdMXzhHU1dYdlJCbWh2em5RZFNYX0VHQTcza2tQcWFLcC1OMzFfaWpBbTVhdzVxVkdfNTVhN2d0cWNicGZ4dFJnTVpTckNYTnJncFpLWHhDME5abE5lRHhNTTAzR0tvLWQ0YnByVXV2OWstNHNBdUFCN2pTR0E1emc2aDg0Rl9wZ05GTlZyaWE5TXRWR2lxRm5lMXFpQWJSZDJNNUQ?oc=5",
+              "published": "Mon, 23 Nov 2026 09:33:25 GMT"
+            },
+            {
+              "title": "Suzlon notifies CERT-In of cyber incident; shares fall nearly 3 pc - tennews.in",
+              "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQUzgwVmtrSHI1QVczaE1QRVp6ZFpkYW1RNEx2MVBxelNkOGJXakpQcFRLeGpBQnBpVUk2bTBnMHNNMjBYbUpTRVlCVFdtSUlnVnpMSlNzWWFNZU1ReWxPUk1FdVVOUURoWGpBZlExLWROaGdiMmVvRkVzRHpqR0lOMllsMUh1SEpaNlRodm5R?oc=5",
+              "published": "Mon, 23 Nov 2026 10:11:18 GMT"
+            },
+            {
+              "title": "Suzlon Energy hit by cyber incident; company says critical applications remain unaffected - The Economic Times",
+              "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNdEYxeEZNMS1mWHkwX25KeWtSNzU1Q3hBVTgyRmtEU1JES3pjMk1YTFdzR1Y2VEFpOEZtMkt0WHJVRzRXVl9XOG92dHhWZmowc3RYNkJOUE8xTHFDdWd4Mm5tRDZZdjNFd0dEczN5STgxNHNlbGhCVGJaVE5LNkQtdzJZZHBqaGtNVTQtMkxVc0VUWUJWZE4tR0k4ZHdGNGYyY2Nva2d6YWR0cDlwWWJ6SGlydlNUSC02b0hia1hhVDU2bWNxS0xkZGVCeEx6bVdkcVpJNFJMMUlJM1doTWRlZmVZU3E5LWVNWmJ0ajZSQ0N2YXFRYzJxZlRpaF9KMHBC0gH6AUFVX3lxTE1ZbEhQT0VVRXFLSW4zeUhRTl81UUpmam1CdHI2U2ZtWVNWMHE3cnpQYmRtS3NPUk4zRUNOSmtuc2lXdnVsWnh0b2dJX0doQlVxYmJzbktELUxzOHVnbmhhdHFScEtqZjRoa0dhSTlqWU5JdEZaS2g5R0lqaFdIbEdzdVVYOWg3TXU2MmtJOEtlWmI3eVZLRUY5V05rRFFpbVBIVEVwQmY3NXdLUjFvVWJLQTJyMDFpTEQ5dFJkb1ZVVkVoWVNfQ1BuOEszejYzWnMyUnhncFM4aG02SjVTdS1SRWNNMExkbi1tLXc4WHJpSzBqVVVtUDdjc2c?oc=5",
+              "published": "Mon, 23 Nov 2026 08:55:24 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.43,
+          "predictedPrice": 35.77,
+          "predictedPct": -0.24,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 60.9,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "HUDCO",
+          "name": "HSG & URBAN DEV CORPN LTD",
+          "price": 158.16,
+          "todayChangePct": -2.92,
+          "momentum5dPct": -2.9,
+          "volRatio": 0.8,
+          "news": [
+            {
+              "title": "Stocks at 52-week low: Tata Power, Cochin Shipyard, APL Apollo, Aadhar Hsg - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQUmZ5ZG9FUXZvdWI3Mm9FYUdtN09BSGhRb0FLNkYtazJsc1FSRHFnTFZ0cFRja0pBT3Q1VTZMaUlvekNOOXd5czI1QVQ2TmVtOFBneDQ3MHB4dHdhcFFuUTY4RTBQNVJYUkZQbjZzaEZIcVJ3X1F2Z3NfcEZ4ZTM1cElPV29idkhucXYtcURtVVdiNzNnVlBsZG1tVTE2V3NaZXpsMEJhSTdoa0wwLTl3dVBaNEZLN0EtNk1RV3Jmc281VFlmVDZ0MWhHc1M1dmtpREZ0YkJCUUjSAd4BQVVfeXFMTTdnTlNFTE51TzJ1alliMWZvY09fRDlSUlBieGtrVmRaVFZCYXh4bllQbWxpaERzb18zMF9hNm5nVHQ5YUllOUd1b0V4RUhrbk9NLVp4b3FXTnpPXy1XTHBZLXB1Z3JaLUdSdDBHWmh2Zk9hcHZScjJyRVh0WmhFb3V5WGRIWllTeVJrQW1jUjVjbmhXc0dCVlRfWWhqbDVnN0ROZTlua3RvWFJhMEhlS1FKMjdvMEZtZC1WcUdQOUJvQU9zQU9qWjl3dzZuRTZJbVcwZ2tOYlBkWmdydU53?oc=5",
+              "published": "Mon, 23 Nov 2026 09:07:44 GMT"
+            },
+            {
+              "title": "HSG-led consortium in talks to buy controlling stake in LCY's China chip chemicals business - Traders Union",
+              "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQMmQ3dE9YNlVkSnJLR0JQSkYteXhIdXA3SjlHVnNBSFU5N1B5dS1DUlJPUzlYbzYyanhhTU0xNnVmZy1vWExPS2NjTmlSdlA1NFlYRVpNZkVnMzRUQnVBY21tcnhhV3MzV2U0WVhReEVuWktLSWh2dHJ1Q19fMFBkbWQtbUhYTS10cms0YXYzN3QwUQ?oc=5",
+              "published": "Mon, 23 Nov 2026 11:25:31 GMT"
+            },
+            {
+              "title": "HSG Eyes Control Of LCY\u2019s China Chip-Chemicals Unit - Finimize",
+              "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOelZQXzdaQ2hmYWdOR05pWnZWNVAxR2w2YXM3eWJCNy1WZmJIcVNvMzFuUGlFLU5SV3BtOG9kQllnUWs0NEtNTVBZelVsUUJSeHp3bnZVMVBDSTZMMmNsMFlRWW4xdWxKTjNEWkZRTTRYUGlWTDRaRDcxNmo5NzM1X1YwbDBJdw?oc=5",
+              "published": "Mon, 23 Nov 2026 11:03:38 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.48,
+          "predictedPrice": 157.77,
+          "predictedPct": -0.25,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 48.7,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "PNB",
+          "name": "PUNJAB NATIONAL BANK",
+          "price": 149.75,
+          "todayChangePct": -3.59,
+          "momentum5dPct": 3.57,
+          "volRatio": 0.59,
+          "news": [
+            {
+              "title": "Punjab National Bank Share Price Fall Streak: PNB lower - Univest",
+              "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTUQwdEtZRnp5T0hDZ3NHeXZiSFZ2QWRZa0duVFR5YWo1ZXktNVhpZTFSZUtMUnJoYnp3MnR6T09KaVdJaTBLZnpJR1BwbVlrcU5YZ1AxSWItdVVhUjBPOUtPSi1zN0lEU3lRZWljd0dnQmwyUHBIMVZhczRic1E3ZWs3enhxX0ItSkIw?oc=5",
+              "published": "Mon, 23 Nov 2026 04:31:00 GMT"
+            },
+            {
+              "title": "Six AI-picked Indian stocks are up 17\u201326% this month - here is the leader - Investing.com India",
+              "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQM3pRVDZDNVdsNDU0NTFESXpjSW4wMkFFZlBfaXJYcjNpNjdWYnVldVllekpPX3g2MkZhb3FrdWFZV1dKNndOOWZtX1JyejNGWkN3c0t0WnFqVS15TWNsYkUta0t5ZS1FSGJ4ckRSdURtdFU2TFJvaFV3LWd6UmthU1NpTHhSeENVTlR2TEVycG1ud2VNbVpOSGZnUFdfS2JEa1M4X3dUNFhFUGFzcVp2dUNPNENxZ1diOUlxdGprWnlyWmM?oc=5",
+              "published": "Mon, 23 Nov 2026 07:03:32 GMT"
+            },
+            {
+              "title": "Banks ramp up short-term borrowing as loan growth outpaces deposit growth - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOZUl1cmI3bTJ3NVR2OWhza2NhWmtMQzI5WjdrYTJRVHdrMzNwbHViOEF6Y25lY1AtTjk5TGstWWtNc2NxSnlFcVpYaUxydG5JU2hpMGpESVFZcnQzSERrYmh5a29xZlNOV2hDNmFIeWFKVmpQYkhaby1ZeHczR2tTS0h2Snh5UUR5WWI0bzdxZUVTaF9vSzZFWnU5N3NCbmxyN3BER3A1cGdyamItR0VNcVdEeDhKR2JxOTUtQXptUEFWQi02cDkyQkFCUGQtTUdNTjdhcDNyc3Z3NXc10gHiAUFVX3lxTFB3dnhFbUdXLVFUYlAxTXd6ajBUQk9lQzJkdDZJWkpLRlFJYkJXeGRiZEJibWZaM1V5Vm4yak0xbmdTVmk0X2ptUjlpaTdiS3ZjSXhsSWRjTVpLVHBtdEFlcmVqek1LY0xtY0d5ZmIycnNuYm5keWU1d21WTDdRcmZSTEpTcHFwMnV3cUpITE1ILXFjNWRyeGpGdXJyanlLWmNXUkR0VUdlU2dsTkVlMlNtRWJBUm8xVlNmNlM4dTRHTVZDNkpYOG9oSUxZNjJwY09GcE8yUlgwRmRxakd5Qk5wcFE?oc=5",
+              "published": "Mon, 23 Nov 2026 08:24:22 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -2.52,
+          "predictedPrice": 149.37,
+          "predictedPct": -0.25,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 47.8,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "UNIONBANK",
+          "name": "UNION BANK OF INDIA",
+          "price": 208.2,
+          "todayChangePct": -4.87,
+          "momentum5dPct": 1.26,
+          "volRatio": 1.4,
+          "news": [
+            {
+              "title": "NIFTY50, SENSEX fall over 1%, NIFTY Bank drops as India VIX jumps nearly 8%; Why is the stock market falling today? - Upstox",
+              "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNYjhNVGQxS00wZ1ZvNzFSamhCRzNiU1VVUTVDbHdzQmUtbXZXOHAtM3lIVzNyTmF5STZCbnZ1bHhuZko1UDNKLVBxczk0MURkODVIWHVFOUZzQkZ0UUtJRlc5OHQ5RS1ONk9WNDhwTTltMGw1ZllQWVFEU1FEcXZPdTZya0puUWctQ3pZRDFsVThJbHNJMW1PRXpEc2FETU9JVlppdk5lV21Fa241bmJnRGQ4QUhfRG9NaFFwMGoxdTk0R1p0eDI4?oc=5",
+              "published": "Mon, 23 Nov 2026 05:57:28 GMT"
+            },
+            {
+              "title": "Bank Nifty crashes over 2,000 points, plunges 3.1%; HDFC Bank, ICICI Bank, Axis Bank, SBI among top losers - Moneycontrol.com",
+              "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNcjVKZTFWcGI1MjdiQWdHMmFBR0tFaFJQNUJBVlBsaVRCMzJNUWJxZEtkM0xPRXJwdUxIZllLeVEtR3VhVUgwdmx0RlFjdHRhY1BTX28zaDY4Mmo0X3ZXNjBvSFhXanNfNzVPdFRHbnJLYmxzUkZmd0RhN1NHRmxvUzUzWDUtVU1Pdkl4V3hIYzZ5Zm5JUnExbC1oV0hHaFhtVVFVODRIZXpXZFdqSVFkdWZrS3lVaktWVXhZMFBWcWJucFB1U3VLM2JnUVdtR3ZJSFMyTWtPZ3VQdmFkYjhUbjhob0pSYXFaVHhKdFhYb0x0TWstTG43VXI5SzR5UdIBgwJBVV95cUxQVW9BczM3ZzNtYjdycVYxNG0tMEV5Ykw2VGZlZzFfSU5jQ2pqeDhxd2xBMlVHcHMxZFlCeVBvZ0xxbjJYdDN3Q0ZxX19nV2I5cHVSR1JDRnd5TzdhQ2xvWUpYTUcyM0NHWWotZEROaXJhLTFoLUIyREpEZV9EUHN3Mms5Szh3dkJLSng4QzAwbzFzblJUOXlSSXA0MXVodmdkOUtWSkhrdnI3TllCNzQ3TlhHMzRXWGdQZXk2Z0VVcHhDbXJka1BJaE9PeFliVUZOUmFoMks0VXJRZkhmZ0dvc3lkRjRoUzA5bUlWMl9RZ3JMTEo4YWlKalNBb3dwOWd6ZExj?oc=5",
+              "published": "Mon, 23 Nov 2026 10:32:58 GMT"
+            },
+            {
+              "title": "Six AI-picked Indian stocks are up 17\u201326% this month - here is the leader - Investing.com India",
+              "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQM3pRVDZDNVdsNDU0NTFESXpjSW4wMkFFZlBfaXJYcjNpNjdWYnVldVllekpPX3g2MkZhb3FrdWFZV1dKNndOOWZtX1JyejNGWkN3c0t0WnFqVS15TWNsYkUta0t5ZS1FSGJ4ckRSdURtdFU2TFJvaFV3LWd6UmthU1NpTHhSeENVTlR2TEVycG1ud2VNbVpOSGZnUFdfS2JEa1M4X3dUNFhFUGFzcVp2dUNPNENxZ1diOUlxdGprWnlyWmM?oc=5",
+              "published": "Mon, 23 Nov 2026 07:03:32 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban",
+            "-crash",
+            "-plunge"
+          ],
+          "score": -2.52,
+          "predictedPrice": 207.68,
+          "predictedPct": -0.25,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 44.3,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "CANBK",
+          "name": "CANARA BANK",
+          "price": 133.75,
+          "todayChangePct": -3.72,
+          "momentum5dPct": 1.02,
+          "volRatio": 1.03,
+          "news": [
+            {
+              "title": "Bank Nifty crashes over 2,000 points, plunges 3.1%; HDFC Bank, ICICI Bank, Axis Bank, SBI among top losers - Moneycontrol.com",
+              "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNcjVKZTFWcGI1MjdiQWdHMmFBR0tFaFJQNUJBVlBsaVRCMzJNUWJxZEtkM0xPRXJwdUxIZllLeVEtR3VhVUgwdmx0RlFjdHRhY1BTX28zaDY4Mmo0X3ZXNjBvSFhXanNfNzVPdFRHbnJLYmxzUkZmd0RhN1NHRmxvUzUzWDUtVU1Pdkl4V3hIYzZ5Zm5JUnExbC1oV0hHaFhtVVFVODRIZXpXZFdqSVFkdWZrS3lVaktWVXhZMFBWcWJucFB1U3VLM2JnUVdtR3ZJSFMyTWtPZ3VQdmFkYjhUbjhob0pSYXFaVHhKdFhYb0x0TWstTG43VXI5SzR5UdIBgwJBVV95cUxQVW9BczM3ZzNtYjdycVYxNG0tMEV5Ykw2VGZlZzFfSU5jQ2pqeDhxd2xBMlVHcHMxZFlCeVBvZ0xxbjJYdDN3Q0ZxX19nV2I5cHVSR1JDRnd5TzdhQ2xvWUpYTUcyM0NHWWotZEROaXJhLTFoLUIyREpEZV9EUHN3Mms5Szh3dkJLSng4QzAwbzFzblJUOXlSSXA0MXVodmdkOUtWSkhrdnI3TllCNzQ3TlhHMzRXWGdQZXk2Z0VVcHhDbXJka1BJaE9PeFliVUZOUmFoMks0VXJRZkhmZ0dvc3lkRjRoUzA5bUlWMl9RZ3JMTEo4YWlKalNBb3dwOWd6ZExj?oc=5",
+              "published": "Mon, 23 Nov 2026 10:32:58 GMT"
+            },
+            {
+              "title": "Bank holiday today: Are SBI, HDFC branches in Shillong closed for Seng Kut Snem on Monday, 23 November? See RBI calendar - Livemint",
+              "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOMTUtYnRNZUZKRER4dmZ2cUwxT195bzlNZkxxWklVZ0J5NXpDZ2pzdEswMnMyTVFoMFdBZ0R4c2dYbFAxSTNqVGQ5dnl4Ti1xd2lEUGZCTy1jYVJ2cFRnNHdIQUJoNjZHaGl3OVJJRmhOOHdnNHVsTDlkSE5kb1dqV3ItYU96Z25VcFB1RTFjMmEwS0hXZUZGRWJuNGlOUTdkcDZ3SmdyXzNsLWhVaThLTU9GLS1WMFdtcUhhWkxKTmlEeHpIMi15T2dpeldtdlRYZjBrTEFkdjB4WmlxT19XWHR6QU1XUXdyNjFXT0wtTHhDOFN5RXc1cC1KLU93b0NC0gGGAkFVX3lxTE1aTmVhUkM0bS0tWjlRdERFMzljV3UzVHhDc0VnV0UwaERuX3U4Zm1BaHdvbmpKaDRfV0JMNS0yZWh1MDBCYi01SEFsLWV3ZUFQZFlFVjFrY2xuYUpwYTk5TTN5eHpzMHJXcDh0MlpDZ1Nna0JKS09vN1Y1UFJXUXFjSWE3OVo2RWE4b001VWQ2elNMR1FkdW9DblRSbzMtTlBLY0NVU0oya0JyU29qUjZzcUpvaElwU0NOdlZ4QjVOa3ZOOVRyaTc1dXFSM2NYMHhaZzJBajVJUHMtb0JCMFBTM1JDQ3lfc2FfLUFEUHJOSl9GWkhEVTZjMkE0MTVReVV2QlQ5dlE?oc=5",
+              "published": "Mon, 23 Nov 2026 02:12:59 GMT"
+            },
+            {
+              "title": "Punjab National Bank Share Price Fall Streak: PNB lower - Univest",
+              "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTUQwdEtZRnp5T0hDZ3NHeXZiSFZ2QWRZa0duVFR5YWo1ZXktNVhpZTFSZUtMUnJoYnp3MnR6T09KaVdJaTBLZnpJR1BwbVlrcU5YZ1AxSWItdVVhUjBPOUtPSi1zN0lEU3lRZWljd0dnQmwyUHBIMVZhczRic1E3ZWs3enhxX0ItSkIw?oc=5",
+              "published": "Mon, 23 Nov 2026 04:31:00 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban",
+            "-crash",
+            "-plunge"
+          ],
+          "score": -2.56,
+          "predictedPrice": 133.41,
+          "predictedPct": -0.26,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 49.6,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "COALINDIA",
+          "name": "COAL INDIA LTD",
+          "price": 382.0,
+          "todayChangePct": -2.05,
+          "momentum5dPct": -3.9,
+          "volRatio": 0.62,
+          "news": [
+            {
+              "title": "Coal India unit Mahanadi's IPO fully subscribed on final day, led by institutional investors - Reuters",
+              "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOTV9acWZoWWwxZ3JhWlJxWUpJYnNGclVKbFk0YjZ2cjhpLXdmYVJ0aTQ2Q09MQ0xyRXZzdWJHTldoOVBhVVdyUUJQVjJ3TjVkVTZoZ19tTE42aFhMUi03dm1Za2RCQ25QZm5NeXFzT0piU1FBVzhZSk9Hd0dHMWVmNkY1SzVfSTl3Y0h0Y1pVdWxGUnJqQzZZSmM1LVpBTDluQ0JRcFNPdXJOV3VySHdpTlR3?oc=5",
+              "published": "Mon, 23 Nov 2026 10:41:18 GMT"
+            },
+            {
+              "title": "IPO watch: Two mainboard issues to open this week; Mahanadi Coalfields, Crystal Crop listing ahead - Upstox",
+              "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNUi13RmZoeFRpVTFQd19PMklTdkNjcjhneUlIVjhSV0RDakl3ZEVsTXlVTjRBUlc0V0x3eWhPU0lDXzVkeGRQY3FRZk9nczJZWWVKVGNiT1cwc0l6X1RRN0Z3VGRQZXI3NzEyTU8zY0QtX0ZDY2hCeVVBVTVwTUtubW5lT0FqcFFHZHludzNITVFGNXFrZGlLdl8wR2ppUEJCVWlKNy1rdDA3Ty1HTGtKSEtSX0RqbVFkdHVvRGk4RkE5N3o3MURWRzUxN0UwdDQ0eXdpTS1iMmVnWkRFck5Nb1l2ZWU?oc=5",
+              "published": "Mon, 23 Nov 2026 06:15:36 GMT"
+            },
+            {
+              "title": "Mahanadi Coalfields IPO Day 3: Subscribed 0.60x; QIB demand leads at 1.45x - scanx.trade",
+              "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPT003ekhvbl9jd3RqQ0xkYW50QzFOQzFkUGpyQTl4OFhWNHFWRC1qLUNRVWRzaV91NWlFTlhjUlFhUUJRMC0yZ3Nia09sQ0thR3dwVUJNd0xMbjRZdVFIUlQ4YkFWeWh6OXQxSnh2dVZzdXZWeWFkaG41dXpTZTlkcENnZE5UUDY4ZXZSSVRMdE5uSnp2TmRlUFZhbUg5dENKRWwxYXNmQVhHbTcyemotY1ZZZXA0cDlMNTl1RWtvcDQ5cDI3OTVoVlVlU1dEM1psUFYzX2hfN3E4SW8?oc=5",
+              "published": "Mon, 23 Nov 2026 06:03:37 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.57,
+          "predictedPrice": 381.02,
+          "predictedPct": -0.26,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 51.3,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "GAIL",
+          "name": "GAIL (INDIA) LTD",
+          "price": 185.6,
+          "todayChangePct": -3.05,
+          "momentum5dPct": -0.75,
+          "volRatio": 0.43,
+          "news": [
+            {
+              "title": "J M Baxi Group buys 51% stake in San Maritime; enters shipbuilding - ET Infra",
+              "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPdjRWNXdKWDFFenFWdUdobFZUa0xTUWZJMWExVThQNVgtalVGZzRzZEZXWk1KTExaU2J0ODVHZkdMN1BEYzRhdkFicU85aVFKemloT25VOW9FaG9OTGFtVFV2WWgxM2NKQnc0SERYemc5cWVSd0tDWDBfYnpwTWdXLXhpWmJIUmNYUGRRQWZObklKaWVRUW5Wc1lHd09saXEwdWMzdjNwSmhJVmdWX2s2NzhsUkNLMG16Z1BhNHFXUTMtUmE5OFBTdEdXa3phTW92WDRF0gHXAUFVX3lxTE4yb08zU1h1SFFKZ1JxaGJyeDZyRTNzQ2VKVHVJT1ZxdXRCQU8wc2V0TU5RV3NWV1d1QnRwOXdaMHZrWjRpbXBhaXdDNGJrdnZzaE9BQ3JzQ28ybEVnNnZHb0MyeWRqSm9pdGZVV1gxOHlaeEZTanV1R1V4clh5MHU3aThQZ1BsdnhCb1dWNUVwS3B1QTV3d3lrWUJuRm13d0c3Z2lRZjVOdFluOTRIZDdaX0xrWnNtVGI3aWNvM0JURlc4b19LRHRvY3Q3VFp0QWlCaVFXQkVF?oc=5",
+              "published": "Mon, 23 Nov 2026 09:53:56 GMT"
+            },
+            {
+              "title": "GAIL (India) Ltd Sees Sharp Open Interest Surge Signalling Strong Market Positioning - MarketsMojo",
+              "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQc0UtU19EaW1IdGRJSXhWYTk4Nk9BVEk3YVFEREFhQTFpdFpiSjJPTHpVWUxtY0dKNUhuUU8tUmVnY0RKWlU0SUJKWWNsVE5YM1IxYnJWMWlCYnZrZkVPUTBRUmtvbVJVZEM3SFZ5OEd1TWpXMGlJaWliUkZwUW5weFgzYUhRRTAwbG9Cd1FoRXVLNVNWMHhxZ2RVaWtJZjdSNGJFa3o1TUZ3ZGQ4UFBNZEZPUkdhVnBfenBydF9tRkVRLWZtYldoWWc5TnU5NUpoeERiRUoxVQ?oc=5",
+              "published": "Sun, 22 Nov 2026 20:56:15 GMT"
+            },
+            {
+              "title": "Petronet LNG vs GAIL: Natural Gas Stocks Compared 2027 - Univest",
+              "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5HamdMQWh0Sy1Jc2NNTjR5M0p5SGZldVpNUVdmc3FXc05vUWdnT3dVdFo0ZUlQZzBvY3JRYXd4NzJzaThiaFI3VUpFc2Z0NEdLcmlXaDFYR29mU1IxSlpQZ05FUUhRY1dGSDdISW0zRnV6UTQ5?oc=5",
+              "published": "Mon, 23 Nov 2026 07:45:00 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.57,
+          "predictedPrice": 185.12,
+          "predictedPct": -0.26,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 51.3,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "name": "STEEL AUTHORITY OF INDIA",
+          "price": 162.0,
+          "todayChangePct": -1.29,
+          "momentum5dPct": -4.0,
+          "volRatio": 1.03,
+          "news": [
+            {
+              "title": "Steel Authority of India Limited Stock 12\u2011Month Price Target Cut to INR 189.91, Implies 16% Upside - TradingView",
+              "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQN01PQVdIWXByWjZUWUZXNmRBMVQ5cXFmb2IxdTlzYU95ck5NSDUxMXdNbHBObXJZRXZMVFlXZkdDenoydmZ6bHZVY3VFeVRlcGpyT0N5QnU1cjA5YU5fbzAxUWZfbWhsRkljNVB3MHBWYnVJUTE2UE5Nb0NSY1pGYVhEMVVhUWV3N3JDZ0pNaVRLNWYtRlQ4alRoYU5oRXB4UXRUaUZueDlIY2J3UXd1QjdOOXdTWEZ5VkRfMFNRZjNjQlJDVzVVbVdhRUttRHpGeEtURVFGVklfTUtickM4dUNmelRGbDhZdk9SZWloaw?oc=5",
+              "published": "Mon, 23 Nov 2026 07:20:00 GMT"
+            },
+            {
+              "title": "LiveLawBiz Arbitration Cases Weekly Digest: 16 - November 22, 2026 - LiveLawBiz",
+              "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObWliRXdyVkFITFl2cTRkUHZ3NVZONV92UEVuMVFGUFVIV1B1VV9LOTBkX3RMLUxjMmtCQW1DVV9TZFRCd1JIZEdqdUJFMV96bjRrRmJJLWJ4VUFUcnRjWlZjR28tRDZnZXU0TDMzQWREWTg5Z25ycmtQelNEOGM2WUZVc29WbjBQazEtNjk4VW1zaFI3LUc1M2MxRUNnNnFULXdSQVZBczc4Sk5Zc0laOWlR0gGyAUFVX3lxTE5taWJFd3JWQUhMWXZxNGRQdnc1Vk41X3ZQRW4xUUZQVUhXUHVVX0s5MGRfdEwtTGMya0JBbUNVX1NkVEJ3UkhkR2p1QkUxX3puNGtGYkktYnhVQVRydGNaVmNHby1ENmdldTRMMzNBZERZODlnbnJya1B6U0Q4YzZZRlVzb1ZuMFBrMS02OThVbXNoUjctRzUzYzFFQ2c2cVQtd1JBVkFzNzhKTllzSVo5aVE?oc=5",
+              "published": "Mon, 23 Nov 2026 08:59:51 GMT"
+            },
+            {
+              "title": "Stocks to Watch Today, Nov 23: Tata Steel\u2019s \u20b915,511-Cr APL Apollo Deal Leads - NiftyTrader",
+              "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQazM3eVp5T29LOWV6WjR4bmtXNTc1NVdpdmdlRzdQdEItWmtaUkI5SVA1dC1aN2RCNTkyWmJWb0dxeURwYTRFRWwyN25IWGdtU1JHdXU2aU5GeWItcnh0QkhJdWZ5UFRtcHl1OEtMUExlV01XQVRLTG9EUEZ6dVRfdQ?oc=5",
+              "published": "Mon, 23 Nov 2026 03:18:48 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-target cut"
+          ],
+          "score": -2.6,
+          "predictedPrice": 161.58,
+          "predictedPct": -0.26,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 47.8,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "BANKBARODA",
+          "name": "BANK OF BARODA",
+          "price": 275.58,
+          "todayChangePct": -3.98,
+          "momentum5dPct": 1.99,
+          "volRatio": 0.88,
+          "news": [
+            {
+              "title": "Bank of Baroda sets Dec 21 EGM for shareholder director election - scanx.trade",
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOdjJkVEh4QTNHNFBhTEswNldOY0FITFlPd3lTQTBlN2h6ZWQ2SHowLURXd3hJTGhqZmx0SldkMHZKTXk1MXVKek5sczdCeFUwZFNuSXQxOGNjcEEtb29tT3JybVpkNGVVUDAzNFdyZmdsV0pBSDJSeFNtcEdPZ0NzZ3AtMGlzV0ltamlfSEp4X1RTZ1V0QVVCR0hMeEZlVnBVbzdxeVBYNnNvVXd0cDliNWkwV18?oc=5",
+              "published": "Mon, 23 Nov 2026 05:44:27 GMT"
+            },
+            {
+              "title": "Bank of Baroda (NSE:BANKBARODA): What Does Its December 2026 EGM Agenda Cover? - Kalkine India",
+              "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOVUVmUUtiV2haZDRTdlc0SkVLWGFtMXdvU01mY1pVVjhVRmJ4cTZVVjB2THVGU0pXa0NvQzRyZkx4LUMwS2JZRF82ZkpmaUtLSjlPbFFHSkdxUlRJYUZPWDRyLVc1cWY4eTR1anRFc3R5WnQzQUlpZTJTeVNWTlVHRFZrazdJOHk1Y1pId25UbjhSdFVibjYzMmpEQjlrUEVhLTNySER1cjNLRlBHM2lxLWxVMFNhejNzRHZ2Ul9R?oc=5",
+              "published": "Mon, 23 Nov 2026 05:24:00 GMT"
+            },
+            {
+              "title": "Top 12 Bank Stocks To Buy In India November 2026 - Samco",
+              "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVTJGTjNBTndCWnlCMVF4am9OclFTVEN0clJWVXBKc3BWX0E4bDhwTUxlVWFKd0xReUJWSVl6T0M3UnExVHowUHZHdkExQ016S1MtX1lJdjNKYUNoRzBpM19fbTZYeTNOVGpNY0NPMTQydUdvWDZWMGFveE12Umh4eVRkVC02b1FMYVJhZQ?oc=5",
+              "published": "Mon, 23 Nov 2026 06:51:00 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -2.67,
+          "predictedPrice": 274.84,
+          "predictedPct": -0.27,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 46.1,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "IRB",
+          "name": "IRB INFRA DEV LTD.",
+          "price": 17.4,
+          "todayChangePct": -3.6,
+          "momentum5dPct": -3.97,
+          "volRatio": 0.89,
+          "news": [
+            {
+              "title": "LCC PROJECTS LIMITED Share Price - Upstox",
+              "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1Ua1JtRk9uOHVZMk1wWVRFU1hqdjJncUdzYjNJRXdCWGJ2OWZSaFlqejRQRzFHR2dLWXp3TG9zMUdaVTg1QlRFclBfbFpXaGd3UWpoc0FLa2xZLTA4Q2Q1UGJ2bUpvWC0xMGhv?oc=5",
+              "published": "Mon, 23 Nov 2026 04:58:16 GMT"
+            },
+            {
+              "title": "Ajwa Projects Limited Share Price - Upstox",
+              "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBIeFBHQUYzTVQ0dXI1dkJnVlZZTFk5NFJuRzd0MDZnS1RHUzRLVlhxZGo2U1VaRVA3eEZmelRaLWpTNnpvdWcyYk5kTFlaVlFLeVVPQjdnVGVISk5TS0VVUHhyMVRkaUlOSkx3SA?oc=5",
+              "published": "Mon, 23 Nov 2026 04:25:24 GMT"
+            },
+            {
+              "title": "AB Infrabuild Share Price Today: Price Rise and Valuation - Univest",
+              "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1IYnNYY3g3WWNjM0RWVkZtQmpGZ3VDekQyN2dGSTlXZmlGLTBzRElDSUkzUW1oU2tqNHR2NUdnMjM3UVBJanM1OW4xS0lkLTMwVVdjZmxNTjVxZFBxdzNoZXhHeDYxYkRsVkZxUFAtdVFWeHkzVzRwV2xfUGZpOHc?oc=5",
+              "published": "Mon, 23 Nov 2026 04:24:00 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -2.96,
+          "predictedPrice": 17.35,
+          "predictedPct": -0.3,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 54.8,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "VEDL",
+          "name": "VEDANTA LIMITED",
+          "price": 235.53,
+          "todayChangePct": -1.05,
+          "momentum5dPct": -6.91,
+          "volRatio": 1.05,
+          "news": [
+            {
+              "title": "Weekly Recap: Shares fall, Citi cuts target and Agarwal opposes transfer - TradingView",
+              "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQYWJmcDBoNDhtbkNfQTJ1RkRvVTItVzVScm9sRm5XcV85R0ljaGpqZGVLYURSV3VRSkJxdlFNeG93YkROemRQekxQcHFUaEJmdWJiTWVad0dyeFY0eDlyNDhWdTNtWWZpMWwwRjc4aUNkYVN3bHE1TDZxbl9EWVI0UXdVN1NuQnJUcGtsd1dDTm51UXBRNHZ0dlBacmQtcV9zQTlKeGRpc2dBUXZZdThSSHBrUUN3R2g1TjZZTmVNZmUwa2YtSVUyUXVkLU0?oc=5",
+              "published": "Mon, 23 Nov 2026 01:00:00 GMT"
+            },
+            {
+              "title": "VEDPOWER Share Price Today - Vedanta Power Ltd. Stock Price Live NSE/BSE - Univest",
+              "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1wMThQR1piQlBjQ2VNWnZrSklEUm1ncjBFc1ZfbjM2Y0xfUlFXV0VyNTM1dVVpSnlDQVVESll5SjM5UVdWS1VRS2Fsbll1alBUZ2lkZFBpMGdfdjY2eEZXZ0wzUjROQ0Q4eXZ5YnI1RUIzNWNaLUtfQ2pR?oc=5",
+              "published": "Mon, 23 Nov 2026 00:47:13 GMT"
+            },
+            {
+              "title": "Vedanta Aluminium Shares Today at Nifty 50 and BSE Sensex \u2013 November 23, 2026 - Business News This Week",
+              "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPckNrYmwxcHY5RXlMZzNsczlBaXgzUHNGNVFuTmRyX3NMNU02QV9yS2p0Vm0zckRLRXM3a3NmMFB3N21GVE1iVTkyMWNSVHZJXzJZZDYyZkRnMGhxV004UFU4TmtIUEl6MktfNjJTcE0xeWdxT08xQjlveW5PZTR2c1N4bW1xWVhWaWhiTThxYmNXdFl2azdHTkdWSEJrMnpnMVd4SEpWMXN1dWVTLWtWYnMwa1VQQk1Z?oc=5",
+              "published": "Mon, 23 Nov 2026 05:46:07 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-cuts target"
+          ],
+          "score": -3.18,
+          "predictedPrice": 234.78,
+          "predictedPct": -0.32,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 57.4,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "RPOWER",
+          "name": "RELIANCE POWER LTD.",
+          "price": 17.24,
+          "todayChangePct": -2.38,
+          "momentum5dPct": -4.59,
+          "volRatio": 0.87,
+          "news": [
+            {
+              "title": "Mukesh Ambani\u2019s next big bets for Reliance - Business Today",
+              "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQeW1MNWJuczZkMnhUQURsRUpmbElZbG5kS1VqbTF2Um4ycm9wajlzWVpnNld5QUJ4blRpNFdQdnFYMVhfcmR2TXQ1RmNpd2x1ZUQ0TnhKTnhYckRHMmNxc3J0YTEyTFh2Z3B6SG9WakZXbnpCQllVYUhNQkR5SlhZTTJGaGtFUFh0d2g0eEVQSmlORVM0UGc4Ukg5VGp4M0NDS3VDSTc3VmVRZjhKSEtybG40MnNBUdIBuwFBVV95cUxPNU9xRW56TDNPeTFqTHN6ek0zaXdZQ0x1WGtBSXQ0eHozTXBqZk94X19qbzVRMGotZlBWMHFKeHEzN1JwQmFIcmJKQWVyYnAxczlydU91dEpoaUppMHpOSmpmc2dycTFVNG5VaXh5ZEVuMi0zNk1ZQ0FXeDc4bWpIYzR4LWtpUTZ0UlJfQUJZM1Z2UFZNcHkxcF9LM05ROGs1WGxmSV9nOGEyeW5pN0s1NlhWWjQ5Zk5ianZB?oc=5",
+              "published": "Mon, 23 Nov 2026 10:10:11 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -3.53,
+          "predictedPrice": 17.18,
+          "predictedPct": -0.35,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 58.3,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "TATASTEEL",
+          "name": "TATA STEEL LIMITED",
+          "price": 163.0,
+          "todayChangePct": -8.43,
+          "momentum5dPct": -10.57,
+          "volRatio": 7.24,
+          "news": [
+            {
+              "title": "Tata Steel divests tubes biz: Will it unlock value? What analysts say - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNT21RbGNFdnozWGhFVGg1c2ppb204RGRaRTBxLVRDUjhHYU9yNXR0d3pJbXhkVElWcWxmTFV0MWpRUURMeGI4ODVpMjRDRUpEY01EcUsyVUswNXZiRzlCX09hNmN3ekNCN1NxTHh1SEp3dy15cU01SVJEUElaTEVVQVV4RlJwVy1scGZ1SDcyTGpPNlVvS29GVFIyekt6N0wwdl9HdVlaNjZRNGtXWDFLT3M0RXVCcm1ZaGNlaTlEUUVmZG1pMmNRSmh3dHhJelZsbEJnT0s5cmlHT3F5Y1dZOS1tY2hmQjhSQVItRmtR0gHzAUFVX3lxTE9iM1hwNHNzSlNETHBycTM3V3hnYnYxWWhWZm9vdHg2dEZiV2wzU0NGUWVLakg0b0RIc1BTdnE5c01MdGtjaWFTblozZTVLQmx5c0YwTEd5YmhES1FSY0xCUEVYN3otNFdLck1MR0loWllPNC1MY2FBYkpwUFlPVEZ2SmVGcGxpd0ZsMUtmd0Myd3VROVBZVHhPeGhkb2dINXJmc0ViYlZSSWdPbGw4Q3dxdEdnbTdmUGthTHpicTVydklRa0VVVVNEdklsMTBIQVFvNzhSWE5jeXpYUGZBUWpzRDlUajFpT29WZ0JJYnY5eXdHWQ?oc=5",
+              "published": "Mon, 23 Nov 2026 04:57:31 GMT"
+            },
+            {
+              "title": "Investors gives a thumbs down to Tata Steel-APL Apollo $1.67 billion deal, plunging shares - CNBC",
+              "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeEdMSW5TM2dJdzk1MGFKRHVtTnVUNmtNQWJzbC1NeGhVRnJfQTlCNDVYcl8xQ3dCTkgzLWZYUzhJeklkd1BMWjFLYjBwcFZ3cUVnTzVvbC1jWHcwY2RfQ0xtdHUzTVBxU24tck52bEZIYTRVLUZ6YThLZ2w2SHfSAYQBQVVfeXFMTTJDUUREdXJ4bFhIUzU3dXhNUXdJVnBrVGpIek92RVMyQkpWVXZrRHBjbzlIaEF3a2RQYVNuNkdscmNYQ3pYbkVKX21TdFNqMHN1NGUyZzhrRHZoTkdtVmJXN29iN3FHdUlVUzJNQXZpcUxhUGxLMnNIR2N0ZFhpdkdLZzU0?oc=5",
+              "published": "Mon, 23 Nov 2026 04:17:00 GMT"
+            },
+            {
+              "title": "Why Tata Steel and APL Apollo Tyres are down today? - India Infoline",
+              "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOUFM0U3BPMElyVWNYNzVvX0RVWW1rck53T3NlekFGeGdMN2tuNWhtaExpcFZ6Y2cwOVRxRDRWRzlnQnNrYW1lVUg4bkNRVUNDTnhzWEV2M0djZGRGZDhPbWJvU1RlWWVqdU1WSEsxRkFZRkFLLUR3SEhueFV5aXhKWkpFWm03TEphQXlUOFNqbFBwdUlGVnZOcl92WQ?oc=5",
+              "published": "Mon, 23 Nov 2026 06:30:37 GMT"
+            }
+          ],
+          "sentimentScore": 0.0,
+          "sentimentTerms": [],
+          "score": -3.86,
+          "predictedPrice": 162.37,
+          "predictedPct": -0.39,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 45.2,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "ASHOKLEY",
+          "name": "ASHOK LEYLAND LTD",
+          "price": 158.7,
+          "todayChangePct": -2.85,
+          "momentum5dPct": -4.67,
+          "volRatio": 0.65,
+          "news": [
+            {
+              "title": "Ashok Leyland Delivers 1,000th Vehicle to Thriveni Transport and Logistics - Motorindia",
+              "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPc3VJeEN0M0VCWkMtQmNRX1JvV0htMHBnN0tfYkpQTENyanVNRkFuSFNQd08tMUktNzdscU84dXktb0tsTmlkdEZXMlJmOW1ySmtKZkxISU4xc003dWJCT1BrRi11RjdQbDBWZVREQm1RcUdXT05BRXBBMXAzWG50OEM0T04zN0lxXzRHand1b3Rab2tXalhuODlRVUJ0MjRtQ1pBdjZlRWd1QQ?oc=5",
+              "published": "Mon, 23 Nov 2026 09:17:53 GMT"
+            },
+            {
+              "title": "Dalmia Bharat approves \u20b9700 crore share buyback via open market route - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPS3kxamlXUnBEUGFVM2tzc3BnU2ljMFJLQ1dYa0c1VE5XeF9YUmFkU3hsenlDcWV6QnpxcWhVaWRBWFJCNEJ5ZWZKdERXOE1jVUxSNE1PUy1RQTg2akFZbWpad0lIWnFvX0VSa0YxYnVsV3RUbnhwWFRSNlM5ZmQ5c1lPNUZWbGhoeGxMaUVSdHp0QldKSmdmbTlBSkwxQ0VpT3NzTDVMR0hEQzJyaVFrUFhtMEJ5TFBJT2pNUjItNkpJX2thLXp1MTZnV0R4TXdKZW9r0gHYAUFVX3lxTE9IUFNDYU9xVS1fOFhYM21vTDdwU245UmJtRGltQVJpSkxxZ0p4LXpSV0p6TzhzaVdDOVNQZ1pqaklaRTRXbmxMMmN1YXZHdEtxVHpHVGowdF95ekdZUXkxQnpjRk1OVUZtdEZZUU9Ob1h5YVc5NjZwakFlMjF0dEZwaHVTdmlOWXM5YnhucUhqbkthYzRITEdMSVdFSzdIYnpZQXR3VEpDdmdzMnpvX0oxTEZwSGtfY0dkMTlTT25NSnJ1Z3BDbF90U1k4dmtWUFRPYkFLWjdSWg?oc=5",
+              "published": "Mon, 23 Nov 2026 08:24:51 GMT"
+            },
+            {
+              "title": "Banks ramp up short-term borrowing as loan growth outpaces deposit growth - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOZUl1cmI3bTJ3NVR2OWhza2NhWmtMQzI5WjdrYTJRVHdrMzNwbHViOEF6Y25lY1AtTjk5TGstWWtNc2NxSnlFcVpYaUxydG5JU2hpMGpESVFZcnQzSERrYmh5a29xZlNOV2hDNmFIeWFKVmpQYkhaby1ZeHczR2tTS0h2Snh5UUR5WWI0bzdxZUVTaF9vSzZFWnU5N3NCbmxyN3BER3A1cGdyamItR0VNcVdEeDhKR2JxOTUtQXptUEFWQi02cDkyQkFCUGQtTUdNTjdhcDNyc3Z3NXc10gHiAUFVX3lxTFB3dnhFbUdXLVFUYlAxTXd6ajBUQk9lQzJkdDZJWkpLRlFJYkJXeGRiZEJibWZaM1V5Vm4yak0xbmdTVmk0X2ptUjlpaTdiS3ZjSXhsSWRjTVpLVHBtdEFlcmVqek1LY0xtY0d5ZmIycnNuYm5keWU1d21WTDdRcmZSTEpTcHFwMnV3cUpITE1ILXFjNWRyeGpGdXJyanlLWmNXUkR0VUdlU2dsTkVlMlNtRWJBUm8xVlNmNlM4dTRHTVZDNkpYOG9oSUxZNjJwY09GcE8yUlgwRmRxakd5Qk5wcFE?oc=5",
+              "published": "Mon, 23 Nov 2026 08:24:22 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -4.12,
+          "predictedPrice": 158.05,
+          "predictedPct": -0.41,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 54.8,
+            "avgErrorPct": NaN
+          }
+        },
+        {
+          "symbol": "TATAPOWER",
+          "name": "TATA POWER CO LTD",
+          "price": 328.0,
+          "todayChangePct": -3.44,
+          "momentum5dPct": -5.07,
+          "volRatio": 0.78,
+          "news": [
+            {
+              "title": "STOCK OF THE DAY Buy Adani Energy Solutions: SL 1455 Tgt 1495, 1510, 1525 Co. entered into an agreement with West Bengal for 1750 MW renewable energy for 25 years #StockOfTheDay #AdaniGroup #AdaniStocks #RenewableEnergy #StockMarket - Facebook",
+              "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQR19kN1ZrRW02NVhteUVqOUhQOFFVeEFiRlNCN01EaXR4WmhwNG5ob25IZFplOXlBSUhwdm9sTWNINWhYaFJ4a3pjNWdUVEpoUDJhT2czeF9RSVBsVFhGN2xmcW85bW5hSTVfQlAzSGUwQXhBXzlmbjRSWWNoTVVENXgxS1FUMnk5WGI2UGFzT181bWFvUmtlMEZYek53Uk9OM0VnQTRpWDhvaXlUbW80MHczdkdqQ1ZPdjZnQlc1ZlB3aWtxVmpzNFZwVmZRTFpmR1ZUYWkzYmNSeGVPSnpKanh3?oc=5",
+              "published": "Mon, 23 Nov 2026 03:55:22 GMT"
+            },
+            {
+              "title": "Milky Mist gains 5% on JM Financial's bullish call, up 140% from IPO price - Business Standard",
+              "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPZ3lLcUZwUUV0VnRiWU5xWEdZMy1RN1Zlb2wyOXlqVXFScENfa3hLWUdsMkVtSHVhVTdWRXJaZHMxS0cyenN5Y2RXVF9HUkFwV01QRDJDWDJuWDd2TWJWQ0ZZb3hIenRpOUhPTWpGV2VQSV9tckhHVW5YbE5RT1pOOGMtbWUwX1dCbDEwZnQ3VlNIUVpwc09aZkxZcDlJRkNKYTFXQzh0NzE3VDFpT0JuNG9HZUxZQ0NGNGpPS3ZoN3dSbFl3bWxEMlhfOWNCM2N5aDY2R9IB2gFBVV95cUxQYVBuc190YXI2cHVOeXNjbVBOYVRXbUxUMkdkRHJrcjdaRmQwSWhKY3JsY0VQb1JLRGVaTUxmX25GNmNWZ2lEZGhJX0VSMlFBUTZ2cmJ4UVNXQURIYXNWZGpyamFtUS1TOF80YnMwRVNONFE2NEgzNmVMZjZ2YWdGLXowZW11ZFBmNE1vaGRSaHNyQWtOdlR6OHdaN2RTWGxfSmp2T2xpX2FjYmVNOTJidVpUQ005X0VqbzZrU0h5YVJCdXNrc2RsTUFoQ1RNV1VIS3hDVmM0ZUhVdw?oc=5",
+              "published": "Mon, 23 Nov 2026 09:36:05 GMT"
+            },
+            {
+              "title": "Banks, NBFCs, autos and real estate after Q2 FY27: Where Motilal Oswal sees growth and which stocks to watch - The Economic Times",
+              "link": "https://news.google.com/rss/articles/CBMi4AJBVV95cUxOR2NuN2VuMm1YTEl5NWpZTExuSHB1a0NjUDdrMk5JQThDam9qdVlMQVVwU2hXYUxCQTJtdDkxLVBOSFdlS01TdmJlQW5tS1J6emo2eE5nQXVGLXlwRU0xeHhLdGlHajFNdFp5MExaZkZOSnNQZm9UdTdiZGZCcmI4TnRCRDZNbGFxVWFHNndLaU1NeE9pNEtrSVFXNzlwYmF4VmJmdnQtSWw5T2Uzb2F3TkQyREVvTHdmazBnYnZVSUlmUFhEN2hIc1NHek4ya3lTcGc5SU4tTjZWZy05VHhMd0NHOUx6cUdYNmg1QnlISTdzRXM3QktQODczYklYZkZ6cmk0bXBjdmE3WlJtaUw1ZDMxcVgyVmZDakhJVzI3UTdnaTB5dXc5c3A5OXA5Ny12TW9ZWU5qQTZBd3NPcktYLXJ4Mm1hM1Y1WjVCU1gzZExaZllLak5BWTJlN2NJaWpm?oc=5",
+              "published": "Mon, 23 Nov 2026 05:12:12 GMT"
+            }
+          ],
+          "sentimentScore": -1.0,
+          "sentimentTerms": [
+            "-ban"
+          ],
+          "score": -4.32,
+          "predictedPrice": 326.58,
+          "predictedPct": -0.43,
+          "trackRecord": {
+            "checks": 115,
+            "hitRatePct": 53.9,
+            "avgErrorPct": NaN
           }
         }
       ],
-      "marketStatus": "pre-open"
+      "marketStatus": "post-close"
     }
   ],
-  "generatedAt": "2026-11-21T00:01:48.797946+05:30"
+  "generatedAt": "2026-11-23T17:00:39.687628+05:30"
 }
